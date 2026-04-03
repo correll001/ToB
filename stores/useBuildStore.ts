@@ -3,6 +3,7 @@ import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 import type { BuildSnapshot, GearSlot, TreeName } from '@/types/build'
+import { createEmptyBuildSnapshot } from '@/lib/defaultBuildSnapshot'
 import { normalizeBuildSnapshot } from '@/lib/normalizeBuildSnapshot'
 
 function throttle<TArgs extends unknown[]>(fn: (...args: TArgs) => void, waitMs: number) {
@@ -22,58 +23,7 @@ function throttle<TArgs extends unknown[]>(fn: (...args: TArgs) => void, waitMs:
   }
 }
 
-function createDefaultBuild(): BuildSnapshot {
-  return {
-    schemaVersion: '1.0.0',
-    gameVersion: 'ss12',
-    meta: {
-      title: 'New Build',
-      level: 1,
-      description: '',
-      visibility: 'private',
-    },
-    hero: {
-      heroId: null,
-      traitId: null,
-    },
-    talents: {
-      godTree: [],
-      classTree: [],
-      tree3: [],
-      tree4: [],
-      divinity: [],
-    },
-    skills: [
-      { slot: 1, skillId: null, supports: [], enabled: true },
-      { slot: 2, skillId: null, supports: [], enabled: true },
-      { slot: 3, skillId: null, supports: [], enabled: true },
-      { slot: 4, skillId: null, supports: [], enabled: true },
-      { slot: 5, skillId: null, supports: [], enabled: true },
-    ],
-    gear: {
-      helmet: { gearBaseId: null, legendaryItemId: null, customMods: [] },
-      chest: { gearBaseId: null, legendaryItemId: null, customMods: [] },
-      gloves: { gearBaseId: null, legendaryItemId: null, customMods: [] },
-      boots: { gearBaseId: null, legendaryItemId: null, customMods: [] },
-      necklace: { gearBaseId: null, legendaryItemId: null, customMods: [] },
-      belt: { gearBaseId: null, legendaryItemId: null, customMods: [] },
-      ring1: { gearBaseId: null, legendaryItemId: null, customMods: [] },
-      ring2: { gearBaseId: null, legendaryItemId: null, customMods: [] },
-      weapon1: { gearBaseId: null, legendaryItemId: null, customMods: [] },
-      weapon2: { gearBaseId: null, legendaryItemId: null, customMods: [] },
-    },
-    pactspirits: [
-      { slot: 1, pactspiritId: null },
-      { slot: 2, pactspiritId: null },
-      { slot: 3, pactspiritId: null },
-    ],
-    notes: {
-      gameplay: '',
-      leveling: '',
-      bossing: '',
-    },
-  }
-}
+const createDefaultBuild = createEmptyBuildSnapshot
 
 type BuildStore = {
   snapshot: BuildSnapshot
@@ -88,6 +38,8 @@ type BuildStore = {
 
   setHero: (heroId: string | null) => void
   setTrait: (traitId: string | null) => void
+  setRelic: (relicId: string | null) => void
+  setSpecialty: (specialtyId: string | null) => void
 
   toggleTalentNode: (tree: TreeName, nodeId: string) => void
   clearTalentTree: (tree: TreeName) => void
@@ -101,6 +53,10 @@ type BuildStore = {
 
   setPactspirit: (slot: number, pactspiritId: string | null) => void
   setNote: (section: keyof BuildSnapshot['notes'], value: string) => void
+
+  setDivinityBoardNotes: (value: string) => void
+  setDivinityBoardPlan: (value: string) => void
+  toggleDivinityBoardSelection: (boardId: string) => void
 
   importSnapshot: (next: BuildSnapshot) => void
   resetBuild: () => void
@@ -156,6 +112,8 @@ export const useBuildStore = create<BuildStore>()(
         set((state) => {
           state.snapshot.hero.heroId = heroId
           state.snapshot.hero.traitId = null
+          state.snapshot.hero.relicId = null
+          state.snapshot.hero.specialtyId = null
           state.snapshot.talents = {
             godTree: [],
             classTree: [],
@@ -177,6 +135,18 @@ export const useBuildStore = create<BuildStore>()(
       setTrait: (traitId) =>
         set((state) => {
           state.snapshot.hero.traitId = traitId
+          bumpMeta(state)
+        }),
+
+      setRelic: (relicId) =>
+        set((state) => {
+          state.snapshot.hero.relicId = relicId
+          bumpMeta(state)
+        }),
+
+      setSpecialty: (specialtyId) =>
+        set((state) => {
+          state.snapshot.hero.specialtyId = specialtyId
           bumpMeta(state)
         }),
 
@@ -255,6 +225,27 @@ export const useBuildStore = create<BuildStore>()(
       setNote: (section, value) =>
         set((state) => {
           state.snapshot.notes[section] = value
+          bumpMeta(state)
+        }),
+
+      setDivinityBoardNotes: (value) =>
+        set((state) => {
+          state.snapshot.divinityBoard.notes = value
+          bumpMeta(state)
+        }),
+
+      setDivinityBoardPlan: (value) =>
+        set((state) => {
+          state.snapshot.divinityBoard.plan = value
+          bumpMeta(state)
+        }),
+
+      toggleDivinityBoardSelection: (boardId) =>
+        set((state) => {
+          const list = state.snapshot.divinityBoard.selectedBoardIds
+          const i = list.indexOf(boardId)
+          if (i === -1) list.push(boardId)
+          else list.splice(i, 1)
           bumpMeta(state)
         }),
 

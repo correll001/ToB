@@ -19,6 +19,14 @@ export function selectFilledPactspiritCount(snapshot: BuildSnapshot) {
   return snapshot.pactspirits.filter((p) => !!p.pactspiritId).length
 }
 
+export function selectDivinityBoardSelectionCount(snapshot: BuildSnapshot) {
+  return snapshot.divinityBoard.selectedBoardIds.length
+}
+
+export function selectDivinityBoardTextChars(snapshot: BuildSnapshot) {
+  return snapshot.divinityBoard.notes.length + snapshot.divinityBoard.plan.length
+}
+
 export function selectBuildCompletionStats(snapshot: BuildSnapshot) {
   return {
     isHeroSelected: !!snapshot.hero.heroId,

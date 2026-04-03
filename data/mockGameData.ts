@@ -1,5 +1,5 @@
 // data/mockGameData.ts
-import type { TreeName } from '@/types/build'
+import type { GearSlot, TreeName } from '@/types/build'
 
 export const mockHeroes = [
   { id: 'hero_bing', name: 'Bing' },
@@ -37,10 +37,64 @@ export const mockSkills = [
   { id: 'skill_frost_terra', name: 'Frost Terra' },
 ]
 
-export const mockGearBases = [
-  { id: 'gear_weapon_bow_01', slot: 'weapon1', name: 'Basic Bow' },
-  { id: 'gear_weapon_staff_01', slot: 'weapon1', name: 'Basic Staff' },
-  { id: 'gear_helmet_01', slot: 'helmet', name: 'Hunter Hood' },
+/** Dev-only gear bases (not official data). */
+export const mockGearBases: { id: string; slot: GearSlot; name: string }[] = [
+  { id: 'gear_helmet_01', slot: 'helmet', name: 'Mock 獵人兜帽' },
+  { id: 'gear_chest_01', slot: 'chest', name: 'Mock 皮甲' },
+  { id: 'gear_gloves_01', slot: 'gloves', name: 'Mock 粗布手套' },
+  { id: 'gear_boots_01', slot: 'boots', name: 'Mock 旅者靴' },
+  { id: 'gear_necklace_01', slot: 'necklace', name: 'Mock 骨製項鍊' },
+  { id: 'gear_belt_01', slot: 'belt', name: 'Mock 皮帶' },
+  { id: 'gear_ring_01', slot: 'ring1', name: 'Mock 銅戒' },
+  { id: 'gear_ring_02', slot: 'ring2', name: 'Mock 銀戒' },
+  { id: 'gear_weapon_bow_01', slot: 'weapon1', name: 'Mock 輕弓' },
+  { id: 'gear_weapon_staff_01', slot: 'weapon1', name: 'Mock 短杖' },
+  { id: 'gear_weapon_sword_01', slot: 'weapon2', name: 'Mock 副手短劍' },
+  { id: 'gear_weapon_focus_01', slot: 'weapon2', name: 'Mock 法器' },
+]
+
+/** Dev-only legendary items (not official data). */
+export const mockLegendaryItems: { id: string; slot: GearSlot; name: string }[] = [
+  { id: 'leg_helmet_01', slot: 'helmet', name: 'Mock 傳奇兜帽 α' },
+  { id: 'leg_chest_01', slot: 'chest', name: 'Mock 傳奇胸甲 α' },
+  { id: 'leg_gloves_01', slot: 'gloves', name: 'Mock 傳奇手套 α' },
+  { id: 'leg_boots_01', slot: 'boots', name: 'Mock 傳奇靴 α' },
+  { id: 'leg_necklace_01', slot: 'necklace', name: 'Mock 傳奇項鍊 α' },
+  { id: 'leg_belt_01', slot: 'belt', name: 'Mock 傳奇腰帶 α' },
+  { id: 'leg_ring_01', slot: 'ring1', name: 'Mock 傳奇戒 α' },
+  { id: 'leg_ring_02', slot: 'ring2', name: 'Mock 傳奇戒 β' },
+  { id: 'leg_weapon1_01', slot: 'weapon1', name: 'Mock 傳奇主手 α' },
+  { id: 'leg_weapon2_01', slot: 'weapon2', name: 'Mock 傳奇副手 α' },
+]
+
+/** MVP 遺物選項（mock） */
+export const mockRelics = [
+  { id: 'relic_mock_alpha', heroId: 'hero_bing', name: 'Mock 遺物·爆裂' },
+  { id: 'relic_mock_beta', heroId: 'hero_bing', name: 'Mock 遺物·堅韌' },
+  { id: 'relic_mock_gamma', heroId: 'hero_carino', name: 'Mock 遺物·戰熱' },
+  { id: 'relic_mock_delta', heroId: 'hero_carino', name: 'Mock 遺物·專注' },
+  { id: 'relic_mock_eps', heroId: 'hero_gemma', name: 'Mock 遺物·霜火' },
+  { id: 'relic_mock_zeta', heroId: 'hero_gemma', name: 'Mock 遺物·秘能' },
+]
+
+/** MVP 英雄特性（mock） */
+export const mockSpecialties = [
+  { id: 'spec_mock_1', heroId: 'hero_bing', name: 'Mock 特性·投擲專精' },
+  { id: 'spec_mock_2', heroId: 'hero_bing', name: 'Mock 特性·範圍擴張' },
+  { id: 'spec_mock_3', heroId: 'hero_carino', name: 'Mock 特性·連射' },
+  { id: 'spec_mock_4', heroId: 'hero_carino', name: 'Mock 特性·戰意' },
+  { id: 'spec_mock_5', heroId: 'hero_gemma', name: 'Mock 特性·元素調和' },
+  { id: 'spec_mock_6', heroId: 'hero_gemma', name: 'Mock 特性·魔力迴響' },
+]
+
+/** 神格石板示意選項（多選用，非真實石板表） */
+export const mockDivinityBoardOptions = [
+  { id: 'db_mock_1', name: '示意石板·節奏 I' },
+  { id: 'db_mock_2', name: '示意石板·暴擊 I' },
+  { id: 'db_mock_3', name: '示意石板·範圍 I' },
+  { id: 'db_mock_4', name: '示意石板·防護 I' },
+  { id: 'db_mock_5', name: '示意石板·能量 I' },
+  { id: 'db_mock_6', name: '示意石板·混合 I' },
 ]
 
 export const mockPactspirits = [

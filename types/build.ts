@@ -25,6 +25,17 @@ export type EditorTab =
 export interface HeroSelection {
   heroId: string | null
   traitId: string | null
+  /** 遺物（MVP mock，非官方資料） */
+  relicId: string | null
+  /** 英雄特性（MVP mock） */
+  specialtyId: string | null
+}
+
+/** 神格石板補充（MVP：文字 + 多選示意石板） */
+export interface DivinityBoardState {
+  notes: string
+  plan: string
+  selectedBoardIds: string[]
 }
 
 export interface SkillSetup {
@@ -71,4 +82,5 @@ export interface BuildSnapshot {
   gear: Record<GearSlot, GearSelection>
   pactspirits: PactspiritSelection[]
   notes: BuildNotes
+  divinityBoard: DivinityBoardState
 }
