@@ -278,9 +278,13 @@ export const useBuildStore = create<BuildStore>()(
           }
           return localStorage
         })
+        if (!base) {
+          throw new Error('persist storage init failed')
+        }
         return {
-          ...base,
+          getItem: base.getItem.bind(base),
           setItem: throttle(base.setItem.bind(base), 750),
+          removeItem: base.removeItem.bind(base),
         }
       })(),
     }
