@@ -129,9 +129,17 @@ export default function BuildStatsPanel() {
                 <span className="text-slate-500">特性</span>
                 <span className="truncate text-right font-medium text-slate-200">{summary.specialtyLabel}</span>
               </li>
+              <li className="flex justify-between gap-2 border-b border-slate-800/40 pb-1.5">
+                <span className="text-slate-500">裝備</span>
+                <span className="truncate text-right font-medium text-slate-200">{summary.gearEquippedLine}</span>
+              </li>
+              <li className="flex justify-between gap-2 border-b border-slate-800/40 pb-1.5">
+                <span className="text-slate-500">神格石板</span>
+                <span className="max-w-[12rem] truncate text-right text-slate-300">{summary.divinitySummaryLine}</span>
+              </li>
               <li className="flex justify-between gap-2 pt-0.5 text-slate-500">
-                <span>神格石板</span>
-                <span className="max-w-[12rem] truncate text-right">{summary.divinitySummaryLine}</span>
+                <span>神格補充</span>
+                <span className="max-w-[12rem] truncate text-right">{summary.divinityTextLine}</span>
               </li>
             </ul>
           </div>

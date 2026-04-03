@@ -38,7 +38,12 @@ export type BuildStatsPanelSummaryLabels = {
   traitLabel: string
   relicLabel: string
   specialtyLabel: string
+  /** 已選示意石板數與名稱（含安全 fallback） */
   divinitySummaryLine: string
+  /** Gear tab 配置件數，方便左欄對齊 3A-2 */
+  gearEquippedLine: string
+  /** divinityBoard notes+plan 字數提示（與 combat MP 示意連動） */
+  divinityTextLine: string
 }
 
 /** Single object consumed by `useBuildComputedStats` / BuildStatsPanel. */
@@ -57,15 +62,15 @@ function stableMix(seed: number, salt: number): number {
 }
 
 export function selectBuildSidebarCombatStats(snapshot: BuildSnapshot): BuildSidebarCombatStats {
-  const level = snapshot.meta.level ?? 1
+  const level = snapshot.meta?.level ?? 1
   const talentN = selectAllocatedTalentCount(snapshot)
   const skillN = selectFilledSkillCount(snapshot)
   const gearN = selectFilledGearCount(snapshot)
   const pactN = selectFilledPactspiritCount(snapshot)
-  const hasHero = snapshot.hero.heroId ? 1 : 0
-  const hasTrait = snapshot.hero.traitId ? 1 : 0
-  const hasRelic = snapshot.hero.relicId ? 1 : 0
-  const hasSpecialty = snapshot.hero.specialtyId ? 1 : 0
+  const hasHero = snapshot.hero?.heroId ? 1 : 0
+  const hasTrait = snapshot.hero?.traitId ? 1 : 0
+  const hasRelic = snapshot.hero?.relicId ? 1 : 0
+  const hasSpecialty = snapshot.hero?.specialtyId ? 1 : 0
   const divinityPickN = selectDivinityBoardSelectionCount(snapshot)
   const divinityTextN = Math.min(500, selectDivinityBoardTextChars(snapshot))
 
@@ -126,12 +131,21 @@ function selectBuildStatsPanelSummary(snapshot: BuildSnapshot): BuildStatsPanelS
           .map((id) => mockDivinityBoardOptions.find((o) => o.id === id)?.name ?? id)
           .join('、')}`
 
+  const gearN = selectFilledGearCount(snapshot)
+  const gearEquippedLine = `${gearN} / 10 欄已配置`
+
+  const textChars = selectDivinityBoardTextChars(snapshot)
+  const divinityTextLine =
+    textChars === 0 ? '補充文字：無' : `補充文字：共 ${textChars} 字（示意）`
+
   return {
-    heroLabel: mockHeroes.find((h) => h.id === snapshot.hero.heroId)?.name ?? '—',
-    traitLabel: mockTraits.find((t) => t.id === snapshot.hero.traitId)?.name ?? '—',
-    relicLabel: mockRelics.find((r) => r.id === snapshot.hero.relicId)?.name ?? '—',
-    specialtyLabel: mockSpecialties.find((s) => s.id === snapshot.hero.specialtyId)?.name ?? '—',
+    heroLabel: mockHeroes.find((h) => h.id === snapshot.hero?.heroId)?.name ?? '—',
+    traitLabel: mockTraits.find((t) => t.id === snapshot.hero?.traitId)?.name ?? '—',
+    relicLabel: mockRelics.find((r) => r.id === snapshot.hero?.relicId)?.name ?? '—',
+    specialtyLabel: mockSpecialties.find((s) => s.id === snapshot.hero?.specialtyId)?.name ?? '—',
     divinitySummaryLine,
+    gearEquippedLine,
+    divinityTextLine,
   }
 }
 

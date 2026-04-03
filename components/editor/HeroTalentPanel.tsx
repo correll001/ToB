@@ -2,9 +2,8 @@
 
 import { useMemo, type ReactNode } from 'react'
 import { useBuildStore } from '@/stores/useBuildStore'
-import { mockRelics, mockSpecialties } from '@/data/mockGameData'
+import { mockHeroes, mockRelics, mockSpecialties, mockTraits } from '@/data/mockGameData'
 import HeroTraitCard from '@/components/editor/HeroTraitCard'
-import BuildSummaryCard from '@/components/editor/BuildSummaryCard'
 
 function BlockChrome({
   children,
@@ -31,8 +30,16 @@ function BlockTitle({ children }: { children: ReactNode }) {
   )
 }
 
+function dash(v: string | null | undefined) {
+  if (v == null) return '—'
+  const t = v.trim()
+  if (t === '') return '—'
+  return t
+}
+
 export default function HeroTalentPanel() {
   const heroId = useBuildStore((s) => s.snapshot.hero.heroId)
+  const traitId = useBuildStore((s) => s.snapshot.hero.traitId)
   const relicId = useBuildStore((s) => s.snapshot.hero.relicId)
   const specialtyId = useBuildStore((s) => s.snapshot.hero.specialtyId)
   const level = useBuildStore((s) => s.snapshot.meta.level)
@@ -53,14 +60,17 @@ export default function HeroTalentPanel() {
   const selectedRelic = relics.find((r) => r.id === relicId)
   const selectedSpecialty = specialties.find((s) => s.id === specialtyId)
 
+  const heroName = mockHeroes.find((h) => h.id === heroId)?.name
+  const traitName = mockTraits.find((t) => t.id === traitId)?.name
+
   return (
     <div className="space-y-4 md:space-y-5">
       <BlockChrome>
         <BlockTitle>英雄與流派基礎</BlockTitle>
-        <p className="mb-4 pl-4 text-sm text-slate-500">選擇英雄與 Trait；等級與流派碼匯出／持久化一致。</p>
-        <div>
-          <HeroTraitCard />
-        </div>
+        <p className="mb-4 pl-4 text-sm text-slate-500">
+          在此完成 Hero、Trait、等級設定；變更 Hero 會由 store 重置 Trait／遺物／特性與天賦／技能槽。
+        </p>
+        <HeroTraitCard embedded />
 
         <div className="mt-5 grid gap-4 border-t border-slate-800/70 pt-5 md:grid-cols-2">
           <div>
@@ -76,14 +86,14 @@ export default function HeroTalentPanel() {
               }}
               className="w-full rounded-lg border border-slate-700/80 bg-slate-900/80 px-3 py-2 text-sm text-white outline-none focus:border-sky-500/70"
             />
-            <p className="mt-1 text-xs text-slate-600">與左側角色面板 LV 同步。</p>
+            <p className="mt-1 text-xs text-slate-600">與左側角色面板 LV 同步；會一併持久化與匯出流派碼。</p>
           </div>
         </div>
       </BlockChrome>
 
       <BlockChrome variant="dashed">
-        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-amber-500/90">遺物（Relic）— 擴充預留</div>
-        <p className="mt-1 text-sm text-slate-500">MVP mock 選項，非遊戲內真實遺物表。</p>
+        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-amber-500/90">遺物（Relic）</div>
+        <p className="mt-1 text-sm text-slate-500">MVP mock 選項，選擇後經 <code className="text-slate-400">setRelic</code> 寫入 store。</p>
         <select
           value={relicId ?? ''}
           onChange={(e) => setRelic(e.target.value || null)}
@@ -97,14 +107,12 @@ export default function HeroTalentPanel() {
             </option>
           ))}
         </select>
-        <div className="mt-2 rounded-lg border border-slate-800/70 bg-black/25 p-3 text-xs text-slate-400">
-          {selectedRelic ? `已選：${selectedRelic.name}` : '選擇英雄後可指定 mock 遺物。'}
-        </div>
+        {!heroId ? <p className="mt-2 text-xs text-amber-200/80">請先選擇 Hero。</p> : null}
       </BlockChrome>
 
       <BlockChrome variant="dashed">
-        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-sky-500/90">英雄特性（Specialty）— 擴充預留</div>
-        <p className="mt-1 text-sm text-slate-500">MVP mock 特性，未來可銜接英雄專精等大型系統。</p>
+        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-sky-500/90">英雄特性（Specialty）</div>
+        <p className="mt-1 text-sm text-slate-500">MVP mock 特性，選擇後經 <code className="text-slate-400">setSpecialty</code> 寫入 store。</p>
         <select
           value={specialtyId ?? ''}
           onChange={(e) => setSpecialty(e.target.value || null)}
@@ -118,12 +126,34 @@ export default function HeroTalentPanel() {
             </option>
           ))}
         </select>
-        <div className="mt-2 rounded-lg border border-slate-800/70 bg-black/25 p-3 text-xs text-slate-400">
-          {selectedSpecialty ? `已選：${selectedSpecialty.name}` : '選擇英雄後可指定 mock 特性。'}
-        </div>
+        {!heroId ? (
+          <p className="mt-2 text-xs text-amber-200/80">請先選擇 Hero。</p>
+        ) : null}
       </BlockChrome>
 
-      <BuildSummaryCard />
+      <BlockChrome>
+        <BlockTitle>當前設定摘要</BlockTitle>
+        <p className="mb-3 pl-4 text-sm text-slate-500">以下為本頁四項選擇的顯示用整理（未選顯示 —）。</p>
+        <dl className="grid gap-2 sm:grid-cols-2">
+          {(
+            [
+              ['Hero', dash(heroName)] as const,
+              ['Trait', dash(traitName)] as const,
+              ['Relic', dash(selectedRelic?.name)] as const,
+              ['Specialty', dash(selectedSpecialty?.name)] as const,
+            ] as const
+          ).map(([k, v]) => (
+            <div
+              key={k}
+              className="flex items-baseline justify-between gap-3 rounded-lg border border-slate-800/60 bg-slate-950/40 px-3 py-2.5"
+            >
+              <dt className="text-xs font-medium text-slate-500">{k}</dt>
+              <dd className="text-right text-sm font-semibold text-slate-100">{v}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-3 text-xs text-slate-600">匯出／匯入流派碼與 localStorage 持久化皆包含以上 ID 欄位。</p>
+      </BlockChrome>
     </div>
   )
 }
