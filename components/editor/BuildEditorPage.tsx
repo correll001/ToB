@@ -31,7 +31,7 @@ function useDebouncedCommit<T>(
   }, [localValue, committedValue, commit, waitMs])
 }
 
-function BuildTitleField() {
+function BuildTitleField({ compact = false }: { compact?: boolean }) {
   const title = useBuildStore((s) => s.snapshot.meta.title)
   const dirty = useBuildStore((s) => s.dirty)
   const setTitle = useBuildStore((s) => s.setTitle)
@@ -45,12 +45,20 @@ function BuildTitleField() {
   return (
     <div className="space-y-3">
       <div>
-        <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-500">Build Title</label>
+        <label
+          className={
+            compact
+              ? 'mb-1 block text-xs font-medium text-gray-500'
+              : 'mb-1 block text-xs font-medium uppercase tracking-wide text-gray-500'
+          }
+        >
+          {compact ? '標題' : 'Build Title'}
+        </label>
         <input
           value={localTitle}
           onChange={(e) => setLocalTitle(e.target.value)}
           placeholder="Build Title"
-          className="w-full rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white outline-none focus:border-blue-500"
+          className="w-full rounded-lg border border-gray-700/80 bg-gray-900/80 px-3 py-2 text-sm text-white outline-none focus:border-blue-500"
         />
       </div>
       <div
@@ -66,10 +74,10 @@ function BuildTitleField() {
 
 function AppHeader({ lastUpdatedLabel }: { lastUpdatedLabel: string }) {
   return (
-    <header className="shrink-0 border-b border-gray-800 bg-gray-900">
-      <div className="flex flex-wrap items-center justify-between gap-4 px-4 py-3 md:px-6">
-        <div className="min-w-0 flex flex-col gap-1 text-sm">
-          <div className="truncate text-base font-semibold text-white">{APP_PRODUCT_NAME}</div>
+    <header className="shrink-0 border-b border-gray-800/90 bg-gray-900/95 shadow-sm shadow-black/20">
+      <div className="mx-auto flex max-w-[1920px] flex-wrap items-start justify-between gap-6 px-4 py-3.5 md:px-6">
+        <div className="min-w-0 flex flex-col gap-1.5">
+          <div className="truncate text-base font-semibold tracking-tight text-white">{APP_PRODUCT_NAME}</div>
           <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 text-xs text-gray-400">
             <span>
               作者 <span className="text-gray-300">{APP_AUTHOR_NAME}</span>
@@ -83,31 +91,24 @@ function AppHeader({ lastUpdatedLabel }: { lastUpdatedLabel: string }) {
           </div>
         </div>
 
-        <div className="flex w-full min-w-0 flex-wrap items-center justify-end gap-2 md:w-auto md:max-w-[min(100%,42rem)]">
-          <input
-            type="text"
-            disabled
-            readOnly
-            placeholder="流派碼（預留）"
-            className="min-w-[10rem] flex-1 cursor-not-allowed rounded-lg border border-gray-800 bg-gray-950/80 px-3 py-2 text-sm text-gray-500 placeholder:text-gray-600 md:max-w-xs"
-            tabIndex={-1}
-          />
-          <button
-            type="button"
-            disabled
-            className="shrink-0 cursor-not-allowed rounded-lg border border-gray-800 bg-gray-950/60 px-3 py-2 text-sm font-medium text-gray-500"
-            tabIndex={-1}
-          >
-            匯入
-          </button>
-          <button
-            type="button"
-            disabled
-            className="shrink-0 cursor-not-allowed rounded-lg border border-gray-800 bg-gray-950/60 px-4 py-2 text-sm font-semibold text-gray-500"
-            tabIndex={-1}
-          >
-            匯出
-          </button>
+        <div className="flex w-full min-w-0 flex-col gap-2 md:max-w-lg md:items-end">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">
+            匯入與匯出（接線預留）
+          </div>
+          <div className="flex w-full flex-wrap items-stretch gap-2 md:justify-end">
+            <div className="flex min-h-[2.75rem] min-w-[min(100%,12rem)] flex-1 flex-col justify-center rounded-lg border border-gray-700/70 bg-gray-950/70 px-3 py-2">
+              <span className="text-[10px] font-medium uppercase tracking-wider text-gray-500">流派碼</span>
+              <span className="mt-0.5 text-xs leading-snug text-gray-600">此區預留輸入，功能接線後啟用</span>
+            </div>
+            <div className="flex min-h-[2.75rem] flex-1 flex-col justify-center rounded-lg border border-gray-700/70 bg-gray-950/50 px-3 py-2 sm:max-w-[5.5rem] sm:flex-none">
+              <span className="text-[10px] font-medium uppercase tracking-wider text-gray-500">匯入</span>
+              <span className="mt-0.5 text-xs text-gray-600">按鈕位</span>
+            </div>
+            <div className="flex min-h-[2.75rem] flex-1 flex-col justify-center rounded-lg border border-gray-700/70 bg-gray-950/50 px-3 py-2 sm:max-w-[5.5rem] sm:flex-none">
+              <span className="text-[10px] font-medium uppercase tracking-wider text-gray-500">匯出</span>
+              <span className="mt-0.5 text-xs text-gray-600">按鈕位</span>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -243,32 +244,38 @@ export default function BuildEditorPage() {
       <AppHeader lastUpdatedLabel={lastUpdatedLabel} />
 
       <main className="flex min-h-0 flex-1 flex-col overflow-hidden md:flex-row">
-        <aside className="flex w-full shrink-0 flex-col overflow-y-auto border-b border-gray-800 bg-gray-950 p-3 md:w-[min(100%,360px)] md:border-b-0 md:border-r md:p-4">
-          <div className="rounded-2xl border border-gray-800 bg-gradient-to-b from-gray-900/90 to-gray-950/80 p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
-            <div className="border-b border-gray-800/90 pb-5">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">Build</div>
+        <aside className="flex w-full shrink-0 flex-col overflow-y-auto border-b border-gray-800/90 bg-[#080a0c] p-3 md:w-[min(100%,380px)] md:border-b-0 md:border-r md:border-gray-800/90 md:p-4">
+          <div className="rounded-2xl border border-gray-800/80 bg-gradient-to-b from-gray-900/95 to-gray-950/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
+            <div className="border-b border-gray-800/80 px-4 pb-5 pt-4">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">目前 Build</div>
               <div className="mt-3">
-                <BuildTitleField />
+                <BuildTitleField compact />
               </div>
-              <div className="mt-4 space-y-1 text-sm text-gray-400">
-                <div>
-                  Hero: <span className="text-gray-200">{sidebarHeroId ?? '未選擇'}</span>
-                </div>
-                <div>
-                  Trait: <span className="text-gray-200">{sidebarTraitId ?? '未選擇'}</span>
+              <div className="mt-4 rounded-lg border border-gray-800/60 bg-gray-950/50 px-3 py-2.5 text-sm text-gray-400">
+                <div className="text-[10px] font-medium uppercase tracking-wider text-gray-500">摘要</div>
+                <div className="mt-2 space-y-1.5">
+                  <div>
+                    Hero <span className="text-gray-200">{sidebarHeroId ?? '未選擇'}</span>
+                  </div>
+                  <div>
+                    Trait <span className="text-gray-200">{sidebarTraitId ?? '未選擇'}</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-5 space-y-5 border-t border-gray-800/80 pt-5">
-              <HeroTraitCard />
-              <BuildSummaryCard />
+            <div className="border-b border-gray-800/80 px-4 py-5">
+              <HeroTraitCard embedded />
+            </div>
+
+            <div className="px-4 py-5">
+              <BuildSummaryCard embedded />
             </div>
           </div>
         </aside>
 
-        <section className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-gray-950">
-          <div className="shrink-0 border-b border-gray-800 bg-gray-900 px-4">
+        <section className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-[#0c1016] before:pointer-events-none before:absolute before:inset-0 before:ring-1 before:ring-inset before:ring-gray-800/35">
+          <div className="relative z-10 shrink-0 border-b border-gray-800/90 bg-gray-900/90 px-4">
             <div className="flex flex-wrap gap-2 py-3">
               {EDITOR_TABS.map((tab) => (
                 <button
@@ -286,7 +293,7 @@ export default function BuildEditorPage() {
             </div>
           </div>
 
-          <div className="min-h-0 flex-1 overflow-y-auto p-6">
+          <div className="relative z-10 min-h-0 flex-1 overflow-y-auto p-5 md:p-6">
             {activeTab === 'talent' && <TalentTreePanel />}
             {activeTab === 'skills' && <SkillSetupPanel />}
             {activeTab === 'gear' && <GearPlaceholder />}

@@ -5,7 +5,7 @@ import { useMemo } from 'react'
 import { useBuildStore } from '@/stores/useBuildStore'
 import { mockHeroes, mockTraits } from '@/data/mockGameData'
 
-export default function HeroTraitCard() {
+export default function HeroTraitCard({ embedded = false }: { embedded?: boolean }) {
   const heroId = useBuildStore((s) => s.snapshot.hero.heroId)
   const traitId = useBuildStore((s) => s.snapshot.hero.traitId)
   const setHero = useBuildStore((s) => s.setHero)
@@ -19,8 +19,22 @@ export default function HeroTraitCard() {
   const selectedTrait = filteredTraits.find((trait) => trait.id === traitId)
 
   return (
-    <div className="rounded-xl border border-gray-800 bg-gray-900 p-4">
-      <h2 className="mb-4 text-lg font-semibold text-white">Hero / Trait</h2>
+    <div
+      className={
+        embedded
+          ? 'space-y-4'
+          : 'rounded-xl border border-gray-800 bg-gray-900 p-4'
+      }
+    >
+      <h2
+        className={
+          embedded
+            ? 'mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500'
+            : 'mb-4 text-lg font-semibold text-white'
+        }
+      >
+        Hero / Trait
+      </h2>
 
       <div className="space-y-4">
         <div>
