@@ -29,7 +29,7 @@ type EditorUiStore = {
 }
 
 export const useEditorUiStore = create<EditorUiStore>((set) => ({
-  activeTab: 'talent',
+  activeTab: 'heroTalent',
   selectedTree: 'godTree',
   selectedNodeId: null,
 

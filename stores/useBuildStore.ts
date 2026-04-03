@@ -3,6 +3,7 @@ import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 import type { BuildSnapshot, GearSlot, TreeName } from '@/types/build'
+import { normalizeBuildSnapshot } from '@/lib/normalizeBuildSnapshot'
 
 function throttle<TArgs extends unknown[]>(fn: (...args: TArgs) => void, waitMs: number) {
   let timeout: ReturnType<typeof setTimeout> | null = null
@@ -27,6 +28,7 @@ function createDefaultBuild(): BuildSnapshot {
     gameVersion: 'ss12',
     meta: {
       title: 'New Build',
+      level: 1,
       description: '',
       visibility: 'private',
     },
@@ -80,6 +82,7 @@ type BuildStore = {
   lastSavedAt: number | null
 
   setTitle: (title: string) => void
+  setLevel: (level: number) => void
   setDescription: (description: string) => void
   setVisibility: (visibility: BuildSnapshot['meta']['visibility']) => void
 
@@ -121,6 +124,19 @@ export const useBuildStore = create<BuildStore>()(
       setTitle: (title) =>
         set((state) => {
           state.snapshot.meta.title = title
+          bumpMeta(state)
+        }),
+
+      setLevel: (level) =>
+        set((state) => {
+          const n = Math.floor(level)
+          if (!Number.isFinite(n) || n < 1) {
+            state.snapshot.meta.level = 1
+          } else if (n > 9999) {
+            state.snapshot.meta.level = 9999
+          } else {
+            state.snapshot.meta.level = n
+          }
           bumpMeta(state)
         }),
 
@@ -244,7 +260,7 @@ export const useBuildStore = create<BuildStore>()(
 
       importSnapshot: (next) =>
         set((state) => {
-          state.snapshot = next
+          state.snapshot = normalizeBuildSnapshot(next)
           state.dirty = false
           state.revision += 1
         }),
@@ -266,6 +282,14 @@ export const useBuildStore = create<BuildStore>()(
     })),
     {
       name: 'tli-build-editor',
+      version: 1,
+      migrate: (persisted) => {
+        if (persisted && typeof persisted === 'object' && persisted !== null && 'snapshot' in persisted) {
+          const p = persisted as { snapshot: BuildSnapshot }
+          return { snapshot: normalizeBuildSnapshot(p.snapshot) }
+        }
+        return persisted as { snapshot: BuildSnapshot }
+      },
       partialize: (state) => ({ snapshot: state.snapshot }),
       storage: (() => {
         const base = createJSONStorage(() => {

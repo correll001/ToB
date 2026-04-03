@@ -1,6 +1,7 @@
 // lib/shareCodec.ts
 import LZString from 'lz-string'
 import type { BuildSnapshot } from '@/types/build'
+import { normalizeBuildSnapshot } from '@/lib/normalizeBuildSnapshot'
 
 export function encodeBuildToShareCode(snapshot: BuildSnapshot): string {
   const json = JSON.stringify(snapshot)
@@ -28,5 +29,5 @@ export function decodeBuildFromShareCode(code: string): BuildSnapshot {
     throw new Error('UNSUPPORTED_SCHEMA_VERSION')
   }
 
-  return snapshot
+  return normalizeBuildSnapshot(snapshot)
 }

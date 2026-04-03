@@ -4,75 +4,41 @@
 import React from 'react'
 import { useBuildStore } from '@/stores/useBuildStore'
 import { useEditorUiStore } from '@/stores/useEditorUiStore'
-import { decodeBuildFromShareCode } from '@/lib/shareCodec'
+import { decodeBuildFromShareCode, encodeBuildToShareCode } from '@/lib/shareCodec'
 import type { EditorTab } from '@/types/build'
 import HeroTraitCard from '@/components/editor/HeroTraitCard'
 import BuildSummaryCard from '@/components/editor/BuildSummaryCard'
+import BuildStatsPanel from '@/components/editor/BuildStatsPanel'
 import SkillSetupPanel from '@/components/editor/SkillSetupPanel'
 import TalentTreePanel from '@/components/editor/TalentTreePanel'
 
-const EDITOR_TABS: EditorTab[] = ['talent', 'skills', 'gear', 'pactspirit', 'notes']
+const TAB_CONFIG: { id: EditorTab; label: string }[] = [
+  { id: 'heroTalent', label: '英雄天賦' },
+  { id: 'talents', label: '天賦' },
+  { id: 'skills', label: '技能' },
+  { id: 'gear', label: '裝備' },
+  { id: 'divinityBoard', label: '神格石板補充' },
+]
 
-/** App metadata (layout only; not game data). */
-const APP_PRODUCT_NAME = 'Torchlight Infinite Planner'
+const APP_PRODUCT_NAME = '火炬之光流派模擬器'
 const APP_AUTHOR_NAME = '—'
 const APP_VERSION = '0.1.0'
 
-function useDebouncedCommit<T>(
-  localValue: T,
-  committedValue: T,
-  commit: (value: T) => void,
-  waitMs: number
-) {
-  React.useEffect(() => {
-    if (Object.is(localValue, committedValue)) return
-    const t = window.setTimeout(() => commit(localValue), waitMs)
-    return () => window.clearTimeout(t)
-  }, [localValue, committedValue, commit, waitMs])
-}
-
-function BuildTitleField({ compact = false }: { compact?: boolean }) {
-  const title = useBuildStore((s) => s.snapshot.meta.title)
-  const dirty = useBuildStore((s) => s.dirty)
-  const setTitle = useBuildStore((s) => s.setTitle)
-
-  const [localTitle, setLocalTitle] = React.useState(title)
-  React.useEffect(() => {
-    setLocalTitle(title)
-  }, [title])
-  useDebouncedCommit(localTitle, title, setTitle, 300)
-
-  return (
-    <div className="space-y-3">
-      <div>
-        <label
-          className={
-            compact
-              ? 'mb-1 block text-xs font-medium text-gray-500'
-              : 'mb-1 block text-xs font-medium uppercase tracking-wide text-gray-500'
-          }
-        >
-          {compact ? '標題' : 'Build Title'}
-        </label>
-        <input
-          value={localTitle}
-          onChange={(e) => setLocalTitle(e.target.value)}
-          placeholder="Build Title"
-          className="w-full rounded-lg border border-gray-700/80 bg-gray-900/80 px-3 py-2 text-sm text-white outline-none focus:border-blue-500"
-        />
-      </div>
-      <div
-        className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-          dirty ? 'bg-amber-900/50 text-amber-300' : 'bg-emerald-900/50 text-emerald-300'
-        }`}
-      >
-        {dirty ? 'Unsaved' : 'Saved'}
-      </div>
-    </div>
-  )
-}
-
-function AppHeader({ lastUpdatedLabel }: { lastUpdatedLabel: string }) {
+function AppHeader({
+  lastUpdatedLabel,
+  codeInput,
+  onCodeInputChange,
+  onImport,
+  onExport,
+  onCopy,
+}: {
+  lastUpdatedLabel: string
+  codeInput: string
+  onCodeInputChange: (value: string) => void
+  onImport: () => void
+  onExport: () => void
+  onCopy: () => void
+}) {
   return (
     <header className="shrink-0 border-b border-gray-800/90 bg-gray-900/95 shadow-sm shadow-black/20">
       <div className="mx-auto flex max-w-[1920px] flex-wrap items-start justify-between gap-6 px-4 py-3.5 md:px-6">
@@ -91,22 +57,38 @@ function AppHeader({ lastUpdatedLabel }: { lastUpdatedLabel: string }) {
           </div>
         </div>
 
-        <div className="flex w-full min-w-0 flex-col gap-2 md:max-w-lg md:items-end">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">
-            匯入與匯出（接線預留）
-          </div>
-          <div className="flex w-full flex-wrap items-stretch gap-2 md:justify-end">
-            <div className="flex min-h-[2.75rem] min-w-[min(100%,12rem)] flex-1 flex-col justify-center rounded-lg border border-gray-700/70 bg-gray-950/70 px-3 py-2">
-              <span className="text-[10px] font-medium uppercase tracking-wider text-gray-500">流派碼</span>
-              <span className="mt-0.5 text-xs leading-snug text-gray-600">此區預留輸入，功能接線後啟用</span>
-            </div>
-            <div className="flex min-h-[2.75rem] flex-1 flex-col justify-center rounded-lg border border-gray-700/70 bg-gray-950/50 px-3 py-2 sm:max-w-[5.5rem] sm:flex-none">
-              <span className="text-[10px] font-medium uppercase tracking-wider text-gray-500">匯入</span>
-              <span className="mt-0.5 text-xs text-gray-600">按鈕位</span>
-            </div>
-            <div className="flex min-h-[2.75rem] flex-1 flex-col justify-center rounded-lg border border-gray-700/70 bg-gray-950/50 px-3 py-2 sm:max-w-[5.5rem] sm:flex-none">
-              <span className="text-[10px] font-medium uppercase tracking-wider text-gray-500">匯出</span>
-              <span className="mt-0.5 text-xs text-gray-600">按鈕位</span>
+        <div className="flex w-full min-w-0 flex-col gap-2 md:max-w-2xl md:items-end">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">流派碼</div>
+          <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-end sm:justify-end">
+            <textarea
+              value={codeInput}
+              onChange={(e) => onCodeInputChange(e.target.value)}
+              placeholder="貼上或產生流派碼（純字串）"
+              rows={2}
+              className="min-h-[3rem] w-full resize-y rounded-lg border border-gray-700/80 bg-gray-950/70 px-3 py-2 font-mono text-xs leading-relaxed text-gray-200 placeholder:text-gray-600 outline-none focus:border-blue-500 sm:min-w-[min(100%,20rem)]"
+            />
+            <div className="flex shrink-0 flex-wrap gap-2 sm:justify-end">
+              <button
+                type="button"
+                onClick={onImport}
+                className="rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm font-medium text-gray-100 hover:bg-gray-700"
+              >
+                匯入
+              </button>
+              <button
+                type="button"
+                onClick={onExport}
+                className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500"
+              >
+                匯出
+              </button>
+              <button
+                type="button"
+                onClick={onCopy}
+                className="rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm font-medium text-gray-100 hover:bg-gray-700"
+              >
+                複製
+              </button>
             </div>
           </div>
         </div>
@@ -125,83 +107,45 @@ function AdPlaceholderBar() {
   )
 }
 
-function NoteTextarea({ section }: { section: 'gameplay' | 'leveling' | 'bossing' }) {
-  const note = useBuildStore((s) => s.snapshot.notes[section])
-  const setNote = useBuildStore((s) => s.setNote)
-
-  const [localNote, setLocalNote] = React.useState(note)
-  React.useEffect(() => {
-    setLocalNote(note)
-  }, [note])
-  useDebouncedCommit(
-    localNote,
-    note,
-    (v) => setNote(section, v),
-    300
-  )
-
-  const flushToStore = () => {
-    if (localNote !== note) setNote(section, localNote)
-  }
-
-  return (
-    <div className="rounded-xl border border-gray-800 bg-gray-900 p-4">
-      <label className="mb-2 block text-sm font-medium capitalize text-gray-300">{section}</label>
-      <textarea
-        value={localNote}
-        onChange={(e) => setLocalNote(e.target.value)}
-        onBlur={flushToStore}
-        className="min-h-28 w-full rounded-lg border border-gray-700 bg-gray-800 p-3 text-sm text-white outline-none focus:border-blue-500"
-      />
-    </div>
-  )
-}
-
-function NotesPanel() {
-  return (
-    <div className="space-y-4">
-      <div className="rounded-xl border border-gray-800 bg-gray-900 p-4">
-        <h2 className="text-lg font-semibold text-white">Notes</h2>
-        <p className="mt-1 text-sm text-gray-400">補玩法、練等與王戰備註。</p>
-      </div>
-
-      {(['gameplay', 'leveling', 'bossing'] as const).map((key) => (
-        <NoteTextarea key={key} section={key} />
-      ))}
-    </div>
-  )
-}
-
 function GearPlaceholder() {
   return (
-    <div className="rounded-xl border border-gray-800 bg-gray-900 p-4">
-      <h2 className="text-lg font-semibold text-white">Gear</h2>
-      <p className="mt-2 text-sm text-gray-400">
-        這個版本先保留 Gear 頁籤位置，下一步可直接接 GearPanel。
+    <div className="rounded-2xl border border-gray-800/80 bg-gray-900/30 p-6">
+      <h2 className="text-lg font-semibold text-white">裝備</h2>
+      <p className="mt-2 text-sm text-gray-500">
+        此分頁預留裝備編輯器；命名與結構已對齊目標設計，功能將於後續版本接上。
       </p>
     </div>
   )
 }
 
-function PactspiritPlaceholder() {
+function DivinityBoardPlaceholder() {
   return (
-    <div className="rounded-xl border border-gray-800 bg-gray-900 p-4">
-      <h2 className="text-lg font-semibold text-white">Pactspirit</h2>
-      <p className="mt-2 text-sm text-gray-400">
-        這個版本先保留 Pactspirit 頁籤位置，下一步可直接接 PactspiritPanel。
+    <div className="rounded-2xl border border-gray-800/80 bg-gray-900/30 p-6">
+      <h2 className="text-lg font-semibold text-white">神格石板補充</h2>
+      <p className="mt-2 text-sm text-gray-500">
+        此分頁預留神格／石板相關補強設定，不預先實作遊戲內真實系統。
       </p>
+    </div>
+  )
+}
+
+function HeroTalentWorkspace() {
+  return (
+    <div className="space-y-5">
+      <HeroTraitCard />
+      <BuildSummaryCard />
     </div>
   )
 }
 
 export default function BuildEditorPage() {
   const [mounted, setMounted] = React.useState(false)
+  const [codeInput, setCodeInput] = React.useState('')
   const didImportShareCodeRef = React.useRef(false)
 
-  const sidebarHeroId = useBuildStore((s) => s.snapshot.hero.heroId)
-  const sidebarTraitId = useBuildStore((s) => s.snapshot.hero.traitId)
   const lastSavedAt = useBuildStore((s) => s.lastSavedAt)
   const importSnapshot = useBuildStore((s) => s.importSnapshot)
+  const exportSnapshot = useBuildStore((s) => s.exportSnapshot)
 
   const activeTab = useEditorUiStore((s) => s.activeTab)
   const setActiveTab = useEditorUiStore((s) => s.setActiveTab)
@@ -214,6 +158,44 @@ export default function BuildEditorPage() {
       return '—'
     }
   }, [lastSavedAt])
+
+  const handleImport = React.useCallback(() => {
+    const raw = codeInput.trim()
+    if (!raw) {
+      alert('請先貼上流派碼。')
+      return
+    }
+    try {
+      const parsed = decodeBuildFromShareCode(raw)
+      importSnapshot(parsed)
+    } catch (e) {
+      console.error(e)
+      alert('匯入失敗：請確認為有效的流派碼字串。')
+    }
+  }, [codeInput, importSnapshot])
+
+  const handleExport = React.useCallback(() => {
+    try {
+      const code = encodeBuildToShareCode(exportSnapshot())
+      setCodeInput(code)
+    } catch (e) {
+      console.error(e)
+      alert('匯出失敗。')
+    }
+  }, [exportSnapshot])
+
+  const handleCopy = React.useCallback(async () => {
+    const raw = codeInput.trim()
+    if (!raw) {
+      alert('請先匯出或貼上流派碼。')
+      return
+    }
+    try {
+      await navigator.clipboard.writeText(raw)
+    } catch {
+      alert('無法複製到剪貼簿。')
+    }
+  }, [codeInput])
 
   React.useEffect(() => {
     setMounted(true)
@@ -231,9 +213,10 @@ export default function BuildEditorPage() {
     try {
       const parsed = decodeBuildFromShareCode(code)
       importSnapshot(parsed)
+      setCodeInput(code)
     } catch (error) {
       console.error(error)
-      alert('匯入分享碼失敗，請確認網址內容。')
+      alert('從網址匯入分享碼失敗，請確認網址內容。')
     }
   }, [mounted, importSnapshot])
 
@@ -241,64 +224,46 @@ export default function BuildEditorPage() {
 
   return (
     <div className="flex h-screen min-h-0 flex-col bg-gray-950 text-gray-100">
-      <AppHeader lastUpdatedLabel={lastUpdatedLabel} />
+      <AppHeader
+        lastUpdatedLabel={lastUpdatedLabel}
+        codeInput={codeInput}
+        onCodeInputChange={setCodeInput}
+        onImport={handleImport}
+        onExport={handleExport}
+        onCopy={handleCopy}
+      />
 
       <main className="flex min-h-0 flex-1 flex-col overflow-hidden md:flex-row">
-        <aside className="flex w-full shrink-0 flex-col overflow-y-auto border-b border-gray-800/90 bg-[#080a0c] p-3 md:w-[min(100%,380px)] md:border-b-0 md:border-r md:border-gray-800/90 md:p-4">
-          <div className="rounded-2xl border border-gray-800/80 bg-gradient-to-b from-gray-900/95 to-gray-950/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
-            <div className="border-b border-gray-800/80 px-4 pb-5 pt-4">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">目前 Build</div>
-              <div className="mt-3">
-                <BuildTitleField compact />
-              </div>
-              <div className="mt-4 rounded-lg border border-gray-800/60 bg-gray-950/50 px-3 py-2.5 text-sm text-gray-400">
-                <div className="text-[10px] font-medium uppercase tracking-wider text-gray-500">摘要</div>
-                <div className="mt-2 space-y-1.5">
-                  <div>
-                    Hero <span className="text-gray-200">{sidebarHeroId ?? '未選擇'}</span>
-                  </div>
-                  <div>
-                    Trait <span className="text-gray-200">{sidebarTraitId ?? '未選擇'}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-b border-gray-800/80 px-4 py-5">
-              <HeroTraitCard embedded />
-            </div>
-
-            <div className="px-4 py-5">
-              <BuildSummaryCard embedded />
-            </div>
-          </div>
+        <aside className="flex w-full shrink-0 flex-col overflow-y-auto border-b border-gray-800/90 bg-[#080a0c] p-3 md:w-[min(100%,400px)] md:border-b-0 md:border-r md:border-gray-800/90 md:p-4">
+          <BuildStatsPanel />
         </aside>
 
         <section className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-[#0c1016] before:pointer-events-none before:absolute before:inset-0 before:ring-1 before:ring-inset before:ring-gray-800/35">
           <div className="relative z-10 shrink-0 border-b border-gray-800/90 bg-gray-900/90 px-4">
             <div className="flex flex-wrap gap-2 py-3">
-              {EDITOR_TABS.map((tab) => (
+              {TAB_CONFIG.map(({ id, label }) => (
                 <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium capitalize transition ${
-                    activeTab === tab
+                  key={id}
+                  type="button"
+                  onClick={() => setActiveTab(id)}
+                  className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
+                    activeTab === id
                       ? 'bg-blue-600 text-white'
                       : 'border border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700'
                   }`}
                 >
-                  {tab}
+                  {label}
                 </button>
               ))}
             </div>
           </div>
 
           <div className="relative z-10 min-h-0 flex-1 overflow-y-auto p-5 md:p-6">
-            {activeTab === 'talent' && <TalentTreePanel />}
+            {activeTab === 'heroTalent' && <HeroTalentWorkspace />}
+            {activeTab === 'talents' && <TalentTreePanel />}
             {activeTab === 'skills' && <SkillSetupPanel />}
             {activeTab === 'gear' && <GearPlaceholder />}
-            {activeTab === 'pactspirit' && <PactspiritPlaceholder />}
-            {activeTab === 'notes' && <NotesPanel />}
+            {activeTab === 'divinityBoard' && <DivinityBoardPlaceholder />}
           </div>
         </section>
       </main>

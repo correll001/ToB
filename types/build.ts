@@ -14,7 +14,13 @@ export type GearSlot =
   | 'weapon1'
   | 'weapon2'
 
-export type EditorTab = 'talent' | 'skills' | 'gear' | 'pactspirit' | 'notes'
+/** Main workspace tabs (Chinese labels in UI). */
+export type EditorTab =
+  | 'heroTalent'
+  | 'talents'
+  | 'skills'
+  | 'gear'
+  | 'divinityBoard'
 
 export interface HeroSelection {
   heroId: string | null
@@ -54,6 +60,8 @@ export interface BuildSnapshot {
   gameVersion: string
   meta: {
     title: string
+    /** 角色等級；與流派碼一併匯出／持久化 */
+    level: number
     description: string
     visibility: 'private' | 'unlisted' | 'public'
   }
