@@ -13,10 +13,29 @@ import TalentTreePanel from '@/components/editor/TalentTreePanel'
 
 const EDITOR_TABS: EditorTab[] = ['talent', 'skills', 'gear', 'pactspirit', 'notes']
 
+function useDebouncedCommit<T>(
+  localValue: T,
+  committedValue: T,
+  commit: (value: T) => void,
+  waitMs: number
+) {
+  React.useEffect(() => {
+    if (Object.is(localValue, committedValue)) return
+    const t = window.setTimeout(() => commit(localValue), waitMs)
+    return () => window.clearTimeout(t)
+  }, [localValue, committedValue, commit, waitMs])
+}
+
 function Header() {
   const title = useBuildStore((s) => s.snapshot.meta.title)
   const dirty = useBuildStore((s) => s.dirty)
   const setTitle = useBuildStore((s) => s.setTitle)
+
+  const [localTitle, setLocalTitle] = React.useState(title)
+  React.useEffect(() => {
+    setLocalTitle(title)
+  }, [title])
+  useDebouncedCommit(localTitle, title, setTitle, 300)
 
   return (
     <header className="flex items-center justify-between border-b border-gray-800 bg-gray-900 px-6 py-4">
@@ -27,8 +46,8 @@ function Header() {
 
       <div className="flex items-center gap-3">
         <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={localTitle}
+          onChange={(e) => setLocalTitle(e.target.value)}
           placeholder="Build Title"
           className="w-72 rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white outline-none focus:border-blue-500"
         />
@@ -98,10 +117,39 @@ function ShareDialog({
   )
 }
 
-function NotesPanel() {
-  const notes = useBuildStore((s) => s.snapshot.notes)
+function NoteTextarea({ section }: { section: 'gameplay' | 'leveling' | 'bossing' }) {
+  const note = useBuildStore((s) => s.snapshot.notes[section])
   const setNote = useBuildStore((s) => s.setNote)
 
+  const [localNote, setLocalNote] = React.useState(note)
+  React.useEffect(() => {
+    setLocalNote(note)
+  }, [note])
+  useDebouncedCommit(
+    localNote,
+    note,
+    (v) => setNote(section, v),
+    300
+  )
+
+  const flushToStore = () => {
+    if (localNote !== note) setNote(section, localNote)
+  }
+
+  return (
+    <div className="rounded-xl border border-gray-800 bg-gray-900 p-4">
+      <label className="mb-2 block text-sm font-medium capitalize text-gray-300">{section}</label>
+      <textarea
+        value={localNote}
+        onChange={(e) => setLocalNote(e.target.value)}
+        onBlur={flushToStore}
+        className="min-h-28 w-full rounded-lg border border-gray-700 bg-gray-800 p-3 text-sm text-white outline-none focus:border-blue-500"
+      />
+    </div>
+  )
+}
+
+function NotesPanel() {
   return (
     <div className="space-y-4">
       <div className="rounded-xl border border-gray-800 bg-gray-900 p-4">
@@ -110,16 +158,7 @@ function NotesPanel() {
       </div>
 
       {(['gameplay', 'leveling', 'bossing'] as const).map((key) => (
-        <div key={key} className="rounded-xl border border-gray-800 bg-gray-900 p-4">
-          <label className="mb-2 block text-sm font-medium capitalize text-gray-300">
-            {key}
-          </label>
-          <textarea
-            value={notes[key]}
-            onChange={(e) => setNote(key, e.target.value)}
-            className="min-h-28 w-full rounded-lg border border-gray-700 bg-gray-800 p-3 text-sm text-white outline-none focus:border-blue-500"
-          />
-        </div>
+        <NoteTextarea key={key} section={key} />
       ))}
     </div>
   )
@@ -150,8 +189,11 @@ function PactspiritPlaceholder() {
 export default function BuildEditorPage() {
   const [mounted, setMounted] = React.useState(false)
   const [shareUrl, setShareUrl] = React.useState('')
+  const didImportShareCodeRef = React.useRef(false)
 
-  const snapshot = useBuildStore((s) => s.snapshot)
+  const sidebarTitle = useBuildStore((s) => s.snapshot.meta.title)
+  const sidebarHeroId = useBuildStore((s) => s.snapshot.hero.heroId)
+  const sidebarTraitId = useBuildStore((s) => s.snapshot.hero.traitId)
   const importSnapshot = useBuildStore((s) => s.importSnapshot)
   const exportSnapshot = useBuildStore((s) => s.exportSnapshot)
 
@@ -167,11 +209,13 @@ export default function BuildEditorPage() {
 
   React.useEffect(() => {
     if (!mounted) return
+    if (didImportShareCodeRef.current) return
 
     const params = new URLSearchParams(window.location.search)
     const code = params.get('code')
     if (!code) return
 
+    didImportShareCodeRef.current = true
     try {
       const parsed = decodeBuildFromShareCode(code)
       importSnapshot(parsed)
@@ -201,13 +245,13 @@ export default function BuildEditorPage() {
             <div className="rounded-xl border border-gray-800 bg-gray-900 p-4">
               <div className="text-xs uppercase tracking-widest text-gray-500">Current Build</div>
               <div className="mt-2 text-xl font-bold text-white">
-                {snapshot.meta.title || 'Untitled Build'}
+                {sidebarTitle || 'Untitled Build'}
               </div>
               <div className="mt-2 text-sm text-gray-400">
-                Hero: {snapshot.hero.heroId ?? '未選擇'}
+                Hero: {sidebarHeroId ?? '未選擇'}
               </div>
               <div className="text-sm text-gray-400">
-                Trait: {snapshot.hero.traitId ?? '未選擇'}
+                Trait: {sidebarTraitId ?? '未選擇'}
               </div>
             </div>
 

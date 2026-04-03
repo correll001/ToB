@@ -1,8 +1,25 @@
 // stores/useBuildStore.ts
 import { create } from 'zustand'
-import { persist, devtools, subscribeWithSelector } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 import type { BuildSnapshot, GearSlot, TreeName } from '@/types/build'
+
+function throttle<TArgs extends unknown[]>(fn: (...args: TArgs) => void, waitMs: number) {
+  let timeout: ReturnType<typeof setTimeout> | null = null
+  let pendingArgs: TArgs | null = null
+
+  return (...args: TArgs) => {
+    pendingArgs = args
+    if (timeout) return
+
+    timeout = setTimeout(() => {
+      timeout = null
+      if (!pendingArgs) return
+      fn(...pendingArgs)
+      pendingArgs = null
+    }, waitMs)
+  }
+}
 
 function createDefaultBuild(): BuildSnapshot {
   return {
@@ -94,170 +111,178 @@ const bumpMeta = (state: BuildStore) => {
 }
 
 export const useBuildStore = create<BuildStore>()(
-  devtools(
-    persist(
-      subscribeWithSelector(
-        immer((set, get) => ({
-          snapshot: createDefaultBuild(),
-          dirty: false,
-          revision: 0,
-          lastSavedAt: null,
+  persist(
+    immer((set, get) => ({
+      snapshot: createDefaultBuild(),
+      dirty: false,
+      revision: 0,
+      lastSavedAt: null,
 
-          setTitle: (title) =>
-            set((state) => {
-              state.snapshot.meta.title = title
-              bumpMeta(state)
-            }),
-
-          setDescription: (description) =>
-            set((state) => {
-              state.snapshot.meta.description = description
-              bumpMeta(state)
-            }),
-
-          setVisibility: (visibility) =>
-            set((state) => {
-              state.snapshot.meta.visibility = visibility
-              bumpMeta(state)
-            }),
-
-          setHero: (heroId) =>
-            set((state) => {
-              state.snapshot.hero.heroId = heroId
-              state.snapshot.hero.traitId = null
-              state.snapshot.talents = {
-                godTree: [],
-                classTree: [],
-                tree3: [],
-                tree4: [],
-                divinity: [],
-              }
-
-              state.snapshot.skills.forEach((skill) => {
-                skill.skillId = null
-                skill.supports = []
-                skill.enabled = true
-                skill.notes = ''
-              })
-
-              bumpMeta(state)
-            }),
-
-          setTrait: (traitId) =>
-            set((state) => {
-              state.snapshot.hero.traitId = traitId
-              bumpMeta(state)
-            }),
-
-          toggleTalentNode: (tree, nodeId) =>
-            set((state) => {
-              const list = state.snapshot.talents[tree]
-              const exists = list.includes(nodeId)
-              state.snapshot.talents[tree] = exists
-                ? list.filter((id) => id !== nodeId)
-                : [...list, nodeId]
-              bumpMeta(state)
-            }),
-
-          clearTalentTree: (tree) =>
-            set((state) => {
-              state.snapshot.talents[tree] = []
-              bumpMeta(state)
-            }),
-
-          setSkill: (slot, skillId) =>
-            set((state) => {
-              const target = state.snapshot.skills[slot - 1]
-              if (!target) return
-              target.skillId = skillId
-              if (!skillId) target.supports = []
-              bumpMeta(state)
-            }),
-
-          clearSkill: (slot) =>
-            set((state) => {
-              const target = state.snapshot.skills[slot - 1]
-              if (!target) return
-              target.skillId = null
-              target.supports = []
-              target.enabled = true
-              target.notes = ''
-              bumpMeta(state)
-            }),
-
-          setGearBase: (slot, gearBaseId) =>
-            set((state) => {
-              state.snapshot.gear[slot].gearBaseId = gearBaseId
-              if (gearBaseId) {
-                state.snapshot.gear[slot].legendaryItemId = null
-              }
-              bumpMeta(state)
-            }),
-
-          setLegendaryItem: (slot, legendaryItemId) =>
-            set((state) => {
-              state.snapshot.gear[slot].legendaryItemId = legendaryItemId
-              if (legendaryItemId) {
-                state.snapshot.gear[slot].gearBaseId = null
-              }
-              bumpMeta(state)
-            }),
-
-          clearGearSlot: (slot) =>
-            set((state) => {
-              state.snapshot.gear[slot] = {
-                gearBaseId: null,
-                legendaryItemId: null,
-                customMods: [],
-              }
-              bumpMeta(state)
-            }),
-
-          setPactspirit: (slot, pactspiritId) =>
-            set((state) => {
-              const target = state.snapshot.pactspirits[slot - 1]
-              if (!target) return
-              target.pactspiritId = pactspiritId
-              bumpMeta(state)
-            }),
-
-          setNote: (section, value) =>
-            set((state) => {
-              state.snapshot.notes[section] = value
-              bumpMeta(state)
-            }),
-
-          importSnapshot: (next) =>
-            set((state) => {
-              state.snapshot = next
-              state.dirty = false
-              state.revision += 1
-            }),
-
-          resetBuild: () =>
-            set((state) => {
-              state.snapshot = createDefaultBuild()
-              state.dirty = true
-              state.revision += 1
-            }),
-
-          markSaved: () =>
-            set((state) => {
-              state.dirty = false
-              state.lastSavedAt = Date.now()
-            }),
-
-          exportSnapshot: () => get().snapshot,
-        }))
-      ),
-      {
-        name: 'tli-build-editor',
-        partialize: (state) => ({
-          snapshot: state.snapshot,
-          revision: state.revision,
-          lastSavedAt: state.lastSavedAt,
+      setTitle: (title) =>
+        set((state) => {
+          state.snapshot.meta.title = title
+          bumpMeta(state)
         }),
-      }
-    )
+
+      setDescription: (description) =>
+        set((state) => {
+          state.snapshot.meta.description = description
+          bumpMeta(state)
+        }),
+
+      setVisibility: (visibility) =>
+        set((state) => {
+          state.snapshot.meta.visibility = visibility
+          bumpMeta(state)
+        }),
+
+      setHero: (heroId) =>
+        set((state) => {
+          state.snapshot.hero.heroId = heroId
+          state.snapshot.hero.traitId = null
+          state.snapshot.talents = {
+            godTree: [],
+            classTree: [],
+            tree3: [],
+            tree4: [],
+            divinity: [],
+          }
+
+          state.snapshot.skills.forEach((skill) => {
+            skill.skillId = null
+            skill.supports = []
+            skill.enabled = true
+            skill.notes = ''
+          })
+
+          bumpMeta(state)
+        }),
+
+      setTrait: (traitId) =>
+        set((state) => {
+          state.snapshot.hero.traitId = traitId
+          bumpMeta(state)
+        }),
+
+      toggleTalentNode: (tree, nodeId) =>
+        set((state) => {
+          const list = state.snapshot.talents[tree]
+          const exists = list.includes(nodeId)
+          state.snapshot.talents[tree] = exists
+            ? list.filter((id) => id !== nodeId)
+            : [...list, nodeId]
+          bumpMeta(state)
+        }),
+
+      clearTalentTree: (tree) =>
+        set((state) => {
+          state.snapshot.talents[tree] = []
+          bumpMeta(state)
+        }),
+
+      setSkill: (slot, skillId) =>
+        set((state) => {
+          const target = state.snapshot.skills[slot - 1]
+          if (!target) return
+          target.skillId = skillId
+          if (!skillId) target.supports = []
+          bumpMeta(state)
+        }),
+
+      clearSkill: (slot) =>
+        set((state) => {
+          const target = state.snapshot.skills[slot - 1]
+          if (!target) return
+          target.skillId = null
+          target.supports = []
+          target.enabled = true
+          target.notes = ''
+          bumpMeta(state)
+        }),
+
+      setGearBase: (slot, gearBaseId) =>
+        set((state) => {
+          state.snapshot.gear[slot].gearBaseId = gearBaseId
+          if (gearBaseId) {
+            state.snapshot.gear[slot].legendaryItemId = null
+          }
+          bumpMeta(state)
+        }),
+
+      setLegendaryItem: (slot, legendaryItemId) =>
+        set((state) => {
+          state.snapshot.gear[slot].legendaryItemId = legendaryItemId
+          if (legendaryItemId) {
+            state.snapshot.gear[slot].gearBaseId = null
+          }
+          bumpMeta(state)
+        }),
+
+      clearGearSlot: (slot) =>
+        set((state) => {
+          state.snapshot.gear[slot] = {
+            gearBaseId: null,
+            legendaryItemId: null,
+            customMods: [],
+          }
+          bumpMeta(state)
+        }),
+
+      setPactspirit: (slot, pactspiritId) =>
+        set((state) => {
+          const target = state.snapshot.pactspirits[slot - 1]
+          if (!target) return
+          target.pactspiritId = pactspiritId
+          bumpMeta(state)
+        }),
+
+      setNote: (section, value) =>
+        set((state) => {
+          state.snapshot.notes[section] = value
+          bumpMeta(state)
+        }),
+
+      importSnapshot: (next) =>
+        set((state) => {
+          state.snapshot = next
+          state.dirty = false
+          state.revision += 1
+        }),
+
+      resetBuild: () =>
+        set((state) => {
+          state.snapshot = createDefaultBuild()
+          state.dirty = true
+          state.revision += 1
+        }),
+
+      markSaved: () =>
+        set((state) => {
+          state.dirty = false
+          state.lastSavedAt = Date.now()
+        }),
+
+      exportSnapshot: () => get().snapshot,
+    })),
+    {
+      name: 'tli-build-editor',
+      partialize: (state) => ({ snapshot: state.snapshot }),
+      storage: (() => {
+        const base = createJSONStorage(() => {
+          if (typeof window === 'undefined') {
+            return {
+              getItem: () => null,
+              setItem: () => {},
+              removeItem: () => {},
+            }
+          }
+          return localStorage
+        })
+        return {
+          ...base,
+          setItem: throttle(base.setItem.bind(base), 750),
+        }
+      })(),
+    }
   )
 )
