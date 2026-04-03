@@ -4,7 +4,7 @@
 import React from 'react'
 import { useBuildStore } from '@/stores/useBuildStore'
 import { useEditorUiStore } from '@/stores/useEditorUiStore'
-import { encodeBuildToShareCode, decodeBuildFromShareCode } from '@/lib/shareCodec'
+import { decodeBuildFromShareCode } from '@/lib/shareCodec'
 import type { EditorTab } from '@/types/build'
 import HeroTraitCard from '@/components/editor/HeroTraitCard'
 import BuildSummaryCard from '@/components/editor/BuildSummaryCard'
@@ -64,15 +64,7 @@ function BuildTitleField() {
   )
 }
 
-function AppHeader({
-  lastUpdatedLabel,
-  onExport,
-}: {
-  lastUpdatedLabel: string
-  onExport: () => void
-}) {
-  const [streamCodeInput, setStreamCodeInput] = React.useState('')
-
+function AppHeader({ lastUpdatedLabel }: { lastUpdatedLabel: string }) {
   return (
     <header className="shrink-0 border-b border-gray-800 bg-gray-900">
       <div className="flex flex-wrap items-center justify-between gap-4 px-4 py-3 md:px-6">
@@ -94,21 +86,25 @@ function AppHeader({
         <div className="flex w-full min-w-0 flex-wrap items-center justify-end gap-2 md:w-auto md:max-w-[min(100%,42rem)]">
           <input
             type="text"
-            value={streamCodeInput}
-            onChange={(e) => setStreamCodeInput(e.target.value)}
+            disabled
+            readOnly
             placeholder="流派碼（預留）"
-            className="min-w-[10rem] flex-1 rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-gray-200 placeholder:text-gray-500 outline-none focus:border-blue-500 md:max-w-xs"
+            className="min-w-[10rem] flex-1 cursor-not-allowed rounded-lg border border-gray-800 bg-gray-950/80 px-3 py-2 text-sm text-gray-500 placeholder:text-gray-600 md:max-w-xs"
+            tabIndex={-1}
           />
           <button
             type="button"
-            className="shrink-0 rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700"
+            disabled
+            className="shrink-0 cursor-not-allowed rounded-lg border border-gray-800 bg-gray-950/60 px-3 py-2 text-sm font-medium text-gray-500"
+            tabIndex={-1}
           >
             匯入
           </button>
           <button
             type="button"
-            onClick={onExport}
-            className="shrink-0 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500"
+            disabled
+            className="shrink-0 cursor-not-allowed rounded-lg border border-gray-800 bg-gray-950/60 px-4 py-2 text-sm font-semibold text-gray-500"
+            tabIndex={-1}
           >
             匯出
           </button>
@@ -125,60 +121,6 @@ function AdPlaceholderBar() {
         廣告位預留
       </div>
     </footer>
-  )
-}
-
-function ShareDialog({
-  shareUrl,
-  onClose,
-}: {
-  shareUrl: string
-  onClose: () => void
-}) {
-  const [copied, setCopied] = React.useState(false)
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(shareUrl)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1500)
-    } catch {
-      alert('複製失敗，請手動複製。')
-    }
-  }
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-      <div className="w-full max-w-2xl rounded-2xl border border-gray-800 bg-gray-900 p-6 shadow-2xl">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-white">Share / Export</h2>
-          <button
-            onClick={onClose}
-            className="rounded-lg border border-gray-700 px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-800"
-          >
-            關閉
-          </button>
-        </div>
-
-        <div className="rounded-xl border border-gray-800 bg-gray-950 p-4">
-          <div className="mb-2 text-sm text-gray-400">可分享網址</div>
-          <textarea
-            readOnly
-            value={shareUrl}
-            className="h-28 w-full rounded-lg border border-gray-800 bg-gray-900 p-3 text-sm text-gray-200 outline-none"
-          />
-        </div>
-
-        <div className="mt-4 flex items-center gap-3">
-          <button
-            onClick={handleCopy}
-            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500"
-          >
-            {copied ? '已複製' : '複製網址'}
-          </button>
-        </div>
-      </div>
-    </div>
   )
 }
 
@@ -253,20 +195,15 @@ function PactspiritPlaceholder() {
 
 export default function BuildEditorPage() {
   const [mounted, setMounted] = React.useState(false)
-  const [shareUrl, setShareUrl] = React.useState('')
   const didImportShareCodeRef = React.useRef(false)
 
   const sidebarHeroId = useBuildStore((s) => s.snapshot.hero.heroId)
   const sidebarTraitId = useBuildStore((s) => s.snapshot.hero.traitId)
   const lastSavedAt = useBuildStore((s) => s.lastSavedAt)
   const importSnapshot = useBuildStore((s) => s.importSnapshot)
-  const exportSnapshot = useBuildStore((s) => s.exportSnapshot)
 
   const activeTab = useEditorUiStore((s) => s.activeTab)
   const setActiveTab = useEditorUiStore((s) => s.setActiveTab)
-  const isShareDialogOpen = useEditorUiStore((s) => s.isShareDialogOpen)
-  const openShareDialog = useEditorUiStore((s) => s.openShareDialog)
-  const closeShareDialog = useEditorUiStore((s) => s.closeShareDialog)
 
   const lastUpdatedLabel = React.useMemo(() => {
     if (lastSavedAt == null) return '—'
@@ -299,34 +236,34 @@ export default function BuildEditorPage() {
     }
   }, [mounted, importSnapshot])
 
-  const handleShare = () => {
-    const currentBuild = exportSnapshot()
-    const code = encodeBuildToShareCode(currentBuild)
-    const url = `${window.location.origin}${window.location.pathname}?code=${code}`
-    setShareUrl(url)
-    openShareDialog()
-  }
-
   if (!mounted) return null
 
   return (
     <div className="flex h-screen min-h-0 flex-col bg-gray-950 text-gray-100">
-      <AppHeader lastUpdatedLabel={lastUpdatedLabel} onExport={handleShare} />
+      <AppHeader lastUpdatedLabel={lastUpdatedLabel} />
 
       <main className="flex min-h-0 flex-1 flex-col overflow-hidden md:flex-row">
-        <aside className="flex w-full shrink-0 flex-col overflow-y-auto border-b border-gray-800 bg-gray-950 p-4 md:w-[min(100%,360px)] md:border-b-0 md:border-r">
-          <div className="space-y-4">
-            <div className="rounded-xl border border-gray-800 bg-gray-900 p-4">
-              <div className="text-xs uppercase tracking-widest text-gray-500">Current Build</div>
+        <aside className="flex w-full shrink-0 flex-col overflow-y-auto border-b border-gray-800 bg-gray-950 p-3 md:w-[min(100%,360px)] md:border-b-0 md:border-r md:p-4">
+          <div className="rounded-2xl border border-gray-800 bg-gradient-to-b from-gray-900/90 to-gray-950/80 p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+            <div className="border-b border-gray-800/90 pb-5">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">Build</div>
               <div className="mt-3">
                 <BuildTitleField />
               </div>
-              <div className="mt-4 text-sm text-gray-400">Hero: {sidebarHeroId ?? '未選擇'}</div>
-              <div className="text-sm text-gray-400">Trait: {sidebarTraitId ?? '未選擇'}</div>
+              <div className="mt-4 space-y-1 text-sm text-gray-400">
+                <div>
+                  Hero: <span className="text-gray-200">{sidebarHeroId ?? '未選擇'}</span>
+                </div>
+                <div>
+                  Trait: <span className="text-gray-200">{sidebarTraitId ?? '未選擇'}</span>
+                </div>
+              </div>
             </div>
 
-            <HeroTraitCard />
-            <BuildSummaryCard />
+            <div className="mt-5 space-y-5 border-t border-gray-800/80 pt-5">
+              <HeroTraitCard />
+              <BuildSummaryCard />
+            </div>
           </div>
         </aside>
 
@@ -360,10 +297,6 @@ export default function BuildEditorPage() {
       </main>
 
       <AdPlaceholderBar />
-
-      {isShareDialogOpen && (
-        <ShareDialog shareUrl={shareUrl} onClose={closeShareDialog} />
-      )}
     </div>
   )
 }
