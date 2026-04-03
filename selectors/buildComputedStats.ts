@@ -116,11 +116,13 @@ export function selectBuildSidebarCombatStats(snapshot: BuildSnapshot): BuildSid
 }
 
 function selectBuildStatsPanelSummary(snapshot: BuildSnapshot): BuildStatsPanelSummaryLabels {
-  const divinityPickN = selectDivinityBoardSelectionCount(snapshot)
+  const boardIds = snapshot.divinityBoard?.selectedBoardIds
+  const ids = Array.isArray(boardIds) ? boardIds : []
+  const divinityPickN = ids.length
   const divinitySummaryLine =
     divinityPickN === 0
       ? '未選示意石板'
-      : `${divinityPickN} 塊：${snapshot.divinityBoard.selectedBoardIds
+      : `${divinityPickN} 塊：${ids
           .map((id) => mockDivinityBoardOptions.find((o) => o.id === id)?.name ?? id)
           .join('、')}`
 

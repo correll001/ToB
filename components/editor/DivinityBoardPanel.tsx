@@ -13,9 +13,9 @@ function useDebouncedEffect(value: string, commit: (v: string) => void, ms: numb
 }
 
 export default function DivinityBoardPanel() {
-  const notes = useBuildStore((s) => s.snapshot.divinityBoard.notes)
-  const plan = useBuildStore((s) => s.snapshot.divinityBoard.plan)
-  const selected = useBuildStore((s) => s.snapshot.divinityBoard.selectedBoardIds)
+  const notes = useBuildStore((s) => s.snapshot.divinityBoard?.notes ?? '')
+  const plan = useBuildStore((s) => s.snapshot.divinityBoard?.plan ?? '')
+  const selected = useBuildStore((s) => s.snapshot.divinityBoard?.selectedBoardIds ?? [])
   const setDivinityBoardNotes = useBuildStore((s) => s.setDivinityBoardNotes)
   const setDivinityBoardPlan = useBuildStore((s) => s.setDivinityBoardPlan)
   const toggleDivinityBoardSelection = useBuildStore((s) => s.toggleDivinityBoardSelection)

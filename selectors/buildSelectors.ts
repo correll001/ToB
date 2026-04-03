@@ -19,12 +19,16 @@ export function selectFilledPactspiritCount(snapshot: BuildSnapshot) {
   return snapshot.pactspirits.filter((p) => !!p.pactspiritId).length
 }
 
+/** Safe for rehydrated / legacy snapshots missing `divinityBoard`. */
 export function selectDivinityBoardSelectionCount(snapshot: BuildSnapshot) {
-  return snapshot.divinityBoard.selectedBoardIds.length
+  const ids = snapshot.divinityBoard?.selectedBoardIds
+  return Array.isArray(ids) ? ids.length : 0
 }
 
 export function selectDivinityBoardTextChars(snapshot: BuildSnapshot) {
-  return snapshot.divinityBoard.notes.length + snapshot.divinityBoard.plan.length
+  const notes = snapshot.divinityBoard?.notes ?? ''
+  const plan = snapshot.divinityBoard?.plan ?? ''
+  return notes.length + plan.length
 }
 
 export function selectBuildCompletionStats(snapshot: BuildSnapshot) {

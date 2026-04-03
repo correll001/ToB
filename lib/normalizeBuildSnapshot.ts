@@ -43,9 +43,12 @@ function normalizeDivinityBoard(raw: DivinityBoardState | undefined): DivinityBo
  * Merge parsed / partial snapshot with defaults so older share codes missing
  * nested keys never break the app.
  */
-export function mergeSnapshotWithDefaults(raw: BuildSnapshot): BuildSnapshot {
+export function mergeSnapshotWithDefaults(raw: unknown): BuildSnapshot {
   const b = createEmptyBuildSnapshot()
-  const s = raw
+  if (!raw || typeof raw !== 'object') {
+    return b
+  }
+  const s = raw as BuildSnapshot
 
   const metaIn = s.meta && typeof s.meta === 'object' ? s.meta : {}
   const heroIn = s.hero && typeof s.hero === 'object' ? s.hero : {}
@@ -146,8 +149,13 @@ export function mergeSnapshotWithDefaults(raw: BuildSnapshot): BuildSnapshot {
 }
 
 /** Coerce optional fields after structural merge (same rules for persist & share code). */
-export function normalizeBuildSnapshot(raw: BuildSnapshot): BuildSnapshot {
-  const merged = mergeSnapshotWithDefaults(raw)
+export function normalizeBuildSnapshot(raw: unknown): BuildSnapshot {
+  let merged: BuildSnapshot
+  try {
+    merged = mergeSnapshotWithDefaults(raw)
+  } catch {
+    merged = createEmptyBuildSnapshot()
+  }
   const rawLevel = (merged.meta as { level?: number }).level
 
   return {

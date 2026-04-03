@@ -25,6 +25,19 @@ function throttle<TArgs extends unknown[]>(fn: (...args: TArgs) => void, waitMs:
 
 const createDefaultBuild = createEmptyBuildSnapshot
 
+/** Runtime guard for legacy / corrupted snapshots missing `divinityBoard` fields. */
+function touchDivinityBoard(snapshot: BuildSnapshot) {
+  const o = snapshot as Partial<BuildSnapshot>
+  if (!o.divinityBoard || typeof o.divinityBoard !== 'object') {
+    o.divinityBoard = { notes: '', plan: '', selectedBoardIds: [] }
+    return
+  }
+  const d = o.divinityBoard
+  if (typeof d.notes !== 'string') d.notes = ''
+  if (typeof d.plan !== 'string') d.plan = ''
+  if (!Array.isArray(d.selectedBoardIds)) d.selectedBoardIds = []
+}
+
 type BuildStore = {
   snapshot: BuildSnapshot
   dirty: boolean
@@ -230,18 +243,21 @@ export const useBuildStore = create<BuildStore>()(
 
       setDivinityBoardNotes: (value) =>
         set((state) => {
+          touchDivinityBoard(state.snapshot)
           state.snapshot.divinityBoard.notes = value
           bumpMeta(state)
         }),
 
       setDivinityBoardPlan: (value) =>
         set((state) => {
+          touchDivinityBoard(state.snapshot)
           state.snapshot.divinityBoard.plan = value
           bumpMeta(state)
         }),
 
       toggleDivinityBoardSelection: (boardId) =>
         set((state) => {
+          touchDivinityBoard(state.snapshot)
           const list = state.snapshot.divinityBoard.selectedBoardIds
           const i = list.indexOf(boardId)
           if (i === -1) list.push(boardId)
@@ -273,13 +289,33 @@ export const useBuildStore = create<BuildStore>()(
     })),
     {
       name: 'tli-build-editor',
-      version: 1,
-      migrate: (persisted) => {
-        if (persisted && typeof persisted === 'object' && persisted !== null && 'snapshot' in persisted) {
-          const p = persisted as { snapshot: BuildSnapshot }
-          return { snapshot: normalizeBuildSnapshot(p.snapshot) }
+      /** Bump when persisted snapshot shape needs migration (e.g. new `divinityBoard`). */
+      version: 2,
+      migrate: (persistedState, _oldVersion) => {
+        try {
+          const p = persistedState as { snapshot?: unknown } | null
+          if (p && typeof p === 'object' && p.snapshot != null && typeof p.snapshot === 'object') {
+            return { snapshot: normalizeBuildSnapshot(p.snapshot) }
+          }
+        } catch {
+          /* use empty below */
         }
-        return persisted as { snapshot: BuildSnapshot }
+        return { snapshot: normalizeBuildSnapshot(createEmptyBuildSnapshot()) }
+      },
+      merge: (persistedState, currentState) => {
+        const p = persistedState as Partial<Pick<BuildStore, 'snapshot'>> | null | undefined
+        const next: BuildStore = {
+          ...currentState,
+          ...(p && typeof p === 'object' ? p : {}),
+        }
+        if (p?.snapshot != null && typeof p.snapshot === 'object') {
+          try {
+            next.snapshot = normalizeBuildSnapshot(p.snapshot)
+          } catch {
+            next.snapshot = normalizeBuildSnapshot(createEmptyBuildSnapshot())
+          }
+        }
+        return next
       },
       partialize: (state) => ({ snapshot: state.snapshot }),
       storage: (() => {
