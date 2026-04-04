@@ -12,6 +12,15 @@ function formatNum(n: number, maxFrac = 2) {
   }).format(n)
 }
 
+function Row({ k, v }: { k: string; v: string }) {
+  return (
+    <div className="flex justify-between gap-2 border-b border-slate-800/30 py-0.5 last:border-0">
+      <span className="shrink-0 text-slate-600">{k}</span>
+      <span className="truncate text-right text-slate-400">{v}</span>
+    </div>
+  )
+}
+
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-2 flex items-center gap-2">
@@ -31,7 +40,7 @@ export default function BuildStatsPanel() {
   const snapshot = useBuildStore((s) => s.snapshot)
 
   const derived = useBuildComputedStats()
-  const { combat, validationErrors, summary } = derived
+  const { combat, breakdown, validationErrors, summary } = derived
 
   const [localTitle, setLocalTitle] = React.useState(snapshot.meta.title)
   React.useEffect(() => {
@@ -147,9 +156,9 @@ export default function BuildStatsPanel() {
       </div>
 
       <div className="border-b border-slate-800/80 px-4 py-4">
-        <SectionLabel>戰鬥讀取（開發版）</SectionLabel>
+        <SectionLabel>戰鬥讀取（規則引擎 v1）</SectionLabel>
         <p className="mb-3 text-[10px] leading-relaxed text-slate-600">
-          以下為依等級與配置推算的示意數值，非正式遊戲公式。
+          資料驅動聚合（collect → aggregate → derive），可解釋、無隨機；非官方精算。
         </p>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
           <div className="rounded-xl border border-sky-900/40 bg-[linear-gradient(180deg,rgba(8,47,73,0.35)_0%,rgba(3,7,18,0.65)_100%)] px-3 py-3 shadow-[inset_0_1px_0_rgba(56,189,248,0.08)]">
@@ -194,6 +203,27 @@ export default function BuildStatsPanel() {
             ))}
           </dl>
         </div>
+
+        <details className="mt-3 rounded-lg border border-slate-800/60 bg-slate-950/30 px-3 py-2">
+          <summary className="cursor-pointer select-none text-[11px] font-medium text-slate-500">
+            公式拆解（debug）
+          </summary>
+          <div className="mt-2 max-h-48 space-y-0.5 overflow-y-auto font-mono text-[10px] leading-relaxed text-slate-500">
+            <Row k="參與筆數" v={String(breakdown.contributionCount)} />
+            <Row k="LV" v={String(breakdown.level)} />
+            <Row k="屬性 力/敏/智（合計）" v={`${breakdown.strTotal} / ${breakdown.dexTotal} / ${breakdown.intTotal}`} />
+            <Row k="HP（乘算前）" v={formatNum(breakdown.hpBeforePct, 1)} />
+            <Row k="HP % 加成（加總）" v={`${formatNum(breakdown.hpPctTotal, 1)}%`} />
+            <Row k="MP（乘算前）" v={formatNum(breakdown.mpBeforePct, 1)} />
+            <Row k="MP % 加成（加總）" v={`${formatNum(breakdown.mpPctTotal, 1)}%`} />
+            <Row k="神格文字 → MP" v={`+${breakdown.mpFromDivinityText}`} />
+            <Row k="傷害（inc 前）" v={formatNum(breakdown.damageBeforePct, 1)} />
+            <Row k="傷害 %（加總）" v={`${formatNum(breakdown.damagePctTotal, 1)}%`} />
+            <Row k="More 乘數" v={formatNum(breakdown.moreDamageMult, 3)} />
+            <Row k="攻速基礎 / 加成% / 最終" v={`${formatNum(breakdown.baseAttackSpeed, 2)} / ${formatNum(breakdown.attackSpeedPctTotal, 1)}% / ${formatNum(breakdown.attackSpeedFinal, 2)}`} />
+            <Row k="暴擊率% / 暴傷加成% / 期望乘數" v={`${formatNum(breakdown.critChancePct, 1)} / ${formatNum(breakdown.critDamagePct, 1)} / ${formatNum(breakdown.critExpectedMult, 3)}`} />
+          </div>
+        </details>
       </div>
 
       <div className="px-4 py-4">
