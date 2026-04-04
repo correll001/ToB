@@ -1,0 +1,18 @@
+{
+  "season": "ss12",
+  "parserVersion": "1",
+  "generatedAt": "2026-04-04T05:22:39.125Z",
+  "entries": [
+    {
+      "sourceUrl": "https://tlidb.com/tw/Skill_Level",
+      "kind": "skill-level",
+      "locale": "tw",
+      "season": "ss12",
+      "fetchedAt": "2026-04-04T05:22:39.125Z",
+      "status": "ok",
+      "outputPath": "data/raw/ss12/indexes/Skill_Level.html",
+      "contentSha256": "ad51bd12798dbeb17f0f60637fab5353fdfdc17ad0359b1b0235abf20b010584",
+      "parserVersion": "1"
+    }
+  ]
+}

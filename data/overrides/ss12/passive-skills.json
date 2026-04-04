@@ -1,0 +1,22 @@
+{
+  "season": "ss12",
+  "version": "demo-1",
+  "family": "passive",
+  "entries": [
+    {
+      "id": "skill:Fearless",
+      "notes": ["Sample passive: manual modifier patch only (no formula engine change)."],
+      "modifiersAppend": [
+        {
+          "id": "override-demo-fearless",
+          "selector": { "kind": "skill" },
+          "operation": "add",
+          "stat": "skill.damage.more",
+          "value": 0,
+          "valueKind": "more",
+          "sourceText": "[override demo] zero-op audit modifier"
+        }
+      ]
+    }
+  ]
+}

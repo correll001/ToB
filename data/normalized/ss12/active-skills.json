@@ -1,0 +1,7226 @@
+{
+  "meta": {
+    "season": "ss12",
+    "locale": "tw",
+    "generatedAt": "2026-04-04T05:35:35.975Z",
+    "parserVersion": "1",
+    "sourceCount": 153,
+    "warningsCount": 11
+  },
+  "skills": [
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Leap_Attack",
+        "name": "躍擊",
+        "family": "active",
+        "tags": [
+          "位移",
+          "攻擊",
+          "近戰",
+          "物理",
+          "破擊",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Leap_Attack",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能跳躍至目標位置並猛擊地面，對一定範圍內敵人造成 228% 武器攻擊傷害。該技能消耗破擊蓄能時，獲得：擊中敵人後使該技能的傷害和範圍增加。"
+        ],
+        "detailText": [
+          "躍擊：造成 228% 武器攻擊傷害",
+          "該技能每 4 秒獲得一次破擊蓄能該技能消耗破擊蓄能時，獲得增益：每擊中一個敵人，獲得一次加成，最多 20 次。增益持續 2 秒每次加成使該技能 +20% 傷害每次加成使該技能 +10% 技能範圍該技能額外 -40% 攻擊速度對移動速度加成的 75% 同樣作用於該技能的額外攻擊速度，至多額外 +60% 攻擊速度",
+          "跳躍距離越近，該技能的基礎攻擊速度越快"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 228,
+            "valueKind": "flat",
+            "sourceText": "造成 228% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 228,
+            "valueKind": "flat",
+            "sourceText": "造成 228% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Ice_Shot",
+        "name": "寒冰射擊",
+        "family": "active",
+        "tags": [
+          "冰冷",
+          "投射物",
+          "攻擊",
+          "遠程",
+          "範圍",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Ice_Shot",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個冰錐，擊中時造成 313% 武器攻擊傷害。冰錐擊中敵人時在其身後產生爆炸，擊中時造成 157% 武器攻擊傷害。該技能全部物理傷害轉化為冰冷傷害。"
+        ],
+        "detailText": [
+          "冰錐：造成 313% 武器攻擊傷害基礎發射 1 個投射物",
+          "爆炸：造成 157% 武器攻擊傷害",
+          "該技能 100% 物理傷害轉化為冰冷傷害該技能造成擊中冰冷傷害時，施加冰結"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 313,
+            "valueKind": "flat",
+            "sourceText": "造成 313% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 157,
+            "valueKind": "flat",
+            "sourceText": "造成 157% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 313,
+            "valueKind": "flat",
+            "sourceText": "造成 313% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 157,
+            "valueKind": "flat",
+            "sourceText": "造成 157% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Hammer_of_Ash",
+        "name": "灰燼之鎚",
+        "family": "active",
+        "tags": [
+          "範圍",
+          "火焰",
+          "攻擊",
+          "投射物",
+          "近戰",
+          "破擊",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Hammer_of_Ash",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能猛擊前方地面，擊中時造成 369% 武器攻擊傷害。猛擊時生成 3 個自動追蹤敵人的灰燼投射物，擊中時造成 369% 武器攻擊傷害。該技能消耗破擊蓄能時，灰燼擊中敵人會產生爆炸，造成 369% 武器攻擊傷害。破擊蓄能使該技能傷害額外增加。該技能全部物理傷害轉化為火焰傷害。"
+        ],
+        "detailText": [
+          "猛擊：造成 369% 武器攻擊傷害",
+          "灰燼投射物：造成 369% 武器攻擊傷害基礎發射 1 個投射物該技能 +2 投射物數量該技能發射的投射物無法穿透、彈射或返回",
+          "爆炸：造成 369% 武器攻擊傷害",
+          "該技能每 3 秒獲得一次破擊蓄能該技能消耗破擊蓄能時，額外 +215% 擊中傷害該技能 100% 物理傷害轉化為火焰傷害",
+          "該技能的猛擊和爆炸可以擊中同一個敵人該技能的散彈效應衰減係數為 70%",
+          "該技能 100% 物理傷害轉化為火焰傷害該技能 +2 投射物數量該技能消耗破擊蓄能時，額外 +215% 擊中傷害"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 369,
+            "valueKind": "flat",
+            "sourceText": "造成 369% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 369,
+            "valueKind": "flat",
+            "sourceText": "造成 369% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 369,
+            "valueKind": "flat",
+            "sourceText": "造成 369% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 369,
+            "valueKind": "flat",
+            "sourceText": "造成 369% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-5",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 369,
+            "valueKind": "flat",
+            "sourceText": "造成 369% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-6",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 369,
+            "valueKind": "flat",
+            "sourceText": "造成 369% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Chromatic_Shot",
+        "name": "五彩魔矢",
+        "family": "active",
+        "tags": [
+          "法術",
+          "投射物",
+          "冰冷",
+          "腐蝕",
+          "火焰",
+          "閃電",
+          "物理",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Chromatic_Shot",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 3 個自動追蹤敵人的魔矢，造成 91-152 法術物理傷害，102-189 法術火焰傷害，13-254 法術閃電傷害，87-131 法術冰冷傷害，97-97 法術腐蝕傷害。 該技能發射的魔矢可以命中同一個敵人。"
+        ],
+        "detailText": [
+          "五彩魔矢：造成 91-152 法術物理傷害造成 102-189 法術火焰傷害造成 13-254 法術閃電傷害造成 87-131 法術冰冷傷害造成 97-97 法術腐蝕傷害基礎發射 1 個投射物該技能 +2 投射物數量該技能發射的投射物可以命中同一個敵人該技能的散彈效應衰減係數為 70%"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Resurrection_Warcry",
+        "name": "復甦戰吼",
+        "family": "active",
+        "tags": [
+          "戰吼",
+          "範圍",
+          "持續",
+          "恢復"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Resurrection_Warcry",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能發出戰吼：使周圍敵人虛弱，每影響一個敵人，額外 -2% 自身受到的傷害，最多額外 -60% 自身受到的傷害，持續 3 秒。釋放該技能獲得恢復：4秒內恢復40生命。該效果不受戰吼效果影響。"
+        ],
+        "detailText": [
+          "釋放該技能發出戰吼：使周圍敵人虛弱每影響一個敵人，自身受到傷害額外 -2% ，上限 8 層持續 3 秒",
+          "釋放該技能獲得恢復：4秒內恢復40生命該效果不受戰吼效果影響",
+          "在 4 秒內恢復 40 生命 (Lv1:40) (Lv2:72) (Lv3:108) (Lv4:144) (Lv5:188) (Lv6:248) (Lv7:296) (Lv8:344) (Lv9:396) (Lv10:452) (Lv11:508) (Lv12:556) (Lv13:616) (Lv14:684) (Lv15:756) (Lv16:860) (Lv17:924) (Lv18:1000) (Lv19:1080) (Lv20:1160) (Lv21:1188) (Lv22:1220) (Lv23:1256) (Lv24:1288) (Lv25:1320) (Lv26:1352) (Lv27:1404) (Lv28:1464) (Lv29:1528) (Lv30:1592) (Lv31:1656) (Lv32:1696) (Lv33:1740) (Lv34:1784) (Lv35:1828) (Lv36:1872) (Lv37:1916) (Lv38:1960) (Lv39:2008) (Lv40:2052)"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "40"
+            ],
+            "partial": true
+          },
+          {
+            "level": 2,
+            "textLines": [
+              "72"
+            ],
+            "partial": true
+          },
+          {
+            "level": 3,
+            "textLines": [
+              "108"
+            ],
+            "partial": true
+          },
+          {
+            "level": 4,
+            "textLines": [
+              "144"
+            ],
+            "partial": true
+          },
+          {
+            "level": 5,
+            "textLines": [
+              "188"
+            ],
+            "partial": true
+          },
+          {
+            "level": 6,
+            "textLines": [
+              "248"
+            ],
+            "partial": true
+          },
+          {
+            "level": 7,
+            "textLines": [
+              "296"
+            ],
+            "partial": true
+          },
+          {
+            "level": 8,
+            "textLines": [
+              "344"
+            ],
+            "partial": true
+          },
+          {
+            "level": 9,
+            "textLines": [
+              "396"
+            ],
+            "partial": true
+          },
+          {
+            "level": 10,
+            "textLines": [
+              "452"
+            ],
+            "partial": true
+          },
+          {
+            "level": 11,
+            "textLines": [
+              "508"
+            ],
+            "partial": true
+          },
+          {
+            "level": 12,
+            "textLines": [
+              "556"
+            ],
+            "partial": true
+          },
+          {
+            "level": 13,
+            "textLines": [
+              "616"
+            ],
+            "partial": true
+          },
+          {
+            "level": 14,
+            "textLines": [
+              "684"
+            ],
+            "partial": true
+          },
+          {
+            "level": 15,
+            "textLines": [
+              "756"
+            ],
+            "partial": true
+          },
+          {
+            "level": 16,
+            "textLines": [
+              "860"
+            ],
+            "partial": true
+          },
+          {
+            "level": 17,
+            "textLines": [
+              "924"
+            ],
+            "partial": true
+          },
+          {
+            "level": 18,
+            "textLines": [
+              "1000"
+            ],
+            "partial": true
+          },
+          {
+            "level": 19,
+            "textLines": [
+              "1080"
+            ],
+            "partial": true
+          },
+          {
+            "level": 20,
+            "textLines": [
+              "1160"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "1188"
+            ],
+            "partial": true
+          },
+          {
+            "level": 22,
+            "textLines": [
+              "1220"
+            ],
+            "partial": true
+          },
+          {
+            "level": 23,
+            "textLines": [
+              "1256"
+            ],
+            "partial": true
+          },
+          {
+            "level": 24,
+            "textLines": [
+              "1288"
+            ],
+            "partial": true
+          },
+          {
+            "level": 25,
+            "textLines": [
+              "1320"
+            ],
+            "partial": true
+          },
+          {
+            "level": 26,
+            "textLines": [
+              "1352"
+            ],
+            "partial": true
+          },
+          {
+            "level": 27,
+            "textLines": [
+              "1404"
+            ],
+            "partial": true
+          },
+          {
+            "level": 28,
+            "textLines": [
+              "1464"
+            ],
+            "partial": true
+          },
+          {
+            "level": 29,
+            "textLines": [
+              "1528"
+            ],
+            "partial": true
+          },
+          {
+            "level": 30,
+            "textLines": [
+              "1592"
+            ],
+            "partial": true
+          },
+          {
+            "level": 31,
+            "textLines": [
+              "1656"
+            ],
+            "partial": true
+          },
+          {
+            "level": 32,
+            "textLines": [
+              "1696"
+            ],
+            "partial": true
+          },
+          {
+            "level": 33,
+            "textLines": [
+              "1740"
+            ],
+            "partial": true
+          },
+          {
+            "level": 34,
+            "textLines": [
+              "1784"
+            ],
+            "partial": true
+          },
+          {
+            "level": 35,
+            "textLines": [
+              "1828"
+            ],
+            "partial": true
+          },
+          {
+            "level": 36,
+            "textLines": [
+              "1872"
+            ],
+            "partial": true
+          },
+          {
+            "level": 37,
+            "textLines": [
+              "1916"
+            ],
+            "partial": true
+          },
+          {
+            "level": 38,
+            "textLines": [
+              "1960"
+            ],
+            "partial": true
+          },
+          {
+            "level": 39,
+            "textLines": [
+              "2008"
+            ],
+            "partial": true
+          },
+          {
+            "level": 40,
+            "textLines": [
+              "2052"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Whirlwind",
+        "name": "旋風斬",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "引導",
+          "物理",
+          "揮斬"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Whirlwind",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "引導該技能時不斷對自身一定範圍內的敵人造成 83% 武器攻擊傷害。引導層數達到上限時，失去所有引導層數並有機率釋放斬擊，對大範圍敵人造成 138% 武器攻擊傷害，機率等同於斬擊機率。引導該技能時可以移動。"
+        ],
+        "detailText": [
+          "揮擊：造成 83% 武器攻擊傷害",
+          "斬擊：造成 138% 武器攻擊傷害",
+          "該技能額外 +100% 攻擊速度該技能 +20% 斬擊機率該技能引導時， -30% 移動速度該技能引導時可以移動引導層數最多 5 層引導達到上限時，有機率對大範圍敵人造成傷害，機率與該技能斬擊機率相同"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 83,
+            "valueKind": "flat",
+            "sourceText": "造成 83% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 138,
+            "valueKind": "flat",
+            "sourceText": "造成 138% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 83,
+            "valueKind": "flat",
+            "sourceText": "造成 83% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 138,
+            "valueKind": "flat",
+            "sourceText": "造成 138% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Focused_Slash",
+        "name": "專注斬",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "物理",
+          "揮斬"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Focused_Slash",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放揮擊攻擊前方扇形區域，擊中時造成 154% 武器攻擊傷害，並獲得戰意。該技能受斬擊機率影響，使其有可能以斬擊形態釋放。該技能釋放斬擊時攻擊前方矩形區域，擊中時造成 308% 武器攻擊傷害。戰意值使該技能的傷害額外增加。"
+        ],
+        "detailText": [
+          "揮擊：造成 154% 武器攻擊傷害",
+          "斬擊：造成 308% 武器攻擊傷害",
+          "該技能擊中時，獲得戰意每 1 點戰意值使該技能額外 0.4% 傷害；該效果受到戰意效果影響該技能 +20% 斬擊機率"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 154,
+            "valueKind": "flat",
+            "sourceText": "造成 154% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 308,
+            "valueKind": "flat",
+            "sourceText": "造成 308% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 154,
+            "valueKind": "flat",
+            "sourceText": "造成 154% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 308,
+            "valueKind": "flat",
+            "sourceText": "造成 308% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Stoneskin",
+        "name": "石膚術",
+        "family": "active",
+        "tags": [
+          "持續",
+          "防護",
+          "法術"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Stoneskin",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得防護：吸收 吸收70%受到的傷害，無法吸收持續傷害共吸收1500點傷害 自身受到的傷害，最多吸收 吸收70%受到的傷害，無法吸收持續傷害共吸收1500點傷害 點，持續 6 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得防護：吸收 吸收70%受到的傷害，無法吸收持續傷害共吸收1500點傷害 自身受到的傷害最多吸收 吸收70%受到的傷害，無法吸收持續傷害共吸收1500點傷害 點持續 6 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Thundercloud",
+        "name": "雷雲放射",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "閃電",
+          "引導",
+          "範圍",
+          "連鎖"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Thundercloud",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "引導該技能時在自身上方凝聚出一朵雷雲，一段時間內持續打擊一定範圍內的敵人，每次造成 36-682 法術閃電傷害。 引導層數使該技能的雷雲持續時間增長，打擊頻率提高。"
+        ],
+        "detailText": [
+          "雷雲：造成 36-682 法術閃電傷害",
+          "引導層數最多 5 層每層引導層數使雷雲的持續時間 +2.5 秒雷雲最多選擇 3 個敵人作為目標該技能 +1 彈射次數雷雲打擊頻率在 9 層引導層數時達到最快"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Blink",
+        "name": "閃現",
+        "family": "active",
+        "tags": [
+          "位移",
+          "法術"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Blink",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向指定方向位移一段距離。 該技能和部分位移技能共享冷卻時間。"
+        ],
+        "detailText": [
+          "釋放該技能向指定方向位移一段距離。 該技能和部分位移技能共享冷卻時間該技能額外 +5% 冷卻恢復速度 (Lv1:5) (Lv21:25) (Lv41:45)"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "5"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "25"
+            ],
+            "partial": true
+          },
+          {
+            "level": 41,
+            "textLines": [
+              "45"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Bombard",
+        "name": "炮轟",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "投射物",
+          "範圍",
+          "火焰",
+          "遠程",
+          "拋射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Bombard",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前連續拋射 4 個自動瞄準隨機敵人的炮彈，炮彈接觸目標時產生爆炸，造成 41% 武器攻擊傷害。該技能全部物理傷害轉化為火焰傷害。"
+        ],
+        "detailText": [
+          "炮彈：造成 41% 武器攻擊傷害連續發射 4 個投射物該技能的投射物分裂後，分裂後的效果額外 -50% 傷害",
+          "爆炸：造成 41% 武器攻擊傷害",
+          "該技能 100% 物理傷害轉化為火焰傷害",
+          "該技能 100% 物理傷害轉化為火焰傷害該技能的投射物分裂後，分裂後的效果額外 -50% 傷害"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 41,
+            "valueKind": "flat",
+            "sourceText": "造成 41% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 41,
+            "valueKind": "flat",
+            "sourceText": "造成 41% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 41,
+            "valueKind": "flat",
+            "sourceText": "造成 41% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Shadow_Shot",
+        "name": "暗影彈",
+        "family": "active",
+        "tags": [
+          "法術",
+          "腐蝕",
+          "範圍",
+          "投射物",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Shadow_Shot",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個暗影彈，擊中敵人時產生爆炸，造成 564-846 法術腐蝕傷害。暗影彈可以移動已存在的暗影之沼。"
+        ],
+        "detailText": [
+          "暗影彈：造成 564-846 法術腐蝕傷害基礎發射 1 個投射物",
+          "爆炸：造成 564-846 法術腐蝕傷害",
+          "該技能擊中時將已存在的暗影之沼移動至擊中位置，該效果有 0.5 秒間隔時間"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Shadow_Swamp",
+        "name": "暗影之沼",
+        "family": "active",
+        "tags": [
+          "法術",
+          "腐蝕",
+          "範圍",
+          "持續",
+          "地面"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Shadow_Swamp",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定位置造成腐蝕爆炸，對一定範圍內敵人造成 420-420 法術腐蝕傷害。 腐蝕爆炸後生成沼澤地面，對其中的敵人每秒造成 557 持續腐蝕傷害，沼澤地面持續 3 秒。 沼澤地面可以被暗影彈移動，移動後再次造成腐蝕爆炸並刷新持續時間。"
+        ],
+        "detailText": [
+          "爆炸：造成 420-420 法術腐蝕傷害",
+          "沼澤地面：沼澤地面持續 3 秒傷害狀態持續 2 秒，每秒造成 557 持續腐蝕傷害該技能只能生成 1 片地面沼澤地面中的敵人被虛弱暗影彈擊中時將已存在的沼澤地面移動至擊中位置並再次產生爆炸每次移動會使沼澤地面的技能範圍額外 +10%上限 1 層每消耗 1 層地面蓄能，沼澤地面每次移動時的加成獲得額外效果：額外 +26% 持續傷害（不對異常傷害生效）該技能造成的持續傷害狀態無法擴散（不含異常狀態）每 +1 地面數量上限， +2 該效果可疊加次數",
+          "該技能的地面蓄能層數上限為 1該技能每 0.5 秒獲得一層地面蓄能"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Marked_Rain_of_Arrows",
+        "name": "標記箭雨",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "火焰",
+          "範圍",
+          "持續",
+          "遠程",
+          "投射物",
+          "直射",
+          "墜落"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Marked_Rain_of_Arrows",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射一個標記箭，擊中敵人時造成 35% 武器攻擊傷害。標記箭有機率標記敵人。 當標記箭成功標記敵人或擊中已標記的敵人時，以該敵人為中心落下 5 個爆炸箭矢，每個爆炸箭矢造成 162% 武器攻擊傷害。"
+        ],
+        "detailText": [
+          "標記箭：造成 35% 武器攻擊傷害基礎發射 1 個投射物標記箭擊中時， +100% 機率標記敵人該投射物不受投射物數量加成影響該技能發射的投射物無法彈射或無法穿透",
+          "爆炸箭矢：造成 162% 武器攻擊傷害基礎發射 1 個投射物該技能 +4 投射物數量",
+          "該技能 100% 物理傷害轉化為火焰傷害",
+          "該技能發射的爆炸箭矢可以命中同一個敵人該技能的散彈效應衰減係數為 70%",
+          "標記箭擊中時， +100% 機率標記敵人該技能 +4 投射物數量該技能 100% 物理傷害轉化為火焰傷害該技能發射的投射物無法彈射該技能發射的投射物無法穿透"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 35,
+            "valueKind": "flat",
+            "sourceText": "造成 35% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 162,
+            "valueKind": "flat",
+            "sourceText": "造成 162% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 35,
+            "valueKind": "flat",
+            "sourceText": "造成 35% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 162,
+            "valueKind": "flat",
+            "sourceText": "造成 162% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Bull's_Rage",
+        "name": "公牛之怒",
+        "family": "active",
+        "tags": [
+          "持續",
+          "法術",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Bull%27s_Rage",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得亢奮：近戰技能額外 17.5% 傷害，持續 6 秒。該技能全部魔力消耗轉化為生命消耗 。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮： 技能持續時，近戰技能額外 +27% 傷害持續 6 秒",
+          "該技能的魔力消耗被替代為生命消耗"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Shadow_Dash",
+        "name": "暗影衝刺",
+        "family": "active",
+        "tags": [
+          "法術",
+          "位移",
+          "持續",
+          "腐蝕"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Shadow_Dash",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向指定方向位移一段距離，對起點、落點和路徑近處的敵人施加 1 層減速。該技能和部分位移技能共享冷卻時間。"
+        ],
+        "detailText": [
+          "釋放該技能向指定方向位移一段距離，對起點、落點和路徑近處的敵人施加 1 層減速",
+          "該技能對起點、落點和路徑近處的敵人施加 1 層減速 (Lv1:1) (Lv4:1) (Lv5:2) (Lv7:2) (Lv8:3) (Lv11:3) (Lv12:4) (Lv15:4) (Lv16:5)"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "1"
+            ],
+            "partial": true
+          },
+          {
+            "level": 4,
+            "textLines": [
+              "1"
+            ],
+            "partial": true
+          },
+          {
+            "level": 5,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 7,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 8,
+            "textLines": [
+              "3"
+            ],
+            "partial": true
+          },
+          {
+            "level": 11,
+            "textLines": [
+              "3"
+            ],
+            "partial": true
+          },
+          {
+            "level": 12,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 15,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 16,
+            "textLines": [
+              "5"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Frost_Shield",
+        "name": "寒冰盾",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "冰冷",
+          "防護"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Frost_Shield",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得防護：額外 -13.8% 自身受到的物理傷害和火焰傷害，持續 5 秒。 該技能持續時生成三個環繞自身的寒冰盾，造成 80-121 法術冰冷傷害。"
+        ],
+        "detailText": [
+          "釋放該技能獲得防護：技能持續時，額外 -29% 受到的物理傷害技能持續時，額外 -29% 受到的火焰傷害持續 5 秒",
+          "寒冰盾：造成 80-121 法術冰冷傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Rocket_Jump",
+        "name": "火箭跳",
+        "family": "active",
+        "tags": [
+          "位移",
+          "遠程",
+          "攻擊",
+          "範圍",
+          "火焰"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Rocket_Jump",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能炮擊腳下的地面，造成 221% 武器攻擊傷害，並向後跳躍一段距離。該技能全部物理傷害轉化為火焰傷害。"
+        ],
+        "detailText": [
+          "火箭跳：造成 221% 武器攻擊傷害該技能 100% 物理傷害轉化為火焰傷害該技能 +20% 點燃機率對移動速度加成的 75% 同樣作用於該技能的額外攻擊速度，至多額外 +60% 攻擊速度"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 221,
+            "valueKind": "flat",
+            "sourceText": "造成 221% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 221,
+            "valueKind": "flat",
+            "sourceText": "造成 221% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Split_Firebolt",
+        "name": "裂變火球",
+        "family": "active",
+        "tags": [
+          "法術",
+          "投射物",
+          "火焰",
+          "範圍",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Split_Firebolt",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個火球，火球抵達射程終點時產生爆炸，火球擊中和爆炸時各能造成 46-69 法術火焰傷害。火球擊中後分裂成三個小型火球，小型火球擊中時造成 458-687 法術火焰傷害，可以對大火球擊中的敵人造成傷害，且可以擊中同一個敵人。"
+        ],
+        "detailText": [
+          "火球：造成 46-69 法術火焰傷害基礎發射 1 個投射物大火球無法擊中相同的敵人",
+          "火球爆炸：造成 46-69 法術火焰傷害",
+          "小型火球：造成 458-687 法術火焰傷害",
+          "該技能分裂出的小火球 +1 穿透次數小火球可以擊中大火球擊中的敵人多個小火球可以擊中同一個敵人小火球的散彈效應衰減係數為 75%"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Blizzard",
+        "name": "暴風雪",
+        "family": "active",
+        "tags": [
+          "法術",
+          "冰冷",
+          "範圍",
+          "轟炸"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Blizzard",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定位置落下 3 波暴風雪，造成 203-303 法術冰冷傷害。該技能擊中時對敵人施加減益：額外 10% 受到的冰冷傷害，持續 6 秒。"
+        ],
+        "detailText": [
+          "暴風雪：造成 203-303 法術冰冷傷害基礎落下 1 波暴風雪該技能 +2 總波次額外 +10% 受到的冰冷傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Obscure",
+        "name": "模糊",
+        "family": "active",
+        "tags": [
+          "持續",
+          "防護",
+          "法術"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Obscure",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能時獲得防護：當閃避或避免傷害時，5%迷蹤值上限的迷蹤值，持續 6 秒。釋放該技能時，10.5% 迷蹤值上限的迷蹤值。"
+        ],
+        "detailText": [
+          "釋放該技能時獲得防護：技能持續時，每次閃避或避免傷害時， +5% 迷蹤值上限的迷蹤值；該效果有 0.2 秒間隔時間",
+          "該技能釋放時， 10.5% 迷蹤值上限的迷蹤值 (Lv1:21/2) (Lv21:31/2) (Lv41:41/2)"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "21/2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "31/2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 41,
+            "textLines": [
+              "41/2"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Mana_Boil",
+        "name": "魔力沸騰",
+        "family": "active",
+        "tags": [
+          "法術",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Mana_Boil",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得亢奮：持續消耗魔力，額外 10% 法術傷害，永久持續。魔力降至0時，失去該亢奮效果。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮：技能持續時，額外 16.65% 法術傷害每秒消耗 技能持續時，額外 16.65% 法術傷害 魔力魔力降至0時，失去該亢奮效果"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Frost_Impact",
+        "name": "寒霜破擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "冰冷",
+          "破擊"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Frost_Impact",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能猛擊前方地面，在一定範圍內產生一波冰刺，造成 202% 武器攻擊傷害。該技能消耗破擊蓄能時，額外產生三波冰刺，每波冰刺的傷害和技能範圍額外增加。該技能全部物理傷害轉化為冰冷傷害。"
+        ],
+        "detailText": [
+          "冰刺：造成 202% 武器攻擊傷害每波冰刺額外 +30% 擊中傷害每波冰刺額外 +20% 技能範圍對該技能的破擊蓄能恢復速度的加成同樣作用於冰刺生成間隔該技能每 3 秒獲得一次破擊蓄能該技能 100% 物理傷害轉化為冰冷傷害任意情況下造成冰封時，若該技能沒有破擊蓄能，則立刻獲得破擊蓄能，該效果有 3 秒間隔時間"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 202,
+            "valueKind": "flat",
+            "sourceText": "造成 202% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 202,
+            "valueKind": "flat",
+            "sourceText": "造成 202% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Path_of_Flames",
+        "name": "烈焰之徑",
+        "family": "active",
+        "tags": [
+          "法術",
+          "火焰",
+          "引導",
+          "持續",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Path_of_Flames",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "引導該技能留下火焰路徑，且移動時能夠穿過敵人，對其中的敵人每秒造成 909 持續火焰傷害。每層引導層數使該技能額外 43/2% 傷害。"
+        ],
+        "detailText": [
+          "火焰路徑：每秒造成 909 持續火焰傷害持續傷害持續 2 秒",
+          "每 +1 額外引導層數上限，該技能額外 21.5 %傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Berserking_Blade",
+        "name": "暴走巨刃",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "物理",
+          "揮斬",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Berserking_Blade",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放揮擊攻擊自身一定範圍內敵人，擊中時造成 210% 武器攻擊傷害。該技能受斬擊機率影響，使其有可能以斬擊形態釋放。該技能釋放斬擊時攻擊一定範圍內的敵人，擊中時造成 421% 武器攻擊傷害，並有機率獲得一層增益。該技能擊敗敵人或擊中勁敵時，獲得增益：該技能的技能範圍增加。"
+        ],
+        "detailText": [
+          "揮擊：210% 武器攻擊傷害",
+          "斬擊：421% 武器攻擊傷害該技能斬擊擊中勁敵時， 50% 機率額外獲得一層增益",
+          "增益：每層增益使該技能 2.5% 範圍持續 10 秒上限 20 層",
+          "該技能擊敗敵人或擊中勁敵時，獲得一層增益該技能 +20% 斬擊機率",
+          "該技能擊敗敵人或擊中勁敵時，獲得一層增益該技能斬擊擊中勁敵時， 50% 機率額外獲得一層增益該技能 +20% 斬擊機率"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 210,
+            "valueKind": "flat",
+            "sourceText": "造成 210% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 421,
+            "valueKind": "flat",
+            "sourceText": "造成 421% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Charged_Pummel",
+        "name": "充能猛擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "引導",
+          "閃電",
+          "破擊",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Charged_Pummel",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "該技能引導結束時猛擊地面，造成 438% 武器攻擊傷害。該技能消耗破擊蓄能時，在猛擊位置生成一片電場，一段時間內持續打擊其中的敵人，造成 22% 武器攻擊傷害。該技能消耗破擊蓄能時，每層引導層數使該次技能的猛擊傷害額外增加，電場的基礎持續時間增加。該技能全部物理傷害轉化為閃電傷害。"
+        ],
+        "detailText": [
+          "猛擊：造成 438% 武器攻擊傷害消耗破擊蓄能時，每層引導層數使猛擊額外 70% 擊中傷害",
+          "電場：造成 22% 武器攻擊傷害電場持續 2 秒每層引導層數使電場 +0.2 秒持續時間電場每 0.3秒造成一次傷害",
+          "該技能 100% 物理傷害轉化為閃電傷害該技能額外 +100% 攻擊速度該技能每 3 秒獲得一次破擊蓄能引導層數最多 5 層該技能引導時可以移動"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 438,
+            "valueKind": "flat",
+            "sourceText": "造成 438% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 22,
+            "valueKind": "flat",
+            "sourceText": "造成 22% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 438,
+            "valueKind": "flat",
+            "sourceText": "造成 438% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 22,
+            "valueKind": "flat",
+            "sourceText": "造成 22% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Chain_Lightning",
+        "name": "閃電鏈",
+        "family": "active",
+        "tags": [
+          "法術",
+          "閃電",
+          "連鎖"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Chain_Lightning",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向敵人發射一道閃電鏈，造成 73-1393 法術閃電傷害。閃電鏈可以彈射 2 次。"
+        ],
+        "detailText": [
+          "閃電鏈：造成 73-1393 法術閃電傷害該技能 +2 彈射次數"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Double_Thrusts",
+        "name": "雙重突刺",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "物理",
+          "影襲",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Double_Thrusts",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前突刺 2 次，造成 186% 武器攻擊傷害。第一次突刺造成創傷時，第二次突刺必定造成創傷，且該次創傷傷害額外增加。幻影第一次突刺造成創傷時，第二次突刺造成的創傷擴散至目標週圍的敵人。"
+        ],
+        "detailText": [
+          "突刺：造成 186% 武器攻擊傷害第一次突刺造成創傷時，第二次突刺造成的創傷傷害額外 +30%幻影第一次突刺造成創傷時，第二次突刺造成的創傷擴散至周圍敵人該技能 +20% 創傷機率對技能範圍的增加或減少的 100% 同樣作用於該技能的幻影索敵範圍，上限 100%"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 186,
+            "valueKind": "flat",
+            "sourceText": "造成 186% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 186,
+            "valueKind": "flat",
+            "sourceText": "造成 186% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Mind_Control",
+        "name": "攝念奪識",
+        "family": "active",
+        "tags": [
+          "法術",
+          "腐蝕",
+          "引導",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Mind_Control",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "引導該技能時鏈接一定範圍內的多個敵人，並對其每秒造成 675 持續腐蝕傷害。 該技能每擁有一條鏈接，每秒恢復 1/2% 最大生命。 引導該技能時可以移動。 引導層數上限使該技能的傷害額外增加，鏈接數量增加。"
+        ],
+        "detailText": [
+          "鏈接：每秒造成 675 持續腐蝕傷害持續傷害持續 2 秒初始擁有 3 最大鏈接數量每層引導層數 +1 最大鏈接數量每 +1 額外引導層數上限，該技能額外 21.5 %傷害該技能引導時， -30% 移動速度每有一條連結，每秒恢復 0.5% 最大生命值",
+          "引導層數最多 5 層"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Ring_of_Ice",
+        "name": "冰環術",
+        "family": "active",
+        "tags": [
+          "法術",
+          "冰冷",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Ring_of_Ice",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在自身一定範圍內形成一圈冰環，造成 612-918 法術冰冷傷害。 該技能擊殺敵人時，有 20% 機率在該敵人位置再次觸發一圈冰環。每圈冰環只能觸發一次該效果。"
+        ],
+        "detailText": [
+          "冰環：造成 612-918 法術冰冷傷害該技能擊敗敵人時， +20% 機率在敵人的位置再次觸發該技能；每圈冰環只能觸發一次該效果"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Split_Shot",
+        "name": "分裂射擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "投射物",
+          "物理",
+          "遠程",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Split_Shot",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能向前發射 3 個投射物，造成 347% 武器攻擊傷害。該技能發射的投射物擊敗敵人後，有 50% 機率以其為起點向 8 米內至多 2 名敵人各發射 1 個投射物。"
+        ],
+        "detailText": [
+          "分裂射擊：造成 347% 武器攻擊傷害基礎發射 1 個投射物該技能 +2 投射物數量一般情況下，該技能發射的投射物無法命中同一個敵人該技能的散彈效應衰減係數為 77%",
+          "該技能發射的投射物擊敗敵人後，有 50% 機率以其為起點向 8 米內至多 2 名敵人各發射 1 個投射物"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 347,
+            "valueKind": "flat",
+            "sourceText": "造成 347% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 347,
+            "valueKind": "flat",
+            "sourceText": "造成 347% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Flame_Slash",
+        "name": "烈焰斬",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "火焰",
+          "揮斬"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Flame_Slash",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放揮擊攻擊前方扇形區域，擊中時造成 346% 武器攻擊傷害。該技能受斬擊機率影響，使其有可能以斬擊形態釋放。該技能釋放斬擊時生成 3 道烈焰，擊中時造成 346% 武器攻擊傷害。技能範圍使該技能斬擊生成的烈焰數量增加。多道烈焰傷害可以命中同一個敵人。該技能全部物理傷害轉化為火焰傷害。"
+        ],
+        "detailText": [
+          "揮擊：造成 346% 武器攻擊傷害",
+          "斬擊：造成 346% 武器攻擊傷害每 115% 對該技能範圍的加成，+2 火浪道數每 115% 對該技能範圍的加成，+30% 火浪距離多道火浪的傷害可以疊加該技能的散彈效應衰減係數為 50%",
+          "該技能 100% 物理傷害轉化為火焰傷害該技能 +20% 斬擊機率"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 346,
+            "valueKind": "flat",
+            "sourceText": "造成 346% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 346,
+            "valueKind": "flat",
+            "sourceText": "造成 346% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 346,
+            "valueKind": "flat",
+            "sourceText": "造成 346% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 346,
+            "valueKind": "flat",
+            "sourceText": "造成 346% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Icy_Blade",
+        "name": "冰凌斬",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "冰冷",
+          "揮斬"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Icy_Blade",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放揮擊攻擊前方扇形區域，擊中時造成 142% 武器攻擊傷害。該技能受斬擊機率影響，使其有可能以斬擊形態釋放。該技能釋放斬擊時生成1道冰凌，擊中時造成 142% 武器攻擊傷害。該技能擊中被冰封的敵人時，獲得斬擊次數，斬擊擊中被冰封的敵人時，產生爆炸，造成 213% 武器攻擊傷害。多個爆炸和斬擊可以命中同一個敵人。該技能全部物理傷害轉化為冰冷傷害。"
+        ],
+        "detailText": [
+          "揮擊：造成 142% 武器攻擊傷害",
+          "斬擊：造成 142% 武器攻擊傷害該技能擊中被冰封的敵人時， +100% 機率獲得 1 次斬擊次數，間隔 0.01 秒",
+          "爆炸：造成 213% 武器攻擊傷害爆炸屬於斬擊的一部分多個爆炸和斬擊可以命中同一個敵人",
+          "該技能 100% 物理傷害轉化為冰冷傷害該技能 +20% 斬擊機率",
+          "該技能產生的爆炸和斬擊可以命中同一個敵人該技能的散彈效應衰減係數為 70%",
+          "該技能 100% 物理傷害轉化為冰冷傷害該技能擊中被冰封的敵人時， +100% 機率獲得 1 次斬擊次數，間隔 0.01 秒任意情況下造成冰封時，該技能 +100% 機率獲得 1 次斬擊次數該技能 +20% 斬擊機率"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 142,
+            "valueKind": "flat",
+            "sourceText": "造成 142% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 142,
+            "valueKind": "flat",
+            "sourceText": "造成 142% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 213,
+            "valueKind": "flat",
+            "sourceText": "造成 213% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 142,
+            "valueKind": "flat",
+            "sourceText": "造成 142% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-5",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 142,
+            "valueKind": "flat",
+            "sourceText": "造成 142% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-6",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 213,
+            "valueKind": "flat",
+            "sourceText": "造成 213% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Frost_Spike",
+        "name": "碎冰刺擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "投射物",
+          "影襲",
+          "冰冷",
+          "範圍",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Frost_Spike",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前突刺，造成 201% 武器攻擊傷害。突刺擊中敵人後發射 2 個冰凌，造成 201% 武器攻擊傷害。敵人的冰結值使該技能的冰凌數量增加。該技能全部物理傷害轉化為冰冷傷害。"
+        ],
+        "detailText": [
+          "突刺：造成 201% 武器攻擊傷害",
+          "冰凌：造成 201% 武器攻擊傷害基礎發射 2 個投射物該技能擊中時，敵人每有 35 點冰結值，+1 發射的投射物數量",
+          "該技能 100% 物理傷害轉化為冰冷傷害該技能每 +1 投射物數量，額外 +8% 傷害該技能發射的投射物數量最大為 5對技能範圍的增加或減少的 100% 同樣作用於該技能的幻影索敵範圍，上限 100%"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 201,
+            "valueKind": "flat",
+            "sourceText": "造成 201% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 201,
+            "valueKind": "flat",
+            "sourceText": "造成 201% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 201,
+            "valueKind": "flat",
+            "sourceText": "造成 201% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 201,
+            "valueKind": "flat",
+            "sourceText": "造成 201% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Wilt_Spike",
+        "name": "凋零刺擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "影襲",
+          "腐蝕",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Wilt_Spike",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前突刺，對敵人造成 201% 武器攻擊傷害。該技能本體擊中時，獲得增益：該技能的腐蝕傷害額外增加。增益層數達到上限時，該技能的幻影數量增加。"
+        ],
+        "detailText": [
+          "突刺：造成 201% 武器攻擊傷害",
+          "該技能 +20% 凋零機率該技能本體擊中時，獲得1層增益；持續 4 秒，最多疊加5層每層增益使該技能額外 +3% 腐蝕傷害（疊乘）增益層數達到上限時， +1 幻影數量該技能附加 5 - 5 基礎凋零傷害該技能 100% 物理傷害轉化為腐蝕傷害",
+          "該技能 100% 物理傷害轉化為腐蝕傷害該技能 +20% 凋零機率該技能本體擊中時，獲得1層增益；持續 4 秒，最多疊加5層增益層數達到上限時， +1 幻影數量該技能附加 5 - 5 基礎凋零傷害對技能範圍的增加或減少的 100% 同樣作用於該技能的幻影索敵範圍，上限 100%"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 201,
+            "valueKind": "flat",
+            "sourceText": "造成 201% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 201,
+            "valueKind": "flat",
+            "sourceText": "造成 201% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Lightning_Shot",
+        "name": "閃電射擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "遠程",
+          "投射物",
+          "閃電",
+          "連鎖",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Lightning_Shot",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個閃電箭，擊中時對敵人造成 334% 武器傷害。閃電箭擊中敵人時分裂為三道閃電，對一定範圍內的隨機3個敵人各造成 334% 武器攻擊傷害。該技能全部物理傷害轉化為閃電傷害。"
+        ],
+        "detailText": [
+          "閃電箭：敵人造成 334% 武器傷害基礎發射 1 個投射物",
+          "閃電：造成 334% 武器攻擊傷害",
+          "該技能 100% 物理傷害轉化為閃電傷害"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 334,
+            "valueKind": "flat",
+            "sourceText": "造成 334% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 334,
+            "valueKind": "flat",
+            "sourceText": "造成 334% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Corrosive_Shot",
+        "name": "侵蝕彈",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "腐蝕",
+          "範圍",
+          "持續",
+          "遠程",
+          "投射物",
+          "拋射",
+          "地面"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Corrosive_Shot",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前拋射一個侵蝕彈，侵蝕彈接觸目標時產生爆炸，造成 95% 武器攻擊傷害。未分裂的侵蝕彈接觸目標時還會生成侵蝕地面，對其中的敵人每秒造成 57 持續腐蝕傷害，並使其中敵人受到的該技能的傷害額外增加。該技能造成的凋零傷害更高。該技能全部物理傷害轉化為腐蝕傷害。"
+        ],
+        "detailText": [
+          "爆炸：造成 95% 武器攻擊傷害該技能 +30% 凋零機率該技能額外 +30% 凋零傷害該技能 100% 物理傷害轉化為腐蝕傷害",
+          "侵蝕地面：侵蝕地面持續 3 秒傷害狀態持續 2 秒，每秒造成 57 持續腐蝕傷害該技能造成的持續傷害狀態無法擴散（不含異常狀態）",
+          "該技能的地面蓄能未回滿時，無法消耗地面蓄能該技能的地面蓄能層數上限為 1該技能每 0.5 秒獲得一層地面蓄能每消耗 1 層地面蓄能，地面內的敵人額外 +30% 受到的該技能傷害該技能基礎地面數量上限為 1",
+          "該技能 100% 物理傷害轉化為腐蝕傷害該技能額外 +30% 凋零傷害該技能 +30% 凋零機率該技能的投射物分裂後，分裂後的效果額外 -50% 傷害該技能造成的持續傷害狀態無法擴散（不含異常狀態）該技能的地面蓄能未回滿時，無法消耗地面蓄能"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 95,
+            "valueKind": "flat",
+            "sourceText": "造成 95% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 95,
+            "valueKind": "flat",
+            "sourceText": "造成 95% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Burning_Shot",
+        "name": "燃燒射擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "遠程",
+          "範圍",
+          "投射物",
+          "火焰",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Burning_Shot",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個烈焰箭，造成 256% 武器攻擊傷害，附加主手武器的物理和火焰傷害至基礎點燃傷害，且造成的點燃傷害額外增加。該技能擊中點燃的敵人時引發爆炸，對半徑 3 米內敵人造成相當於 100% 該敵人受到的每秒點燃傷害的真實傷害，並造成 5-5 間接火焰傷害。該技能全部物理傷害轉化為火焰傷害。"
+        ],
+        "detailText": [
+          "燃燒射擊：造成 256% 武器攻擊傷害基礎發射 1 個投射物該技能額外 +30% 點燃傷害該技能 100% 物理傷害轉化為火焰傷害該技能 +25% 點燃機率 (Lv1:25)",
+          "該技能擊中點燃的敵人時引發爆炸，對半徑 3 米內敵人造成相當於 100% 該敵人受到的每秒點燃傷害的真實傷害；該效果對同一敵人有 5 秒冷卻時間"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "25"
+            ],
+            "partial": true
+          }
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 256,
+            "valueKind": "flat",
+            "sourceText": "造成 256% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 256,
+            "valueKind": "flat",
+            "sourceText": "造成 256% 武器攻擊傷害"
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Electrifying_Shot",
+        "name": "電光彈",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "遠程",
+          "投射物",
+          "閃電",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Electrifying_Shot",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個電光彈，造成 302% 武器攻擊傷害。電光彈永久穿透。該技能全部物理傷害轉化為閃電傷害。"
+        ],
+        "detailText": [
+          "電光彈：造成 302% 武器攻擊傷害基礎發射 1 個投射物該技能 100% 物理傷害轉化為閃電傷害該技能發射的投射物永久穿透"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 302,
+            "valueKind": "flat",
+            "sourceText": "造成 302% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 302,
+            "valueKind": "flat",
+            "sourceText": "造成 302% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Corrosive_Throw",
+        "name": "侵蝕投擲",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "遠程",
+          "投射物",
+          "腐蝕",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Corrosive_Throw",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 3 個投射物，造成 383% 武器攻擊傷害。該技能 20 連續攻擊幾率，且連續攻擊時，該技能的投射物數量增加。該技能全部物理傷害轉化為腐蝕傷害。"
+        ],
+        "detailText": [
+          "侵蝕投擲：造成 383% 武器攻擊傷害基礎發射 1 個投射物該技能 +2 投射物數量該技能 +20% 連續攻擊機率該技能 100% 物理傷害轉化為腐蝕傷害該技能每連續攻擊一次，獲得 1 層增益，每層增益使該技能 +1 投射物數量，上限 3 ，連續攻擊結束後重置；增加的投射物數量受當前技能的連續攻擊計數影響一般情況下，該技能發射的投射物無法命中同一個敵人該技能的散彈效應衰減係數為 87%"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 383,
+            "valueKind": "flat",
+            "sourceText": "造成 383% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 383,
+            "valueKind": "flat",
+            "sourceText": "造成 383% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Inexhaustible_Barrage",
+        "name": "不竭彈雨",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "投射物",
+          "物理",
+          "引導",
+          "範圍",
+          "持續",
+          "墜落",
+          "遠程",
+          "轟炸"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Inexhaustible_Barrage",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "該技能引導結束時以一定範圍內的敵人為目標落下多波彈雨，隨機攻擊其中的敵人，每波造成 185% 武器攻擊傷害。引導層數使該技能彈雨的波數增加。投射物速度使該技能的傷害額外增加。"
+        ],
+        "detailText": [
+          "不竭彈雨：造成 185% 武器攻擊傷害基礎落下 1 波彈雨每波基礎發射 1 個投射物停止引導時，每層引導層數增加一波彈雨該技能 +5 投射物數量對該技能投射物速度加成的 25% 同樣作用於該技能額外傷害該技能額外 +100% 攻擊速度",
+          "該技能引導時可以移動引導層數最多 5 層"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 185,
+            "valueKind": "flat",
+            "sourceText": "造成 185% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 185,
+            "valueKind": "flat",
+            "sourceText": "造成 185% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Rain_of_Arrows",
+        "name": "箭雨",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "遠程",
+          "物理",
+          "範圍",
+          "投射物",
+          "墜落"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Rain_of_Arrows",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向空中發射 15 個投射物，投射物落下時隨機攻擊一定範圍內的敵人，造成 134% 武器攻擊傷害。 投射物速度使該技能傷害額外增加。"
+        ],
+        "detailText": [
+          "箭雨：造成 134% 武器攻擊傷害基礎發射 1 個投射物該技能 +14 投射物數量對該技能投射物速度加成的 25% 同樣作用於該技能額外傷害",
+          "該技能發射的投射物可以命中同一個敵人該技能的散彈效應衰減係數為 70%"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 134,
+            "valueKind": "flat",
+            "sourceText": "造成 134% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 134,
+            "valueKind": "flat",
+            "sourceText": "造成 134% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Savage_Charge",
+        "name": "野蠻衝鋒",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "物理",
+          "破擊",
+          "引導",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Savage_Charge",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "引導該技能時向前衝鋒，移動時能夠穿過敵人，並對敵人不斷造成 57% 武器攻擊傷害，同時將其擊退。該技能引導結束時，如果引導層數達到上限，則發動野蠻打擊，對前方敵人造成 570% 武器攻擊傷害，並將其擊退。破擊蓄能使該次攻擊的傷害額外增加。引導層數使該技能衝鋒時的技能範圍增加。"
+        ],
+        "detailText": [
+          "衝鋒：造成 57% 武器攻擊傷害",
+          "野蠻打擊：造成 570% 武器攻擊傷害消耗破擊蓄能時，該技能額外 +90% 擊中傷害",
+          "該技能擊中時，擊退敵人該技能額外 +100% 攻擊速度該技能每 3 秒獲得一次破擊蓄能引導層數最多 5 層每層引導層數使該技能 +12% 範圍該技能引導時強制向前移動該技能引導時，能夠穿過敵人",
+          "該技能額外 +100% 攻擊速度該技能引導時，能夠穿過敵人"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 57,
+            "valueKind": "flat",
+            "sourceText": "造成 57% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 570,
+            "valueKind": "flat",
+            "sourceText": "造成 570% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 57,
+            "valueKind": "flat",
+            "sourceText": "造成 57% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 570,
+            "valueKind": "flat",
+            "sourceText": "造成 570% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Ice_Lances",
+        "name": "冰錐術",
+        "family": "active",
+        "tags": [
+          "法術",
+          "投射物",
+          "冰冷",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Ice_Lances",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個冰錐，造成 762-1144 法術冰冷傷害。冰錐彈射 1 次。"
+        ],
+        "detailText": [
+          "冰錐術：造成 762-1144 法術冰冷傷害該技能 +1 彈射次數一般情況下，該技能發射的投射物無法命中同一個敵人該技能的散彈效應衰減係數為 64%"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Sparkle",
+        "name": "電火花",
+        "family": "active",
+        "tags": [
+          "法術",
+          "投射物",
+          "閃電",
+          "範圍",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Sparkle",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個電火花，持續打擊其範圍內的敵人，每次造成 43-810 法術閃電傷害。電火花的速度逐漸降低。"
+        ],
+        "detailText": [
+          "電火花：造成 43-810 法術閃電傷害投射物每 0.25 秒打擊一次投射物持續 1.5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Ring_of_Blades",
+        "name": "環繞飛刃",
+        "family": "active",
+        "tags": [
+          "法術",
+          "引導",
+          "物理",
+          "範圍",
+          "持續",
+          "投射物",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Ring_of_Blades",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "引導該技能時生成圓形飛刃環繞自身，飛刃對其範圍內的敵人造成 379-631 法術物理傷害。該技能引導結束後，飛刃仍然存在 5 秒。引導該技能時可以移動。"
+        ],
+        "detailText": [
+          "環繞飛刃：造成 379-631 法術物理傷害對同一個敵人，投射物最快每 0.25 秒造成一次傷害引導層數最多 5 層每引導一次，生成 1 個投射物，上限 5 個投射物引導結束後，投射物依然持續 5 秒該技能引導時可以移動",
+          "每 +1 額外引導層數上限，該技能額外 21.5 %傷害",
+          "投射物的環繞半徑也受到該技能的技能範圍加成影響",
+          "該技能不受投射物尺寸影響"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Flame_Core",
+        "name": "聚焰之核",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "火焰",
+          "持續",
+          "哨衛"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Flame_Core",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定位置放置 1 個火焰哨衛，該哨衛每隔一段時間對一定範圍內的敵人造成 498-925 法術火焰傷害。 該哨衛存在於角色自身一定範圍內時，獲得增益：釋放頻率額外增加。"
+        ],
+        "detailText": [
+          "聚焰之核：造成 498-925 法術火焰傷害每 1 秒造成1次傷害哨衛持續 8 秒該技能基礎哨衛數量上限為 1如果玩家在該技能放置的哨衛 10 米內，該哨衛額外 +20% 釋放頻率"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Lightning_Storm",
+        "name": "閃電風暴",
+        "family": "active",
+        "tags": [
+          "法術",
+          "閃電",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Lightning_Storm",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定位置召喚一團能夠追蹤敵人的閃電風暴，持續打擊其籠罩範圍內的敵人，每次造成 90-1707 法術閃電傷害。"
+        ],
+        "detailText": [
+          "閃電風暴：造成 90-1707 法術閃電傷害每隔 0.5 秒打擊一次持續 5 秒",
+          "該技能至多召喚 40 個閃電風暴"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Flame_Jet",
+        "name": "烈焰釋放",
+        "family": "active",
+        "tags": [
+          "法術",
+          "火焰",
+          "範圍",
+          "持續",
+          "投射物",
+          "拋射",
+          "地面"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Flame_Jet",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定位置凝聚一片烈焰地面，每秒造成 611 持續火焰傷害。烈焰地面每隔固定時間噴發一次，對其中的敵人造成 231-428 法術火焰傷害。烈焰地面噴發時，鎖定一定範圍內的敵人並向其發射一枚烈焰彈，擊中時造成 231-428 法術火焰傷害。該技能消耗地面蓄能時，烈焰彈數量增加。"
+        ],
+        "detailText": [
+          "烈焰地面：烈焰地面持續 3 秒傷害狀態持續 2 秒，每秒造成 611 持續火焰傷害每消耗 1 地面蓄能，持續時間內多噴發一次投射物",
+          "烈焰地面噴發：造成 231-428 法術火焰傷害",
+          "烈焰彈：造成 231-428 法術火焰傷害",
+          "該技能造成的持續傷害狀態無法擴散（不含異常狀態）該技能的地面蓄能層數上限為 1該技能每 0.5 秒獲得一層地面蓄能",
+          "該技能基礎地面數量上限為 1",
+          "該技能發射的投射物無法分裂該技能造成的持續傷害狀態無法擴散（不含異常狀態）"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Frost_Terra",
+        "name": "寒霜地面",
+        "family": "active",
+        "tags": [
+          "法術",
+          "冰冷",
+          "範圍",
+          "持續",
+          "地面"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Frost_Terra",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能在指定位置生成一片寒霜地面，每秒造成 494 持續冰冷傷害。地面蓄能使該技能的傷害額外增加。"
+        ],
+        "detailText": [
+          "寒霜地面：寒霜地面持續 3 秒傷害狀態持續 2 秒，每秒造成 494 持續冰冷傷害該技能造成傷害時，施加冰結每消耗 1 地面蓄能，該次技能額外 26% 傷害該技能造成的持續傷害狀態無法擴散（不含異常狀態）",
+          "該技能的地面蓄能層數上限為 1該技能每 0.5 秒獲得一層地面蓄能",
+          "該技能基礎地面數量上限為 1",
+          "該技能造成傷害時，施加冰結每消耗 1 地面蓄能，該次技能額外 +26% 傷害該技能造成的持續傷害狀態無法擴散（不含異常狀態）"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Scorching_Beam",
+        "name": "灼熱射線",
+        "family": "active",
+        "tags": [
+          "法術",
+          "火焰",
+          "引導",
+          "範圍",
+          "射線"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Scorching_Beam",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "引導該技能時向前發射 1 條火焰射線，打擊射線終點的敵人，擊中時造成 120-222 法術火焰傷害。 引導層數達到上限時，失去所有引導層數並在射線終點處產生爆炸，造成 359-667 擊中火焰傷害。"
+        ],
+        "detailText": [
+          "火焰射線：造成 120-222 法術火焰傷害",
+          "火焰爆炸：造成 359-667 法術火焰傷害",
+          "引導層數最多 5 層",
+          "該技能發射的射線和爆炸可以命中同一個敵人該技能的散彈效應衰減係數為 70%"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Wilting_Beam",
+        "name": "枯萎射線",
+        "family": "active",
+        "tags": [
+          "法術",
+          "引導",
+          "腐蝕",
+          "持續",
+          "範圍",
+          "射線"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Wilting_Beam",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "引導該技能時向前發射1條枯萎射線，對其範圍內的敵人每秒造成 956 法術腐蝕傷害。引導層數達到上限時，失去所有引導層數並對枯萎射線範圍內的敵人造成一次收割。"
+        ],
+        "detailText": [
+          "枯萎射線：每秒造成 956 法術腐蝕傷害持續 2 秒該技能造成的持續傷害狀態無法擴散（不含異常狀態）",
+          "收割：收割射線範圍內的敵人 0.5 秒持續傷害冷卻時間為 1.25 秒",
+          "引導層數最多 5 層"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Frigid_Transmission",
+        "name": "寒冰傳送",
+        "family": "active",
+        "tags": [
+          "法術",
+          "冰冷",
+          "範圍",
+          "位移"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Frigid_Transmission",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能向指定位置位移，在起點和落點一定範圍內留下寒冰，對其中敵人造成 693-1040 法術冰冷傷害。任意情況下造成冰凍時，刷新該技能的冷卻時間。"
+        ],
+        "detailText": [
+          "寒冰傳送：造成 693-1040 法術冰冷傷害任意情況下造成冰凍時，刷新該技能的冷卻時間，間隔 0.03 秒",
+          "任意情況下造成冰凍時，刷新該技能的冷卻時間，間隔 0.03 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Forced_Start",
+        "name": "強制啟動",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "防護"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Forced_Start",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得防護：12.3% 護盾充能速度，持續 5 秒。 釋放該技能時，護盾立即開始充能。"
+        ],
+        "detailText": [
+          "釋放該技能獲得防護：技能持續時， +18% 護盾充能速度使護盾立即開始充能持續 5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Aegis_of_Fire",
+        "name": "烈火神盾",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "火焰",
+          "防護"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Aegis_of_Fire",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得防護：18%攻擊和法術格擋率，持續 5 秒。該技能持續時，自身格擋時觸發反擊，對敵人造成 20-125 間接火焰傷害。"
+        ],
+        "detailText": [
+          "釋放該技能獲得防護：技能持續時， 27.5% 攻擊格擋率技能持續時， 27.5% 法術格擋率格擋時觸發反擊持續 5 秒",
+          "反擊：造成 20-125 間接火焰傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Delayed_Pain",
+        "name": "痛覺延遲",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "防護"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Delayed_Pain",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得防護：15.3% 受傷緩衝，持續 5 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得防護：技能持續時， +21% 受傷緩衝持續 5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Defensive_Buffer",
+        "name": "緩衝防禦",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "防護"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Defensive_Buffer",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得防護：額外 -12% 自身受到的物理和元素傷害，持續 5 秒。釋放該技能時，如果擁有至少 4 層堅韌祝福，則消耗 4 層堅韌祝福，額外 -1% 自身受到的物理和元素傷害。"
+        ],
+        "detailText": [
+          "釋放該技能獲得防護：技能持續時，額外 -12% 受到的物理傷害技能持續時，額外 -12% 受到的元素傷害持續 5 秒",
+          "該技能釋放時，如果擁有至少 4 層堅韌祝福，則失去 4 層堅韌祝福，獲得額外防護:技能持續時，額外 -10.5% 受到的物理傷害技能持續時，額外 -10.5% 受到的元素傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Brisk_Wind",
+        "name": "迅疾之風",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "防護"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Brisk_Wind",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能獲得防護：1180 閃避值，持續 5 秒。該技能持續時，每次閃避獲得增益：8% 移動速度，持續 6 秒，上限 3 層。"
+        ],
+        "detailText": [
+          "釋放該技能獲得防護：技能持續時， +2700 閃避值技能持續時，閃避時獲得一層增益持續 5 秒",
+          "增益：增益使人物 +8% 移動速度持續 6 秒上限 3 層"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Burst_of_Anger",
+        "name": "怒火狂飆",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Burst_of_Anger",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能獲得亢奮：獲得攻擊激進，10% 體型，額外 7.1% 攻擊傷害，持續 6 秒。該技能持續時，擊敗敵人或擊中勁敵有機率刷新該技能的持續時間。每秒失去 2% 最大生命和護盾。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮：技能持續時，獲得攻擊激進技能持續時， +10% 體型技能持續時，額外 +9% 攻擊傷害技能持續時，擊敗敵人時 +100% 機率刷新該技能持續時間技能持續時，擊中勁敵時 +10% 機率刷新該技能持續時間持續 6 秒",
+          "技能持續時，每秒失去 2% 最大生命和最大護盾"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Scorching_Pulse",
+        "name": "灼熱波紋",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "火焰"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Scorching_Pulse",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能放出一團火焰波紋，對一定範圍內的敵人造成 1047-1945 法術火焰傷害，並收割 5/4 秒持續傷害。 釋放該技能時，如果十五米內存在聚焰之核，則在一秒後再次觸發該技能。"
+        ],
+        "detailText": [
+          "灼熱波紋：造成 1047-1945 法術火焰傷害使用該技能時，如果15米內存在聚焰之核，則在 1 秒後再次觸發該技能該技能擊中時，收割 1.25 秒的持續傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Fixate",
+        "name": "聚焦",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Fixate",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能時，標記自身十米範圍內的敵人。釋放該技能獲得亢奮：每標記一個敵人，額外 1.1% 傷害，6.1% 標記效果，持續 6 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮： 每影響一個敵人，額外 +3% 傷害，上限 10 層每影響一個敵人， +8% 標記效果，上限 10 層持續 6 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Secret_Origin_Unleash",
+        "name": "秘源釋放",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Secret_Origin_Unleash",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得亢奮：額外 5.5% 法術傷害，且每擁有一層聚能祝福 3% 施法速度，持續 6 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮： 技能持續時，每擁有 1 層聚能祝福， +3% 施法速度，最多增加 8 次技能持續時，額外 +15% 法術傷害持續 6 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Aim",
+        "name": "瞄準",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Aim",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得亢奮：遠距離和射線技能額外 16% 傷害和異常傷害，但額外 -20% 移動速度，持續 6秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮： 遠距離和射線技能額外 +35% 傷害遠距離和射線技能額外 +35% 異常傷害技能持續時，額外 -20% 移動速度；該效果不受激發技能效果影響持續 6 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Blurry_Steps",
+        "name": "迷蹤步",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Blurry_Steps",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得亢奮：25.5% 移動速度，持續 3 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮： 技能持續時， +35% 移動速度持續 3 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Groundshaker",
+        "name": "震撼大地",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "物理",
+          "破擊"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Groundshaker",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能猛擊前方，造成地裂，擊中時造成 227% 武器攻擊傷害。該技能消耗破擊蓄能時，額外 10% 技能範圍，且地裂向外擴散。地裂擴散到最大時，再次造成 1135% 武器攻擊傷害。"
+        ],
+        "detailText": [
+          "地裂：造成 227% 武器攻擊傷害",
+          "地裂二次傷害：造成 1135% 武器攻擊傷害",
+          "該技能每 3 秒獲得一次破擊蓄能對該技能破擊蓄能恢復速度的加成同樣作用於地裂擴散速度該技能消耗破擊蓄能時，額外 +10% 技能範圍"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 227,
+            "valueKind": "flat",
+            "sourceText": "造成 227% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 1135,
+            "valueKind": "flat",
+            "sourceText": "造成 1135% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 227,
+            "valueKind": "flat",
+            "sourceText": "造成 227% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 1135,
+            "valueKind": "flat",
+            "sourceText": "造成 1135% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Focused_Shot",
+        "name": "專注射擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "遠程",
+          "物理",
+          "投射物",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Focused_Shot",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個投射物，擊中敵人時造成 315% 武器攻擊傷害，並獲得戰意和 5 點戰意值。"
+        ],
+        "detailText": [
+          "擁有戰意時該技能 2 投射物穿透次數。每 10 點戰意值使該技能對敵人的傷害根據與其的距離額外增加，對遠處的敵人至多額外 4% 傷害。",
+          "專注射擊：造成 315% 武器攻擊傷害基礎發射 1 個投射物該技能擊中時，獲得戰意該技能擊中時，獲得 5 點戰意值擁有戰意時，該技能 +2 投射物穿透次數每 10 點戰意值使該技能對敵人的傷害根據與其的距離額外增加，至多對遠處的敵人額外 +4% 傷害；該效果受到戰意效果影響"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 315,
+            "valueKind": "flat",
+            "sourceText": "造成 315% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 315,
+            "valueKind": "flat",
+            "sourceText": "造成 315% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Fire_Burst",
+        "name": "爆炎術",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "火焰"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Fire_Burst",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能造成一團炎爆，對一定範圍內的敵人造成 607-1128 法術火焰傷害。"
+        ],
+        "detailText": [
+          "爆炎術：造成 607-1128 法術火焰傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Thunderbolt_Overload",
+        "name": "超載雷球",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "閃電",
+          "投射物",
+          "拋射",
+          "物理"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Thunderbolt_Overload",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前拋出一個可以彈跳 2 次的雷球，接觸目標時產生雷爆，造成 124-207 法術物理傷害。該技能全部物理傷害轉化為閃電傷害。"
+        ],
+        "detailText": [
+          "超載雷球：造成 124-207 法術物理傷害該技能 100% 物理傷害轉化為閃電傷害該技能的分裂數量最大為 3該技能的分裂數量超過 3 後，每超過 1 次，額外 +30% 傷害（該效果不計算輔助技能提供的分裂數量）"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Fearless_Warcry",
+        "name": "狂猛戰吼",
+        "family": "active",
+        "tags": [
+          "戰吼",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Fearless_Warcry",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能發出戰吼，嘲諷周圍敵人。該技能每影響一個敵人，額外 4% 揮斬技能傷害和 4% 揮斬技能造成的額外異常傷害，持續 3 秒。"
+        ],
+        "detailText": [
+          "釋放該技能發出戰吼：嘲諷周圍敵人每影響一個敵人，額外 5.9% 揮斬技能傷害，上限 8 層每影響一個敵人，額外 5.9% 揮斬技能造成的異常傷害，上限 8 層持續 3 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Raging_Warcry",
+        "name": "暴怒戰吼",
+        "family": "active",
+        "tags": [
+          "戰吼",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Raging_Warcry",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能發出戰吼，嘲諷周圍敵人。該技能每影響一個敵人，增加 4% 破擊蓄能恢復速度，且額外 4% 破擊技能傷害和 4% 破擊技能造成的額外異常傷害，持續 3.5 秒。"
+        ],
+        "detailText": [
+          "釋放該技能發出戰吼：嘲諷周圍敵人每影響一個敵人，額外 4.95% 破擊技能傷害，上限 8 層每影響一個敵人，額外 4.95% 破擊技能造成的異常傷害，上限 8 層每影響一個敵人， +4% 破擊蓄能恢復速度，上限 8 層持續 3.5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Charging_Warcry",
+        "name": "衝鋒戰吼",
+        "family": "active",
+        "tags": [
+          "戰吼",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Charging_Warcry",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能發出戰吼，嘲諷周圍敵人。該技能每影響一個敵人，影襲技能額外 4% 傷害和異常傷害，戰吼持續時，影襲技能 +20% 索敵範圍，持續 3 秒。"
+        ],
+        "detailText": [
+          "釋放該技能發出戰吼：嘲諷周圍敵人技能持續時，影襲技能 +20% 索敵範圍技能持續時，影襲技能 +20% 索敵範圍持續 3 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Black_Hole",
+        "name": "黑洞",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "腐蝕",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Black_Hole",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定位置形成黑洞，對一定範圍內敵人造成每秒 249 持續腐蝕傷害，且週期性反向擊退其中的敵人，持續 4 秒。受到該技能傷害的敵人被施加 100 點加劇值，冷卻時間為 1 秒。釋放該技能獲得亢奮：黑洞中的敵人每有 10 點加劇值，你對其額外造成 3.5% 持續傷害,持續 4 秒"
+        ],
+        "detailText": [
+          "黑洞：造成 249-249 持續腐蝕傷害該技能具有反向擊退該技能造成持續傷害時，對敵人施加 100 點加劇值，該效果冷卻時間為 1 秒黑洞每間隔 0.5 秒擊退其中的敵人持續 4 秒釋放該技能獲得亢奮：黑洞中的敵人每有 10 點加劇值，你對其額外造成 3.5% 持續傷害,持續 4 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
+      "definition": {
+        "id": "skill:Summon_Machine_Guard",
+        "name": "召喚機械警衛",
+        "family": "active",
+        "tags": [
+          "法術",
+          "召喚",
+          "持續",
+          "物理",
+          "智械"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Summon_Machine_Guard",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "召喚機械警衛：召喚 1 個機械警衛最多能夠召喚 2 個機械警衛 (Lv1:2) (Lv3:2) (Lv4:3) (Lv17:3) (Lv18:4) (Lv25:4) (Lv26:4) (Lv34:4)每 1 點統御值，該技能召喚的召喚物 0.5% 技能範圍"
+        ],
+        "detailText": [],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 3,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 4,
+            "textLines": [
+              "3"
+            ],
+            "partial": true
+          },
+          {
+            "level": 17,
+            "textLines": [
+              "3"
+            ],
+            "partial": true
+          },
+          {
+            "level": 18,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 25,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 26,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 34,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Summon_Spider_Tank",
+        "name": "召喚蜘蛛坦克",
+        "family": "active",
+        "tags": [
+          "法術",
+          "召喚",
+          "持續",
+          "物理",
+          "智械"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Summon_Spider_Tank",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "召喚蜘蛛坦克：召喚 1 個蜘蛛坦克最多能夠召喚 2 個蜘蛛坦克 (Lv1:2) (Lv3:2) (Lv4:3) (Lv17:3) (Lv18:4) (Lv25:4) (Lv26:4) (Lv34:4)每召喚 1 個蜘蛛坦克，該技能召喚的蜘蛛坦克額外 +3% 傷害至少擁有 30 點統御值時，該技能召喚的召喚物發射的投射物永久穿透至少擁有 10 點統御值時，該技能召喚的召喚物 +2 投射物數量該技能召喚的召喚物發射的投射物數量最大為 5"
+        ],
+        "detailText": [],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 3,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 4,
+            "textLines": [
+              "3"
+            ],
+            "partial": true
+          },
+          {
+            "level": 17,
+            "textLines": [
+              "3"
+            ],
+            "partial": true
+          },
+          {
+            "level": 18,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 25,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 26,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 34,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Timid",
+        "name": "膽怯",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "詛咒"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Timid",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能詛咒指定範圍內的敵人。被詛咒的敵人額外 20% 受到的擊中傷害。"
+        ],
+        "detailText": [
+          "釋放該技能詛咒指定範圍內的敵人被詛咒的敵人額外 +39% 受到的擊中傷害持續 5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Electrocute",
+        "name": "感電",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "閃電",
+          "詛咒"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Electrocute",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能詛咒指定範圍內的敵人。被詛咒的敵人額外 20% 受到的閃電傷害。"
+        ],
+        "detailText": [
+          "釋放該技能詛咒指定範圍內的敵人被詛咒的敵人額外 +39% 受到的閃電傷害持續 5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Vulnerability",
+        "name": "易傷",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "物理",
+          "詛咒"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Vulnerability",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能詛咒指定範圍內的敵人。被詛咒的敵人額外 20% 受到的物理傷害，且 10% 被造成創傷的機率。"
+        ],
+        "detailText": [
+          "釋放該技能詛咒指定範圍內的敵人被詛咒的敵人額外 +39% 受到的物理傷害被詛咒的敵人被擊中時， +10% 機率創傷持續 5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Scorch",
+        "name": "熾熱",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "火焰",
+          "詛咒"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Scorch",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能詛咒指定範圍內的敵人。被詛咒的敵人額外 20% 受到的火焰傷害，且 10% 被點燃的機率。"
+        ],
+        "detailText": [
+          "釋放該技能詛咒指定範圍內的敵人被詛咒的敵人額外 +39% 受到的火焰傷害被詛咒的敵人被擊中時， +10% 機率被點燃持續 5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Dazzled",
+        "name": "盲目",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "詛咒"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Dazzled",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能詛咒指定範圍內的敵人。被詛咒的敵人被致盲，且額外 -1% 移動速度。"
+        ],
+        "detailText": [
+          "釋放該技能詛咒指定範圍內的敵人被詛咒的敵人額外 -20% 移動速度被詛咒的敵人被致盲持續 5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Entangled_Pain",
+        "name": "苦痛糾纏",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "詛咒"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Entangled_Pain",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能詛咒指定範圍內的敵人。被詛咒的敵人額外 20% 受到的持續傷害。"
+        ],
+        "detailText": [
+          "釋放該技能詛咒指定範圍內的敵人被詛咒的敵人額外 +39% 受到的持續傷害持續 5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Biting_Cold",
+        "name": "蝕骨之寒",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "冰冷",
+          "詛咒"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Biting_Cold",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能詛咒指定範圍內的敵人。被詛咒的敵人額外 20% 受到的冰冷傷害。"
+        ],
+        "detailText": [
+          "釋放該技能詛咒指定範圍內的敵人被詛咒的敵人額外 +39% 受到的冰冷傷害持續 5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Corruption",
+        "name": "邪惡侵蝕",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "腐蝕",
+          "詛咒"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Corruption",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能詛咒指定範圍內的敵人。被詛咒的敵人額外 20% 受到的腐蝕傷害，且 10% 被造成凋零的幾率。"
+        ],
+        "detailText": [
+          "釋放該技能詛咒指定範圍內的敵人被詛咒的敵人額外 +39% 受到的腐蝕傷害被詛咒的敵人被擊中時， +10% 機率凋零持續 5 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Life_Source",
+        "name": "生命源泉",
+        "family": "active",
+        "tags": [
+          "恢復"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Life_Source",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得恢復：2 秒內恢復 41% 最大生命。生命回滿時效果消失。擊敗敵人可獲得充能。"
+        ],
+        "detailText": [
+          "擊敗敵人可使該技能獲得充能進度，充能進度達到 15 時，補充 1 點充能點數。擊敗普通/魔法/稀有/首領敵人時，獲得 1/3/6/100 充能進度。",
+          "釋放該技能獲得恢復：在 2 秒內恢復 41% 最大生命 (Lv1:41) (Lv21:61) (Lv41:71)"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "41"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "61"
+            ],
+            "partial": true
+          },
+          {
+            "level": 41,
+            "textLines": [
+              "71"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Mana_Source",
+        "name": "魔力源泉",
+        "family": "active",
+        "tags": [
+          "恢復"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Mana_Source",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得恢復：2 秒內恢復 41% 最大魔力。魔力回滿時效果消失。擊敗敵人可獲得充能。"
+        ],
+        "detailText": [
+          "擊敗敵人可使該技能獲得充能進度，充能進度達到 10 時，補充 1 點充能點數。擊敗普通/魔法/稀有/首領敵人時，獲得 1/3/6/100 充能進度。",
+          "釋放該技能獲得恢復：在 2 秒內恢復 41% 最大魔力 (Lv1:41) (Lv21:61) (Lv41:71)"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "41"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "61"
+            ],
+            "partial": true
+          },
+          {
+            "level": 41,
+            "textLines": [
+              "71"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Elemental_Shock",
+        "name": "元素震盪",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "召喚",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Elemental_Shock",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得亢奮：召喚物額外 15% 元素傷害，持續 6 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮： 技能持續時，召喚物額外 24.5% 元素傷害持續 6 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Machine_Army",
+        "name": "機械行軍",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "召喚",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Machine_Army",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得亢奮：每有一個召喚物，所有召喚物額外 3.5% 傷害，4% 移動速度，最多增加 7 次，持續 6 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮：每有一個召喚物，所有召喚物額外 3.5% 傷害每有一個召喚物，所有召喚物額外 4% 移動速度最多增加 7 次持續 6 秒",
+          "每擁有 1 個召喚物，該技能額外 +100% 狀態效果，最多增加 7 次"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Prayer",
+        "name": "祈願",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "召喚",
+          "防護"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Prayer",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得防護：智械召喚物每秒恢復 7% 最大生命，持續 6 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得防護：技能持續時，智械召喚物每秒恢復 11.75% 最大生命持續 6 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Dark_Gate",
+        "name": "黑暗之門",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "召喚",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Dark_Gate",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能將所有召喚物傳送至角色自身身邊。釋放該技能獲得亢奮：角色自身獲得 10 點統御值，並 10% 統御值回歸速度，額外 4% 召喚物傷害，且召喚物 20% 移動速度，持續 3 秒。"
+        ],
+        "detailText": [
+          "釋放該技能時將所有召喚物傳送至角色自身身邊",
+          "釋放該技能獲得亢奮：獲得 19.5 點統御值技能持續時， +10% 每秒統御值回歸速度技能持續時，額外 7.8% 召喚物傷害技能持續時，召喚物 +20% 移動速度"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Thunderlight_Bond",
+        "name": "雷光羈絆",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "閃電",
+          "激發",
+          "範圍",
+          "哨衛"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Thunderlight_Bond",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定位置放置 1 個雷光哨衛，該哨衛在原地生成一片雷光區域。友軍在雷光區域時獲得亢奮：傷害幸運，且 10.5% 麻痺效果。"
+        ],
+        "detailText": [
+          "雷光哨衛：哨衛持續 5 秒該技能基礎哨衛數量上限為 1",
+          "雷光哨衛使友軍獲得亢奮：增益持續時， +20% 麻痺效果增益持續時，傷害幸運"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Arcane_Circle",
+        "name": "秘法陣",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "範圍",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Arcane_Circle",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能創造一個環繞自身的秘法陣，持續 6 秒。每個首次進入陣內的敵人使自身獲得亢奮：額外 +2.35% 法術傷害。"
+        ],
+        "detailText": [
+          "秘法陣：持續 6 秒",
+          "敵人首次進入秘法陣內使自身獲得亢奮：每層增益額外 2.35% 法術傷害；最多疊加15層",
+          "首次進入秘法陣的敵人，每一個敵人使人物獲得1層增益"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Ice_Bond",
+        "name": "冰霜羈絆",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "冰冷",
+          "激發",
+          "哨衛",
+          "範圍",
+          "射線"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Ice_Bond",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定位置放置 1 個冰霜哨衛，該哨衛以角色自身為終點發射一條冰冷射線，並對連線附近的敵人造成 154-231 法術冰冷傷害。角色自身一定範圍內存在該哨衛時獲得亢奮：其他技能對被冰結的敵人額外 23.5% 冰冷傷害。"
+        ],
+        "detailText": [
+          "冰霜哨衛：造成 154-231 法術冰冷傷害每 0.25 秒造成一次傷害哨衛持續 8 秒該技能基礎哨衛數量上限為 1該技能發射的射線不受射線條數加成影響",
+          "冰霜哨衛使角色自身獲得亢奮：增益持續時，自身的其他技能對冰結的敵人額外 +33% 冰冷傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Drinking_Recovery",
+        "name": "渴飲療愈",
+        "family": "active",
+        "tags": [
+          "恢復"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Drinking_Recovery",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得恢復：4 秒內恢復 7 生命。生命回滿時效果消失。該技能恢復期間，生命退還提升至上限，並額外 -10% 生命退還間隔使用該技能時，消耗 30% 當前生命"
+        ],
+        "detailText": [
+          "擊敗敵人可使該技能獲得充能進度，充能進度達到 15 時，補充 1 點充能點數。擊敗普通/魔法/稀有/首領敵人時，獲得 1/3/6/100 充能進度。",
+          "釋放該技能獲得恢復：在 4 秒內恢復 7 生命 (Lv1:7) (Lv2:9) (Lv3:13) (Lv4:18) (Lv5:29) (Lv6:39) (Lv7:48) (Lv8:61) (Lv9:71) (Lv10:84) (Lv11:95) (Lv12:107) (Lv13:115) (Lv14:126) (Lv15:143) (Lv16:189) (Lv17:240) (Lv18:297) (Lv19:359) (Lv20:470) (Lv21:487) (Lv22:504) (Lv23:522) (Lv24:540) (Lv25:558) (Lv26:583) (Lv27:609) (Lv28:621) (Lv29:634) (Lv30:639) (Lv31:644) (Lv32:649) (Lv33:654) (Lv34:659) (Lv35:664) (Lv36:669) (Lv37:674) (Lv38:679) (Lv39:684) (Lv40:689) (Lv41:694)",
+          "該技能恢復期間，生命返還提升至上限該技能恢復期間，額外 -10% 生命返還間隔 (Lv1:-10) (Lv10:-10) (Lv11:-20) (Lv21:-20) (Lv41:-20)使用技能時，消耗 30% 當前生命值",
+          "使用技能時，消耗 30% 當前生命值在 4 秒內恢復 7 生命 (Lv1:7) (Lv2:9) (Lv3:13) (Lv4:18) (Lv5:29) (Lv6:39) (Lv7:48) (Lv8:61) (Lv9:71) (Lv10:84) (Lv11:95) (Lv12:107) (Lv13:115) (Lv14:126) (Lv15:143) (Lv16:189) (Lv17:240) (Lv18:297) (Lv19:359) (Lv20:470) (Lv21:487) (Lv22:504) (Lv23:522) (Lv24:540) (Lv25:558) (Lv26:583) (Lv27:609) (Lv28:621) (Lv29:634) (Lv30:639) (Lv31:644) (Lv32:649) (Lv33:654) (Lv34:659) (Lv35:664) (Lv36:669) (Lv37:674) (Lv38:679) (Lv39:684) (Lv40:689) (Lv41:694)該技能恢復期間，生命返還提升至上限該技能恢復期間，額外 -10% 生命返還間隔 (Lv1:-10) (Lv10:-10) (Lv11:-20) (Lv21:-20) (Lv41:-20)"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "7"
+            ],
+            "partial": true
+          },
+          {
+            "level": 2,
+            "textLines": [
+              "9"
+            ],
+            "partial": true
+          },
+          {
+            "level": 3,
+            "textLines": [
+              "13"
+            ],
+            "partial": true
+          },
+          {
+            "level": 4,
+            "textLines": [
+              "18"
+            ],
+            "partial": true
+          },
+          {
+            "level": 5,
+            "textLines": [
+              "29"
+            ],
+            "partial": true
+          },
+          {
+            "level": 6,
+            "textLines": [
+              "39"
+            ],
+            "partial": true
+          },
+          {
+            "level": 7,
+            "textLines": [
+              "48"
+            ],
+            "partial": true
+          },
+          {
+            "level": 8,
+            "textLines": [
+              "61"
+            ],
+            "partial": true
+          },
+          {
+            "level": 9,
+            "textLines": [
+              "71"
+            ],
+            "partial": true
+          },
+          {
+            "level": 10,
+            "textLines": [
+              "84"
+            ],
+            "partial": true
+          },
+          {
+            "level": 11,
+            "textLines": [
+              "95"
+            ],
+            "partial": true
+          },
+          {
+            "level": 12,
+            "textLines": [
+              "107"
+            ],
+            "partial": true
+          },
+          {
+            "level": 13,
+            "textLines": [
+              "115"
+            ],
+            "partial": true
+          },
+          {
+            "level": 14,
+            "textLines": [
+              "126"
+            ],
+            "partial": true
+          },
+          {
+            "level": 15,
+            "textLines": [
+              "143"
+            ],
+            "partial": true
+          },
+          {
+            "level": 16,
+            "textLines": [
+              "189"
+            ],
+            "partial": true
+          },
+          {
+            "level": 17,
+            "textLines": [
+              "240"
+            ],
+            "partial": true
+          },
+          {
+            "level": 18,
+            "textLines": [
+              "297"
+            ],
+            "partial": true
+          },
+          {
+            "level": 19,
+            "textLines": [
+              "359"
+            ],
+            "partial": true
+          },
+          {
+            "level": 20,
+            "textLines": [
+              "470"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "487"
+            ],
+            "partial": true
+          },
+          {
+            "level": 22,
+            "textLines": [
+              "504"
+            ],
+            "partial": true
+          },
+          {
+            "level": 23,
+            "textLines": [
+              "522"
+            ],
+            "partial": true
+          },
+          {
+            "level": 24,
+            "textLines": [
+              "540"
+            ],
+            "partial": true
+          },
+          {
+            "level": 25,
+            "textLines": [
+              "558"
+            ],
+            "partial": true
+          },
+          {
+            "level": 26,
+            "textLines": [
+              "583"
+            ],
+            "partial": true
+          },
+          {
+            "level": 27,
+            "textLines": [
+              "609"
+            ],
+            "partial": true
+          },
+          {
+            "level": 28,
+            "textLines": [
+              "621"
+            ],
+            "partial": true
+          },
+          {
+            "level": 29,
+            "textLines": [
+              "634"
+            ],
+            "partial": true
+          },
+          {
+            "level": 30,
+            "textLines": [
+              "639"
+            ],
+            "partial": true
+          },
+          {
+            "level": 31,
+            "textLines": [
+              "644"
+            ],
+            "partial": true
+          },
+          {
+            "level": 32,
+            "textLines": [
+              "649"
+            ],
+            "partial": true
+          },
+          {
+            "level": 33,
+            "textLines": [
+              "654"
+            ],
+            "partial": true
+          },
+          {
+            "level": 34,
+            "textLines": [
+              "659"
+            ],
+            "partial": true
+          },
+          {
+            "level": 35,
+            "textLines": [
+              "664"
+            ],
+            "partial": true
+          },
+          {
+            "level": 36,
+            "textLines": [
+              "669"
+            ],
+            "partial": true
+          },
+          {
+            "level": 37,
+            "textLines": [
+              "674"
+            ],
+            "partial": true
+          },
+          {
+            "level": 38,
+            "textLines": [
+              "679"
+            ],
+            "partial": true
+          },
+          {
+            "level": 39,
+            "textLines": [
+              "684"
+            ],
+            "partial": true
+          },
+          {
+            "level": 40,
+            "textLines": [
+              "689"
+            ],
+            "partial": true
+          },
+          {
+            "level": 41,
+            "textLines": [
+              "694"
+            ],
+            "partial": true
+          },
+          {
+            "level": 1,
+            "textLines": [
+              "-10"
+            ],
+            "partial": true
+          },
+          {
+            "level": 10,
+            "textLines": [
+              "-10"
+            ],
+            "partial": true
+          },
+          {
+            "level": 11,
+            "textLines": [
+              "-20"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "-20"
+            ],
+            "partial": true
+          },
+          {
+            "level": 41,
+            "textLines": [
+              "-20"
+            ],
+            "partial": true
+          },
+          {
+            "level": 1,
+            "textLines": [
+              "7"
+            ],
+            "partial": true
+          },
+          {
+            "level": 2,
+            "textLines": [
+              "9"
+            ],
+            "partial": true
+          },
+          {
+            "level": 3,
+            "textLines": [
+              "13"
+            ],
+            "partial": true
+          },
+          {
+            "level": 4,
+            "textLines": [
+              "18"
+            ],
+            "partial": true
+          },
+          {
+            "level": 5,
+            "textLines": [
+              "29"
+            ],
+            "partial": true
+          },
+          {
+            "level": 6,
+            "textLines": [
+              "39"
+            ],
+            "partial": true
+          },
+          {
+            "level": 7,
+            "textLines": [
+              "48"
+            ],
+            "partial": true
+          },
+          {
+            "level": 8,
+            "textLines": [
+              "61"
+            ],
+            "partial": true
+          },
+          {
+            "level": 9,
+            "textLines": [
+              "71"
+            ],
+            "partial": true
+          },
+          {
+            "level": 10,
+            "textLines": [
+              "84"
+            ],
+            "partial": true
+          },
+          {
+            "level": 11,
+            "textLines": [
+              "95"
+            ],
+            "partial": true
+          },
+          {
+            "level": 12,
+            "textLines": [
+              "107"
+            ],
+            "partial": true
+          },
+          {
+            "level": 13,
+            "textLines": [
+              "115"
+            ],
+            "partial": true
+          },
+          {
+            "level": 14,
+            "textLines": [
+              "126"
+            ],
+            "partial": true
+          },
+          {
+            "level": 15,
+            "textLines": [
+              "143"
+            ],
+            "partial": true
+          },
+          {
+            "level": 16,
+            "textLines": [
+              "189"
+            ],
+            "partial": true
+          },
+          {
+            "level": 17,
+            "textLines": [
+              "240"
+            ],
+            "partial": true
+          },
+          {
+            "level": 18,
+            "textLines": [
+              "297"
+            ],
+            "partial": true
+          },
+          {
+            "level": 19,
+            "textLines": [
+              "359"
+            ],
+            "partial": true
+          },
+          {
+            "level": 20,
+            "textLines": [
+              "470"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "487"
+            ],
+            "partial": true
+          },
+          {
+            "level": 22,
+            "textLines": [
+              "504"
+            ],
+            "partial": true
+          },
+          {
+            "level": 23,
+            "textLines": [
+              "522"
+            ],
+            "partial": true
+          },
+          {
+            "level": 24,
+            "textLines": [
+              "540"
+            ],
+            "partial": true
+          },
+          {
+            "level": 25,
+            "textLines": [
+              "558"
+            ],
+            "partial": true
+          },
+          {
+            "level": 26,
+            "textLines": [
+              "583"
+            ],
+            "partial": true
+          },
+          {
+            "level": 27,
+            "textLines": [
+              "609"
+            ],
+            "partial": true
+          },
+          {
+            "level": 28,
+            "textLines": [
+              "621"
+            ],
+            "partial": true
+          },
+          {
+            "level": 29,
+            "textLines": [
+              "634"
+            ],
+            "partial": true
+          },
+          {
+            "level": 30,
+            "textLines": [
+              "639"
+            ],
+            "partial": true
+          },
+          {
+            "level": 31,
+            "textLines": [
+              "644"
+            ],
+            "partial": true
+          },
+          {
+            "level": 32,
+            "textLines": [
+              "649"
+            ],
+            "partial": true
+          },
+          {
+            "level": 33,
+            "textLines": [
+              "654"
+            ],
+            "partial": true
+          },
+          {
+            "level": 34,
+            "textLines": [
+              "659"
+            ],
+            "partial": true
+          },
+          {
+            "level": 35,
+            "textLines": [
+              "664"
+            ],
+            "partial": true
+          },
+          {
+            "level": 36,
+            "textLines": [
+              "669"
+            ],
+            "partial": true
+          },
+          {
+            "level": 37,
+            "textLines": [
+              "674"
+            ],
+            "partial": true
+          },
+          {
+            "level": 38,
+            "textLines": [
+              "679"
+            ],
+            "partial": true
+          },
+          {
+            "level": 39,
+            "textLines": [
+              "684"
+            ],
+            "partial": true
+          },
+          {
+            "level": 40,
+            "textLines": [
+              "689"
+            ],
+            "partial": true
+          },
+          {
+            "level": 41,
+            "textLines": [
+              "694"
+            ],
+            "partial": true
+          },
+          {
+            "level": 1,
+            "textLines": [
+              "-10"
+            ],
+            "partial": true
+          },
+          {
+            "level": 10,
+            "textLines": [
+              "-10"
+            ],
+            "partial": true
+          },
+          {
+            "level": 11,
+            "textLines": [
+              "-20"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "-20"
+            ],
+            "partial": true
+          },
+          {
+            "level": 41,
+            "textLines": [
+              "-20"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Reform",
+        "name": "重整陣勢",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "防護"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Reform",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得防護：刷新自身已有的屏障，額外 7.5% 屏障吸收量，持續 6 秒。 技能持續時，獲得屏障時使周圍敵人虛弱。"
+        ],
+        "detailText": [
+          "釋放該技能獲得防護：技能持續時，獲得屏障時使周圍敵人虛弱技能持續時，額外 12.25% 屏障吸收量持續 6 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Centralized_Loading",
+        "name": "集中上膛",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "遠程",
+          "位移",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Centralized_Loading",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前衝刺，同時獲得增益：投射物技能 16% 傷害，且釋放投射物技能時有 30% 機率使該次技能 2 投射物數量，持續 1 秒。"
+        ],
+        "detailText": [
+          "增益：+35% 投射物傷害釋放直射投射物技能時， +30% 機率使該次技能 +2 投射物數量持續 1 秒",
+          "對移動速度加成的 75% 同樣作用於該技能的額外攻擊速度，至多額外 +60% 攻擊速度"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Blink_Arrow",
+        "name": "瞬閃弓",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "物理",
+          "遠程",
+          "投射物",
+          "直射",
+          "位移"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Blink_Arrow",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射一個投射物，造成 248% 武器攻擊傷害。投射物飛行固定距離後消失，然後角色自身閃現至投射物位置並獲得增益：11% 移動速度，持續 2 秒或使用其他技能。該技能發射的投射物永久穿透，但無法返回或被投射物數量影響。"
+        ],
+        "detailText": [
+          "瞬閃弓：造成 248% 武器攻擊傷害投射物消失時角色自身閃現至投射物位置並獲得增益該技能發射的投射物永久穿透對移動速度加成的 75% 同樣作用於該技能的額外攻擊速度，至多額外 +60% 攻擊速度該技能發射的投射物無法返回",
+          "增益：+30% 移動速度釋放其他技能時，失去該增益持續 2 秒"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 248,
+            "valueKind": "flat",
+            "sourceText": "造成 248% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 248,
+            "valueKind": "flat",
+            "sourceText": "造成 248% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Swift_Shadow_Raid",
+        "name": "迅影奔襲",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "範圍",
+          "物理",
+          "位移"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Swift_Shadow_Raid",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前衝刺，對路徑上敵人造成 271% 武器攻擊傷害。"
+        ],
+        "detailText": [
+          "迅影奔襲：造成 271% 武器攻擊傷害對移動速度加成的 75% 同樣作用於該技能的額外攻擊速度，至多額外 +60% 攻擊速度"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 271,
+            "valueKind": "flat",
+            "sourceText": "造成 271% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 271,
+            "valueKind": "flat",
+            "sourceText": "造成 271% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Safeguard_Ring",
+        "name": "絕境陣",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "哨衛",
+          "防護"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Safeguard_Ring",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定位置放置一個絕境哨衛，該哨衛在原地生成絕境陣並擊退陣內敵人，持續時間內週期性擊退陣內敵人。 絕境陣內友方單位獲得防護：額外 -8% 受到的傷害，並額外 -10.5% 受到絕境陣外敵人的傷害。"
+        ],
+        "detailText": [
+          "絕境哨衛：每 2 秒擊退範圍內的敵人哨衛持續 6.1 秒該技能基礎哨衛數量上限為 1該技能最多只能放置 1 個哨衛",
+          "絕境哨衛使友方單位獲得防護：增益持續時，額外 -8% 受到的傷害增益持續時，額外 -20% 受到的陣外敵人的傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Icebound_Beam",
+        "name": "冰魄射線",
+        "family": "active",
+        "tags": [
+          "法術",
+          "引導",
+          "冰冷",
+          "投射物",
+          "直射",
+          "射線"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Icebound_Beam",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "引導該技能時向前發射 1 條冰冷射線，打擊射線終點的敵人，造成 171-257 法術冰冷傷害。 引導層數達到上限時，失去所有引導層數並向射線終點發射 2 個冰凌，造成 513-770 法術冰冷傷害。"
+        ],
+        "detailText": [
+          "冰冷射線：造成 171-257 法術冰冷傷害不受射線條數加成和折射次數加成影響",
+          "冰凌：造成 513-770 法術冰冷傷害基礎發射 1 個投射物該技能 +1 投射物數量該技能每 1 射線折射次數轉換為 2 投射物彈射次數每 1 次射線額外條數轉換為 +1 投射物數量",
+          "引導層數最多 5 層",
+          "該技能發射的投射物可以命中同一個敵人該技能的散彈效應衰減係數為 65%"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Spiral_Strike",
+        "name": "螺旋擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "腐蝕",
+          "範圍",
+          "近戰",
+          "位移"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Spiral_Strike",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前衝刺，對路徑上敵人造成多次 87% 武器攻擊傷害。自身攻擊速度使該技能傷害次數增加。該技能全部物理傷害轉化為腐蝕傷害。"
+        ],
+        "detailText": [
+          "螺旋擊：造成多次 87% 武器攻擊傷害自身攻擊速度使該技能傷害次數增加該技能 +20% 凋零機率該技能 100% 物理傷害轉化為腐蝕傷害對移動速度加成的 75% 同樣作用於該技能的額外攻擊速度，至多額外 +60% 攻擊速度"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Compound_Source",
+        "name": "複合源泉",
+        "family": "active",
+        "tags": [
+          "恢復"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Compound_Source",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得恢復：2 秒內恢復 39% 最大生命和 47 魔力。生命和魔力都回滿時效果消失。擊敗敵人可獲得充能。"
+        ],
+        "detailText": [
+          "擊敗敵人可使該技能獲得充能進度，充能進度達到 15 時，補充 1 點充能點數。擊敗普通/魔法/稀有/首領敵人時，獲得 1/3/6/100 充能進度。",
+          "釋放該技能獲得恢復：在 2 秒內恢復 39% 最大生命 (Lv1:39) (Lv21:49) (Lv41:59)在 2 秒內恢復 47 魔力 (Lv1:47) (Lv2:56) (Lv3:69) (Lv4:96) (Lv5:111) (Lv6:127) (Lv7:170) (Lv8:190) (Lv9:209) (Lv10:230) (Lv11:249) (Lv12:270) (Lv13:292) (Lv14:323) (Lv15:354) (Lv16:385) (Lv17:416) (Lv18:447) (Lv19:478) (Lv20:732) (Lv21:775) (Lv22:819) (Lv23:861) (Lv24:904) (Lv25:946) (Lv26:1010) (Lv27:1074) (Lv28:1156) (Lv29:1237) (Lv30:1318) (Lv31:1345) (Lv32:1373) (Lv33:1401) (Lv34:1429) (Lv35:1456) (Lv36:1484) (Lv37:1512) (Lv38:1540) (Lv39:1568) (Lv40:1595)"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "39"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "49"
+            ],
+            "partial": true
+          },
+          {
+            "level": 41,
+            "textLines": [
+              "59"
+            ],
+            "partial": true
+          },
+          {
+            "level": 1,
+            "textLines": [
+              "47"
+            ],
+            "partial": true
+          },
+          {
+            "level": 2,
+            "textLines": [
+              "56"
+            ],
+            "partial": true
+          },
+          {
+            "level": 3,
+            "textLines": [
+              "69"
+            ],
+            "partial": true
+          },
+          {
+            "level": 4,
+            "textLines": [
+              "96"
+            ],
+            "partial": true
+          },
+          {
+            "level": 5,
+            "textLines": [
+              "111"
+            ],
+            "partial": true
+          },
+          {
+            "level": 6,
+            "textLines": [
+              "127"
+            ],
+            "partial": true
+          },
+          {
+            "level": 7,
+            "textLines": [
+              "170"
+            ],
+            "partial": true
+          },
+          {
+            "level": 8,
+            "textLines": [
+              "190"
+            ],
+            "partial": true
+          },
+          {
+            "level": 9,
+            "textLines": [
+              "209"
+            ],
+            "partial": true
+          },
+          {
+            "level": 10,
+            "textLines": [
+              "230"
+            ],
+            "partial": true
+          },
+          {
+            "level": 11,
+            "textLines": [
+              "249"
+            ],
+            "partial": true
+          },
+          {
+            "level": 12,
+            "textLines": [
+              "270"
+            ],
+            "partial": true
+          },
+          {
+            "level": 13,
+            "textLines": [
+              "292"
+            ],
+            "partial": true
+          },
+          {
+            "level": 14,
+            "textLines": [
+              "323"
+            ],
+            "partial": true
+          },
+          {
+            "level": 15,
+            "textLines": [
+              "354"
+            ],
+            "partial": true
+          },
+          {
+            "level": 16,
+            "textLines": [
+              "385"
+            ],
+            "partial": true
+          },
+          {
+            "level": 17,
+            "textLines": [
+              "416"
+            ],
+            "partial": true
+          },
+          {
+            "level": 18,
+            "textLines": [
+              "447"
+            ],
+            "partial": true
+          },
+          {
+            "level": 19,
+            "textLines": [
+              "478"
+            ],
+            "partial": true
+          },
+          {
+            "level": 20,
+            "textLines": [
+              "732"
+            ],
+            "partial": true
+          },
+          {
+            "level": 21,
+            "textLines": [
+              "775"
+            ],
+            "partial": true
+          },
+          {
+            "level": 22,
+            "textLines": [
+              "819"
+            ],
+            "partial": true
+          },
+          {
+            "level": 23,
+            "textLines": [
+              "861"
+            ],
+            "partial": true
+          },
+          {
+            "level": 24,
+            "textLines": [
+              "904"
+            ],
+            "partial": true
+          },
+          {
+            "level": 25,
+            "textLines": [
+              "946"
+            ],
+            "partial": true
+          },
+          {
+            "level": 26,
+            "textLines": [
+              "1010"
+            ],
+            "partial": true
+          },
+          {
+            "level": 27,
+            "textLines": [
+              "1074"
+            ],
+            "partial": true
+          },
+          {
+            "level": 28,
+            "textLines": [
+              "1156"
+            ],
+            "partial": true
+          },
+          {
+            "level": 29,
+            "textLines": [
+              "1237"
+            ],
+            "partial": true
+          },
+          {
+            "level": 30,
+            "textLines": [
+              "1318"
+            ],
+            "partial": true
+          },
+          {
+            "level": 31,
+            "textLines": [
+              "1345"
+            ],
+            "partial": true
+          },
+          {
+            "level": 32,
+            "textLines": [
+              "1373"
+            ],
+            "partial": true
+          },
+          {
+            "level": 33,
+            "textLines": [
+              "1401"
+            ],
+            "partial": true
+          },
+          {
+            "level": 34,
+            "textLines": [
+              "1429"
+            ],
+            "partial": true
+          },
+          {
+            "level": 35,
+            "textLines": [
+              "1456"
+            ],
+            "partial": true
+          },
+          {
+            "level": 36,
+            "textLines": [
+              "1484"
+            ],
+            "partial": true
+          },
+          {
+            "level": 37,
+            "textLines": [
+              "1512"
+            ],
+            "partial": true
+          },
+          {
+            "level": 38,
+            "textLines": [
+              "1540"
+            ],
+            "partial": true
+          },
+          {
+            "level": 39,
+            "textLines": [
+              "1568"
+            ],
+            "partial": true
+          },
+          {
+            "level": 40,
+            "textLines": [
+              "1595"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Moon_Strike",
+        "name": "月華斬",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "範圍",
+          "物理",
+          "近戰",
+          "揮斬"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Moon_Strike",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放揮擊攻擊前方扇形區域，擊中時造成 185% 武器攻擊傷害。該技能受斬擊機率影響，使其有可能以斬擊形態釋放。該技能釋放斬擊時攻擊前方矩形區域，擊中時造成 370% 武器攻擊傷害該技能受到法術傷害加成和額外加成的同等作用，且傷害根據最大魔力額外增加"
+        ],
+        "detailText": [
+          "揮擊：造成 185% 武器攻擊傷害",
+          "斬擊：造成 370% 武器攻擊傷害",
+          "對法術傷害的加成與額外加成同樣作用於該技能攻擊傷害每 100 點最大魔力，該技能額外 +1% 傷害，至多 +70%該技能 +20% 斬擊機率"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 185,
+            "valueKind": "flat",
+            "sourceText": "造成 185% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 370,
+            "valueKind": "flat",
+            "sourceText": "造成 370% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 185,
+            "valueKind": "flat",
+            "sourceText": "造成 185% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 370,
+            "valueKind": "flat",
+            "sourceText": "造成 370% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Howling_Gale",
+        "name": "呼嘯烈風",
+        "family": "active",
+        "tags": [
+          "法術",
+          "引導",
+          "物理",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Howling_Gale",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "引導該技能時在指定位置生成狂風，持續打擊一定範圍內的敵人，每次打擊造成 548-913 法術物理傷害。每層引導層數使狂風持續時間增加、傷害額外增加、技能範圍擴大、移動速度增加。"
+        ],
+        "detailText": [
+          "呼嘯烈風：造成 548-913 法術物理傷害基礎打擊頻率為 1.5引導層數最多 5 層每層引導層數使狂風的持續時間 +2.5 秒每層引導層數使狂風 +10% 技能範圍每層引導層數使狂風的移動速度增加每 +1 額外引導層數上限，該技能額外 21.5 %傷害對該技能施法速度的加成與額外加成作用於狂風打擊頻率"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Blazing_Bullet",
+        "name": "熾炎穿彈",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "火焰",
+          "範圍",
+          "遠程",
+          "投射物",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Blazing_Bullet",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個熾炎彈，擊中時造成 121% 武器攻擊傷害。熾焰彈穿透敵人時造成熾炎爆炸，擊中時造成 121% 武器攻擊傷害。投射物穿透次數使該技能傷害的額外增加。該技能全部物理傷害轉化為火焰傷害。"
+        ],
+        "detailText": [
+          "熾炎彈：造成 121% 武器攻擊傷害基礎發射 1 個投射物",
+          "熾炎爆炸：造成 121% 武器攻擊傷害投射物和其造成的爆炸可以命中同一個敵人",
+          "該技能 +2 穿透次數該技能每 1 投射物穿透次數，額外 +7% 傷害該技能 100% 物理傷害轉化為火焰傷害"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 121,
+            "valueKind": "flat",
+            "sourceText": "造成 121% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 121,
+            "valueKind": "flat",
+            "sourceText": "造成 121% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 121,
+            "valueKind": "flat",
+            "sourceText": "造成 121% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 121,
+            "valueKind": "flat",
+            "sourceText": "造成 121% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Thunder_Slash",
+        "name": "雷影斬",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "閃電",
+          "範圍",
+          "近戰",
+          "揮斬"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Thunder_Slash",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放揮擊攻擊前方扇形區域，擊中時造成 210% 武器攻擊傷害。擁有斬擊次數時，釋放斬擊攻擊前方矩形區域，擊中時造成 421% 武器攻擊傷害。該技能連續攻擊時，每兩次揮擊獲得一次斬擊次數，但無法通過斬擊機率釋放斬擊。該技能全部物理傷害轉化為閃電傷害。"
+        ],
+        "detailText": [
+          "揮擊：造成 210% 武器攻擊傷害揮擊時，每進行 2 次連續攻擊，獲得1次斬擊次數",
+          "斬擊：造成 421% 武器攻擊傷害該技能無法通過斬擊機率獲得斬擊次數",
+          "該技能 100% 物理傷害轉化為閃電傷害該技能 +20% 連續攻擊機率每 +1% 斬擊機率，該技能連續攻擊傷害額外遞增 2%連續攻擊中，每攻擊一次，該技能 +6% 攻擊速度",
+          "揮擊時，每進行 2 次連續攻擊，獲得1次斬擊次數該技能 100% 物理傷害轉化為閃電傷害該技能 +20% 連續攻擊機率每 +1% 斬擊機率，該技能連續攻擊傷害額外遞增 2%該技能無法通過斬擊機率獲得斬擊次數連續攻擊中，每攻擊一次，該技能 +6% 攻擊速度"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 210,
+            "valueKind": "flat",
+            "sourceText": "造成 210% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 421,
+            "valueKind": "flat",
+            "sourceText": "造成 421% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 210,
+            "valueKind": "flat",
+            "sourceText": "造成 210% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 421,
+            "valueKind": "flat",
+            "sourceText": "造成 421% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Thunder_Spike",
+        "name": "雷光刺擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "閃電",
+          "範圍",
+          "近戰",
+          "影襲"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Thunder_Spike",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前突刺，並造成 277% 武器攻擊傷害。該技能影襲本體擊中時，對一定範圍內的敵人施加 1 層麻痺，該效果具有 1 秒間隔。該技能全部物理傷害轉化為閃電傷害。"
+        ],
+        "detailText": [
+          "雷光刺擊：造成 277% 武器攻擊傷害該技能影襲本體擊中時，對該次命中的敵人 1000 距離內的敵人施加 1 層麻痺，該效果具有 1 秒間隔該技能 100% 物理傷害轉化為閃電傷害對技能範圍的增加或減少的 100% 同樣作用於該技能的幻影索敵範圍，上限 100%"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 277,
+            "valueKind": "flat",
+            "sourceText": "造成 277% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 277,
+            "valueKind": "flat",
+            "sourceText": "造成 277% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Haunting_Abomination",
+        "name": "惡煞纏身",
+        "family": "active",
+        "tags": [
+          "法術",
+          "腐蝕",
+          "範圍",
+          "持續",
+          "地面"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Haunting_Abomination",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "释放该技能时对指定敌人造成 405-405 法術腐蝕傷害，並生成跟隨該敵人的惡煞地面。惡煞地面每 0.65 秒對其中的敵人造成 405-405 法術腐蝕傷害。地面蓄能使該技能的傷害額外增加。"
+        ],
+        "detailText": [
+          "惡煞纏身：造成 405-405 法術腐蝕傷害",
+          "惡煞地面：惡煞地面持續 4 秒每間隔 0.65 秒對其中的敵人造成造成 405-405 法術腐蝕傷害，對施法速度的加成與額外加成同樣作用於該間隔。惡煞地面持續期間會逐漸擴大，每持續1秒，地面額外 +20% 技能範圍",
+          "該技能的地面蓄能層數上限為 1該技能每 0.5 秒獲得一層地面蓄能每消耗 1 地面蓄能，該次技能額外 +26% 傷害",
+          "該技能基礎地面數量上限為 1"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Frost_Core",
+        "name": "寒霜之核",
+        "family": "active",
+        "tags": [
+          "法術",
+          "冰冷",
+          "持續",
+          "投射物",
+          "直射",
+          "哨衛"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Frost_Core",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定位置放置 1 個寒霜哨衛，該哨衛週期性向敵人投擲寒霜，造成 560-839 法術冰冷傷害。寒霜哨衛存在於角色自身一定範圍內時，對冰封的敵人額外 32% 傷害。寒霜哨衛不受投射物數量加成影響。"
+        ],
+        "detailText": [
+          "寒霜之核：造成 560-839 法術冰冷傷害每 1 秒造成一次傷害哨衛持續 8 秒該技能基礎哨衛數量上限為 1如果玩家在該技能放置的哨衛 10 米內，該哨衛對冰封的敵人額外 +32% 傷害該技能 +2 穿透次數該技能發射的投射物不受投射物數量加成影響"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Thunder_Core",
+        "name": "雷降之核",
+        "family": "active",
+        "tags": [
+          "法術",
+          "閃電",
+          "持續",
+          "哨衛",
+          "連鎖",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Thunder_Core",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定放置 1 個雷電哨衛，雷電哨衛每隔一段時間降下雷電打擊其範圍內的一個敵人，雷電造成 61-1150 法術閃電傷害。 雷電哨衛存在於角色自身一定範圍內時，雷電可以對單個敵人重複彈射。"
+        ],
+        "detailText": [
+          "雷降之核：造成 61-1150 法術閃電傷害每 1 秒造成一次傷害哨衛持續 8 秒該技能基礎哨衛數量上限為 1如果玩家在哨衛10 米內，哨衛釋放的技能可以對單個敵人重複彈射",
+          "該技能的散彈效應衰減係數為 70%"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Ghost_Blade_Einherjar",
+        "name": "幽刃英靈",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "遠程",
+          "腐蝕",
+          "持續",
+          "哨衛",
+          "投射物",
+          "直射",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Ghost_Blade_Einherjar",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定放置 1 個幽刃哨衛，該哨衛向其範圍內的 1 個敵人投擲一個幽刃，擊中時造成 144% 武器攻擊傷害。該哨衛可以進行連續攻擊。連續攻擊計數達到最大時，該次攻擊會產生爆炸，擊中時造成 216% 武器攻擊傷害。放置的哨衛數量使連續攻擊傷害增加。該技能全部物理傷害轉化為腐蝕傷害。"
+        ],
+        "detailText": [
+          "幽刃英靈：哨衛基礎釋放頻率為武器平均攻擊速度的 100%哨衛持續 8 秒該技能基礎哨衛數量上限為 1該技能放置的哨衛 +100% 連續攻擊機率該技能放置的哨衛可以進行連續攻擊該技能每放置 1 個哨衛，連續攻擊傷害遞增 15%該技能放置的哨衛在連續攻擊結束後，間隔 1 秒才能繼續攻擊間隔時間受哨衛釋放頻率加成影響基礎向 1 個目標發射投射物對投射物數量的加成作用於目標數量",
+          "幽刃：造成 144% 武器攻擊傷害該技能發射的投射物不受投射物數量加成影響",
+          "爆炸：造成 216% 武器攻擊傷害",
+          "該技能放置的哨衛 100% 物理傷害轉化為腐蝕傷害",
+          "該技能基礎哨衛數量上限為 1該技能放置的哨衛 +100% 連續攻擊機率該技能放置的哨衛可以進行連續攻擊該技能每放置 1 個哨衛，連續攻擊傷害遞增 15%該技能放置的哨衛 100% 物理傷害轉化為腐蝕傷害該技能放置的哨衛在連續攻擊結束後，間隔 1 秒才能繼續攻擊間隔時間受哨衛釋放頻率加成影響"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 144,
+            "valueKind": "flat",
+            "sourceText": "造成 144% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 216,
+            "valueKind": "flat",
+            "sourceText": "造成 216% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 144,
+            "valueKind": "flat",
+            "sourceText": "造成 144% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 216,
+            "valueKind": "flat",
+            "sourceText": "造成 216% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Arrow_Einherjar",
+        "name": "飛箭英靈",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "物理",
+          "持續",
+          "哨衛",
+          "投射物",
+          "墜落",
+          "遠程",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Arrow_Einherjar",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在指定放置 1 個飛箭哨衛，該哨衛向空中發射三根箭矢，箭矢落地後對其範圍內的敵人造成 135% 武器攻擊傷害。 該技能放置的哨衛造成的傷害每秒額外增加。 飛箭英靈發射的箭矢不受投射物數量加成。"
+        ],
+        "detailText": [
+          "飛箭英靈：造成 135% 武器攻擊傷害哨衛基礎釋放頻率為武器平均攻擊速度的 100%哨衛持續 8 秒基礎發射三個投射物該技能基礎哨衛數量上限為 1該技能放置的哨衛每隔 1 秒，獲得 1 層增益，上限 5 層該技能每放置 1 個哨衛， -10% 間隔時間每層增益使哨衛額外 +8% 傷害（疊乘）該技能發射的投射物不受投射物數量加成影響",
+          "該技能發射的投射物可以命中同一個敵人該技能的散彈效應衰減係數為 70%"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 135,
+            "valueKind": "flat",
+            "sourceText": "造成 135% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 135,
+            "valueKind": "flat",
+            "sourceText": "造成 135% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Summon_Grim_Phantom",
+        "name": "召喚幽浮魅影",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "閃電",
+          "召喚",
+          "智械"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Summon_Grim_Phantom",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "該技能自動每隔 1 秒在身邊召喚 1 個幽浮魅影，直至上限。 釋放該技能將所有幽浮魅影傳送至指定點並釋放毀滅光炮。 幽浮魅影全部物理傷害轉化為閃電傷害。"
+        ],
+        "detailText": [
+          "召喚幽浮魅影：每隔 1 秒在身邊召喚 1 個幽浮魅影最多能夠召喚 2 個幽浮魅影 (Lv1:2) (Lv3:2) (Lv4:3) (Lv17:3) (Lv18:4) (Lv25:4) (Lv26:4) (Lv34:4)每 20 點統御值，該技能召喚的召喚物額外 +5% 傷害每 20 點統御值，該技能召喚的召喚物 +10% 技能範圍該技能召喚的召喚物 100% 物理傷害轉化為閃電傷害",
+          "最多能夠召喚 2 個幽浮魅影 (Lv1:2) (Lv3:2) (Lv4:3) (Lv17:3) (Lv18:4) (Lv25:4) (Lv26:4) (Lv34:4)每 20 點統御值，該技能召喚的召喚物額外 +5% 傷害每 20 點統御值，該技能召喚的召喚物 +10% 技能範圍該技能召喚的召喚物 100% 物理傷害轉化為閃電傷害該技能每間隔 1 秒自動召喚一次召喚物"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 3,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 4,
+            "textLines": [
+              "3"
+            ],
+            "partial": true
+          },
+          {
+            "level": 17,
+            "textLines": [
+              "3"
+            ],
+            "partial": true
+          },
+          {
+            "level": 18,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 25,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 26,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 34,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 1,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 3,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          },
+          {
+            "level": 4,
+            "textLines": [
+              "3"
+            ],
+            "partial": true
+          },
+          {
+            "level": 17,
+            "textLines": [
+              "3"
+            ],
+            "partial": true
+          },
+          {
+            "level": 18,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 25,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 26,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          },
+          {
+            "level": 34,
+            "textLines": [
+              "4"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Overpower",
+        "name": "壓制重擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "物理",
+          "範圍",
+          "近戰"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Overpower",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能猛擊前方地面，擊中時造成 49% 基礎傷害的攻擊物理傷害。"
+        ],
+        "detailText": [
+          "壓制重擊：造成 49% 基礎傷害的攻擊物理傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Onslaught_Punch",
+        "name": "進擊之拳",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "物理",
+          "範圍",
+          "近戰"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Onslaught_Punch",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向指定敵人衝刺，衝刺敵人身前時停止，並攻擊前方矩形區域，造成75% 基礎傷害的攻擊物理傷害。"
+        ],
+        "detailText": [
+          "進擊之拳：造成75% 基礎傷害的攻擊物理傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Aimed_Shot",
+        "name": "瞄準射擊",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "物理",
+          "投射物",
+          "遠程",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Aimed_Shot",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個投射物，擊中敵人時造成 61% 基礎傷害的攻擊物理傷害。投射物穿透 2 次。"
+        ],
+        "detailText": [
+          "瞄準射擊：造成 61% 基礎傷害的攻擊物理傷害該技能 +2 穿透次數 (Lv1:2)"
+        ],
+        "levelBreakpoints": [
+          {
+            "level": 1,
+            "textLines": [
+              "2"
+            ],
+            "partial": true
+          }
+        ],
+        "levelScalingMode": "breakpoints",
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Blazing_Dance",
+        "name": "烈焰揮舞",
+        "family": "active",
+        "tags": [
+          "基礎技能",
+          "法術",
+          "火焰",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Blazing_Dance",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能打擊前方扇形區域，造成 110% 基礎傷害的法術火焰傷害。"
+        ],
+        "detailText": [
+          "烈焰揮舞：造成 110% 基礎傷害的法術火焰傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Blazing_Spin",
+        "name": "烈焰飛旋",
+        "family": "active",
+        "tags": [
+          "激發",
+          "法術",
+          "火焰",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Blazing_Spin",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得亢奮：435% 暴擊值，持續 6 秒。增益持續時在自身一定範圍內形成火焰領域，對其中的敵人每秒造成 136% 基礎傷害的持續火焰傷害"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮： 技能持續時， +435% 暴擊值持續 6 秒至少為 4 階時，技能持續時，擊中被該技能影響的敵人時獲得 1 層增益，間隔 0.01 秒每層增益 +14% 暴擊傷害，持續 2 秒，最多堆疊 15 層",
+          "烈焰飛旋：每秒造成 136% 基礎傷害的持續火焰傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Blazing_Incineration",
+        "name": "烈焰暴燃",
+        "family": "active",
+        "tags": [
+          "強化技能",
+          "法術",
+          "火焰",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Blazing_Incineration",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能打擊前方圓形區域，造成 278% 基礎傷害的法術火焰傷害。如果該技能最近暴擊，其傷害額外增加。"
+        ],
+        "detailText": [
+          "烈焰暴燃：造成 278% 基礎傷害的法術火焰傷害#skillstone, 1894, affix#",
+          "如果該技能最近有暴擊，額外 +10% 傷害至少為 3 階時，該技能爆擊時獲得 1 層增益，間隔 0.01秒每層增益 +15% 技能範圍，持續 2 秒，上限 15 層至少為 3 階時，該技能額外 +30% 傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Molten_Rising",
+        "name": "熔火升騰",
+        "family": "active",
+        "tags": [
+          "終極技能",
+          "法術",
+          "火焰",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Molten_Rising",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能在前方連續生成四波火柱，造成 637% 基礎傷害的法術火焰傷害。"
+        ],
+        "detailText": [
+          "熔火升騰：造成 637% 基礎傷害的法術火焰傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Glacier_Ripples",
+        "name": "冰川漣漪",
+        "family": "active",
+        "tags": [
+          "基礎技能",
+          "法術",
+          "冰冷",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Glacier_Ripples",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能打擊前方扇形區域，造成 110% 基礎傷害的法術冰冷傷害。"
+        ],
+        "detailText": [
+          "冰川漣漪：造成 110% 基礎傷害的法術冰冷傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Frost_Release",
+        "name": "寒潮緩釋",
+        "family": "active",
+        "tags": [
+          "激發",
+          "法術",
+          "冰冷",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Frost_Release",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能在自身一定範圍內擴散寒氣，造成 72% 基礎傷害的法術冰冷傷害。施放該技能獲得亢奮：下 5 次其他技能額外 81% 傷害，施放其他技能後，該加成值 -15%，持續 6 秒，上限 5 層，多層技能效果疊乘生效。該技能持續時，自身還會 20 冰結值上限"
+        ],
+        "detailText": [
+          "施放該技能獲得亢奮：技能持續時，下 5 次其他非引導技能額外 +81% 擊中傷害；釋放其他技能後，該加成值 -15%持續 6 秒上限 5 層多層技能效果疊乘生效",
+          "寒潮緩釋：造成 72% 基礎傷害的法術冰冷傷害",
+          "該技能持續時， +20 冰結值上限至少為 4 階時，每釋放 5 次其他技能，觸發該技能"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Permafrost_Cast",
+        "name": "冰澆雪鑄",
+        "family": "active",
+        "tags": [
+          "強化技能",
+          "法術",
+          "冰冷",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Permafrost_Cast",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能猛擊前方地面，造成 300% 基礎傷害的法術冰冷傷害。"
+        ],
+        "detailText": [
+          "冰澆雪鑄：造成 300% 基礎傷害的法術冰冷傷害該技能造成擊中冰冷傷害時，施加冰結至少為 3 階時，敵人每有 3 點冰結值，該技能對其額外 +1% 傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Ice_Earthshaker",
+        "name": "撼地冰暴",
+        "family": "active",
+        "tags": [
+          "終極技能",
+          "法術",
+          "冰冷",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Ice_Earthshaker",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前方釋放冰暴，造成 2064% 基礎傷害的法術冰冷傷害。"
+        ],
+        "detailText": [
+          "撼地冰暴：造成 2064% 基礎傷害的法術冰冷傷害該技能造成傷害前，冰結"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Lightning_Star",
+        "name": "閃電流星",
+        "family": "active",
+        "tags": [
+          "基礎技能",
+          "攻擊",
+          "閃電",
+          "投射物",
+          "遠程",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Lightning_Star",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個投射物，擊中敵人時造成 232% 基礎傷害的攻擊物理傷害。"
+        ],
+        "detailText": [
+          "閃電流星：造成 232% 基礎傷害的攻擊物理傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Thunderlight_Arrow",
+        "name": "雷光飛矢",
+        "family": "active",
+        "tags": [
+          "強化技能",
+          "攻擊",
+          "閃電",
+          "投射物",
+          "遠程",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Thunderlight_Arrow",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前髮射一個投射物，擊中敵人時造成 189% 基礎傷害的攻擊物理傷害。投射物永久穿透且會追踪敵人。對投射物數量的加成不會使該技能的投射物數量增加，但會使該技能的傷害額外增加，投射物體積增加。"
+        ],
+        "detailText": [
+          "雷光飛矢：造成 189% 基礎傷害的攻擊物理傷害至少為 3 階時，該技能 +1 基礎發射的投射物數量該技能每 +1 投射物數量，額外 +5% 傷害該技能發射的投射物永久穿透該技能發射的投射物可以擊中同一敵人該技能的散彈效應衰減係數為 70%該技能發射的投射物數量不受投射物數量加成影響"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Thundercloud_Surge",
+        "name": "雷雲激盪",
+        "family": "active",
+        "tags": [
+          "激發",
+          "攻擊",
+          "閃電",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Thundercloud_Surge",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得亢奮：額外 35% 攻擊速度，增益持續 6 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮： 技能持續時，額外 +35% 攻擊速度該技能持續時，至少為 4 階時，額外 +25% 傷害持續 6 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Lightning_Surge",
+        "name": "雷馳電湧",
+        "family": "active",
+        "tags": [
+          "終極技能",
+          "攻擊",
+          "閃電",
+          "投射物",
+          "遠程",
+          "連鎖",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Lightning_Surge",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射一個電球，電球不會造成傷害。電球飛行時，每隔 0.25 秒向周圍最多 8 個敵人釋放一道閃電鏈，擊中時造成 301% 基礎傷害的攻擊物理傷害。對投射物數量的加成不會使該技能的投射物數量增加，但會使該技能每次釋放閃電鏈瞄準的敵人數量增加。電球永久穿透。"
+        ],
+        "detailText": [
+          "電球：每隔 0.25 秒向周圍最多 8 個敵人釋放一道閃電鏈對投射物數量的加成使該技能每次釋放閃電鏈瞄準的敵人數量增加投射物數量不會增加該技能發射的投射物永久穿透對該技能投射物速度的加成固定為 0",
+          "閃電鏈：造成 301% 基礎傷害的攻擊物理傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:High_Energy_Beam",
+        "name": "高能光束",
+        "family": "active",
+        "tags": [
+          "法術",
+          "閃電",
+          "範圍",
+          "射線"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/High_Energy_Beam",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能發射 1 條射線打擊前方矩形區域，擊中時造成 46% 基礎傷害的法術物理傷害。"
+        ],
+        "detailText": [
+          "高能光束：造成 46% 基礎傷害的法術物理傷害基礎發射 1 條射線對該技能射線長度加成與額外加成的 100% 同樣作用於該技能範圍該技能發射的射線不受射線長度加成影響",
+          "該技能發射的射線可以命中同一個敵人該技能的散彈效應衰減係數為 70%"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Destructive_Light_Cannon",
+        "name": "毀滅光炮",
+        "family": "active",
+        "tags": [
+          "法術",
+          "閃電",
+          "範圍",
+          "射線"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Destructive_Light_Cannon",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向指定位置發射一條射線，並在該位置產生爆炸，造成 207% 基礎傷害的法術物理傷害。"
+        ],
+        "detailText": [
+          "毀滅光炮：造成 207% 基礎傷害的法術物理傷害該技能發射的射線不受任何加成影響對該技能射線長度加成與額外加成的 100% 同樣作用於該技能範圍每 1 射線條數，該技能額外 +30% 傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Whirlwind_Blade",
+        "name": "刀鋒迴旋",
+        "family": "active",
+        "tags": [
+          "法術",
+          "物理",
+          "持續",
+          "範圍",
+          "投射物",
+          "直射"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Whirlwind_Blade",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向指定方向發射 1 個永久穿透的投射物，造成 308-513 法術物理傷害。投射物每 0.25 秒造成一次傷害，且飛行固定距離或命中勁敵時會停留在原地。該技能釋放後，再次釋放該技能會收回發射的投射物，但該次技能不算作釋放技能。所有投射物都收回後才能再次發射投射物。投射物持續 5 秒後，投射物會自動收回，如果投射物與角色自身距離超過 40 米，投射物會強制消失，不需要再收回。該技能發射的投射物可以命中同一個敵人。"
+        ],
+        "detailText": [
+          "刀鋒迴旋：造成 308-513 法術物理傷害基礎發射 1 個投射物每 0.25 秒造成一次傷害該技能發射的投射物永久穿透投射物持續 5 秒後，自動收回",
+          "該技能發射的投射物可以命中同一個敵人該技能的散彈效應衰減係數為 75%"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Lightning_Beam",
+        "name": "雷暴射線",
+        "family": "active",
+        "tags": [
+          "法術",
+          "閃電",
+          "範圍",
+          "持續",
+          "射線"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Lightning_Beam",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能時向前發射 1 條閃電射線，打擊射線範圍內的敵人，擊中時造成 25-480 法術閃電傷害。每釋放 2 次該技能，在自身周圍生成一個雷球，雷球會跟隨自身，並自動對一定範圍內的敵人釋放該技能。雷球持續 6 秒，最多能夠生成 3 個。"
+        ],
+        "detailText": [
+          "雷暴射線：造成 25-480 法術閃電傷害每釋放 2 次該技能，在自身周圍生成一個雷球該技能最多能夠生成 3 個雷球雷球持續 6 秒每 +1 射線條數，該技能 +1 能夠生成的雷球數量上限該技能的射線條數不受數量加成該技能發射的射線不受射線長度加成影響對該技能射線長度加成與額外加成的 100% 同樣作用於該技能範圍雷球達到上限時不會再生成雷球",
+          "每 +1 射線條數，該技能 +1 能夠生成的雷球數量上限對該技能射線長度加成與額外加成的 100% 同樣作用於該技能範圍"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Speed_Phantom",
+        "name": "迅法幻身",
+        "family": "active",
+        "tags": [
+          "法術",
+          "物理",
+          "範圍",
+          "持續",
+          "激發",
+          "位移"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Speed_Phantom",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能，朝指定方向位移，在位移開始和結束時，留下一個殘影，對周圍一定距離的敵人造成反向擊退。殘影在 0.65 秒後爆炸，對敵人造成一次傷害，每命中一個敵人，角色自身獲得 1 層亢奮：每擁有 1 層該亢奮，額外 2.5% 法術傷害，最多 8 層，持續 1.2 秒。"
+        ],
+        "detailText": [
+          "殘影：殘影持續 0.65 秒最多擁有 2 個殘影殘影爆炸命中敵人時，造成 542-904 法術物理傷害殘影爆炸每命中一個敵人，角色自身獲得 1 層亢奮亢奮：每擁有 1 層該亢奮，額外 2.5% 法術傷害，最多 8 層，持續 1.2 秒",
+          "該技能每擊中一個敵人，獲得1層增益，上限 8 層該技能具有反向擊退"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Archery_Bond",
+        "name": "射術羈絆",
+        "family": "active",
+        "tags": [
+          "法術",
+          "範圍",
+          "持續",
+          "哨衛",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Archery_Bond",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能，在玩家周圍一定範圍內隨機放置 1 個持續 6 秒的哨衛，哨衛周圍 4 米的友方獲得亢奮：投射物數量固定為1額外 +30% 投射物傷害+20% 攻擊投射物技能的攻擊速度+20% 法術投射物技能的施法速度"
+        ],
+        "detailText": [
+          "射術羈絆：哨衛持續 6 秒該技能基礎哨衛數量上限為 1 哨衛周圍 4 米的友方獲得亢奮：投射物數量固定為1額外 +30% 投射物傷害+20% 攻擊投射物技能的攻擊速度+20% 法術投射物技能的施法速度"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Nourishment_of_Life",
+        "name": "生息滋養",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "範圍",
+          "召喚",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Nourishment_of_Life",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能創造一個跟隨自身的區域，持續 6 秒。釋放該技能獲得亢奮：區域內的魔靈 60 初始生長值。"
+        ],
+        "detailText": [
+          "釋放該技能創造一個跟隨自身的區域，持續 6 秒釋放該技能獲得亢奮：技能持續時，範圍內的魔靈 107.5 初始成長值"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Dazzling_Bloom",
+        "name": "奪目綻放",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "召喚",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Dazzling_Bloom",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能將所有魔靈傳送至指定地點，並使魔靈將目標切換為其周圍 5 米內稀有度最高的敵人。釋放該技能獲得亢奮：魔靈根據敵人稀有度，對其造成的傷害額外增加，至多額外 22% 傷害，持續 3 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮：技能持續時，敵人稀有度越高，魔靈對其造成的傷害越高，至多額外 22 傷害持續 3 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Star_Stalker",
+        "name": "追獵星芒",
+        "family": "active",
+        "tags": [
+          "法術",
+          "投射物",
+          "範圍",
+          "持續",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Star_Stalker",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向前發射 1 個投射物，投射物會以其為中心生成一片跟隨其移動的區域，角色自身在區域內時獲得亢奮：額外 22.5% 持續傷害。投射物會持續追蹤勁敵，到達追蹤目標的位置時會附在其上。附身單位被擊敗後投射物會追蹤另一個單位。投射物的飛行速度為角色自身移動速度的 100%，持續 4 秒。"
+        ],
+        "detailText": [
+          "追獵星芒：角色自身在區域內時獲得亢奮：額外 +32% 持續傷害投射物的飛行速度為角色自身移動速度的 100%投射物持續 4 秒該技能發射的投射物不受穿透、彈射和返回效果影響"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Harmonious_Field",
+        "name": "調諧力場",
+        "family": "active",
+        "tags": [
+          "法術",
+          "引導",
+          "範圍",
+          "持續",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Harmonious_Field",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "該技能引導結束時生成一個跟隨自身的區域，區域內的哨衛獲得亢奮：額外 8.2% 傷害，持續 6 秒。每 1 引導層數使該技能額外 +33% 激發效果。該技能引導結束時，如果引導層數達到上限，還會使區域內得哨衛立即 +3 秒持續時間。引導該技能時可以移動。"
+        ],
+        "detailText": [
+          "該技能引導結束時生成一個跟隨自身的區域，區域內的哨衛獲得亢奮：技能持續時，範圍內的哨衛額外 +12% 傷害持續 6 秒每 1 引導層數使該技能額外 +33% 激發效果該技能引導結束時，如果引導層數達到上限，區域內的哨衛立即 +3 秒持續時間引導該技能時可以移動"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Shackles_of_Malice",
+        "name": "惡意枷鎖",
+        "family": "active",
+        "tags": [
+          "法術",
+          "腐蝕",
+          "連鎖",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Shackles_of_Malice",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能向敵人發射一道惡意鎖鏈，造成 667-667 法術腐蝕傷害。鎖鏈可以彈射 2 次。鎖鏈擊中被詛咒的敵人時，轉而產生爆炸並對一定範圍內的敵人造成 667-667 法術腐蝕傷害，隨後移除該敵人的所有詛咒效果。鎖鏈擊中的敵人受到的詛咒效果越多，爆炸的傷害越高。"
+        ],
+        "detailText": [
+          "惡意鎖鏈：造成 667-667 法術腐蝕傷害。",
+          "爆炸：造成 667-667 法術腐蝕傷害爆炸會移除鎖鏈擊中敵人的所有詛咒效果。",
+          "鎖鏈擊中的敵人每受到 1 個詛咒效果影響，爆炸額外 25% 擊中傷害（疊乘）。"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Shattered_Stone",
+        "name": "裂石打擊",
+        "family": "active",
+        "tags": [
+          "基礎技能",
+          "攻擊",
+          "近戰",
+          "物理",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Shattered_Stone",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能重擊前方矩形區域，造成 107% 基礎傷害的攻擊物理傷害。"
+        ],
+        "detailText": [
+          "裂石打擊：造成 107% 基礎傷害的攻擊物理傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Gold_Rush",
+        "name": "聚石碎金",
+        "family": "active",
+        "tags": [
+          "激發",
+          "攻擊",
+          "物理",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Gold_Rush",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能嘲諷半徑 10 米內的敵人，並獲得亢奮：每影響一個敵人，額外 6% 傷害，且索敵範圍和移動速度額外增加，持續 6 秒。"
+        ],
+        "detailText": [
+          "釋放該技能嘲諷半徑 10 米內的敵人，並獲得亢奮：每影響一個敵人，額外 +6% 傷害，上限 10 層每影響一個敵人，額外 +3% 移動速度，上限 10 層技能持續時， +30% 索敵範圍持續 6 秒至少為 4 階時，如果 10 米內有首領敵人，該技能額外 +120% 激發效果"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Rock_Blast",
+        "name": "亂石橫飛",
+        "family": "active",
+        "tags": [
+          "強化技能",
+          "攻擊",
+          "近戰",
+          "物理",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Rock_Blast",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能連續 3 次打擊周圍圓形區域，每次造成 47% 基礎傷害的攻擊物理傷害。釋放該技能時可以移動。"
+        ],
+        "detailText": [
+          "亂石橫飛：每次技能連續打擊 3 次每次造成 47% 基礎傷害的攻擊物理傷害至少為 3 階時， 8 米每有一個敵人，該技能額外 3.5% 傷害， +3% 技能範圍，上限 8 層"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Towering_Mountains",
+        "name": "群峰壓頂",
+        "family": "active",
+        "tags": [
+          "終極技能",
+          "攻擊",
+          "近戰",
+          "物理",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Towering_Mountains",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能跳躍至目標位置並猛擊地面，對一定範圍內敵人造成 1138% 基礎傷害的攻擊物理傷害。範圍的敵人越多，該技能的傷害越高。"
+        ],
+        "detailText": [
+          "群峰壓頂：造成 1138% 基礎傷害的攻擊物理傷害該技能造成傷害時，範圍內每有一個敵人，該次技能額外 +5% 傷害，上限 8 層"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Scattered_Mud",
+        "name": "零落成泥",
+        "family": "active",
+        "tags": [
+          "基礎技能",
+          "法術",
+          "腐蝕",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Scattered_Mud",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能打擊前方圓形區域，造成 100% 基礎傷害的法術腐蝕傷害。"
+        ],
+        "detailText": [
+          "零落成泥：造成 100% 基礎傷害的法術腐蝕傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Withering_Payback",
+        "name": "凋敝奉還",
+        "family": "active",
+        "tags": [
+          "激發",
+          "法術",
+          "腐蝕",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Withering_Payback",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "釋放該技能獲得亢奮：額外 20% 腐蝕傷害，且受到傷害時會向敵人觸發一次基礎或強化技能，持續 6 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮：額外 +20% 腐蝕傷害該技能持續時，受到傷害時對敵人觸發一次基礎或強化技能，取決於強化技能機率；該效果對同一敵人有 1 秒間隔時間持續 6 秒該技能持續時，至少為 4 階時，終極技能額外 +50% 傷害該技能持續時，至少為 4 階時，強化技能 +1 施放的地刺數量"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Bleak_Grass",
+        "name": "哀草叢生",
+        "family": "active",
+        "tags": [
+          "強化技能",
+          "法術",
+          "腐蝕",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Bleak_Grass",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "向前釋放一道會追蹤敵人的地刺，造成 162% 基礎傷害的法術腐蝕傷害。地刺抵達目標後爆發，造成 162% 基礎傷害的法術腐蝕傷害。"
+        ],
+        "detailText": [
+          "地刺：造成 162% 基礎傷害的法術腐蝕傷害",
+          "地刺爆發：造成 162% 基礎傷害的法術腐蝕傷害",
+          "至少為 3 階時，該技能 +15% 基礎半徑至少為 3 階時，該技能釋放的地刺 +50% 行進速度至少為 3 階時，該技能擊中時使敵人在 2 秒內額外 +4% 受到的腐蝕傷害（疊乘），上限 4 層至少為 3 階時，該技能擊中時使敵人在 2 秒內額外 -8% 移動速度（疊乘），上限 4 層"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:World_of_Thorns",
+        "name": "荊天棘地",
+        "family": "active",
+        "tags": [
+          "終極技能",
+          "法術",
+          "腐蝕",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/World_of_Thorns",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "在半徑 20 米內的每個敵人腳下生成一片尖刺，造成 2298% 基礎傷害的法術腐蝕傷害。該技能至多對 10 個敵人生效。"
+        ],
+        "detailText": [
+          "荊天棘地：造成 2298% 基礎傷害的法術腐蝕傷害多個尖刺可以命中同一個敵人該技能的散彈效應衰減係數為 95%"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Rising_Edge",
+        "name": "新銳崛起",
+        "family": "active",
+        "tags": [
+          "法術",
+          "持續",
+          "召喚",
+          "激發"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Rising_Edge",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能獲得亢奮：每施放一次召喚技能，額外 3.1% 召喚物傷害，上限 5 層，持續 6 秒。"
+        ],
+        "detailText": [
+          "釋放該技能獲得亢奮： 每釋放一次召喚技能，額外 +5% 召喚物傷害，最多疊加 5 層持續 6 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Crescent_Slash",
+        "name": "碎月弧光斬",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "物理",
+          "連攜",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Crescent_Slash",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "連攜起手1：向前斬出一道劍氣，造成 502% 武器攻擊傷害。"
+        ],
+        "detailText": [
+          "連攜起手2：向前連續斬出 6 道劍氣，每次造成 83% 武器攻擊傷害。",
+          "連攜終結：向前斬出三道劍氣波，對敵人造成 100% 武器攻擊傷害。消耗所有連攜點，每消耗 1 點就額外對敵人造成一次傷害。",
+          "連攜起手1：造成 502% 武器攻擊傷害每 1 點連攜點，該技能的連攜起手技 +3% 技能範圍",
+          "連攜起手2：造成 83% 武器攻擊傷害總共造成 6 次傷害每 1 點連攜點，該技能的連攜起手技 +3% 技能範圍該技能的連攜起手技2額外 -40% 攻擊速度",
+          "該技能的連攜起手技擊中時，獲得 1 層月暈",
+          "連攜終結：造成 100% 武器攻擊傷害每消耗 1 點連攜點，額外造成一次傷害，至多額外造成 4 次該技能的連攜終結技額外 -40% 攻擊速度每消耗 1 點連攜點，該技能的連攜終結技 +5% 技能範圍",
+          "該技能 +30% 連攜終結技增幅",
+          "該技能的連攜起手技2額外 -40% 攻擊速度該技能的連攜終結技額外 -40% 攻擊速度每 1 點連攜點，該技能的連攜起手技 +3% 技能範圍每消耗 1 點連攜點，該技能的連攜終結技 +5% 技能範圍該技能的連攜起手技擊中時，獲得 1 層月暈該技能 +30% 連攜終結技增幅"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 502,
+            "valueKind": "flat",
+            "sourceText": "造成 502% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 83,
+            "valueKind": "flat",
+            "sourceText": "造成 83% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 100,
+            "valueKind": "flat",
+            "sourceText": "造成 100% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 502,
+            "valueKind": "flat",
+            "sourceText": "造成 502% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-5",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 83,
+            "valueKind": "flat",
+            "sourceText": "造成 83% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-6",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 100,
+            "valueKind": "flat",
+            "sourceText": "造成 100% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Serpent_Beam",
+        "name": "流焰炎蛇引",
+        "family": "active",
+        "tags": [
+          "法術",
+          "物理",
+          "火焰",
+          "射線",
+          "連攜",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Serpent_Beam",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "連攜起手1：向敵人發射一條火焰射線，造成 403-672 法術物理傷害，並施加炎蛇縛。"
+        ],
+        "detailText": [
+          "連攜起手2：向敵人發射一條能夠折射 3 次的火焰射線，造成 403-672 法術物理傷害，並擴散敵人身上的炎蛇縛狀態。",
+          "連攜終結：向敵人發射一條終結火焰射線，對目標和其他擁有炎蛇縛的敵人造成 403-672 法術物理傷害。消耗所有連攜點。",
+          "該技能全部物理傷害轉化為火焰傷害。",
+          "連攜起手1：造成 403-672 法術物理傷害該技能擊中時，對敵人施加炎蛇縛該技能不受折射次數影響",
+          "該技能擊敗敵人時，直接擴散敵人的炎蛇縛狀態至 5 米內的其他敵人",
+          "連攜起手2：造成 403-672 法術物理傷害該技能擊中時，使敵人 -15% 攻擊、施法和移動速度，持續 2 秒該技能擊中時，擴散敵人的炎蛇縛狀態至 5 米內的其他敵人該技能基礎可以折射 3 次每 +1 射線條數，該技能的連攜起手技額外 +1 折射次數",
+          "連攜終結：造成 403-672 法術物理傷害對目標和其他擁有炎蛇縛的敵人都造成傷害該技能的連攜終結技額外 -33% 施法速度",
+          "該技能 +30% 連攜終結技增幅該技能 100% 物理傷害轉化為火焰傷害該技能的射線數量不受射線條數影響",
+          "每 +1 射線條數，該技能的連攜起手技額外 +1 折射次數該技能的連攜終結技額外 -33% 施法速度該技能 +30% 連攜終結技增幅該技能 100% 物理傷害轉化為火焰傷害"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Gale_Slash",
+        "name": "疾風裂地斬",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "物理",
+          "連攜",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Gale_Slash",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "連攜起手1：向前衝鋒，對經過的敵人造成 392% 武器攻擊傷害。"
+        ],
+        "detailText": [
+          "連攜起手2：向前旋轉攻擊，造成 392% 武器攻擊傷害。",
+          "連攜終結：躍起並猛擊前方地面，造成 392% 武器攻擊傷害。",
+          "連攜起手1：造成 392% 武器攻擊傷害向前衝刺 3.5 米，如果敵人過遠，則改為衝刺 6 米該技能的連攜起手技1額外 +20% 攻擊速度",
+          "連攜起手2：造成 392% 武器攻擊傷害向前位移 2.5 米該技能的起手技2擊中時，將敵人向技能施放方向擊退",
+          "連攜終結：造成 392% 武器攻擊傷害向前跳躍 4 米該技能的連攜終結技額外 -50% 攻擊速度",
+          "該技能 +30% 連攜終結技增幅該技能對攻擊速度的加成有衰減，衰減值等同於一般位移技能每 +1% 攻擊速度，該技能額外 0.2% 傷害",
+          "施放該技能的起手技後，每 1 起手技獲得的連攜點，獲得 1 層驚風當前每有 1 點連攜點，該技能的起手技 +5% 位移距離，上限 4 層該技能無法被觸發該技能無法被觸媒技能輔助",
+          "該技能的連攜起手技1額外 +20% 攻擊速度該技能的連攜終結技額外 -50% 攻擊速度施放該技能的起手技後，每 1 起手技獲得的連攜點，獲得 1 層驚風當前每有 1 點連攜點，該技能的起手技 +5% 位移距離，上限 4 層該技能 +30% 連攜終結技增幅每層增益使該技能的額外 1.5% 爆擊值該技能無法被觸發每 +1% 攻擊速度，該技能額外 0.2% 傷害"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 392,
+            "valueKind": "flat",
+            "sourceText": "造成 392% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 392,
+            "valueKind": "flat",
+            "sourceText": "造成 392% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 392,
+            "valueKind": "flat",
+            "sourceText": "造成 392% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 392,
+            "valueKind": "flat",
+            "sourceText": "造成 392% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-5",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 392,
+            "valueKind": "flat",
+            "sourceText": "造成 392% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-6",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 392,
+            "valueKind": "flat",
+            "sourceText": "造成 392% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Spectral_Slash",
+        "name": "分身靈爆斬",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍",
+          "物理",
+          "連攜",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Spectral_Slash",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "連攜起手1：向前斬擊，對命中的首個敵人造成 448% 武器攻擊傷害，並施加印記。"
+        ],
+        "detailText": [
+          "連攜起手2：向前斬擊，造成 448% 武器攻擊傷害，並擴散敵人身上的印記。",
+          "連攜終結：猛擊前方地面，造成 145% 武器攻擊傷害，並生成數個分身跳躍斬擊擁有印記的敵人，造成 145% 武器攻擊傷害。",
+          "連攜起手1：造成 448% 武器攻擊傷害該技能僅能擊中 1 個敵人該技能擊中時，對敵人施加印記該技能擊敗敵人時，直接擴散敵人的印記狀態至 8 米內的其他敵人",
+          "連攜起手2：造成 448% 武器攻擊傷害該技能擊中時，擴散敵人的印記狀態至 8 米內的其他敵人（受技能範圍屬性影響）",
+          "連攜終結：造成 145% 武器攻擊傷害每消耗 1 點連攜點，額外生成一個分身，上限 4 個分身的散彈效應衰減係數為 70%技能結束後移除敵人的印記",
+          "該技能的連攜終結技額外 -40% 攻擊速度該技能 +30% 連攜終結技增幅"
+        ],
+        "modifiers": [
+          {
+            "id": "weaponDamagePct-1",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 448,
+            "valueKind": "flat",
+            "sourceText": "造成 448% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-2",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 448,
+            "valueKind": "flat",
+            "sourceText": "造成 448% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-3",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 145,
+            "valueKind": "flat",
+            "sourceText": "造成 145% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-4",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 145,
+            "valueKind": "flat",
+            "sourceText": "造成 145% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-5",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 448,
+            "valueKind": "flat",
+            "sourceText": "造成 448% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-6",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 448,
+            "valueKind": "flat",
+            "sourceText": "造成 448% 武器攻擊傷害"
+          },
+          {
+            "id": "weaponDamagePct-7",
+            "selector": {
+              "kind": "skill"
+            },
+            "operation": "add",
+            "stat": "skill.weaponDamagePct",
+            "value": 145,
+            "valueKind": "flat",
+            "sourceText": "造成 145% 武器攻擊傷害"
+          }
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Vendetta",
+        "name": "尋仇",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Vendetta",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "傳送至 9 米內的隨機敵人身邊，隨後觸發 1 次核心技能，被其觸發的技能額外 +40% 攻擊傷害。該技能無法被觸媒技能輔助。僅限裝備非引導、非位移、核心近戰攻擊技能時使用。"
+        ],
+        "detailText": [],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Shockwave_Warcry",
+        "name": "破勢戰吼",
+        "family": "active",
+        "tags": [
+          "戰吼",
+          "範圍",
+          "持續"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Shockwave_Warcry",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "施放該技能發出戰吼，嘲諷周圍敵人。該技能每影響一個敵人，連攜終結技額外 3.1% 傷害和異常傷害，持續 3 秒。戰吼持續時，每施放一次連攜終結技，連攜技能 6% 技能範圍，上限 5 層。"
+        ],
+        "detailText": [
+          "釋放該技能發出戰吼：嘲諷周圍敵人每影響一個敵人，連攜終結技額外 5.95% 傷害和異常傷害，上限 8 層技能持續時，每施放一次連攜終結技，連攜技能 +6% 技能範圍，上限 5 層持續 3 秒"
+        ],
+        "parserVersion": "1/1"
+      }
+    },
+    {
+      "parseStatus": "ok",
+      "definition": {
+        "id": "skill:Endless_Vendetta",
+        "name": "無盡尋仇",
+        "family": "active",
+        "tags": [
+          "攻擊",
+          "近戰",
+          "範圍"
+        ],
+        "sourceUrl": "https://tlidb.com/tw/Endless_Vendetta",
+        "locale": "tw",
+        "season": "ss12",
+        "version": "1.0.0",
+        "summaryText": [
+          "以半徑 12 米內的隨機敵人為目標重複施放尋仇；初始額外 -30% 攻擊速度，每重複施放一次尋仇，額外 +5% 攻擊速度，最多重複施放 30 次。該技能無法被觸媒技能輔助。技能施放期間再次點擊該技能可以立即中斷施放。"
+        ],
+        "detailText": [],
+        "parserVersion": "1/1"
+      }
+    }
+  ]
+}

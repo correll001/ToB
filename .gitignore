@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# TLIDB ETL raw HTML/MD (manifests/*.json under data/raw are kept for diffs)
+/data/raw/**/indexes/*.html
+/data/raw/**/indexes/*.md
+/data/raw/**/pages/**/*.html
+/data/raw/**/pages/**/*.md

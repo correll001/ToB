@@ -1,0 +1,18 @@
+{
+  "season": "ss12",
+  "version": "demo-1",
+  "family": "support",
+  "entries": [
+    {
+      "id": "skill:Multiple_Projectiles",
+      "notes": ["Sample: curated support restriction when auto-parse misses pairing rules."],
+      "supportRulesMerge": {
+        "rawRequirementLines": [
+          "[override] Demo: enforce projectile tag expectation when wiki text is ambiguous."
+        ],
+        "requiresProjectile": true
+      },
+      "warningsAppend": ["supportRulesMerge patched from data/overrides"]
+    }
+  ]
+}

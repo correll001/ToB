@@ -1,0 +1,28 @@
+{
+  "season": "ss12",
+  "version": "demo-1",
+  "family": "active",
+  "entries": [
+    {
+      "id": "skill:Leap_Attack",
+      "notes": [
+        "Sample: variant ladder + post-20 tier tweak + manual modifier append (ETL override demo)."
+      ],
+      "familyOverride": "medium",
+      "post20": {
+        "tier21to30PerLevelMorePct": 12
+      },
+      "modifiersAppend": [
+        {
+          "id": "override-demo-leap-audit",
+          "selector": { "kind": "skill" },
+          "operation": "add",
+          "stat": "skill.damage.more",
+          "value": 0,
+          "valueKind": "more",
+          "sourceText": "[override demo] placeholder — replace with real parsed stat when TLIDB row is wrong"
+        }
+      ]
+    }
+  ]
+}

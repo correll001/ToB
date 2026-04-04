@@ -1,0 +1,2318 @@
+{
+  "season": "ss12",
+  "parserVersion": "1",
+  "generatedAt": "2026-04-04T05:22:39.205Z",
+  "count": 330,
+  "skills": [
+    {
+      "sourceUrl": "https://tlidb.com/tw/Leap_Attack",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "躍擊",
+      "slug": "Leap_Attack"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ice_Shot",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "寒冰射擊",
+      "slug": "Ice_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Hammer_of_Ash",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "灰燼之鎚",
+      "slug": "Hammer_of_Ash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Chromatic_Shot",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "五彩魔矢",
+      "slug": "Chromatic_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Resurrection_Warcry",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "復甦戰吼",
+      "slug": "Resurrection_Warcry"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Whirlwind",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "旋風斬",
+      "slug": "Whirlwind"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Focused_Slash",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "專注斬",
+      "slug": "Focused_Slash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Stoneskin",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "石膚術",
+      "slug": "Stoneskin"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Thundercloud",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "雷雲放射",
+      "slug": "Thundercloud"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Blink",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "閃現",
+      "slug": "Blink"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Bombard",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "炮轟",
+      "slug": "Bombard"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Shadow_Shot",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "暗影彈",
+      "slug": "Shadow_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Shadow_Swamp",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "暗影之沼",
+      "slug": "Shadow_Swamp"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Marked_Rain_of_Arrows",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "標記箭雨",
+      "slug": "Marked_Rain_of_Arrows"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Bull%27s_Rage",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "公牛之怒",
+      "slug": "Bull's_Rage"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Shadow_Dash",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "暗影衝刺",
+      "slug": "Shadow_Dash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Frost_Shield",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "寒冰盾",
+      "slug": "Frost_Shield"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Rocket_Jump",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "火箭跳",
+      "slug": "Rocket_Jump"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Split_Firebolt",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "裂變火球",
+      "slug": "Split_Firebolt"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Blizzard",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "暴風雪",
+      "slug": "Blizzard"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Obscure",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "模糊",
+      "slug": "Obscure"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Mana_Boil",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "魔力沸騰",
+      "slug": "Mana_Boil"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Frost_Impact",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "寒霜破擊",
+      "slug": "Frost_Impact"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Path_of_Flames",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "烈焰之徑",
+      "slug": "Path_of_Flames"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Berserking_Blade",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "暴走巨刃",
+      "slug": "Berserking_Blade"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Charged_Pummel",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "充能猛擊",
+      "slug": "Charged_Pummel"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Chain_Lightning",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "閃電鏈",
+      "slug": "Chain_Lightning"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Double_Thrusts",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "雙重突刺",
+      "slug": "Double_Thrusts"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Mind_Control",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "攝念奪識",
+      "slug": "Mind_Control"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ring_of_Ice",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "冰環術",
+      "slug": "Ring_of_Ice"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Split_Shot",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "分裂射擊",
+      "slug": "Split_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Flame_Slash",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "烈焰斬",
+      "slug": "Flame_Slash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Icy_Blade",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "冰凌斬",
+      "slug": "Icy_Blade"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Frost_Spike",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "碎冰刺擊",
+      "slug": "Frost_Spike"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Wilt_Spike",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "凋零刺擊",
+      "slug": "Wilt_Spike"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Lightning_Shot",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "閃電射擊",
+      "slug": "Lightning_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Corrosive_Shot",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "侵蝕彈",
+      "slug": "Corrosive_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Burning_Shot",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "燃燒射擊",
+      "slug": "Burning_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Electrifying_Shot",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "電光彈",
+      "slug": "Electrifying_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Corrosive_Throw",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "侵蝕投擲",
+      "slug": "Corrosive_Throw"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Inexhaustible_Barrage",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "不竭彈雨",
+      "slug": "Inexhaustible_Barrage"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Rain_of_Arrows",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "箭雨",
+      "slug": "Rain_of_Arrows"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Savage_Charge",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "野蠻衝鋒",
+      "slug": "Savage_Charge"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ice_Lances",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "冰錐術",
+      "slug": "Ice_Lances"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Sparkle",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "電火花",
+      "slug": "Sparkle"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ring_of_Blades",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "環繞飛刃",
+      "slug": "Ring_of_Blades"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Flame_Core",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "聚焰之核",
+      "slug": "Flame_Core"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Lightning_Storm",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "閃電風暴",
+      "slug": "Lightning_Storm"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Flame_Jet",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "烈焰釋放",
+      "slug": "Flame_Jet"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Frost_Terra",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "寒霜地面",
+      "slug": "Frost_Terra"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Scorching_Beam",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "灼熱射線",
+      "slug": "Scorching_Beam"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Wilting_Beam",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "枯萎射線",
+      "slug": "Wilting_Beam"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Frigid_Transmission",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "寒冰傳送",
+      "slug": "Frigid_Transmission"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Forced_Start",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "強制啟動",
+      "slug": "Forced_Start"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Aegis_of_Fire",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "烈火神盾",
+      "slug": "Aegis_of_Fire"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Delayed_Pain",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "痛覺延遲",
+      "slug": "Delayed_Pain"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Defensive_Buffer",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "緩衝防禦",
+      "slug": "Defensive_Buffer"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Brisk_Wind",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "迅疾之風",
+      "slug": "Brisk_Wind"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Burst_of_Anger",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "怒火狂飆",
+      "slug": "Burst_of_Anger"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Scorching_Pulse",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "灼熱波紋",
+      "slug": "Scorching_Pulse"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Fixate",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "聚焦",
+      "slug": "Fixate"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Secret_Origin_Unleash",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "秘源釋放",
+      "slug": "Secret_Origin_Unleash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Aim",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "瞄準",
+      "slug": "Aim"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Blurry_Steps",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "迷蹤步",
+      "slug": "Blurry_Steps"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Groundshaker",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "震撼大地",
+      "slug": "Groundshaker"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Focused_Shot",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "專注射擊",
+      "slug": "Focused_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Fire_Burst",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "爆炎術",
+      "slug": "Fire_Burst"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Thunderbolt_Overload",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "超載雷球",
+      "slug": "Thunderbolt_Overload"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Fearless_Warcry",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "狂猛戰吼",
+      "slug": "Fearless_Warcry"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Raging_Warcry",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "暴怒戰吼",
+      "slug": "Raging_Warcry"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Charging_Warcry",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "衝鋒戰吼",
+      "slug": "Charging_Warcry"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Black_Hole",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "黑洞",
+      "slug": "Black_Hole"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Summon_Machine_Guard",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "召喚機械警衛",
+      "slug": "Summon_Machine_Guard"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Summon_Spider_Tank",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "召喚蜘蛛坦克",
+      "slug": "Summon_Spider_Tank"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Timid",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "膽怯",
+      "slug": "Timid"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Electrocute",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "感電",
+      "slug": "Electrocute"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Vulnerability",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "易傷",
+      "slug": "Vulnerability"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Scorch",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "熾熱",
+      "slug": "Scorch"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Dazzled",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "盲目",
+      "slug": "Dazzled"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Entangled_Pain",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "苦痛糾纏",
+      "slug": "Entangled_Pain"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Biting_Cold",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "蝕骨之寒",
+      "slug": "Biting_Cold"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Corruption",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "邪惡侵蝕",
+      "slug": "Corruption"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Life_Source",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "生命源泉",
+      "slug": "Life_Source"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Mana_Source",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "魔力源泉",
+      "slug": "Mana_Source"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Elemental_Shock",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "元素震盪",
+      "slug": "Elemental_Shock"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Machine_Army",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "機械行軍",
+      "slug": "Machine_Army"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Prayer",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "祈願",
+      "slug": "Prayer"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Dark_Gate",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "黑暗之門",
+      "slug": "Dark_Gate"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Thunderlight_Bond",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "雷光羈絆",
+      "slug": "Thunderlight_Bond"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Arcane_Circle",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "秘法陣",
+      "slug": "Arcane_Circle"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ice_Bond",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "冰霜羈絆",
+      "slug": "Ice_Bond"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Drinking_Recovery",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "渴飲療愈",
+      "slug": "Drinking_Recovery"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Reform",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "重整陣勢",
+      "slug": "Reform"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Centralized_Loading",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "集中上膛",
+      "slug": "Centralized_Loading"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Blink_Arrow",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "瞬閃弓",
+      "slug": "Blink_Arrow"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Swift_Shadow_Raid",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "迅影奔襲",
+      "slug": "Swift_Shadow_Raid"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Safeguard_Ring",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "絕境陣",
+      "slug": "Safeguard_Ring"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Icebound_Beam",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "冰魄射線",
+      "slug": "Icebound_Beam"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Spiral_Strike",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "螺旋擊",
+      "slug": "Spiral_Strike"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Compound_Source",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "複合源泉",
+      "slug": "Compound_Source"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Moon_Strike",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "月華斬",
+      "slug": "Moon_Strike"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Howling_Gale",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "呼嘯烈風",
+      "slug": "Howling_Gale"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Blazing_Bullet",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "熾炎穿彈",
+      "slug": "Blazing_Bullet"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Thunder_Slash",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "雷影斬",
+      "slug": "Thunder_Slash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Thunder_Spike",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "雷光刺擊",
+      "slug": "Thunder_Spike"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Haunting_Abomination",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "惡煞纏身",
+      "slug": "Haunting_Abomination"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Frost_Core",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "寒霜之核",
+      "slug": "Frost_Core"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Thunder_Core",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "雷降之核",
+      "slug": "Thunder_Core"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ghost_Blade_Einherjar",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "幽刃英靈",
+      "slug": "Ghost_Blade_Einherjar"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Arrow_Einherjar",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "飛箭英靈",
+      "slug": "Arrow_Einherjar"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Summon_Grim_Phantom",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "召喚幽浮魅影",
+      "slug": "Summon_Grim_Phantom"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Overpower",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "壓制重擊",
+      "slug": "Overpower"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Onslaught_Punch",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "進擊之拳",
+      "slug": "Onslaught_Punch"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Aimed_Shot",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "瞄準射擊",
+      "slug": "Aimed_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Blazing_Dance",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "烈焰揮舞",
+      "slug": "Blazing_Dance"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Blazing_Spin",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "烈焰飛旋",
+      "slug": "Blazing_Spin"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Blazing_Incineration",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "烈焰暴燃",
+      "slug": "Blazing_Incineration"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Molten_Rising",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "熔火升騰",
+      "slug": "Molten_Rising"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Glacier_Ripples",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "冰川漣漪",
+      "slug": "Glacier_Ripples"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Frost_Release",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "寒潮緩釋",
+      "slug": "Frost_Release"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Permafrost_Cast",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "冰澆雪鑄",
+      "slug": "Permafrost_Cast"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ice_Earthshaker",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "撼地冰暴",
+      "slug": "Ice_Earthshaker"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Lightning_Star",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "閃電流星",
+      "slug": "Lightning_Star"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Thunderlight_Arrow",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "雷光飛矢",
+      "slug": "Thunderlight_Arrow"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Thundercloud_Surge",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "雷雲激盪",
+      "slug": "Thundercloud_Surge"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Lightning_Surge",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "雷馳電湧",
+      "slug": "Lightning_Surge"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/High_Energy_Beam",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "高能光束",
+      "slug": "High_Energy_Beam"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Destructive_Light_Cannon",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "毀滅光炮",
+      "slug": "Destructive_Light_Cannon"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Whirlwind_Blade",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "刀鋒迴旋",
+      "slug": "Whirlwind_Blade"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Lightning_Beam",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "雷暴射線",
+      "slug": "Lightning_Beam"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Speed_Phantom",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "迅法幻身",
+      "slug": "Speed_Phantom"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Archery_Bond",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "射術羈絆",
+      "slug": "Archery_Bond"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Nourishment_of_Life",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "生息滋養",
+      "slug": "Nourishment_of_Life"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Dazzling_Bloom",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "奪目綻放",
+      "slug": "Dazzling_Bloom"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Star_Stalker",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "追獵星芒",
+      "slug": "Star_Stalker"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Harmonious_Field",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "調諧力場",
+      "slug": "Harmonious_Field"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Shackles_of_Malice",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "惡意枷鎖",
+      "slug": "Shackles_of_Malice"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Shattered_Stone",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "裂石打擊",
+      "slug": "Shattered_Stone"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Gold_Rush",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "聚石碎金",
+      "slug": "Gold_Rush"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Rock_Blast",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "亂石橫飛",
+      "slug": "Rock_Blast"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Towering_Mountains",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "群峰壓頂",
+      "slug": "Towering_Mountains"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Scattered_Mud",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "零落成泥",
+      "slug": "Scattered_Mud"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Withering_Payback",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "凋敝奉還",
+      "slug": "Withering_Payback"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Bleak_Grass",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "哀草叢生",
+      "slug": "Bleak_Grass"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/World_of_Thorns",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "荊天棘地",
+      "slug": "World_of_Thorns"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Rising_Edge",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "新銳崛起",
+      "slug": "Rising_Edge"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Crescent_Slash",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "碎月弧光斬",
+      "slug": "Crescent_Slash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Serpent_Beam",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "流焰炎蛇引",
+      "slug": "Serpent_Beam"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Gale_Slash",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "疾風裂地斬",
+      "slug": "Gale_Slash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Spectral_Slash",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "分身靈爆斬",
+      "slug": "Spectral_Slash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Vendetta",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "尋仇",
+      "slug": "Vendetta"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Shockwave_Warcry",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "破勢戰吼",
+      "slug": "Shockwave_Warcry"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Endless_Vendetta",
+      "kind": "active",
+      "locale": "tw",
+      "parseCandidateName": "無盡尋仇",
+      "slug": "Endless_Vendetta"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Multiple_Projectiles",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "散射",
+      "slug": "Multiple_Projectiles"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Multistrike",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "連續攻擊",
+      "slug": "Multistrike"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Projectile_Split",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "投射物分裂",
+      "slug": "Projectile_Split"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Increased_Area",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "範圍擴大",
+      "slug": "Increased_Area"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Melee_Knockback",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "近戰擊退",
+      "slug": "Melee_Knockback"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Overload",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "過載",
+      "slug": "Overload"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Tendonslicer",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "斷筋鋒刃",
+      "slug": "Tendonslicer"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Glacial_Freeze",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "凜冽冰凍",
+      "slug": "Glacial_Freeze"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Additional_Ignite",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "額外點燃",
+      "slug": "Additional_Ignite"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/High_Voltage",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "高壓電",
+      "slug": "High_Voltage"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Quick_Mobility",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "急速位移",
+      "slug": "Quick_Mobility"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Extended_Duration",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "持續時間延長",
+      "slug": "Extended_Duration"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Spell_Concentration",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "法術集中",
+      "slug": "Spell_Concentration"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Added_Erosion_Damage",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "附加腐蝕傷害",
+      "slug": "Added_Erosion_Damage"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Critical_Strike_Rating_Increase",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "提高暴擊值",
+      "slug": "Critical_Strike_Rating_Increase"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Critical_Strike_Damage_Increase",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "提高暴擊傷害",
+      "slug": "Critical_Strike_Damage_Increase"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Physical_to_Fire",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "物理轉火焰",
+      "slug": "Physical_to_Fire"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Lightning_to_Cold",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "閃電轉冰冷",
+      "slug": "Lightning_to_Cold"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Deep_Wounds",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "傷口加深",
+      "slug": "Deep_Wounds"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Improved_Corrosion",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "強烈侵蝕",
+      "slug": "Improved_Corrosion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Passivation",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "鈍化",
+      "slug": "Passivation"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Quick_Decision",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "速決",
+      "slug": "Quick_Decision"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Cost_Conversion",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "耗能轉化",
+      "slug": "Cost_Conversion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Jump",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "彈射",
+      "slug": "Jump"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Shortened_Duration",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "持續時間縮短",
+      "slug": "Shortened_Duration"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Added_Fire_Damage",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "附加火焰傷害",
+      "slug": "Added_Fire_Damage"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Added_Cold_Damage",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "附加冰冷傷害",
+      "slug": "Added_Cold_Damage"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Added_Lightning_Damage",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "附加閃電傷害",
+      "slug": "Added_Lightning_Damage"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Control_Spell",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "法術控制",
+      "slug": "Control_Spell"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Elemental_Fusion",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "元素融合",
+      "slug": "Elemental_Fusion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Recklessness",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "狂莽",
+      "slug": "Recklessness"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Slow_Projectile",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "慢速投射",
+      "slug": "Slow_Projectile"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Grudge",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "幽怨",
+      "slug": "Grudge"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Projectile_Penetration",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "投射物穿透",
+      "slug": "Projectile_Penetration"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Steamroll",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "碾壓",
+      "slug": "Steamroll"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Cataclysm",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "催化劑",
+      "slug": "Cataclysm"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Hunting_Tempo",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "狩獵節奏",
+      "slug": "Hunting_Tempo"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Multifaceted_Guard",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "多面護衛",
+      "slug": "Multifaceted_Guard"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Sentry_Modification",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "改裝哨衛",
+      "slug": "Sentry_Modification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Fire_Explosion",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "火焰爆發",
+      "slug": "Fire_Explosion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Nova_Shot",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "墜星射擊",
+      "slug": "Nova_Shot"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precision_Strike",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精確打擊",
+      "slug": "Precision_Strike"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Haunt",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "惑影重重",
+      "slug": "Haunt"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Guard",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "守護",
+      "slug": "Guard"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Channel_Preparation",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "預備引導",
+      "slug": "Channel_Preparation"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Raging_Slash",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "怒斬",
+      "slug": "Raging_Slash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Quick_Return",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "快速回氣",
+      "slug": "Quick_Return"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Restrain",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "節流",
+      "slug": "Restrain"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Attack_Focus",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "攻擊專注",
+      "slug": "Attack_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Wind_Projectiles",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "疾風投射",
+      "slug": "Wind_Projectiles"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Pain_Amplification",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "痛楚加劇",
+      "slug": "Pain_Amplification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Blind",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "致盲",
+      "slug": "Blind"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Electric_Punishment",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "電能懲擊",
+      "slug": "Electric_Punishment"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ailment_Termination",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "異常終結",
+      "slug": "Ailment_Termination"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Enhanced_Ailment",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "強化異常",
+      "slug": "Enhanced_Ailment"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Added_Physical_Damage",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "附加物理傷害",
+      "slug": "Added_Physical_Damage"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Cooldown_Reduction",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "加速冷卻",
+      "slug": "Cooldown_Reduction"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Emergency_restoration",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "應急恢復",
+      "slug": "Emergency_restoration"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Instant_restoration",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "瞬時恢復",
+      "slug": "Instant_restoration"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ground_Divide",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "地面分化",
+      "slug": "Ground_Divide"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Scattershot_Beam",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "散射光束",
+      "slug": "Scattershot_Beam"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Focused_Beam",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "聚能光束",
+      "slug": "Focused_Beam"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Refracted_Prism",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "折射光棱",
+      "slug": "Refracted_Prism"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Servant_Damage",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "僕從傷害",
+      "slug": "Servant_Damage"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Servant_Life",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "僕從生命",
+      "slug": "Servant_Life"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Elemental_Duo",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "元素雙雄",
+      "slug": "Elemental_Duo"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Maniacal_Army",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "狂熱之軍",
+      "slug": "Maniacal_Army"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Mechanical_Modification",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "機械改造",
+      "slug": "Mechanical_Modification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Assault_Command",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "襲擊命令",
+      "slug": "Assault_Command"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Defense_Form",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "防禦姿態",
+      "slug": "Defense_Form"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Well-Fought_Battle",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "酣戰",
+      "slug": "Well-Fought_Battle"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Fragile_Resurrection",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "脆弱復甦",
+      "slug": "Fragile_Resurrection"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Residues",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "藥性殘留",
+      "slug": "Residues"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/All_In",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "一鼓作氣",
+      "slug": "All_In"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Iron_Fortification",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "鐵甲仍在",
+      "slug": "Iron_Fortification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Emergency_Avoidance",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "緊急迴避",
+      "slug": "Emergency_Avoidance"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Concentration_Warcry",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "集中戰吼",
+      "slug": "Concentration_Warcry"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Lion%27s_Roars",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "獅吼連連",
+      "slug": "Lion's_Roars"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Periodic_Burst",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "間歇性爆發",
+      "slug": "Periodic_Burst"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Terrain_of_Malice",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "惡意之域",
+      "slug": "Terrain_of_Malice"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Electric_Overload",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "電能超載",
+      "slug": "Electric_Overload"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Elemental_Impact",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "元素衝擊",
+      "slug": "Elemental_Impact"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Carpet_Bombardment",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "地毯轟炸",
+      "slug": "Carpet_Bombardment"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Mass_Effect",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "質量效應",
+      "slug": "Mass_Effect"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Defense_Layers",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "層層防禦",
+      "slug": "Defense_Layers"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Focus_Acceleration",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "貫注強化",
+      "slug": "Focus_Acceleration"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Focus_Buff",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "貫注增效",
+      "slug": "Focus_Buff"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Seal_Conversion",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "封印轉化",
+      "slug": "Seal_Conversion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Psychic_Burst",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "靈能乍泄",
+      "slug": "Psychic_Burst"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Magic_Dash",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "禦法飛馳",
+      "slug": "Magic_Dash"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Psychic_Surge",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "靈能奔湧",
+      "slug": "Psychic_Surge"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Savage_Growth",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "野蠻生長",
+      "slug": "Savage_Growth"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Harvest_Time",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "豐收時刻",
+      "slug": "Harvest_Time"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Preparation",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "預備",
+      "slug": "Preparation"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Charge",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "蓄勢",
+      "slug": "Charge"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Gladiator%27s_Roar",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "角鬥怒吼",
+      "slug": "Gladiator's_Roar"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Aura_Amplification",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "光環增幅",
+      "slug": "Aura_Amplification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Friend_of_Spirit_Magi",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "魔靈之友",
+      "slug": "Friend_of_Spirit_Magi"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Protection_Field",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "保護力場",
+      "slug": "Protection_Field"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Auto-Charge",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "自動充能",
+      "slug": "Auto-Charge"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Critical_Charge",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "瀕危充能",
+      "slug": "Critical_Charge"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Restoration_Charge",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "恢復充能",
+      "slug": "Restoration_Charge"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Reclusion",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "隱遁",
+      "slug": "Reclusion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Willpower",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "定力",
+      "slug": "Willpower"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Recuperation",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "調息",
+      "slug": "Recuperation"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Spell_Tangle",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "法術糾纏",
+      "slug": "Spell_Tangle"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Manifold_Entanglement",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "多重糾纏",
+      "slug": "Manifold_Entanglement"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Seal_Conversion",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 封印轉化",
+      "slug": "Precise:_Seal_Conversion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Selfless",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 無私",
+      "slug": "Precise:_Selfless"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Selfishness",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 自私",
+      "slug": "Precise:_Selfishness"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Stand_as_One",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 多則能成",
+      "slug": "Precise:_Stand_as_One"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Disciplined",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 律己",
+      "slug": "Precise:_Disciplined"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Concentrated",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 全神貫注",
+      "slug": "Precise:_Concentrated"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Malleable",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 遇強則強",
+      "slug": "Precise:_Malleable"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Safety_in_Numbers",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 人多勢眾",
+      "slug": "Precise:_Safety_in_Numbers"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Focus_Buff",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 貫注增效",
+      "slug": "Precise:_Focus_Buff"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Superpower",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 超能共生",
+      "slug": "Precise:_Superpower"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Friend_of_Spirit_Magi",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 魔靈之友",
+      "slug": "Precise:_Friend_of_Spirit_Magi"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Protection_Field",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 保護力場",
+      "slug": "Precise:_Protection_Field"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise_Restrain",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 節流",
+      "slug": "Precise_Restrain"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Harmony",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 調合",
+      "slug": "Precise:_Harmony"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Purify",
+      "kind": "support",
+      "locale": "tw",
+      "parseCandidateName": "精密 淨化",
+      "slug": "Precise:_Purify"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Fearless",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "狂猛",
+      "slug": "Fearless"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Weapon_Amplification",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "武器增幅",
+      "slug": "Weapon_Amplification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Rejuvenation",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "再生",
+      "slug": "Rejuvenation"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Electric_Conversion",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "電能轉化",
+      "slug": "Electric_Conversion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Frigid_Domain",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "冰寒領域",
+      "slug": "Frigid_Domain"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Nimbleness",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "靈敏",
+      "slug": "Nimbleness"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Spell_Amplification",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "法術增幅",
+      "slug": "Spell_Amplification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Energy_Fortress",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "能量壁壘",
+      "slug": "Energy_Fortress"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Magical_Source",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "魔源",
+      "slug": "Magical_Source"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise_Projectiles",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精準投射",
+      "slug": "Precise_Projectiles"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Elemental_Resistance",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "元素抵抗",
+      "slug": "Elemental_Resistance"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Swiftness",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "疾速",
+      "slug": "Swiftness"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Deep_Pain",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "深層苦痛",
+      "slug": "Deep_Pain"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Erosion_Amplification",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "腐蝕增幅",
+      "slug": "Erosion_Amplification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Charged_Flames",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "烈焰充能",
+      "slug": "Charged_Flames"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Steadfast",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "堅固",
+      "slug": "Steadfast"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Summon_Fire_Magus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "召喚火焰之靈",
+      "slug": "Summon_Fire_Magus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Summon_Frost_Magus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "召喚寒冰之靈",
+      "slug": "Summon_Frost_Magus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Summon_Thunder_Magus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "召喚雷霆之靈",
+      "slug": "Summon_Thunder_Magus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Acuteness_Focus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "銳利貫注",
+      "slug": "Acuteness_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Corrosion_Focus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "侵蝕貫注",
+      "slug": "Corrosion_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ice_Focus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "寒冰貫注",
+      "slug": "Ice_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Thunder_Focus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "雷霆貫注",
+      "slug": "Thunder_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Flame_Focus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "熔火貫注",
+      "slug": "Flame_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Summon_Rock_Magus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "召喚磐石之靈",
+      "slug": "Summon_Rock_Magus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Summon_Erosion_Magus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "召喚腐化之靈",
+      "slug": "Summon_Erosion_Magus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Radical_Order",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "激進號令",
+      "slug": "Radical_Order"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Cruelty",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "暴虐",
+      "slug": "Cruelty"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Domain_Expansion",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "領域擴張",
+      "slug": "Domain_Expansion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Ailment_Amplification",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "異常增幅",
+      "slug": "Ailment_Amplification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Fearless",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 狂猛",
+      "slug": "Precise:_Fearless"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Weapon_Amplification",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 武器增幅",
+      "slug": "Precise:_Weapon_Amplification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Rejuvenation",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 再生",
+      "slug": "Precise:_Rejuvenation"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Electric_Conversion",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 電能轉化",
+      "slug": "Precise:_Electric_Conversion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Frigid_Domain",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 冰寒領域",
+      "slug": "Precise:_Frigid_Domain"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Nimbleness",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 靈敏",
+      "slug": "Precise:_Nimbleness"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Spell_Amplification",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 法術增幅",
+      "slug": "Precise:_Spell_Amplification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Energy_Fortress",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 能量壁壘",
+      "slug": "Precise:_Energy_Fortress"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Magical_Source",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 魔源",
+      "slug": "Precise:_Magical_Source"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Precise_Projectiles",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 精準投射",
+      "slug": "Precise:_Precise_Projectiles"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Elemental_Resistance",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 元素抵抗",
+      "slug": "Precise:_Elemental_Resistance"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Swiftness",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 疾速",
+      "slug": "Precise:_Swiftness"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Deep_Pain",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 深層苦痛",
+      "slug": "Precise:_Deep_Pain"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Erosion_Amplification",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 腐蝕增幅",
+      "slug": "Precise:_Erosion_Amplification"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Charged_Flames",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 烈焰充能",
+      "slug": "Precise:_Charged_Flames"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Steadfast",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 堅固",
+      "slug": "Precise:_Steadfast"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Acuteness_Focus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 銳利貫注",
+      "slug": "Precise:_Acuteness_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Corrosion_Focus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 侵蝕貫注",
+      "slug": "Precise:_Corrosion_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Ice_Focus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 寒冰貫注",
+      "slug": "Precise:_Ice_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Thunder_Focus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 雷霆貫注",
+      "slug": "Precise:_Thunder_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Flame_Focus",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 熔火貫注",
+      "slug": "Precise:_Flame_Focus"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Radical_Order",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 激進號令",
+      "slug": "Precise:_Radical_Order"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Cruelty",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 暴虐",
+      "slug": "Precise:_Cruelty"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Domain_Expansion",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 領域擴張",
+      "slug": "Precise:_Domain_Expansion"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Precise%3A_Ailment_Amplification",
+      "kind": "passive",
+      "locale": "tw",
+      "parseCandidateName": "精密 異常增幅",
+      "slug": "Precise:_Ailment_Amplification"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "season": "ss12",
+  "generatedAt": "2026-04-04T05:35:35.999Z",
+  "parserVersion": "1",
+  "artifacts": [
+    {
+      "path": "data/normalized/ss12/active-skills.json",
+      "kind": "active-skills",
+      "recordCount": 153,
+      "parseStatusSummary": {
+        "ok": 142,
+        "partial": 11,
+        "failed": 0
+      },
+      "warningsCount": 11
+    },
+    {
+      "path": "data/normalized/ss12/support-skills.json",
+      "kind": "support-skills",
+      "recordCount": 122,
+      "parseStatusSummary": {
+        "ok": 122,
+        "partial": 0,
+        "failed": 0
+      },
+      "warningsCount": 0
+    },
+    {
+      "path": "data/normalized/ss12/passive-skills.json",
+      "kind": "passive-skills",
+      "recordCount": 55,
+      "parseStatusSummary": {
+        "ok": 55,
+        "partial": 0,
+        "failed": 0
+      },
+      "warningsCount": 0
+    },
+    {
+      "path": "data/normalized/ss12/skill-level-rules.json",
+      "kind": "skill-level-rules",
+      "recordCount": 1,
+      "warningsCount": 0
+    },
+    {
+      "path": "data/normalized/ss12/combat-rules.json",
+      "kind": "combat-rules",
+      "recordCount": 58,
+      "warningsCount": 0
+    }
+  ]
+}

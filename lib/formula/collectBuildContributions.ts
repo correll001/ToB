@@ -1,5 +1,7 @@
 import type { BuildSnapshot, GearSlot, TreeName } from '@/types/build'
 import type { ContributionEntry, StatBlock } from '@/types/combat'
+
+/** Optional: `appendSkillInstanceContributions(entries, instances, skillInstanceToContribution)` from `@/lib/formula/skills`. */
 import {
   DIVINITY_BOARD_OPTION_CONTRIBUTIONS,
   GEAR_BASE_CONTRIBUTIONS,

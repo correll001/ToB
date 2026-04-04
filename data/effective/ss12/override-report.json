@@ -1,0 +1,55 @@
+{
+  "season": "ss12",
+  "generatedAt": "2026-04-04T05:42:44.558Z",
+  "overridesSchemaVersion": "1",
+  "mergeOrder": [
+    "raw:data/raw/{season}",
+    "normalized:data/normalized/{season}",
+    "overrides:data/overrides/{season}",
+    "effective:data/effective/{season}",
+    "runtime:SkillInstance & formula adapters"
+  ],
+  "skillFiles": [
+    {
+      "file": "active-skills.json",
+      "overrideSource": "data\\overrides\\ss12\\active-skills.json",
+      "touchedIds": [
+        "skill:Leap_Attack"
+      ],
+      "notesById": {
+        "skill:Leap_Attack": [
+          "Sample: variant ladder + post-20 tier tweak + manual modifier append (ETL override demo)."
+        ]
+      }
+    },
+    {
+      "file": "support-skills.json",
+      "overrideSource": "data\\overrides\\ss12\\support-skills.json",
+      "touchedIds": [
+        "skill:Multiple_Projectiles"
+      ],
+      "notesById": {
+        "skill:Multiple_Projectiles": [
+          "Sample: curated support restriction when auto-parse misses pairing rules."
+        ]
+      }
+    },
+    {
+      "file": "passive-skills.json",
+      "overrideSource": "data\\overrides\\ss12\\passive-skills.json",
+      "touchedIds": [
+        "skill:Fearless"
+      ],
+      "notesById": {
+        "skill:Fearless": [
+          "Sample passive: manual modifier patch only (no formula engine change)."
+        ]
+      }
+    }
+  ],
+  "globalRules": {
+    "skillLevelTouched": true,
+    "combatTouched": false,
+    "globalOverrideSource": "data\\overrides\\ss12\\global-rules.json"
+  }
+}

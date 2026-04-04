@@ -1,0 +1,12 @@
+{
+  "season": "ss12",
+  "version": "demo-1",
+  "skillLevelRulesMerge": {
+    "extensions": {
+      "overrideProbe": {
+        "label": "ss12-override-demo",
+        "purpose": "Traceability: proves global-rules merge ran without replacing whole rule set."
+      }
+    }
+  }
+}

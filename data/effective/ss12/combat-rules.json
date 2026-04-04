@@ -1,0 +1,430 @@
+{
+  "meta": {
+    "season": "ss12",
+    "locale": "en",
+    "generatedAt": "2026-04-04T05:35:33.722Z",
+    "parserVersion": "1",
+    "sourceCount": 58,
+    "warningsCount": 0
+  },
+  "rules": {
+    "id": "tlidb-character-build-ss12",
+    "season": "ss12",
+    "version": "1.0.0",
+    "locale": "en",
+    "sourceUrls": [
+      "https://tlidb.com/en/Character_Build"
+    ],
+    "characterBuildRules": [
+      {
+        "sectionId": "CharacterBuild-Life-Help",
+        "title": "Character Build - Life - Help",
+        "bullets": [
+          "Units are defeated when their Life is 0Max LifeHeroes initially start with 50 Max LifeEach level gained increases Max Life by 13Each point of Strength increases Max Life by 0.2Relevant StatsStrengthMax LifeMax Life %Additional Max Life %"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-LifeRegenerationSpeed-Help",
+        "title": "Character Build - Life Regeneration Speed - Help",
+        "bullets": [
+          "Life Restoration Over TimeRelevant StatsLife Regeneration Per SecondLife Regeneration % Per SecondLife Regeneration Speed"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-LifeRegain-Help",
+        "title": "Character Build - Life Regain - Help",
+        "bullets": [
+          "Life RegainInstantly returns a portion of the character's lost Life on hit, up to 30% LifeRegain has a Regain Interval, and the base interval is 0.5 secondsRelevant StatsLife Regain %Additional Regain Interval %"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-LifeInstantRestoration-Help",
+        "title": "Character Build - Life Instant Restoration - Help",
+        "bullets": [
+          "Instant RestorationInstantly restores a certain amount of Life when the event corresponding to the affix takes placeFor example:When suffering a Severe Injury, instantly restores 35% of Lost LifeRestores 5% Life on defeat"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-EnergyShield-Help",
+        "title": "Character Build - Energy Shield - Help",
+        "bullets": [
+          "Energy Shield is a defense stat. When taking damage, Energy Shield will be reduced before LifeMax Energy ShieldHeroes do not start with any Energy Shield, and Energy Shield is provided by Talents, gear, skills, and other systemsEach Intelligence increases Max Energy Shield by 0.05%Relevant StatsMax Energy ShieldMax Energy Shield %Additional Max Energy Shield %Gear Energy ShieldGear Energy Shield %"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-EnergyShieldCharge-Help",
+        "title": "Character Build - Energy Shield Charge - Help",
+        "bullets": [
+          "After not taking damage for a period of time (excludes Life Cost and Injury Buffer), if the current Energy Shield is less than the Max Energy Shield, the Energy Shield starts to charge. The base Charge Interval is 2 seconds. When the character's Max Energy Shield is 0, the character cannot gain Energy Shield Charge. Heroes have 20% Energy Shield Charge per second by defaultRelevant StatsEnergy Shield Charge Speed %Additional Energy Shield Charge Speed %Charge Interval %Additional Energy Shield Charge Interval %"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-EnergyShieldRegain-Help",
+        "title": "Character Build - Energy Shield Regain - Help",
+        "bullets": [
+          "Instantly returns a portion of the character's lost Energy Shield on hit, up to 30% Energy ShieldRegain has a Regain Interval, and the base interval is 0.5 secondsRelevant StatsEnergy Shield %Additional Regain Interval %"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-EnergyShieldInstantRestoration-Help",
+        "title": "Character Build - Energy Shield Instant Restoration - Help",
+        "bullets": [
+          "Instantly restores a certain amount of Energy Shield when the event corresponding to the affix takes placeFor example:When evading, instantly restores 12% of missing Energy ShieldRestores 5% Energy Shield when blocking"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Mana-Help",
+        "title": "Character Build - Mana - Help",
+        "bullets": [
+          "Mana is used to cast skills. Skills cannot be cast when they cost more than the character's current ManaMax ManaHeroes have 40 Max Mana by defaultEach level increases Max Mana by 5Each Intelligence increases Max Mana by 0.5Max Energy Shield Calculation RulesRelevant StatsIntelligenceMax ManaMax Mana %Additional Max Mana %"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-ManaRegenerationSpeed-Help",
+        "title": "Character Build - Mana Regeneration Speed - Help",
+        "bullets": [
+          "Heroes regenerate 7 Mana per second by defaultHeroes regenerate 1.75% Mana per second by defaultRelevant StatsMana Regeneration Per SecondMana Regeneration % Per SecondMana Regeneration Speed %"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-ManaInstantRestoration-Help",
+        "title": "Character Build - Mana Instant Restoration - Help",
+        "bullets": [
+          "Instantly restores a certain amount of Mana when the event corresponding to the affix takes placeFor example:Restores 5 Mana on hitRestores 1% Mana when using skills."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Resistance-Help",
+        "title": "Character Build - Resistance - Help",
+        "bullets": [
+          "Monsters deal five types of Damage: Physical, Fire, Cold, Lightning, and Erosion.Fire, Cold, and Lightning Damage are collectively referred to as Elemental Damage.The most dangerous skills of enemies are mainly Elemental. Thus, increasing your Elemental Resistance will effectively prevent you from taking lots of Elemental Damage."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-EffectiveResistance-Help",
+        "title": "Character Build - Effective Resistance - Help",
+        "bullets": [
+          "Heroes start with 0 Elemental Resistance and Erosion Resistance. At Lv.48, Lv.58, and Lv.80, heroes will be inflicted with -20% to all Resistances.The base Max Resistance is 75% for all Resistances. This can be changed by increasing the Max Resistance %, which can increase the Max Resistance to 95%.The final effective Resistance is the smaller value between the player's current Resistance and the Max ResistanceRelevant StatsResistance %Max Resistance %"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-ResistancePenetration-Help",
+        "title": "Character Build - Resistance Penetration - Help",
+        "bullets": [
+          "As a stat that counteracts Resistance, Resistance Penetration acts on the defender's effective Resistance in the damage calculation process.When dealing damage, if the attacker has Resistance Penetration of a certain type, the defender's Resistance will be reduced accordingly by the value of the Resistance Penetration when calculating the damage.Resistance Penetration does not change the value of the defender's Resistance.Resistance Penetration takes effect on all forms of damage (Hit, DoT, Secondary, Reflect)."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-IgnoreResistance-Help",
+        "title": "Character Build - Ignore Resistance - Help",
+        "bullets": [
+          "If you have Ignore Resistance, ignore Resistance and Resistance Penetration in the damage calculation process"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Armor-Help",
+        "title": "Character Build - Armor - Help",
+        "bullets": [
+          "Armor is a defensive mechanic against Hit, Secondary, and Reflected DamageCharacters start with 0 Armor by defaultRelevant StatsArmorArmor %Additional Armor %Gear ArmorGear Armor %Damage reduction provided by Armor = Armor/(Armor x0.9+30,000). The max damage reduction provided by Armor is 80%.Only 60% of the damage reduction provided by Armor will work for Non-Physical Damage.Double ArmorWhen receiving damage, double the Armor value will be used to determine the damage reduction. This only takes effect in the damage calculation process and does not change the actual Armor value"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Evade-Help",
+        "title": "Character Build - Evade - Help",
+        "bullets": [
+          "Evasion is a defensive mechanic against Hit Damage. When the damage of a hit is evaded, the hit does not deal any damage or trigger its hit effects and subsequent effects. The chance of evading an attack is determined by the attacker's Accuracy and the target's Evasion Rate.Heroes' hits against monsters will not be evadedEvasionCharacters start with 0 Evasion by default, which is its lowest valueEach level increases Evasion by 3Each Dexterity increases Evasion by 0.02%Relevant StatsEvasionEvasion %Additional Evasion %Gear EvasionGear Evasion %Evasion RateEvasion Rate =1-1.15x attacker's Accuracy/(attacker's Accuracy +0.5x defender's Evasion^0.75), which means it is determined by the attacker's Accuracy and the defender's EvasionThe maximum Evasion rate is 75%, and the minimum Evasion rate is 0%For Spell Damage, Evasion drops by additional 40% by defaultCurrently, the highest Accuracy monsters can have is 1,247"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Block-Help",
+        "title": "Character Build - Block - Help",
+        "bullets": [
+          "Blocking is a defensive mechanic that counteracts Hit and Reflected damage. When taking Hit or Reflected damage, whether this damage is blocked will be determined based on the Attack or Spell tags of the source of this damage and the hero's corresponding Attack and Spell Block Chance. When blocking successfully, the damage will be reduced based on the Block Ratio and additional damage blocked.Heroes start with 0 Block Chance. The Block Chance includes the Attack Block Chance and Spell Block Chance. When taking damage, the corresponding tag is applied to determine whether the block is successful or not. The Block Chance from different sources can be stacked up to the maximum Block Chance of 100%Relevant StatsBlock Chance %Attack Block Chance %Spell Block Chance %Heroes start with a Block Ratio of 35% by default, which can be increased up to 75%. After a successful block is determined, a corresponding amount of damage will be offset according to the Block Ratio.Heroes do not have additional damage blocked by default. When both Block Ratio and a fixed Block Chance are available, the Block Ratio is factored into the calculation before the fixed Block ChanceRelevant StatsBlock Ratio %Additional Damage Blocked"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-ChancetoAvoidDamage-Help",
+        "title": "Character Build - Chance to Avoid Damage - Help",
+        "bullets": [
+          "Damage Avoidance is a defensive mechanic that counteracts Hit Damage, Reflected Damage, and Secondary Damage. The Damage Avoidance Chance from different sources can stack.Heroes start with 0% Damage Avoidance by defaultWhen damage is successfully avoided, the hit is still deemed to be successful, and the attacker's hit-related effects will still be triggered. However, the defender will not take any damage or be inflicted with any ailments or control effects.Relevant StatsDamage Avoidance Chance %"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-DamageMitigation-Help",
+        "title": "Character Build - Damage Mitigation - Help",
+        "bullets": [
+          "Additional damage reduction is a defensive mechanic that counteracts all types of damage. Damage reduction from different sources multiplies independentlyThe maximum Damage Mitigation for each source of additional damage reduction is 90%"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-InjuryBuffer-Help",
+        "title": "Character Build - Injury Buffer - Help",
+        "bullets": [
+          "Injury Buffer is a defensive mechanic that counteracts Hit Damage. When receiving Hit Damage, part of the damage is not settled directly. Instead, this damage will be settled once every 0.5s in a special form over the next 4s. Damage settled by Injury Buffer is not affected by other tags and does not trigger damage-related events. The Injury Buffer proportion from different sources can stack."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-DamageConversion-Help",
+        "title": "Character Build - Damage Conversion - Help",
+        "bullets": [
+          "When calculating the damage mitigation for the defender, the damage conversion will change the type of damage received and calculate the corresponding damage mitigation after the conversion. The proportion of damage conversion from different sources can be stacked. After exceeding 100%, it will be redistributed according to the proportion of each source."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-TenacityBlessing-Help",
+        "title": "Character Build - Tenacity Blessing - Help",
+        "bullets": [
+          "The base duration is 10s. Each stack of Tenacity Blessing provides an additional 4% reduction in damage received. The base upper limit of Tenacity Blessing is 4 stacks.The base duration of Tenacity Blessing is 10s.The duration of all stacks of Tenacity Blessing is refreshed when obtaining Tenacity Blessing. All stacks of Tenacity Blessing will be lost if the duration ends."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-AgilityBlessing-Help",
+        "title": "Character Build - Agility Blessing - Help",
+        "bullets": [
+          "Each stack of Agility Blessing provides 6% Movement Speed, Attack Speed, and Cast Speed. The base upper limit of Agility Blessing is 4 stacks.The base duration of Agility Blessing is 10s.The duration of all stacks of Agility Blessing is refreshed when obtaining Agility Blessing. All stacks of Agility Blessing will be lost if the duration ends."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-FocusBlessing-Help",
+        "title": "Character Build - Focus Blessing - Help",
+        "bullets": [
+          "Each stack of Focus Blessing provides a 4% chance to deal Double Damage. The base upper limit of Focus Blessing is 4 stacks.The base duration of Focus Blessing is 10s.The duration of all stacks of Focus Blessing is refreshed when obtaining Focus Blessing. All stacks of Focus Blessing will be lost if the duration ends."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Fervor-Help",
+        "title": "Character Build - Fervor - Help",
+        "bullets": [
+          "While Fervor is active, you'll gain 1 point of Fervor Rating when hitting an Elite.Fervor Rating Base Effect: Each Fervor Rating provides +2% Attack and Spell Critical Strike Rating. The maximum amount of Fervor Rating is 100 points.The base duration is 10s."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Barrier-Help",
+        "title": "Character Build - Barrier - Help",
+        "bullets": [
+          "Gain a Barrier that absorbs damage equal to 20% of your Max Life and Energy Shield.The Barrier's base absorption is 50%.New Barriers can't be obtained while a Barrier lasts.A Barrier is lost when its duration ends or when the Barrier value drops to 0.The base duration is 10s."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Blur-Help",
+        "title": "Character Build - Blur - Help",
+        "bullets": [
+          "Gain 100 points of Blur Rating when obtaining Blur.Once 100 points of Blur Rating is gained, 10% of Max Blur Rating is lost per second. Blur is lost once Blur Rating drops to 0.Blur Base Effect: +0.3% Evasion and +0.3% chance to avoid damage for every point of Blur Rating you have.Max Blur Rating is 100 points."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Focus-Help",
+        "title": "Character Build - Focus - Help",
+        "bullets": [
+          "Stacks up to 5 times.The base duration is 5s.The duration of Focus is refreshed when obtaining Focus.Focus provides different buffs according to your skills, gear, etc."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Hardened-Help",
+        "title": "Character Build - Hardened - Help",
+        "bullets": [
+          "Reduces damage taken by 25%. Stacks up to 1 time.The base duration is 4s.The Hardened status can only be obtained through the support skill Hardened."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Paralysis-Help",
+        "title": "Character Build - Paralysis - Help",
+        "bullets": [
+          "Additionally increases damage taken by 10%. Stacks up to 1 time.The base duration is 4s.Paralysis is a control status."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Slow-Help",
+        "title": "Character Build - Slow - Help",
+        "bullets": [
+          "Each stack reduces Attack Speed, Cast Speed, and Movement Speed by 6%. Stacks up to 5 times.The base duration is 4s.The duration of the Slow status is refreshed whenever Slow is inflicted.Slow is a control status."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-DamageForm-Help",
+        "title": "Character Build - Damage Form - Help",
+        "bullets": [
+          "There are 4 main ways to deal damage in the game:Hit DamageDamage Over TimeSecondary DamageReflect Damage"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-HitDamage-Help",
+        "title": "Character Build - Hit Damage - Help",
+        "bullets": [
+          "Hit Damage is usually dealt by Attacks or Spells and is settled each time. Unless specified, damage dealt by skills is Hit Damage.The following mechanics are specific to hit damage:Accuracy/EvadeCritical StrikeDamage Conversion/AdditionDouble DamageInjury TransferInjury BufferBlockAvoidanceSevere Injury"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-DamageOverTime-Help",
+        "title": "Character Build - Damage Over Time - Help",
+        "bullets": [
+          "Damage Over Time deals damage to the target continuously for a period of time.Damage Over Time dealt by skills is skill effects that benefit from affixes such as \"+10% Skill Effect Duration\", etc.The following mechanics are specific to Damage Over Time:AfflictionReaping"
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-SecondaryDamage-Help",
+        "title": "Character Build - Secondary Damage - Help",
+        "bullets": [
+          "Secondary Damage is usually an additional effect of certain actions, such as \"Makes enemies explode on defeat\".Secondary Damage is neither Hit Damage nor Damage Over Time, so it will not be enhanced by special mechanics of Hit Damage and Damage Over Time."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-DamageType-Help",
+        "title": "Character Build - Damage Type - Help",
+        "bullets": [
+          "All damage dealt must be one of the following 5 types of damage:PhysicalFireColdLightningErosionPhysical Damage received from hits can be reduced by Armor, while the other forms and types of damage (Hit, DoT, Secondary, Reflect) are reduced by the corresponding type of resistance."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-DamageCalculation-Help",
+        "title": "Character Build - Damage Calculation - Help",
+        "bullets": [
+          "Like most stats, the final value of the attacker's damage = base damage x (100 + all non-additional bonuses)% x (100 + additional bonus 1)% x (100 + additional bonus 2)%..."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-AttackSpeed-Help",
+        "title": "Character Build - Attack Speed - Help",
+        "bullets": [
+          "The base value of Attack Speed depends on the Weapon Attack Speed.The Weapon Attack Speed is determined by the base speed of the weapon and the affixes of the weapon that affect its Attack Speed.When Dual Wielding, the Weapon Attack Speed is the average Attack Speed of the 2 weapons.In most cases, the character's final Attack Speed = Weapon Attack Speed x (100 + all non-additional bonuses)% x (100 + additional bonus 1)% x (100 + additional bonus 2)%...The Attack Speed of certain skills (such as attack-type mobility skills) will be corrected, and the actual speed will be lower than the result settled according to the above equation when the bonus received is quite high.Attack Speed is capped at 30 attacks per second."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-CastSpeed-Help",
+        "title": "Character Build - Cast Speed - Help",
+        "bullets": [
+          "The base Cast Speed is determined by the base cast interval of skills.The final Cast Speed of a skill = 1/base Cast Interval of the skill x (100 + all non-additional bonuses)% x (100 + additional bonus 1)% x (100 + additional bonus 2)%...Cast Speed is capped at 30 spells per second."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-CriticalStrike-Help",
+        "title": "Character Build - Critical Strike - Help",
+        "bullets": [
+          "There is a certain chance to deal a Critical Strike when dealing hit damage.Final Critical Strike Rating = Base Critical Strike Rating x (100 + all non-additional bonuses)% x (100 + additional bonus 1)% x (100 + additional bonus 2)%...Critical Hit Chance = Final Critical Strike Rating/100When attacking, the base Critical Strike Rating of the weapon will be factored in when calculating the Critical Strike Rating of the skill.When casting a spell, the base Critical Strike Rating of the spell will be factored in when calculating the Critical Strike Rating of the skill."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-DamageConversion-Helpcache-41",
+        "title": "Character Build - Damage Conversion - Help",
+        "bullets": [
+          "The type of damage dealt can be converted. For example, \"Converts 50% of Physical Damage to Fire Damage\".Only Hit Damage can be converted.If the sum of the conversion percentages of multiple damage types from the same source exceeds 100%, such as when \"Converts 60% of Physical Damage to Fire Damage\" and \"Converts 60% of Physical Damage to Cold Damage\" take effect at the same time, the final converted damage will not exceed 100%, and the damage will be redistributed according to their weighted percentages.Converted damage benefits from the bonuses of the original damage type and the bonuses of the post-conversion damage type. Non-additional bonuses can be stacked.Frostfire's damage bonus conversion is a special bonus, and only one bonus can be generated in each damage calculation."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-ResistancePenetration-Helpcache-42",
+        "title": "Character Build - Resistance Penetration - Help",
+        "bullets": [
+          "When dealing damage, if the attacker has Resistance Penetration of a certain type, the defender's Resistance will be reduced accordingly by the value of the Resistance Penetration when calculating the damage.Resistance Penetration does not change the value of the defender's Resistance.Resistance Penetration takes effect on all forms of damage (Hit, DoT, Secondary, Reflect)."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-DoubleDamage-Help",
+        "title": "Character Build - Double Damage - Help",
+        "bullets": [
+          "There is a chance to deal Double Damage on hit according to the Double Damage chance.All Double Damage chances that apply to the damage are stacked before the final determination."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-AmplifiedDamageOverTime-Help",
+        "title": "Character Build - Amplified Damage Over Time - Help",
+        "bullets": [
+          "The Affliction debuff is inflicted on enemies at the same time as Damage Over Time. All DoT effects share the same Affliction effect. When under the effect of Affliction, the enemy gradually accumulates Affliction according to the Affliction inflicted every second by the character up to the maximum amount of 100 Affliction.Each point of Affliction increases the Damage Over Time taken by the enemy by an additional 1% (up to 50% at 100 Affliction). This effect is affected by the Affliction debuff."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-DamageOverTimeReaping-Help",
+        "title": "Character Build - Damage Over Time Reaping - Help",
+        "bullets": [
+          "When Reaping, the active Damage Over Time on the target will be settled at once according to the given time.Reaping only applies to DoT you deal. The DoT dealt by other units can't be settled by your Reaping.Reaping directly removes the target's HP, so it will not trigger any damage-dealing events.Reaping generally has a cooldown time, which is affected by the Reaping Cooldown Recovery Speed instead of the general Cooldown Recovery Speed.The DoT duration settled by Reaping is affected by affix bonuses such as: \"+X% Reaping Duration\"."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Ailments-Help",
+        "title": "Character Build - Ailments - Help",
+        "bullets": [
+          "Ailments include the following 6 types:Ignite: A debuff that deals Fire Damage Over Time.Frostbite: A debuff that slows enemies.Freeze: A debuff that makes enemies unable to move.Shock: A debuff that makes subsequent hits deal Secondary Lightning Damage.Trauma: A debuff that deals Physical Damage Over Time.Wilt: A debuff that deals Erosion Damage Over Time.Ailments are generally inflicted by hits."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-AilmentDamage-Help",
+        "title": "Character Build - Ailment Damage - Help",
+        "bullets": [
+          "Ignite, Shock, Trauma, and Wilt deal damage to enemies and are referred to as Ailment Damage.The amount of Ailment Damage dealt is based on the base damage of the corresponding ailment, which is 0 by default.The damage dealt by ailments has nothing to do with the damage dealt by a hit."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-AilmentDetermination-Help",
+        "title": "Character Build - Ailment Determination - Help",
+        "bullets": [
+          "On hit, an ailment determination is carried out according to the chance of inflicting the corresponding ailment.In the case of Frostbite, this effect will be inflicted if the Ailment determination is successful.In the case of damage-dealing ailments, the ailment will be inflicted if the base damage of the corresponding ailment is not 0. If it is 0, the ailment will not be inflicted."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Ignite-Help",
+        "title": "Character Build - Ignite - Help",
+        "bullets": [
+          "Ignite deals Fire DoT with a default duration of 4s.After Igniting an enemy, Fire Damage equal to the Base Ignite Damage is dealt to the target every second.By default, Ignite has the following effect: \"+30% additional Affliction effect\".The default maximum number of Ignite Damage stacks is 1. This can be increased by upgrading the maximum number of stacks later. When a unit is under the effect of more than 1 Ignite effect, the first N (Ignite limit) stacks of Ignite that deal the most damage will take effect."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-FrostbiteandFreeze-Help",
+        "title": "Character Build - Frostbite and Freeze - Help",
+        "bullets": [
+          "Frostbite reduces the target's Attack Speed, Cast Speed, and Movement Speed by 10% with an initial duration of 1.5s.When the target is inflicted with Frostbite, an attack inflicts 2 points of Frostbite Rating for every 0.2% of the sum of the enemy's Max Life and Max Energy Shield reduced by the Cold Damage dealt by this hit.When a unit has more than 100 points of Frostbite Rating, the unit will be frozen for 0.2s and cannot take action while frozen.The Frostbite effect and Freeze duration are increased by 1% for every 1 Frostbite Rating a unit has.In general, legendary bosses are immune to Freeze but can be inflicted with a certain amount of Frostbite Rating up to an upper limit. Once this upper limit is reached, the Frostbite Rating will not continue to increase."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Shock-Help",
+        "title": "Character Build - Shock - Help",
+        "bullets": [
+          "When hitting an enemy with a Shock buff, Secondary Lightning Damage is dealt based on the Base Shock Damage of this buff.When hitting an enemy with a Shock buff, Hit Damage is guaranteed to trigger Shock Damage.Each Shock effect can only be triggered up to 12 times.The base duration of the Shock buff is 4s.When hitting an enemy with a Shock buff, Secondary Lightning Damage is dealt based on the recorded Base Shock Damage, and this damage bonus is obtained when it is triggered.The maximum valid buff stacks of the Shock buff is 1. This can't be changed by any affixes. When multiple Shock buffs exist concurrently, the stack with the highest Base Damage takes effect.The character and their minions gain Base Shock Damage equal to 3% of the Lightning Damage hit at the beginning."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Trauma-Help",
+        "title": "Character Build - Trauma - Help",
+        "bullets": [
+          "Trauma deals Physical Damage Over Time with a default duration of 4s.When inflicting Trauma on an enemy, deals Physical Damage Over Time equal to the Base Trauma Damage to the target every second.By default, Trauma has the following effect: \"+30% additional Reaping duration\".The default maximum number of Trauma Damage stacks is 1 stack, and it can't be increased. When multiple Trauma effects exist concurrently on the same target, only the Trauma effect that deals the most damage will take effect."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Wilt-Help",
+        "title": "Character Build - Wilt - Help",
+        "bullets": [
+          "Wilt deals Erosion Damage Over Time with a default duration of 1s.After inflicting Wilt on an enemy, Erosion DoT equal to the Base Wilt Damage is dealt to the target every second for each stack of Wilt.Wilt has no default maximum number of stacks, but the number of its stacks may be limited by certain affixes. When the number of stacks is limited, Wilt Damage is dealt according to the stack that deals the most damage."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-SpellBurst-Help",
+        "title": "Character Build - Spell Burst - Help",
+        "bullets": [
+          "Spell Burst: Automatically casts a Spell Skill a certain number of times.When Spell Burst is fully charged, casting Spell Skill will activate Spell Burst, which will consume all stacks of Spell Burst charged and automatically cast the Spell Skill the same number of times as the number of stacks consumed.Skills that are cast by Spell Burst, skills that have a cooldown, as well as Summon, Sentry, and Channeled Skills cannot trigger Spell Burst.The Spell Skill that activates the Spell Burst is considered a skill cast by Spell Burst.Spell Burst Charge cannot go beyond Spell Burst's upper limit.Spell Burst can only be cast when Max Spell Burst is no lower than 1.Spell Burst will be fully charged within 2s. Spell Burst Charge Speed will increase the restoration speed of Spell Burst Charge."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Multistrike-Help",
+        "title": "Character Build - Multistrike - Help",
+        "bullets": [
+          "Multistrike: An Attack Skill that automatically performs a certain number of consecutive attacks.When using an Attack Skill, there is a chance to automatically perform an additional attack with the same Attack Skill after attacking. Additional attacks will not trigger further additional attacks. If the chance exceeds 100%, one additional attack will be performed with every 100% of the chance. If the chance is lower than 100%, this will be the corresponding chance of perfoming an additional attack after attacking.Multistrikes consume skill resources as normal and will be interrupted if there are insufficient resources. Moving or using other non-instant skills will interrupt Multistrike.Mobility, Channeled, and Sentry Skills cannot Multistrike.During Multistrike, Attack Speed +20% by default.During Multistrike, for each additional attack. the damage of the Attack Skill will increase additionally based on the Multistrike damage increment attribute (the second attack receives the bonus once, the third attack receives the bonus twice, and so on).The Multistrike damage increment attribute is affected by Multistrike damage increment bonuses, which multiplies the Multistrike damage increment by (1+additional percentage of increase)."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Command-Help",
+        "title": "Character Build - Command - Help",
+        "bullets": [
+          "Command is a base attribute that Hunters get after equipping a skill that can summon Synthetic Troops. The minimum value is -100, the maximum value is 100, and the initial value is 0. Command is generally not negative, but some special effects will reduce it to lower than 0.Every point of Command will grant Synthetic Troop Minions +2% additional damage and increase the size of their Tracking Area. When Command is a negative value, the damage bonus will always be 0%, but the Tracking Area will be reduced accordingly.When Command is not 0, 13 points will be reduced/granted (depending on whether the current Command is positive or negative) per second until Command becomes 0 again. For every 10 Command increased (or decreased), the amount of Command reduced/granted per second +7 until the total Command becomes 0."
+        ]
+      },
+      {
+        "sectionId": "CharacterBuild-Growth-Help",
+        "title": "Character Build - Growth - Help",
+        "bullets": [
+          "Growth is a base attribute every Spirit Magus possesses, with a minimum value of 100 and a maximum value of 1,000.Spirit Magus start off at Stage 1 (100 Growth) and grow into the next stage with every 100 Growth gained until they reach Stage 5 (500 Growth).With every stage they grow, a Spirit Magus gains +5% Physique and +10% additional Skill Area. The also gain different skill and attribute enhancements:At Stage 2, Spirit Magi have a +30% chance to use Enhanced Skills.At Stage 3, the effect of Spirit Magi's Enhanced Skills are enhanced.At Stage 4, Spirit Magi's Empower Skills gain new effects.At Stage 5, all the attributes of Spirit Magi are increased, and they gain +25% additional damage, +10% additional Skill Area, and +30% additional Movement Speed. Their Tracking Area also increases."
+        ]
+      }
+    ],
+    "extensions": {
+      "tabSectionCount": 58
+    }
+  }
+}

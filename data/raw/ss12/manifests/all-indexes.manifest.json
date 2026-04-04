@@ -1,0 +1,62 @@
+{
+  "season": "ss12",
+  "parserVersion": "1",
+  "generatedAt": "2026-04-04T05:22:37.869Z",
+  "entries": [
+    {
+      "sourceUrl": "https://tlidb.com/tw/Active_Skill",
+      "kind": "active",
+      "locale": "tw",
+      "season": "ss12",
+      "fetchedAt": "2026-04-04T05:22:37.870Z",
+      "status": "ok",
+      "outputPath": "data/raw/ss12/indexes/Active_Skill.html",
+      "contentSha256": "a679d5ffff65bef206fea39075598b09bab54b6565702224b36fcbab92fa95d0",
+      "parserVersion": "1"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Support_Skill",
+      "kind": "support",
+      "locale": "tw",
+      "season": "ss12",
+      "fetchedAt": "2026-04-04T05:22:38.949Z",
+      "status": "ok",
+      "outputPath": "data/raw/ss12/indexes/Support_Skill.html",
+      "contentSha256": "cf2e6562340db9288895fc70896077516f6a1217d28c013e650bc4144b2e831d",
+      "parserVersion": "1"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Passive_Skill",
+      "kind": "passive",
+      "locale": "tw",
+      "season": "ss12",
+      "fetchedAt": "2026-04-04T05:22:39.048Z",
+      "status": "ok",
+      "outputPath": "data/raw/ss12/indexes/Passive_Skill.html",
+      "contentSha256": "4ad28c0c0e38bc46a83d8332cbaed43be35feab87988e2a3c3929dee31168443",
+      "parserVersion": "1"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/tw/Skill_Level",
+      "kind": "skill-level",
+      "locale": "tw",
+      "season": "ss12",
+      "fetchedAt": "2026-04-04T05:22:39.125Z",
+      "status": "ok",
+      "outputPath": "data/raw/ss12/indexes/Skill_Level.html",
+      "contentSha256": "ad51bd12798dbeb17f0f60637fab5353fdfdc17ad0359b1b0235abf20b010584",
+      "parserVersion": "1"
+    },
+    {
+      "sourceUrl": "https://tlidb.com/en/Character_Build",
+      "kind": "character-build",
+      "locale": "en",
+      "season": "ss12",
+      "fetchedAt": "2026-04-04T05:22:39.159Z",
+      "status": "ok",
+      "outputPath": "data/raw/ss12/indexes/Character_Build.html",
+      "contentSha256": "5c7e72c983fa84bab3c30f0c1074aeb0738b1d1651fd5ffd222d9412777b79a3",
+      "parserVersion": "1"
+    }
+  ]
+}

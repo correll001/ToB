@@ -5,7 +5,16 @@
   "scripts": {
     "dev": "next dev --webpack -H 127.0.0.1 -p 3000",
     "build": "next build --webpack",
-    "start": "next start -H 127.0.0.1 -p 3000"
+    "start": "next start -H 127.0.0.1 -p 3000",
+    "etl:skills:index": "tsx scripts/etl/fetchSkillIndexes.ts",
+    "etl:skills:pages": "tsx scripts/etl/fetchSkillPages.ts",
+    "etl:skills": "npm run etl:skills:index && npm run etl:skills:pages",
+    "etl:normalize:skills": "tsx scripts/etl/normalizeSkills.ts",
+    "etl:normalize:rules": "tsx scripts/etl/normalizeGlobalRules.ts",
+    "etl:normalize": "tsx scripts/etl/normalizeData.ts",
+    "etl:apply-overrides": "tsx scripts/etl/applyOverrides.ts",
+    "etl:diff-season": "tsx scripts/etl/diffSeasonData.ts",
+    "check:skill-engine": "tsx lib/formula/skills/skillEngineSmokeTest.ts"
   },
   "dependencies": {
     "immer": "^11.1.4",
@@ -17,10 +26,12 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.2",
-    "@types/node": "25.5.0",
+    "@types/node": "^25.5.0",
     "@types/react": "19.2.14",
     "autoprefixer": "^10.4.27",
+    "cheerio": "^1.2.0",
     "tailwindcss": "^4.2.2",
+    "tsx": "^4.21.0",
     "typescript": "6.0.2"
   }
 }
