@@ -17,9 +17,14 @@
     "check:skill-engine": "tsx lib/formula/skills/skillEngineSmokeTest.ts",
     "check:data-policy": "tsx scripts/checkNoRuntimeTlidb.ts",
     "audit:no-external-runtime-fetch": "tsx scripts/audit/noExternalRuntimeFetch.ts",
+    "audit:no-runtime-remote-skill-fetch": "tsx scripts/audit/noRuntimeRemoteSkillFetch.ts",
+    "verify:skill-data-integrity": "tsx scripts/verify/verifySkillDataIntegrity.ts",
+    "verify:skill-regression": "tsx scripts/verify/skillRegressionCases.ts",
     "data:import:effective": "tsx scripts/import/importEffectiveData.ts",
+    "data:freeze:from-effective": "tsx scripts/import/freezeEffectiveDataset.ts",
     "data:verify:local": "tsx scripts/verify/verifyLocalDataset.ts",
-    "release:check": "npm run audit:no-external-runtime-fetch && npm run check:data-policy && npm run data:verify:local && npm run check:skill-engine && npm run build"
+    "data:verify:frozen": "tsx scripts/verify/verifyFrozenDataset.ts",
+    "release:check": "npm run audit:no-external-runtime-fetch && npm run audit:no-runtime-remote-skill-fetch && npm run check:data-policy && npm run data:verify:local && npm run verify:skill-data-integrity && npm run verify:skill-regression && npm run check:skill-engine && npm run build"
   },
   "dependencies": {
     "better-sqlite3": "^12.6.2",

@@ -1,4 +1,10 @@
-import type { BuildSnapshot, GearSlot, SkillSetup, TreeName } from '@/types/build'
+/**
+ * Formula layering (4D-4):
+ * - Build Layer: this module merges all contribution StatBlocks (hero, gear, talents, skills…).
+ * - Skill Instance Layer: see `computeSkillInstance` / `computeSkillInstanceForMainSlot`.
+ * - Presentation Layer: selectors + panels read snapshots + derived combat only.
+ */
+import type { BuildSnapshot, GearSlot, MainSkillSlot, SkillSetup, TreeName } from '@/types/build'
 import type { ContributionEntry, StatBlock } from '@/types/combat'
 import type { ModifierDefinition, SkillDefinition } from '@/types/skillData'
 import type { SkillInstance } from '@/types/skillInstance'
@@ -8,7 +14,9 @@ import {
   getNormalizedSkillRecord,
   isMainSlotSkillFamily,
 } from '@/lib/runtime/runtimeSkillLookup'
+import { isMainSkillSlot } from '@/lib/build/supportLinks'
 import { computeSkillInstance } from '@/lib/formula/skills'
+import { modifiersFromSkillLevelRow } from '@/lib/formula/skills/levelRowModifiers'
 import { remapPassiveModifiersForActiveSkill } from '@/lib/formula/skills/passiveModifiers'
 
 import {
@@ -52,16 +60,34 @@ function blockFor(table: Record<string, StatBlock>, id: string | null | undefine
   return table[id]
 }
 
+/** Keep build-wide contributions plus at most one main-skill row (PoB inspected scope). */
+export function filterContributionsForInspectedMainSkill(
+  entries: ContributionEntry[],
+  slot: MainSkillSlot,
+): ContributionEntry[] {
+  const prefix = `Skill slot ${slot} ·`
+  return entries.filter((e) => e.kind !== 'skill' || e.label.startsWith(prefix))
+}
+
 export function passiveModifiersForActiveSkill(
   activeId: string,
   snapshot: BuildSnapshot,
+  /** Main skill slot 1–5; `applyMode === 'linked'` limits which slots receive passive mods. */
+  mainSlot: number,
 ): ModifierDefinition[] {
   const out: ModifierDefinition[] = []
   for (const p of snapshot.passives ?? []) {
     if (!p?.skillId || p.enabled === false) continue
+    if (p.applyMode === 'linked') {
+      const linked = p.linkedMainSkillSlots ?? []
+      if (linked.length === 0) continue
+      if (!isMainSkillSlot(mainSlot) || !linked.includes(mainSlot)) continue
+    }
     const def = getSkillDefinitionById(p.skillId)
     if (def?.family !== 'passive') continue
-    out.push(...remapPassiveModifiersForActiveSkill(activeId, def.id, def.modifiers ?? []))
+    const pLv = Math.max(1, Math.floor(p.skillLevel ?? 1))
+    const passiveMods = [...(def.modifiers ?? []), ...modifiersFromSkillLevelRow(def, pLv)]
+    out.push(...remapPassiveModifiersForActiveSkill(activeId, def.id, passiveMods))
   }
   return out
 }
@@ -72,24 +98,31 @@ export function computeSkillInstanceForMainSlot(row: SkillSetup, snapshot: Build
   const def = getSkillDefinitionById(row.skillId)
   if (!def || !isMainSlotSkillFamily(def.family)) return null
 
-  const skillGemLevel = Math.max(1, Math.floor(snapshot.meta?.level ?? 1))
+  const skillLevel = Math.max(1, Math.floor(row.skillLevel ?? 1))
   const supDefs: SkillDefinition[] = []
-  for (const sid of row.supports ?? []) {
-    const s = getSkillDefinitionById(sid)
-    if (s?.family === 'support') supDefs.push(s)
+  const supportLevelsById: Record<string, number> = {}
+  for (const link of row.supports ?? []) {
+    if (link.enabled === false) continue
+    const s = getSkillDefinitionById(link.supportSkillId)
+    if (s?.family === 'support') {
+      supDefs.push(s)
+      supportLevelsById[link.supportSkillId] = Math.max(1, Math.floor(link.level ?? 1))
+    }
   }
 
   const rec = getNormalizedSkillRecord(row.skillId)
-  const passiveMods = passiveModifiersForActiveSkill(def.id, snapshot)
+  const passiveMods = passiveModifiersForActiveSkill(def.id, snapshot, row.slot)
 
   return computeSkillInstance({
     active: def,
-    level: skillGemLevel,
+    level: skillLevel,
     supports: supDefs,
+    supportLevelsById,
     globalLayer: globalLayerSingleton,
     passiveModifiers: passiveMods,
     activeParse: rec ? { status: rec.parseStatus, warnings: rec.warnings } : undefined,
     slotLabel: `Skill slot ${row.slot}`,
+    mainSlot: row.slot,
   })
 }
 

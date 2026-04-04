@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getDatasetProvenance } from '@/lib/runtime/runtimeDataset'
+import { getBundledDatasetDiagnostics } from '@/lib/runtime/runtimeDataset'
 
 export const metadata: Metadata = {
   title: 'Dataset traceability',
@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 }
 
 export default function DebugDatasetPage() {
-  const p = getDatasetProvenance()
+  const p = getBundledDatasetDiagnostics()
   const mismatch = p.runtimeConfigSeason !== p.season
 
   return (
@@ -15,7 +15,7 @@ export default function DebugDatasetPage() {
       <div className="mx-auto max-w-2xl rounded-xl border border-slate-800 bg-slate-950/80 p-6 shadow-xl">
         <h1 className="text-lg font-semibold text-slate-100">Bundled dataset (internal)</h1>
         <p className="mt-2 text-sm text-slate-500">
-          僅供內部溯源；非官方資料授權聲明。執行時資料來自已提交之本地 JSON bundle，不向外部網站請求。
+          內部溯源與誠實度標記；非官方授權聲明。執行時只做本地 bundle + 公式，不向技能資料站請求。
         </p>
 
         {mismatch ? (
@@ -43,13 +43,52 @@ export default function DebugDatasetPage() {
             <dd className="break-all text-right sm:max-w-[70%]">{p.versionLabel}</dd>
           </div>
           <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
-            <dt className="text-slate-500">imported_at</dt>
+            <dt className="text-slate-500">imported_at (bundle)</dt>
             <dd className="break-all">{p.importedAt}</dd>
           </div>
           <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
             <dt className="text-slate-500">sourceKind</dt>
             <dd>{p.sourceKind}</dd>
           </div>
+          <div className="border-t border-slate-800/50 pt-3 text-[11px] uppercase tracking-wide text-slate-500">
+            Provenance (active file meta)
+          </div>
+          <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
+            <dt className="text-slate-500">active generatedAt</dt>
+            <dd className="break-all">{p.activeGeneratedAt}</dd>
+          </div>
+          <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
+            <dt className="text-slate-500">parserVersion</dt>
+            <dd>{p.parserVersion}</dd>
+          </div>
+          <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
+            <dt className="text-slate-500">effectiveLayer (override)</dt>
+            <dd>{p.effectiveLayer ?? '—'}</dd>
+          </div>
+          <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
+            <dt className="text-slate-500">active sourceCount / warningsCount</dt>
+            <dd>
+              {p.activeSourceCount} / {p.activeWarningsCount}
+            </dd>
+          </div>
+          <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
+            <dt className="text-slate-500">bundled records (all families)</dt>
+            <dd>{p.totalSkillRecords}</dd>
+          </div>
+          <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
+            <dt className="text-slate-500">parseStatus tally</dt>
+            <dd>
+              ok {p.parseTally.ok ?? 0} · partial {p.parseTally.partial ?? 0} · failed {p.parseTally.failed ?? 0}
+            </dd>
+          </div>
+          <p className="col-span-full pt-1 text-[11px] text-slate-600">
+            <strong className="text-slate-500">frozenAt</strong> 存於 SQLite{' '}
+            <code className="text-slate-500">dataset_versions.frozen_at</code> — 用{' '}
+            <code className="text-slate-500">npm run data:verify:frozen</code> 驗證凍結鏈。
+          </p>
+          <p className="text-[11px] text-slate-600">
+            <strong className="text-slate-500">Readiness</strong>（每技能）見左欄「精算」與技能 breakdown；非全站單一分數。
+          </p>
           {p.overrideReport ? (
             <>
               <div className="border-t border-slate-800 pt-3 text-slate-400">override report</div>
@@ -72,8 +111,8 @@ export default function DebugDatasetPage() {
         </dl>
 
         <p className="mt-8 text-[11px] leading-relaxed text-slate-600">
-          若需驗證 SQLite 與 <code className="text-slate-500">data/effective</code> 一致，於建置環境執行{' '}
-          <code className="text-slate-500">npm run data:verify:local</code>。
+          SQLite 與 <code className="text-slate-500">data/effective</code> 對齊：<code className="text-slate-500">npm run data:verify:local</code>
+          。技能誠實策略：<code className="text-slate-500">docs/skill-data-policy.md</code>。
         </p>
       </div>
     </div>

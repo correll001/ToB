@@ -11,6 +11,7 @@ export function createEmptyBuildSnapshot(): BuildSnapshot {
       level: 1,
       description: '',
       visibility: 'private',
+      inspectedMainSkillSlot: null,
     },
     hero: {
       heroId: null,
@@ -26,16 +27,16 @@ export function createEmptyBuildSnapshot(): BuildSnapshot {
       divinity: [],
     },
     skills: [
-      { slot: 1, skillId: null, supports: [], enabled: true },
-      { slot: 2, skillId: null, supports: [], enabled: true },
-      { slot: 3, skillId: null, supports: [], enabled: true },
-      { slot: 4, skillId: null, supports: [], enabled: true },
-      { slot: 5, skillId: null, supports: [], enabled: true },
+      { slot: 1, skillId: null, supports: [], skillLevel: 20, enabled: true },
+      { slot: 2, skillId: null, supports: [], skillLevel: 20, enabled: true },
+      { slot: 3, skillId: null, supports: [], skillLevel: 20, enabled: true },
+      { slot: 4, skillId: null, supports: [], skillLevel: 20, enabled: true },
+      { slot: 5, skillId: null, supports: [], skillLevel: 20, enabled: true },
     ],
     passives: [
-      { slot: 1, skillId: null, enabled: true },
-      { slot: 2, skillId: null, enabled: true },
-      { slot: 3, skillId: null, enabled: true },
+      { slot: 1, skillId: null, enabled: true, applyMode: 'global', linkedMainSkillSlots: [], skillLevel: 1 },
+      { slot: 2, skillId: null, enabled: true, applyMode: 'global', linkedMainSkillSlots: [], skillLevel: 1 },
+      { slot: 3, skillId: null, enabled: true, applyMode: 'global', linkedMainSkillSlots: [], skillLevel: 1 },
     ],
     gear: {
       helmet: { gearBaseId: null, legendaryItemId: null, customMods: [] },

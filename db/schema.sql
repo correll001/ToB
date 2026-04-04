@@ -10,6 +10,12 @@ CREATE TABLE IF NOT EXISTS dataset_versions (
   version_label TEXT NOT NULL,
   imported_at TEXT NOT NULL,
   is_active INTEGER NOT NULL DEFAULT 0 CHECK (is_active IN (0, 1)),
+  /** Set when using `data:freeze:from-effective` (immutable local snapshot time). */
+  frozen_at TEXT,
+  /** JSON: copy of effective `manifest.json` + optional record snapshot (source_snapshot_manifest). */
+  source_snapshot_manifest TEXT,
+  /** JSON: full `FrozenDatasetProvenance` (source URLs, parser versions, counts). */
+  provenance_json TEXT,
   UNIQUE (season, version_label)
 );
 

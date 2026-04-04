@@ -4,6 +4,7 @@
 import { mkdirSync, readFileSync, existsSync } from 'node:fs'
 import path from 'node:path'
 import Database from 'better-sqlite3'
+import { ensureDatasetVersionsFreezeColumns } from '@/lib/db/migrateDatasetVersions'
 
 export function getDefaultLocalDbPath(): string {
   return process.env.LOCAL_DB_PATH ?? path.join(process.cwd(), 'data', 'local', 'game.db')
@@ -18,5 +19,6 @@ export function openLocalDatabase(filePath?: string): Database.Database {
   if (existsSync(schemaPath)) {
     db.exec(readFileSync(schemaPath, 'utf8'))
   }
+  ensureDatasetVersionsFreezeColumns(db)
   return db
 }

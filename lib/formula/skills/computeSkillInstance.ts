@@ -1,9 +1,13 @@
 import type { ModifierDefinition, SkillDefinition } from "@/types/skillData"
+import type { ParseStatus } from "@/types/normalized"
+import type { SkillCombatRole } from "@/types/skillDamageRole"
 import type {
   AppliedModifierRef,
+  CalculationConfidence,
   ComputeSkillInstanceInput,
   SkillInstance,
   SkillInstanceBreakdown,
+  SkillInstanceTrace,
 } from "@/types/skillInstance"
 import { activeCanonicalTagSet } from "./tagVocabulary"
 import { evaluateSupportAttachment } from "./applySupportRules"
@@ -15,10 +19,41 @@ import {
 } from "./applyPost20Scaling"
 import { composeSkillModifiers } from "./composeSkillModifiers"
 import { skillInstanceToContribution } from "./skillInstanceAdapter"
-import { modifiersFromSkillLevelRow, resolveLevelRow, warningsForSkillLevelRow } from "./levelRowModifiers"
+import {
+  modifiersFromSkillLevelRow,
+  modifiersFromSupportGemLevelRowAppliedToActive,
+  resolveLevelRow,
+  warningsForSkillLevelRow,
+} from "./levelRowModifiers"
+import { hasStructuralDamageEvidence, inferSkillCombatRole } from "./inferDamageRole"
 
+function deriveCalculationConfidence(
+  role: SkillCombatRole,
+  parseStatus: ParseStatus | undefined,
+  levelSource: "levelTable" | "breakpoints" | "none",
+  levelRowPartial: boolean,
+  damagingEvidence: boolean,
+  engineWarnings: string[],
+): CalculationConfidence {
+  if (parseStatus === "failed") return "unsupported"
+  if (role === "damaging") {
+    if (!damagingEvidence) return "unsupported"
+    if (parseStatus === "partial" || levelRowPartial || levelSource === "none") return "partial"
+    if (engineWarnings.length > 0) return "partial"
+    return "ready"
+  }
+  if (role === "unknown") return "unsupported"
+  if (parseStatus === "partial") return "partial"
+  return "ready"
+}
+
+/**
+ * Skill Instance Layer (4D-4): one active + level row + supports + passive injects + post-20.
+ * Build Layer (character aggregate) is combined later in collect/aggregate; Presentation reads `breakdown` only.
+ */
 export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillInstance {
   const { active, level, supports } = input
+  const levelMap = input.supportLevelsById ?? {}
   const passiveMods = input.passiveModifiers ?? []
   const externalMods = input.externalModifiers ?? []
   const layer = input.globalLayer ?? defaultGlobalCombatRuleLayer()
@@ -29,9 +64,15 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
   const canon = activeCanonicalTagSet(active.tags)
   const computedTags = [...new Set([...active.tags, ...[...canon]])]
 
-  const { source: levelSource } = resolveLevelRow(active, level)
+  const { source: levelSource, row: levelRowResolved } = resolveLevelRow(active, level)
   const levelMods = modifiersFromSkillLevelRow(active, level)
   warnings.push(...warningsForSkillLevelRow(active, level))
+
+  const structuralDamageEvidence = hasStructuralDamageEvidence(active, level, levelMods)
+  const damageRole = inferSkillCombatRole(active, level, {
+    parseStatus: input.activeParse?.status,
+    levelModsFromRow: levelMods,
+  })
 
   for (const m of levelMods) {
     modBag.push(m)
@@ -46,6 +87,7 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
   let appliedSupportModifierCount = 0
 
   const supportAttachments = supports.map((sup) => {
+    const gemLevel = Math.max(1, Math.floor(levelMap[sup.id] ?? 1))
     const ev = evaluateSupportAttachment(active, sup)
     if (!ev.applied) {
       warnings.push(`support_skipped:${sup.id}:${ev.skipReason ?? "unknown"}`)
@@ -59,12 +101,22 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
         appliedModifiers.push({ source: "support", refId: sup.id, modifier: m })
         appliedSupportModifierCount += 1
       }
+      const supRowMods = modifiersFromSupportGemLevelRowAppliedToActive(active.id, sup, gemLevel)
+      for (const w of warningsForSkillLevelRow(sup, gemLevel)) {
+        warnings.push(`support_${sup.id}:${w}`)
+      }
+      for (const m of supRowMods) {
+        modBag.push(m)
+        appliedModifiers.push({ source: "support", refId: sup.id, modifier: m })
+        appliedSupportModifierCount += 1
+      }
     }
 
     return {
       supportRefId: sup.id,
       supportName: sup.name,
       supportDefinition: sup,
+      gemLevel,
       applied: ev.applied,
       warnings: ev.warnings,
       skipReason: ev.skipReason,
@@ -95,29 +147,59 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
 
   const computedStats = composeSkillModifiers(modBag, {}, wBundle)
 
+  let post20RefId: string | undefined
   if (post20Mult > 1) {
+    post20RefId = "global:skill-level"
     appliedModifiers.push({
       source: "post20",
-      refId: "global:skill-level",
+      refId: post20RefId,
       modifier: {
         selector: { kind: "skill", skillId: active.id },
         operation: "mul",
         stat: "damage.moreFromPost20",
         value: (post20Mult - 1) * 100,
         valueKind: "more",
-        sourceText: "Skill_Level post-20 bands (applied in adapter, not double-counted in stats)",
+        sourceText: "Skill_Level post-20 bands (structured rule; adapter merges into contribution)",
       },
     })
   }
 
-  const levelRowResolved = resolveLevelRow(active, level).row
+  const calculationConfidence = deriveCalculationConfidence(
+    damageRole,
+    input.activeParse?.status,
+    levelSource,
+    levelRowResolved?.partial ?? false,
+    structuralDamageEvidence,
+    warnings,
+  )
+
   const slotLabel = input.slotLabel ?? `Skill · ${active.name}`
+  const mainSlot =
+    input.mainSlot != null ? Math.min(5, Math.max(1, Math.floor(input.mainSlot))) : 1
+
+  const trace: SkillInstanceTrace = {
+    supportsAcceptedIds: supportAttachments.filter((s) => s.applied).map((s) => s.supportRefId),
+    supportsRejected: supportAttachments
+      .filter((s) => !s.applied)
+      .map((s) => ({ id: s.supportRefId, reason: s.skipReason })),
+    passiveInjects: passiveMods.map((m) => ({
+      refId: m.id ?? "passive",
+      stat: m.stat,
+      operation: m.operation,
+    })),
+    post20Applied: post20Mult > 1 && !post20Disabled,
+    post20RefId,
+  }
 
   const breakdown: SkillInstanceBreakdown = {
     activeId: active.id,
     activeName: active.name,
+    mainSlot,
     slotLabel,
     level: Math.max(1, Math.floor(level)),
+    damageRole,
+    calculationConfidence,
+    structuralDamageEvidence,
     parseStatus: input.activeParse?.status,
     recordWarnings: input.activeParse?.warnings,
     levelRow: {
@@ -132,6 +214,7 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
     supports: supportAttachments.map((s) => ({
       id: s.supportRefId,
       name: s.supportName,
+      gemLevel: s.gemLevel,
       applied: s.applied,
       skipReason: s.skipReason,
       warnings: s.warnings,
@@ -150,6 +233,7 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
     appliedSupportModifierCount,
     computedStats: { ...computedStats },
     engineWarnings: [...warnings],
+    trace,
   }
 
   const instance: SkillInstance = {
@@ -157,6 +241,9 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
     activeName: active.name,
     activeDefinition: active,
     level: Math.max(1, Math.floor(level)),
+    damageRole,
+    calculationConfidence,
+    structuralDamageEvidence,
     computedTags,
     canonicalTags: [...canon],
     supports: supportAttachments,

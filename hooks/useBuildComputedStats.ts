@@ -6,10 +6,13 @@ import { useBuildStore } from '@/stores/useBuildStore'
 import { selectBuildStatsPanelDerived } from '@/selectors/buildComputedStats'
 
 /**
- * 左欄 BuildStatsPanel 唯一資料源：對應 `selectBuildStatsPanelDerived(snapshot)`，
- * 避免在其它元件重複自算 summary / combat。
+ * 左欄 BuildStatsPanel 唯一資料源：`selectBuildStatsPanelDerived`（含 inspected 單技能 instance / damage view）。
  */
 export function useBuildComputedStats() {
   const snapshot = useBuildStore((s) => s.snapshot)
-  return useMemo(() => selectBuildStatsPanelDerived(snapshot), [snapshot])
+  const inspectedMainSkillSlot = snapshot.meta.inspectedMainSkillSlot
+  return useMemo(
+    () => selectBuildStatsPanelDerived(snapshot, inspectedMainSkillSlot),
+    [snapshot, inspectedMainSkillSlot],
+  )
 }

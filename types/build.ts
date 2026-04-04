@@ -2,6 +2,8 @@
 
 export type TreeName = 'godTree' | 'classTree' | 'tree3' | 'tree4' | 'divinity'
 
+export type MainSkillSlot = 1 | 2 | 3 | 4 | 5
+
 export type GearSlot =
   | 'helmet'
   | 'chest'
@@ -38,19 +40,38 @@ export interface DivinityBoardState {
   selectedBoardIds: string[]
 }
 
-export interface SkillSetup {
-  slot: 1 | 2 | 3 | 4 | 5
-  skillId: string | null
-  supports: string[]
+/** One support gem in a link group (PoB-style). */
+export interface SupportLink {
+  supportSkillId: string
+  level: number
   enabled: boolean
+  /** 1-based link index within the main skill (stable UI / inspection key). */
+  linkSlot: number
+}
+
+export interface SkillSetup {
+  slot: MainSkillSlot
+  skillId: string | null
+  /** Linked support gems; independent from `meta.level` (character level). */
+  supports: SupportLink[]
+  /** Main skill gem level — never derived from character level. */
+  skillLevel: number
+  enabled: boolean
+  /** Optional: per-slot hide from inspection UIs (if unset, use global `inspectedMainSkillSlot`). */
+  inspectionEnabled?: boolean
   notes?: string
 }
 
-/** Passive / aura gems applied to the build (minimal v1 — inject into main skill instances). */
+export type PassiveApplyMode = 'global' | 'linked'
+
 export interface PassiveSkillSetup {
   slot: 1 | 2 | 3
   skillId: string | null
   enabled: boolean
+  applyMode: PassiveApplyMode
+  /** When `applyMode === 'linked'`, inject only into these main slots (empty + linked → none). */
+  linkedMainSkillSlots: MainSkillSlot[]
+  skillLevel: number
 }
 
 export interface GearSelection {
@@ -78,10 +99,12 @@ export interface BuildSnapshot {
   gameVersion: string
   meta: {
     title: string
-    /** 角色等級；與流派碼一併匯出／持久化 */
+    /** Character level only — not main skill gem level. */
     level: number
     description: string
     visibility: 'private' | 'unlisted' | 'public'
+    /** PoB-style inspected main skill; persisted with share code. */
+    inspectedMainSkillSlot: MainSkillSlot | null
   }
   hero: HeroSelection
   talents: Record<TreeName, string[]>

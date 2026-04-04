@@ -113,3 +113,35 @@ export function getDatasetProvenance(): DatasetProvenance {
       : null,
   }
 }
+
+/** Debug/admin: bundle-only diagnostics (no SQLite). `frozenAt` lives in DB — run `npm run data:verify:frozen`. */
+export type BundledDatasetDiagnostics = DatasetProvenance & {
+  activeGeneratedAt: string
+  parserVersion: string
+  activeSourceCount: number
+  activeWarningsCount: number
+  effectiveLayer?: string
+  totalSkillRecords: number
+  parseTally: Record<string, number>
+}
+
+export function getBundledDatasetDiagnostics(): BundledDatasetDiagnostics {
+  const p = getDatasetProvenance()
+  const d = getRuntimeDataset()
+  const a = d.activeSkillsFile.meta
+  const parseTally: Record<string, number> = { ok: 0, partial: 0, failed: 0 }
+  for (const r of d.recordsById.values()) {
+    const s = r.parseStatus
+    parseTally[s] = (parseTally[s] ?? 0) + 1
+  }
+  return {
+    ...p,
+    activeGeneratedAt: a.generatedAt,
+    parserVersion: a.parserVersion,
+    activeSourceCount: a.sourceCount,
+    activeWarningsCount: a.warningsCount,
+    effectiveLayer: a.effectiveLayer,
+    totalSkillRecords: d.recordsById.size,
+    parseTally,
+  }
+}

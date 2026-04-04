@@ -36,7 +36,23 @@ function levelRowTraceWarnings(row: SkillLevelEntry): string[] {
 
 /**
  * Per-level row → numeric modifiers. Does not invent values from textLines alone.
+ *
+ * Support-gem level row stats that target the support's own id are re-attached to the active skill id
+ * so composeSkillModifiers folds them into the inspected main skill.
  */
+export function modifiersFromSupportGemLevelRowAppliedToActive(
+  activeSkillId: string,
+  supportDef: SkillDefinition,
+  level: number,
+): ModifierDefinition[] {
+  return modifiersFromSkillLevelRow(supportDef, level).map((m) => {
+    if (m.selector.kind === 'skill' && m.selector.skillId === supportDef.id) {
+      return { ...m, selector: { kind: 'skill', skillId: activeSkillId } }
+    }
+    return m
+  })
+}
+
 export function modifiersFromSkillLevelRow(active: SkillDefinition, level: number): ModifierDefinition[] {
   const { row } = resolveLevelRow(active, level)
   if (!row) return []

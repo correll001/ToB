@@ -1,5 +1,7 @@
 # 資料治理與商業化邊界（Data governance）
 
+技能／戰鬥資料與 **凍結 (freeze)** 細則：**[skill-data-policy.md](./skill-data-policy.md)**。
+
 本文件定義正式產品與維運管線的分界：**runtime 與 build 不依賴外部網站**；第三方站點僅能出現在**離線、人工觸發**的 ETL 流程中，且不得被解讀為官方授權或合作關係。
 
 ---

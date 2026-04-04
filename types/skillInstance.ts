@@ -3,8 +3,13 @@
  */
 
 import type { ModifierDefinition, SkillDefinition } from "./skillData"
-import type { ContributionEntry, StatBlock } from "./combat"
+import type { SkillDamageRole } from "./skillDamageRole"
+import type { BuildSidebarCombatStats, CombatBreakdown, ContributionEntry, StatBlock } from "./combat"
+import type { MainSkillSlot } from "./build"
 import type { ParseStatus } from "./normalized"
+
+/** How much the engine trusts numeric output for this instance (4D-4). */
+export type CalculationConfidence = "ready" | "partial" | "unsupported"
 
 /** TLIDB-aligned default; override via GlobalCombatRuleLayer. */
 export type Post20ScalingConfig = {
@@ -32,6 +37,8 @@ export type SupportAttachment = {
   supportRefId: string
   supportName: string
   supportDefinition: SkillDefinition
+  /** Support gem level used for level-row / evaluation (not character level). */
+  gemLevel: number
   applied: boolean
   warnings: string[]
   skipReason?: string
@@ -55,8 +62,13 @@ export type SkillComputedStats = Record<string, number>
 export type SkillInstanceBreakdown = {
   activeId: string
   activeName: string
+  mainSlot: number
   slotLabel: string
   level: number
+  /** Data-driven routing: only `damaging` + confidence may feed primary DPS UI. */
+  damageRole: SkillDamageRole
+  calculationConfidence: CalculationConfidence
+  structuralDamageEvidence: boolean
   parseStatus?: ParseStatus
   recordWarnings?: string[]
   levelRow: {
@@ -68,6 +80,7 @@ export type SkillInstanceBreakdown = {
   supports: Array<{
     id: string
     name: string
+    gemLevel: number
     applied: boolean
     skipReason?: string
     warnings: string[]
@@ -86,6 +99,16 @@ export type SkillInstanceBreakdown = {
   appliedSupportModifierCount: number
   computedStats: SkillComputedStats
   engineWarnings: string[]
+  trace: SkillInstanceTrace
+}
+
+/** Audit trail: which supports/passives/post-20 participated (IDs + stats only, no fabricated values). */
+export type SkillInstanceTrace = {
+  supportsAcceptedIds: string[]
+  supportsRejected: Array<{ id: string; reason?: string }>
+  passiveInjects: Array<{ refId: string; stat: string; operation: string }>
+  post20Applied: boolean
+  post20RefId?: string
 }
 
 export type SkillInstance = {
@@ -94,6 +117,9 @@ export type SkillInstance = {
   activeName: string
   activeDefinition: SkillDefinition
   level: number
+  damageRole: SkillDamageRole
+  calculationConfidence: CalculationConfidence
+  structuralDamageEvidence: boolean
   /** Display + logic tags (active tags + canonical copies where useful). */
   computedTags: string[]
   /** Canonical tags used for support matching (English keys + unique Zh where unmapped). */
@@ -109,10 +135,50 @@ export type SkillInstance = {
   breakdown: SkillInstanceBreakdown
 }
 
+export type InspectedSkillNoneReason = 'no_slot' | 'empty_slot' | 'disabled'
+
+export type InspectedSkillDamageViewNone = {
+  mode: 'none'
+  reason: InspectedSkillNoneReason
+}
+
+/** Inspected skill is treated as a primary damage skill (hit / spell / DoT heuristics). */
+export type InspectedSkillDamageViewDamaging = {
+  mode: 'damaging'
+  role: SkillDamageRole
+  /** Combat derived from full build + only this skill’s skill contribution (not other skills). */
+  combat: BuildSidebarCombatStats
+  skillBreakdown: CombatBreakdown
+  supportApplied: number
+  supportSkipped: number
+  manaCost: number | null
+  cooldownSec: number | null
+  castTimeSec: number | null
+}
+
+export type InspectedSkillDamageViewNonDamaging = {
+  mode: 'nonDamaging'
+  role: SkillDamageRole
+  tags: string[]
+  otherMainSkills: Array<{ slot: MainSkillSlot; skillId: string; name: string }>
+  passiveAuraLines: string[]
+  modifierLines: string[]
+  requirementLines: string[]
+  supportApplied: number
+  supportSkipped: number
+}
+
+export type InspectedSkillDamageView =
+  | InspectedSkillDamageViewNone
+  | InspectedSkillDamageViewDamaging
+  | InspectedSkillDamageViewNonDamaging
+
 export type ComputeSkillInstanceInput = {
   active: SkillDefinition
   level: number
   supports: SkillDefinition[]
+  /** Per support id → gem level (defaults to 1 if missing). */
+  supportLevelsById?: Record<string, number>
   externalModifiers?: ModifierDefinition[]
   /** Passive gems / auras: folded into this instance (caller scopes to `active.id`). */
   passiveModifiers?: ModifierDefinition[]
@@ -120,6 +186,8 @@ export type ComputeSkillInstanceInput = {
   activeParse?: { status: ParseStatus; warnings?: string[] }
   /** For breakdown labels only (e.g. "Skill slot 1"). */
   slotLabel?: string
+  /** Main skill slot index 1–5 (PoB inspected grouping). */
+  mainSlot?: number
 }
 
 /** Merge pipeline: append computed skill rows without removing existing mock contributions. */

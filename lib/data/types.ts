@@ -11,6 +11,9 @@ export type DatasetVersionRow = {
   version_label: string
   imported_at: string
   is_active: number
+  frozen_at: string | null
+  source_snapshot_manifest: string | null
+  provenance_json: string | null
 }
 
 export type SkillRow = {

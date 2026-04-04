@@ -1,10 +1,29 @@
 // lib/normalizeBuildSnapshot.ts
-import type { BuildSnapshot, DivinityBoardState, GearSlot, HeroSelection, TreeName } from '@/types/build'
+import type {
+  BuildSnapshot,
+  DivinityBoardState,
+  GearSlot,
+  HeroSelection,
+  MainSkillSlot,
+  PassiveApplyMode,
+  PassiveSkillSetup,
+  SkillSetup,
+  SupportLink,
+  TreeName,
+} from '@/types/build'
+import { compactSupportLinkSlots, isMainSkillSlot } from '@/lib/build/supportLinks'
 import { createEmptyBuildSnapshot } from '@/lib/defaultBuildSnapshot'
 
 const TREE_NAMES: TreeName[] = ['godTree', 'classTree', 'tree3', 'tree4', 'divinity']
 
 const DEFAULT_LEVEL = 1
+
+function clampGemLevel(n: number): number {
+  const i = Math.floor(n)
+  if (!Number.isFinite(i) || i < 1) return 1
+  if (i > 99) return 99
+  return i
+}
 
 function clampLevel(n: unknown): number {
   if (typeof n !== 'number' || !Number.isFinite(n)) return DEFAULT_LEVEL
@@ -12,6 +31,100 @@ function clampLevel(n: unknown): number {
   if (i < 1) return DEFAULT_LEVEL
   if (i > 9999) return 9999
   return i
+}
+
+function parseInspectedMainSkillSlot(raw: unknown): MainSkillSlot | null {
+  if (raw === null || raw === undefined) return null
+  if (typeof raw === 'number' && Number.isFinite(raw)) {
+    const s = Math.floor(raw)
+    if (isMainSkillSlot(s)) return s
+  }
+  return null
+}
+
+function normalizeSupportsFromUnknown(
+  o: Record<string, unknown>,
+  skillLevel: number,
+): SupportLink[] {
+  const sl = skillLevel
+  const asLinks = (items: unknown[]): SupportLink[] => {
+    const out: SupportLink[] = []
+    let slot = 1
+    for (const item of items) {
+      if (item == null || typeof item !== 'object') continue
+      const x = item as Record<string, unknown>
+      const sid =
+        (typeof x.supportSkillId === 'string' ? x.supportSkillId : null) ??
+        (typeof x.skillId === 'string' ? x.skillId : null)
+      if (!sid) continue
+      const level =
+        typeof x.level === 'number' && Number.isFinite(x.level) ? clampGemLevel(x.level) : clampGemLevel(sl)
+      const enabled = typeof x.enabled === 'boolean' ? x.enabled : true
+      const linkSlot =
+        typeof x.linkSlot === 'number' && Number.isFinite(x.linkSlot)
+          ? Math.min(20, Math.max(1, Math.floor(x.linkSlot)))
+          : slot
+      out.push({ supportSkillId: sid, level, enabled, linkSlot })
+      slot += 1
+    }
+    return compactSupportLinkSlots(out)
+  }
+
+  if (Array.isArray(o.supports)) {
+    const arr = o.supports as unknown[]
+    if (arr.length === 0) return []
+    if (typeof arr[0] === 'string') {
+      return asLinks((arr as string[]).map((supportSkillId) => ({ supportSkillId })))
+    }
+    return asLinks(arr)
+  }
+
+  if (Array.isArray(o.supportLinks)) {
+    return asLinks(o.supportLinks as unknown[])
+  }
+
+  return []
+}
+
+function normalizePassive(
+  row: unknown,
+  base: PassiveSkillSetup,
+  o: Record<string, unknown>,
+): PassiveSkillSetup {
+  const skillLevel =
+    typeof o.skillLevel === 'number' && Number.isFinite(o.skillLevel)
+      ? clampGemLevel(o.skillLevel)
+      : typeof o.skillGemLevel === 'number' && Number.isFinite(o.skillGemLevel)
+        ? clampGemLevel(o.skillGemLevel)
+        : base.skillLevel
+
+  let applyMode: PassiveApplyMode = 'global'
+  let linkedMainSkillSlots: MainSkillSlot[] = []
+
+  if (o.applyMode === 'global' || o.applyMode === 'linked') {
+    applyMode = o.applyMode
+    if (Array.isArray(o.linkedMainSkillSlots)) {
+      linkedMainSkillSlots = (o.linkedMainSkillSlots as unknown[])
+        .map((x) => (typeof x === 'number' ? Math.floor(x) : NaN))
+        .filter((x): x is MainSkillSlot => isMainSkillSlot(x))
+      linkedMainSkillSlots = [...new Set(linkedMainSkillSlots)].sort((a, b) => a - b)
+    }
+  } else if (typeof o.linkedMainSlot === 'number' && Number.isFinite(o.linkedMainSlot)) {
+    const sn = Math.floor(o.linkedMainSlot)
+    if (isMainSkillSlot(sn)) {
+      applyMode = 'linked'
+      linkedMainSkillSlots = [sn]
+    }
+  }
+
+  return {
+    slot: base.slot,
+    skillId: (o.skillId as string | null | undefined) ?? null,
+    enabled: typeof o.enabled === 'boolean' ? o.enabled : true,
+    applyMode,
+    linkedMainSkillSlots,
+    skillLevel,
+  }
 }
 
 function normalizeHero(raw: HeroSelection | undefined): HeroSelection {
@@ -37,6 +150,19 @@ function normalizeDivinityBoard(raw: DivinityBoardState | undefined): DivinityBo
       ? raw.selectedBoardIds.filter((x): x is string => typeof x === 'string')
       : [],
   }
+}
+
+function finalizeInspectedMainSkillSlot(snapshot: BuildSnapshot): MainSkillSlot | null {
+  let s = snapshot.meta.inspectedMainSkillSlot
+  if (s != null) {
+    const row = snapshot.skills[s - 1]
+    if (!row?.skillId) s = null
+  }
+  if (s != null) return s
+  for (let i = 0; i < snapshot.skills.length; i++) {
+    if (snapshot.skills[i]!.skillId) return (i + 1) as MainSkillSlot
+  }
+  return null
 }
 
 /**
@@ -80,33 +206,43 @@ export function mergeSnapshotWithDefaults(raw: unknown): BuildSnapshot {
     }
   }
 
-  const skills =
+  const skills: SkillSetup[] =
     Array.isArray(s.skills) && s.skills.length === 5
       ? s.skills.map((row, i) => {
           const base = b.skills[i]!
           if (!row || typeof row !== 'object') return base
+          const o = row as unknown as Record<string, unknown>
+
+          const skillLevel =
+            typeof o.skillLevel === 'number' && Number.isFinite(o.skillLevel)
+              ? clampGemLevel(o.skillLevel)
+              : typeof o.skillGemLevel === 'number' && Number.isFinite(o.skillGemLevel)
+                ? clampGemLevel(o.skillGemLevel)
+                : 20
+
+          const supports = normalizeSupportsFromUnknown(o, skillLevel)
+
+          const inspectionEnabled =
+            typeof o.inspectionEnabled === 'boolean' ? o.inspectionEnabled : undefined
+
           return {
             slot: base.slot,
-            skillId: row.skillId ?? null,
-            supports: Array.isArray(row.supports)
-              ? row.supports.filter((x): x is string => typeof x === 'string')
-              : [],
-            enabled: typeof row.enabled === 'boolean' ? row.enabled : true,
-            notes: typeof row.notes === 'string' ? row.notes : base.notes,
+            skillId: (o.skillId as string | null | undefined) ?? null,
+            supports,
+            skillLevel,
+            enabled: typeof o.enabled === 'boolean' ? o.enabled : true,
+            inspectionEnabled,
+            notes: typeof o.notes === 'string' ? o.notes : base.notes,
           }
         })
       : b.skills
 
-  const passives =
+  const passives: PassiveSkillSetup[] =
     Array.isArray(s.passives) && s.passives.length === 3
       ? s.passives.map((row, i) => {
           const base = b.passives[i]!
           if (!row || typeof row !== 'object') return base
-          return {
-            slot: base.slot,
-            skillId: row.skillId ?? null,
-            enabled: typeof row.enabled === 'boolean' ? row.enabled : true,
-          }
+          return normalizePassive(row, base, row as unknown as Record<string, unknown>)
         })
       : b.passives
 
@@ -124,6 +260,11 @@ export function mergeSnapshotWithDefaults(raw: unknown): BuildSnapshot {
 
   const metaMerged = { ...b.meta, ...metaIn } as BuildSnapshot['meta']
 
+  const inspectedFromInput =
+    'inspectedMainSkillSlot' in metaIn
+      ? parseInspectedMainSkillSlot((metaIn as { inspectedMainSkillSlot?: unknown }).inspectedMainSkillSlot)
+      : undefined
+
   return {
     schemaVersion: s.schemaVersion === '1.0.0' ? '1.0.0' : b.schemaVersion,
     gameVersion: typeof s.gameVersion === 'string' ? s.gameVersion : b.gameVersion,
@@ -136,6 +277,8 @@ export function mergeSnapshotWithDefaults(raw: unknown): BuildSnapshot {
         typeof metaMerged.level === 'number' && Number.isFinite(metaMerged.level)
           ? metaMerged.level
           : b.meta.level,
+      inspectedMainSkillSlot:
+        inspectedFromInput !== undefined ? inspectedFromInput : b.meta.inspectedMainSkillSlot,
     },
     hero: {
       ...b.hero,
@@ -173,12 +316,14 @@ export function normalizeBuildSnapshot(raw: unknown): BuildSnapshot {
     merged = createEmptyBuildSnapshot()
   }
   const rawLevel = (merged.meta as { level?: number }).level
+  const inspected = finalizeInspectedMainSkillSlot(merged)
 
   return {
     ...merged,
     meta: {
       ...merged.meta,
       level: clampLevel(rawLevel),
+      inspectedMainSkillSlot: inspected,
     },
     hero: normalizeHero(merged.hero),
     divinityBoard: normalizeDivinityBoard(merged.divinityBoard),

@@ -2,7 +2,15 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
-import type { BuildSnapshot, GearSlot, PassiveSkillSetup, TreeName } from '@/types/build'
+import type {
+  BuildSnapshot,
+  GearSlot,
+  MainSkillSlot,
+  PassiveApplyMode,
+  PassiveSkillSetup,
+  TreeName,
+} from '@/types/build'
+import { compactSupportLinkSlots, nextSupportLinkSlot, isMainSkillSlot } from '@/lib/build/supportLinks'
 import { createEmptyBuildSnapshot } from '@/lib/defaultBuildSnapshot'
 import { normalizeBuildSnapshot } from '@/lib/normalizeBuildSnapshot'
 
@@ -25,7 +33,6 @@ function throttle<TArgs extends unknown[]>(fn: (...args: TArgs) => void, waitMs:
 
 const createDefaultBuild = createEmptyBuildSnapshot
 
-/** Runtime guard for legacy / corrupted snapshots missing `divinityBoard` fields. */
 function touchDivinityBoard(snapshot: BuildSnapshot) {
   const o = snapshot as Partial<BuildSnapshot>
   if (!o.divinityBoard || typeof o.divinityBoard !== 'object') {
@@ -57,11 +64,22 @@ type BuildStore = {
   toggleTalentNode: (tree: TreeName, nodeId: string) => void
   clearTalentTree: (tree: TreeName) => void
 
+  setInspectedMainSkill: (slot: MainSkillSlot | null) => void
   setSkill: (slot: number, skillId: string | null) => void
-  setSkillSupports: (slot: number, supportIds: string[]) => void
+  setSkillLevel: (slot: number, level: number) => void
+  setSupportLink: (mainSlot: number, linkSlot: number, supportSkillId: string | null) => void
+  setSupportLevel: (mainSlot: number, linkSlot: number, level: number) => void
+  toggleSupportEnabled: (mainSlot: number, linkSlot: number) => void
+  toggleSupportSkill: (mainSlot: number, supportSkillId: string) => void
+  clearSkillSupports: (mainSlot: number) => void
+  setMainSkillEnabled: (slot: number, enabled: boolean) => void
   clearSkill: (slot: number) => void
 
   setPassiveSkill: (slot: number, skillId: string | null) => void
+  togglePassiveEnabled: (passiveSlot: number) => void
+  setPassiveSkillLevel: (passiveSlot: number, level: number) => void
+  setPassiveApplyMode: (passiveSlot: number, mode: PassiveApplyMode) => void
+  setPassiveLinkedSlots: (passiveSlot: number, slots: MainSkillSlot[]) => void
   clearPassive: (slot: number) => void
 
   setGearBase: (slot: GearSlot, gearBaseId: string | null) => void
@@ -84,6 +102,13 @@ type BuildStore = {
 const bumpMeta = (state: BuildStore) => {
   state.dirty = true
   state.revision += 1
+}
+
+function clampGemLv(n: number) {
+  const i = Math.floor(n)
+  if (!Number.isFinite(i) || i < 1) return 1
+  if (i > 99) return 99
+  return i
 }
 
 export const useBuildStore = create<BuildStore>()(
@@ -142,15 +167,21 @@ export const useBuildStore = create<BuildStore>()(
           state.snapshot.skills.forEach((skill) => {
             skill.skillId = null
             skill.supports = []
+            skill.skillLevel = 20
             skill.enabled = true
             skill.notes = ''
+            skill.inspectionEnabled = undefined
           })
 
           state.snapshot.passives.forEach((p: PassiveSkillSetup) => {
             p.skillId = null
             p.enabled = true
+            p.applyMode = 'global'
+            p.linkedMainSkillSlots = []
+            p.skillLevel = 1
           })
 
+          state.snapshot.meta.inspectedMainSkillSlot = null
           bumpMeta(state)
         }),
 
@@ -188,20 +219,116 @@ export const useBuildStore = create<BuildStore>()(
           bumpMeta(state)
         }),
 
+      setInspectedMainSkill: (slot) =>
+        set((state) => {
+          if (slot == null) {
+            state.snapshot.meta.inspectedMainSkillSlot = null
+          } else if (isMainSkillSlot(slot)) {
+            state.snapshot.meta.inspectedMainSkillSlot = slot
+          }
+          bumpMeta(state)
+        }),
+
       setSkill: (slot, skillId) =>
         set((state) => {
           const target = state.snapshot.skills[slot - 1]
           if (!target) return
+          const prev = target.skillId
           target.skillId = skillId
           if (!skillId) target.supports = []
+          else if (prev !== skillId) target.supports = []
           bumpMeta(state)
         }),
 
-      setSkillSupports: (slot, supportIds) =>
+      setSkillLevel: (slot, level) =>
         set((state) => {
           const target = state.snapshot.skills[slot - 1]
           if (!target) return
-          target.supports = [...supportIds]
+          target.skillLevel = clampGemLv(level)
+          bumpMeta(state)
+        }),
+
+      setSupportLink: (mainSlot, linkSlot, supportSkillId) =>
+        set((state) => {
+          const target = state.snapshot.skills[mainSlot - 1]
+          if (!target || !target.skillId) return
+          const ls = Math.min(20, Math.max(1, Math.floor(linkSlot)))
+          if (supportSkillId == null) {
+            target.supports = target.supports.filter((l) => l.linkSlot !== ls)
+          } else {
+            const i = target.supports.findIndex((l) => l.linkSlot === ls)
+            if (i >= 0) {
+              target.supports[i] = {
+                ...target.supports[i]!,
+                supportSkillId,
+                linkSlot: ls,
+              }
+            } else {
+              target.supports.push({
+                supportSkillId,
+                level: clampGemLv(target.skillLevel),
+                enabled: true,
+                linkSlot: ls,
+              })
+            }
+          }
+          target.supports = compactSupportLinkSlots([...target.supports])
+          bumpMeta(state)
+        }),
+
+      setSupportLevel: (mainSlot, linkSlot, level) =>
+        set((state) => {
+          const target = state.snapshot.skills[mainSlot - 1]
+          if (!target) return
+          const ls = Math.min(20, Math.max(1, Math.floor(linkSlot)))
+          const link = target.supports.find((l) => l.linkSlot === ls)
+          if (link) link.level = clampGemLv(level)
+          bumpMeta(state)
+        }),
+
+      toggleSupportEnabled: (mainSlot, linkSlot) =>
+        set((state) => {
+          const target = state.snapshot.skills[mainSlot - 1]
+          if (!target) return
+          const ls = Math.min(20, Math.max(1, Math.floor(linkSlot)))
+          const link = target.supports.find((l) => l.linkSlot === ls)
+          if (link) link.enabled = !link.enabled
+          bumpMeta(state)
+        }),
+
+      toggleSupportSkill: (mainSlot, supportSkillId) =>
+        set((state) => {
+          const MAIN = state.snapshot.skills[mainSlot - 1]
+          if (!MAIN || !MAIN.skillId) return
+          const idx = MAIN.supports.findIndex((l) => l.supportSkillId === supportSkillId)
+          if (idx >= 0) {
+            MAIN.supports.splice(idx, 1)
+          } else {
+            const slot = nextSupportLinkSlot(MAIN.supports)
+            MAIN.supports.push({
+              supportSkillId,
+              level: clampGemLv(MAIN.skillLevel),
+              enabled: true,
+              linkSlot: slot,
+            })
+          }
+          MAIN.supports = compactSupportLinkSlots(MAIN.supports.map((l) => ({ ...l })))
+          bumpMeta(state)
+        }),
+
+      clearSkillSupports: (mainSlot) =>
+        set((state) => {
+          const target = state.snapshot.skills[mainSlot - 1]
+          if (!target) return
+          target.supports = []
+          bumpMeta(state)
+        }),
+
+      setMainSkillEnabled: (slot, enabled) =>
+        set((state) => {
+          const target = state.snapshot.skills[slot - 1]
+          if (!target) return
+          target.enabled = enabled
           bumpMeta(state)
         }),
 
@@ -211,8 +338,10 @@ export const useBuildStore = create<BuildStore>()(
           if (!target) return
           target.skillId = null
           target.supports = []
+          target.skillLevel = 20
           target.enabled = true
           target.notes = ''
+          target.inspectionEnabled = undefined
           bumpMeta(state)
         }),
 
@@ -224,12 +353,48 @@ export const useBuildStore = create<BuildStore>()(
           bumpMeta(state)
         }),
 
+      togglePassiveEnabled: (passiveSlot) =>
+        set((state) => {
+          const target = state.snapshot.passives[passiveSlot - 1]
+          if (!target) return
+          target.enabled = !target.enabled
+          bumpMeta(state)
+        }),
+
+      setPassiveSkillLevel: (passiveSlot, level) =>
+        set((state) => {
+          const target = state.snapshot.passives[passiveSlot - 1]
+          if (!target) return
+          target.skillLevel = clampGemLv(level)
+          bumpMeta(state)
+        }),
+
+      setPassiveApplyMode: (passiveSlot, mode) =>
+        set((state) => {
+          const target = state.snapshot.passives[passiveSlot - 1]
+          if (!target) return
+          target.applyMode = mode
+          if (mode === 'global') target.linkedMainSkillSlots = []
+          bumpMeta(state)
+        }),
+
+      setPassiveLinkedSlots: (passiveSlot, slots) =>
+        set((state) => {
+          const target = state.snapshot.passives[passiveSlot - 1]
+          if (!target) return
+          target.linkedMainSkillSlots = [...new Set(slots.filter(isMainSkillSlot))].sort((a, b) => a - b)
+          bumpMeta(state)
+        }),
+
       clearPassive: (slot) =>
         set((state) => {
           const target = state.snapshot.passives[slot - 1]
           if (!target) return
           target.skillId = null
           target.enabled = true
+          target.applyMode = 'global'
+          target.linkedMainSkillSlots = []
+          target.skillLevel = 1
           bumpMeta(state)
         }),
 
@@ -323,16 +488,36 @@ export const useBuildStore = create<BuildStore>()(
     })),
     {
       name: 'tli-build-editor',
-      /** Bump when persisted snapshot shape needs migration (e.g. new `divinityBoard`). */
-      version: 3,
-      migrate: (persistedState, _oldVersion) => {
+      version: 5,
+      migrate: (persistedState, oldVersion) => {
         try {
-          const p = persistedState as { snapshot?: unknown } | null
-          if (p && typeof p === 'object' && p.snapshot != null && typeof p.snapshot === 'object') {
-            return { snapshot: normalizeBuildSnapshot(p.snapshot) }
+          const p = persistedState as { snapshot?: unknown; inspectedMainSlot?: number } | null
+          if (!p || typeof p !== 'object') {
+            return { snapshot: normalizeBuildSnapshot(createEmptyBuildSnapshot()) }
+          }
+          let snapRaw: unknown = p.snapshot
+          if (
+            typeof oldVersion === 'number' &&
+            oldVersion < 5 &&
+            typeof p.inspectedMainSlot === 'number' &&
+            p.inspectedMainSlot >= 1 &&
+            p.inspectedMainSlot <= 5
+          ) {
+            const base =
+              snapRaw != null && typeof snapRaw === 'object' ? ({ ...snapRaw } as Record<string, unknown>) : {}
+            const meta =
+              base.meta != null && typeof base.meta === 'object'
+                ? ({ ...base.meta } as Record<string, unknown>)
+                : {}
+            if (meta.inspectedMainSkillSlot == null) meta.inspectedMainSkillSlot = p.inspectedMainSlot
+            base.meta = meta
+            snapRaw = base
+          }
+          if (snapRaw != null && typeof snapRaw === 'object') {
+            return { snapshot: normalizeBuildSnapshot(snapRaw) }
           }
         } catch {
-          /* use empty below */
+          /* fall through */
         }
         return { snapshot: normalizeBuildSnapshot(createEmptyBuildSnapshot()) }
       },
