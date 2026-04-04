@@ -35,6 +35,7 @@ import type { SkillDamageRole } from '@/types/skillDamageRole'
 import { getSkillDefinitionById } from '@/lib/runtime/runtimeSkillLookup'
 import type { SkillDefinition } from '@/types/skillData'
 import type { DerivedCombatLayerConfidence } from '@/types/combat'
+import { cloneSnapshotWithSkillRow } from '@/lib/build/cloneSnapshotSkillRow'
 
 export type { BuildSidebarCombatStats } from '@/types/combat'
 export type { InspectedSkillPresentationMode } from '@/types/skillInstance'
@@ -572,6 +573,58 @@ export function selectInspectedSkillDamageView(snapshot: BuildSnapshot): Inspect
     cooldownSec: lvRow?.cooldown ?? null,
     castTimeSec: lvRow?.castTime ?? null,
   }
+}
+
+/**
+ * Same scoped damaging combat as `selectInspectedSkillDamageView` (global base + this slot’s skill row),
+ * but for an arbitrary `SkillSetup` row. Used for support removal counterfactuals only.
+ */
+export function tryComputeInspectedScopedDamagingCombat(
+  snapshot: BuildSnapshot,
+  slot: MainSkillSlot,
+  skillRow: SkillSetup,
+): {
+  combat: BuildSidebarCombatStats
+  effectiveCalculationConfidence: CalculationConfidence
+  damagingPresentation: 'authoritative' | 'estimate'
+} | null {
+  const snap = cloneSnapshotWithSkillRow(snapshot, slot, skillRow)
+  const inst = computeSkillInstanceForMainSlot(skillRow, snap)
+  if (!inst) return null
+  if (inst.damageRole !== 'damaging') return null
+  if (!inst.structuralDamageEvidence) return null
+  if (inst.calculationConfidence === 'unsupported') return null
+
+  const entries: ContributionEntry[] = collectBuildContributions(snap)
+  const filtered = filterContributionsForInspectedMainSkill(entries, slot)
+  const levelRowMeta = resolveLevelRow(inst.activeDefinition, inst.level)
+  const hitBase = skillHitBaseAnchorFromLevelRow(levelRowMeta.row)
+  const agg = aggregateStatBlocks(
+    contributionBlocksForInspectedAggregate(filtered, slot, hitBase.value),
+  )
+  const textChars = selectDivinityBoardTextChars(snap)
+  const level = snap.meta?.level ?? 1
+  const { combat, breakdown } = computeDerivedCombat(level, agg, textChars, {
+    skillHitBaseFromLevel: hitBase.value,
+    skillHitBaseFromMinMaxAverage: hitBase.fromMinMaxAverage,
+  })
+
+  let derivedLayerConf: DerivedCombatLayerConfidence = breakdown.derivedCombatConfidence
+  if (hitBase.value == null && levelRowMeta.source === 'none') {
+    derivedLayerConf = 'unsupported'
+  }
+
+  const effectiveCalculationConfidence = worstCalculationConfidence(
+    inst.calculationConfidence,
+    derivedLayerConf as CalculationConfidence,
+  )
+
+  if (effectiveCalculationConfidence === 'unsupported') return null
+
+  const damagingPresentation: 'authoritative' | 'estimate' =
+    effectiveCalculationConfidence === 'ready' ? 'authoritative' : 'estimate'
+
+  return { combat, effectiveCalculationConfidence, damagingPresentation }
 }
 
 function buildInspectedSkillDebugView(

@@ -33,6 +33,45 @@ export function remapPassiveModifiersForActiveSkill(
   return out
 }
 
+/** Skill-tab traces: same remap rules + foldability bookkeeping (no fabricated stats). */
+export function analyzePassiveModifiersForActiveSkill(
+  activeSkillId: string,
+  passiveSkillId: string,
+  mods: ModifierDefinition[],
+): {
+  remapped: ModifierDefinition[]
+  skippedNoStat: number
+  skippedNonFoldableSelector: number
+  statKeys: string[]
+  hasAuraSelector: boolean
+} {
+  let skippedNoStat = 0
+  let skippedNonFoldableSelector = 0
+  let hasAuraSelector = false
+  for (let i = 0; i < mods.length; i++) {
+    const m = mods[i]
+    if (!m) continue
+    if (m.selector?.kind === 'aura') hasAuraSelector = true
+    if (!m?.stat || typeof m.stat !== 'string') {
+      skippedNoStat++
+      continue
+    }
+    if (!remapPassiveSelectorToEvaluatedSkill(m.selector, activeSkillId)) {
+      skippedNonFoldableSelector++
+    }
+  }
+
+  const remapped = remapPassiveModifiersForActiveSkill(activeSkillId, passiveSkillId, mods)
+  const statKeys = [...new Set(remapped.map((r) => r.stat))].sort((a, b) => a.localeCompare(b, 'en'))
+  return {
+    remapped,
+    skippedNoStat,
+    skippedNonFoldableSelector,
+    statKeys,
+    hasAuraSelector,
+  }
+}
+
 function remapPassiveSelectorToEvaluatedSkill(sel: Selector, activeSkillId: string): Selector | null {
   switch (sel.kind) {
     case 'skill':
