@@ -5,6 +5,7 @@ import React from 'react'
 import { useBuildStore } from '@/stores/useBuildStore'
 import { useBuildComputedStats } from '@/hooks/useBuildComputedStats'
 import type { MainSkillSlot } from '@/types/build'
+import type { CalculationConfidence } from '@/types/skillInstance'
 import type { SkillCombatRole } from '@/types/skillDamageRole'
 import { getSkillDefinitionById } from '@/lib/runtime/runtimeSkillLookup'
 
@@ -48,7 +49,7 @@ function damageRoleLabel(role: SkillCombatRole): string {
   return map[role] ?? role
 }
 
-function confidenceLabel(c: 'ready' | 'partial' | 'unsupported'): string {
+function confidenceLabel(c: CalculationConfidence): string {
   const map = { ready: '就緒', partial: '部分', unsupported: '不支援精算' } as const
   return map[c] ?? c
 }
@@ -67,8 +68,9 @@ export default function BuildStatsPanel() {
     breakdown,
     skillInstanceBreakdowns,
     inspectedSkillBreakdown,
-    inspectedSkillInstance,
+    inspectedSkillPrimaryInstance,
     inspectedSkillDamageView,
+    inspectedSkillDebugView,
     validationErrors,
     summary,
   } = derived
@@ -87,6 +89,12 @@ export default function BuildStatsPanel() {
 
   const level = snapshot.meta.level
   const dv = inspectedSkillDamageView
+  const inspectedConfidence: CalculationConfidence =
+    dv.mode === 'damaging' || dv.mode === 'dpsBlocked'
+      ? dv.effectiveCalculationConfidence
+      : dv.mode === 'nonDamaging'
+        ? dv.calculationConfidence
+        : inspectedSkillBreakdown?.calculationConfidence ?? 'partial'
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-slate-700/55 bg-gradient-to-b from-[#111820] via-[#0b0f14] to-[#080b0f] shadow-[0_12px_40px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.04)]">
@@ -247,12 +255,22 @@ export default function BuildStatsPanel() {
           })}
         </div>
 
-        {inspectedSkillInstance && inspectedSkillBreakdown ? (
+        <div className="mb-2 rounded-md border border-slate-800/60 bg-black/20 px-2.5 py-1.5 font-mono text-[9px] text-slate-600">
+          <span className="text-slate-500">Inspected 解析</span> · {inspectedSkillDebugView.resolution}
+          {inspectedSkillDebugView.resolvedSlot != null ? ` · slot ${inspectedSkillDebugView.resolvedSlot}` : ''}
+          <span className="text-slate-600">
+            {' '}
+            · 貢獻列 scoped {inspectedSkillDebugView.inspectedFilteredContributionCount} / build{' '}
+            {inspectedSkillDebugView.buildWideContributionCount}
+          </span>
+        </div>
+
+        {inspectedSkillPrimaryInstance && inspectedSkillBreakdown ? (
           <div className="mb-3 rounded-lg border border-slate-800/70 bg-slate-950/40 px-3 py-2.5">
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-mono text-[10px] text-violet-400/90">Slot {inspectedSkillBreakdown.mainSlot}</span>
               <span className="rounded-md bg-slate-900/80 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-300 ring-1 ring-slate-700/70">
-                {inspectedSkillInstance.activeDefinition.family}
+                {inspectedSkillPrimaryInstance.activeDefinition.family}
               </span>
               <span
                 className={`rounded-md px-1.5 py-0.5 text-[10px] font-semibold uppercase ring-1 ${
@@ -271,14 +289,14 @@ export default function BuildStatsPanel() {
               </span>
               <span
                 className={`rounded-md px-1.5 py-0.5 text-[10px] font-semibold uppercase ring-1 ${
-                  inspectedSkillBreakdown.calculationConfidence === 'ready'
+                  inspectedConfidence === 'ready'
                     ? 'bg-cyan-950/55 text-cyan-200 ring-cyan-800/40'
-                    : inspectedSkillBreakdown.calculationConfidence === 'partial'
+                    : inspectedConfidence === 'partial'
                       ? 'bg-amber-950/50 text-amber-200 ring-amber-800/35'
                       : 'bg-slate-900/70 text-slate-400 ring-slate-700/50'
                 }`}
               >
-                {confidenceLabel(inspectedSkillBreakdown.calculationConfidence)}
+                {confidenceLabel(inspectedConfidence)}
               </span>
             </div>
             <div className="mt-1 text-sm font-semibold text-slate-100">{inspectedSkillBreakdown.activeName}</div>
@@ -291,9 +309,9 @@ export default function BuildStatsPanel() {
                 <span className="ml-2 text-slate-600">· 無結構化傷害證據</span>
               )}
             </div>
-            {inspectedSkillInstance.activeDefinition.tags.length ? (
+            {inspectedSkillPrimaryInstance.activeDefinition.tags.length ? (
               <div className="mt-2 flex max-h-16 flex-wrap gap-1 overflow-y-auto">
-                {inspectedSkillInstance.activeDefinition.tags.slice(0, 20).map((t) => (
+                {inspectedSkillPrimaryInstance.activeDefinition.tags.slice(0, 20).map((t) => (
                   <span
                     key={t}
                     className="rounded border border-slate-800/80 bg-black/25 px-1 py-0.5 text-[9px] text-slate-500"
@@ -309,10 +327,10 @@ export default function BuildStatsPanel() {
                 {inspectedSkillBreakdown.recordWarnings.join(' · ')}
               </div>
             ) : null}
-            {inspectedSkillInstance.warnings.length ? (
+            {inspectedSkillPrimaryInstance.warnings.length ? (
               <div className="mt-2 text-[10px] text-amber-200/80">
                 <span className="font-semibold text-slate-500">Instance · </span>
-                {inspectedSkillInstance.warnings.join(' · ')}
+                {inspectedSkillPrimaryInstance.warnings.join(' · ')}
               </div>
             ) : null}
             {inspectedSkillBreakdown.parseStatus === 'failed' ? (
@@ -325,17 +343,32 @@ export default function BuildStatsPanel() {
           <p className="mb-3 rounded-lg border border-slate-800/70 bg-black/20 px-3 py-2 text-[11px] text-slate-500">
             {dv.reason === 'no_slot'
               ? '請選擇要檢查的主技能槽（上方快速切換或技能頁）。'
-              : dv.reason === 'disabled'
-                ? '此槽主技能組已停用。'
-                : '此槽無有效主技能或未選技能。'}
+              : dv.reason === 'invalid_slot'
+                ? ' inspected 槽位無效（必須為 1–5）。'
+                : dv.reason === 'disabled'
+                  ? '此槽主技能組已停用。'
+                  : dv.reason === 'unsupported_main_family'
+                    ? '此槽非主技能家族（例如輔助石放在主連結），無法作為檢查主技能。'
+                    : '此槽無有效主技能或未選技能。'}
           </p>
         ) : null}
 
+        <div
+          key={`inspected-output-${inspectedMainSkillSlot ?? 'x'}-${inspectedSkillPrimaryInstance?.activeId ?? 'none'}`}
+        >
         {dv.mode === 'damaging' ? (
           <>
             <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500">
-              此技能輸出（Build + 僅此槽技能貢獻）
+              {dv.damagingPresentation === 'authoritative'
+                ? '此技能輸出（Build + 僅此槽技能貢獻）'
+                : '此技能輸出估算（資料不完整 · 僅供參考）'}
             </div>
+            {dv.damagingPresentation === 'estimate' ? (
+              <div className="mb-2 rounded-md border border-amber-800/45 bg-amber-950/25 px-2.5 py-2 text-[10px] leading-relaxed text-amber-100/90">
+                <span className="font-semibold text-amber-200/95">缺失／警告 · </span>
+                effective {confidenceLabel(dv.effectiveCalculationConfidence)}：等級列、derive fallback、或解析可能使數字與實機有落差。請同見下方 fallback 與技能 breakdown。
+              </div>
+            ) : null}
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
               <div className="rounded-xl border border-violet-900/40 bg-[linear-gradient(180deg,rgba(76,29,149,0.25)_0%,rgba(3,7,18,0.65)_100%)] px-3 py-3 shadow-[inset_0_1px_0_rgba(167,139,250,0.08)]">
                 <div className="text-[10px] font-semibold uppercase tracking-wider text-violet-300/85">檢查 DPS</div>
@@ -365,15 +398,131 @@ export default function BuildStatsPanel() {
               支援：已套用 <span className="font-mono text-slate-400">{dv.supportApplied}</span> · 略過{' '}
               <span className="font-mono text-slate-400">{dv.supportSkipped}</span>
             </p>
+            <p className="mt-2 rounded-md border border-slate-800/50 bg-black/20 px-2 py-1.5 text-[9px] leading-relaxed text-slate-500">
+              <span className="font-semibold text-slate-400">衍生戰鬥（4E-4）</span> · 規則池{' '}
+              <span className="font-mono text-slate-400">{dv.skillBreakdown.derivedRulesPrimarySource}</span> · 層級信心{' '}
+              <span className="font-mono text-slate-400">{confidenceLabel(dv.skillBreakdown.derivedCombatConfidence)}</span>
+              <span className="block mt-0.5 text-slate-600">
+                命中基礎 · {dv.skillBreakdown.hitDamageBaseNote}
+              </span>
+              {dv.skillBreakdown.derivedCombatFallbacks.length ? (
+                <span className="mt-1 block font-mono text-[8px] text-amber-200/75">
+                  fallback ·{' '}
+                  {dv.skillBreakdown.derivedCombatFallbacks
+                    .slice(0, 8)
+                    .map((f) => `${f.key}:${f.reason}`)
+                    .join(' · ')}
+                  {dv.skillBreakdown.derivedCombatFallbacks.length > 8
+                    ? ` · +${dv.skillBreakdown.derivedCombatFallbacks.length - 8}`
+                    : ''}
+                </span>
+              ) : null}
+            </p>
           </>
+        ) : dv.mode === 'dpsBlocked' ? (
+          <div className="rounded-lg border border-rose-900/40 bg-rose-950/15 px-3 py-2.5">
+            <div className="text-[11px] font-semibold text-rose-200/95">
+              不顯示主 DPS 卡 · {damageRoleLabel(dv.role)}{' '}
+              <span className="font-mono text-[10px] text-slate-500">({dv.blockReason})</span>
+            </div>
+            <p className="mt-1 text-[10px] leading-relaxed text-slate-500">
+              family <span className="font-mono text-slate-400">{dv.family}</span> · instance{' '}
+              {confidenceLabel(dv.calculationConfidence)} · effective{' '}
+              {confidenceLabel(dv.effectiveCalculationConfidence)}
+            </p>
+            <ul className="mt-2 list-inside list-disc space-y-0.5 text-[10px] text-slate-400">
+              {dv.whyNoDpsLines.map((line, i) => (
+                <li key={`dps-block-why-${i}-${line.slice(0, 48)}`}>{line}</li>
+              ))}
+            </ul>
+            {dv.missingDataHints.length ? (
+              <div className="mt-2 rounded border border-slate-800/60 bg-black/20 px-2 py-1.5">
+                <div className="text-[9px] font-bold uppercase text-slate-500">資料缺口提示</div>
+                <ul className="mt-1 list-inside list-disc text-[9px] text-slate-500">
+                  {dv.missingDataHints.map((h, i) => (
+                    <li key={`dps-block-hint-${i}-${h.slice(0, 48)}`}>{h}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {dv.supportsSkippedDetail.length ? (
+              <div className="mt-2">
+                <div className="text-[9px] font-bold uppercase text-slate-600">略過的輔助</div>
+                <ul className="mt-1 space-y-0.5 text-[9px] text-slate-500">
+                  {dv.supportsSkippedDetail.map((s) => (
+                    <li key={s.id}>
+                      <span className="font-mono text-slate-600">{s.name}</span>
+                      {s.skipReason ? <span className="text-slate-600"> — {s.skipReason}</span> : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {dv.supportsAppliedDetail.length ? (
+              <div className="mt-2 text-[9px] text-slate-600">
+                已套用輔助 ·{' '}
+                {dv.supportsAppliedDetail.map((s) => s.name).join('、') || '—'}
+              </div>
+            ) : null}
+            {dv.tags.length ? (
+              <div className="mt-2 flex flex-wrap gap-1">
+                {dv.tags.slice(0, 16).map((t) => (
+                  <span
+                    key={t}
+                    className="rounded border border-slate-800/80 bg-black/25 px-1 py-0.5 text-[8px] text-slate-500"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+            {dv.otherMainSkills.length ? (
+              <div className="mt-2">
+                <div className="text-[9px] font-bold uppercase text-slate-600">其他主技能槽</div>
+                <ul className="mt-1 space-y-0.5 text-[10px] text-slate-400">
+                  {dv.otherMainSkills.map((o) => (
+                    <li key={o.slot}>
+                      <span className="font-mono text-slate-600">{o.slot}</span> {o.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {dv.modifierLines.length ? (
+              <div className="mt-2 max-h-20 overflow-y-auto font-mono text-[8px] text-slate-500">
+                {dv.modifierLines.slice(0, 8).map((l) => (
+                  <div key={l}>{l}</div>
+                ))}
+              </div>
+            ) : null}
+            <p className="mt-2 text-[10px] text-slate-600">
+              支援計數：套用 {dv.supportApplied} · 略過 {dv.supportSkipped}
+            </p>
+          </div>
         ) : dv.mode === 'nonDamaging' ? (
           <div className="rounded-lg border border-amber-900/35 bg-amber-950/10 px-3 py-2.5">
             <div className="text-[11px] font-semibold text-amber-200/95">
-              非直接傷害主技能 · {damageRoleLabel(dv.role)}
+              不以主 DPS 卡呈現 · {damageRoleLabel(dv.role)}
             </div>
             <p className="mt-1 text-[10px] leading-relaxed text-slate-500">
-              不顯示單一「假 DPS」數字。圖騰／召喚／戰吼等若以代理輸出為主，亦在此欄用機制視角呈現。
+              family <span className="font-mono text-slate-400">{dv.family}</span> · calculationConfidence{' '}
+              {confidenceLabel(dv.calculationConfidence)}
             </p>
+            <ul className="mt-2 list-inside list-disc space-y-0.5 text-[10px] text-slate-400">
+              {dv.whyNoDpsLines.map((line, i) => (
+                <li key={`non-dmg-why-${i}-${line.slice(0, 48)}`}>{line}</li>
+              ))}
+            </ul>
+            {dv.missingDataHints.length ? (
+              <div className="mt-2 rounded border border-slate-800/60 bg-black/20 px-2 py-1.5">
+                <div className="text-[9px] font-bold uppercase text-slate-500">資料缺口提示</div>
+                <ul className="mt-1 list-inside list-disc text-[9px] text-slate-500">
+                  {dv.missingDataHints.map((h, i) => (
+                    <li key={`non-dmg-hint-${i}-${h.slice(0, 48)}`}>{h}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             {dv.otherMainSkills.length ? (
               <div className="mt-2">
                 <div className="text-[9px] font-bold uppercase text-slate-600">可能互動的主技能槽</div>
@@ -416,11 +565,30 @@ export default function BuildStatsPanel() {
                 </div>
               </div>
             ) : null}
+            {dv.supportsSkippedDetail.length ? (
+              <div className="mt-2">
+                <div className="text-[9px] font-bold uppercase text-slate-600">略過的輔助</div>
+                <ul className="mt-1 space-y-0.5 text-[9px] text-slate-500">
+                  {dv.supportsSkippedDetail.map((s) => (
+                    <li key={s.id}>
+                      <span className="font-mono text-slate-600">{s.name}</span>
+                      {s.skipReason ? <span className="text-slate-600"> — {s.skipReason}</span> : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             <p className="mt-2 text-[10px] text-slate-600">
               支援狀態：套用 {dv.supportApplied} · 略過 {dv.supportSkipped}
+              {dv.supportsAppliedDetail.length ? (
+                <span className="block mt-0.5 text-slate-600">
+                  已套用：{dv.supportsAppliedDetail.map((s) => s.name).join('、')}
+                </span>
+              ) : null}
             </p>
           </div>
         ) : null}
+        </div>
 
         {inspectedSkillBreakdown ? (
           <div className="mt-4 rounded-lg border border-slate-800/70 bg-black/20 px-3 py-2.5">
@@ -554,6 +722,17 @@ export default function BuildStatsPanel() {
             <Row k="傷害 %（加總）" v={`${formatNum(breakdown.damagePctTotal, 1)}%`} />
             <Row k="More 乘數" v={formatNum(breakdown.moreDamageMult, 3)} />
             <Row k="攻速基礎 / 加成% / 最終" v={`${formatNum(breakdown.baseAttackSpeed, 2)} / ${formatNum(breakdown.attackSpeedPctTotal, 1)}% / ${formatNum(breakdown.attackSpeedFinal, 2)}`} />
+            <Row k="derive 規則來源" v={breakdown.derivedRulesPrimarySource} />
+            <Row k="derive 層級信心" v={confidenceLabel(breakdown.derivedCombatConfidence)} />
+            <Row k="命中基礎註記" v={breakdown.hitDamageBaseNote} />
+            <Row
+              k="derive fallbacks"
+              v={
+                breakdown.derivedCombatFallbacks.length
+                  ? `${breakdown.derivedCombatFallbacks.length} 筆（見各條 key:reason）`
+                  : '—'
+              }
+            />
           </div>
         </details>
       </div>

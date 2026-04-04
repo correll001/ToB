@@ -10,9 +10,5 @@ import { selectBuildStatsPanelDerived } from '@/selectors/buildComputedStats'
  */
 export function useBuildComputedStats() {
   const snapshot = useBuildStore((s) => s.snapshot)
-  const inspectedMainSkillSlot = snapshot.meta.inspectedMainSkillSlot
-  return useMemo(
-    () => selectBuildStatsPanelDerived(snapshot, inspectedMainSkillSlot),
-    [snapshot, inspectedMainSkillSlot],
-  )
+  return useMemo(() => selectBuildStatsPanelDerived(snapshot), [snapshot])
 }

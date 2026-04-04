@@ -135,7 +135,12 @@ export type SkillInstance = {
   breakdown: SkillInstanceBreakdown
 }
 
-export type InspectedSkillNoneReason = 'no_slot' | 'empty_slot' | 'disabled'
+export type InspectedSkillNoneReason =
+  | 'no_slot'
+  | 'empty_slot'
+  | 'disabled'
+  | 'invalid_slot'
+  | 'unsupported_main_family'
 
 export type InspectedSkillDamageViewNone = {
   mode: 'none'
@@ -146,9 +151,13 @@ export type InspectedSkillDamageViewNone = {
 export type InspectedSkillDamageViewDamaging = {
   mode: 'damaging'
   role: SkillDamageRole
+  /** `authoritative` only when instance + derive layer are `ready`; otherwise `estimate` (4E-5). */
+  damagingPresentation: 'authoritative' | 'estimate'
   /** Combat derived from full build + only this skill’s skill contribution (not other skills). */
   combat: BuildSidebarCombatStats
   skillBreakdown: CombatBreakdown
+  /** Worst of skill-instance vs derived-combat layer so UI never shows “ready” on placeholder DPS (4E-4). */
+  effectiveCalculationConfidence: CalculationConfidence
   supportApplied: number
   supportSkipped: number
   manaCost: number | null
@@ -156,22 +165,67 @@ export type InspectedSkillDamageViewDamaging = {
   castTimeSec: number | null
 }
 
-export type InspectedSkillDamageViewNonDamaging = {
-  mode: 'nonDamaging'
+/** damaging role but presentation gate blocks primary DPS card (4E-5). */
+export type InspectedSkillDamageViewDpsBlocked = {
+  mode: 'dpsBlocked'
+  blockReason: 'instance_unsupported' | 'effective_unsupported'
   role: SkillDamageRole
+  family: string
   tags: string[]
+  calculationConfidence: CalculationConfidence
+  effectiveCalculationConfidence: CalculationConfidence
+  whyNoDpsLines: string[]
+  missingDataHints: string[]
   otherMainSkills: Array<{ slot: MainSkillSlot; skillId: string; name: string }>
   passiveAuraLines: string[]
   modifierLines: string[]
   requirementLines: string[]
   supportApplied: number
   supportSkipped: number
+  supportsSkippedDetail: Array<{ id: string; name: string; skipReason?: string }>
+  supportsAppliedDetail: Array<{ id: string; name: string }>
+}
+
+export type InspectedSkillDamageViewNonDamaging = {
+  mode: 'nonDamaging'
+  role: SkillDamageRole
+  family: string
+  tags: string[]
+  calculationConfidence: CalculationConfidence
+  whyNoDpsLines: string[]
+  missingDataHints: string[]
+  otherMainSkills: Array<{ slot: MainSkillSlot; skillId: string; name: string }>
+  passiveAuraLines: string[]
+  modifierLines: string[]
+  requirementLines: string[]
+  supportApplied: number
+  supportSkipped: number
+  supportsSkippedDetail: Array<{ id: string; name: string; skipReason?: string }>
+  supportsAppliedDetail: Array<{ id: string; name: string }>
 }
 
 export type InspectedSkillDamageView =
   | InspectedSkillDamageViewNone
   | InspectedSkillDamageViewDamaging
+  | InspectedSkillDamageViewDpsBlocked
   | InspectedSkillDamageViewNonDamaging
+
+/** Selector-only audit bundle for inspected skill (4E-3). */
+export type InspectedSkillDebugView = {
+  metaSlotRaw: number | null
+  resolvedSlot: MainSkillSlot | null
+  resolution:
+    | 'ok'
+    | 'no_slot'
+    | 'invalid_slot'
+    | 'empty_slot'
+    | 'disabled'
+    | 'unsupported_main_family'
+  primaryInstance: SkillInstance | null
+  damageViewMode: InspectedSkillDamageView['mode']
+  inspectedFilteredContributionCount: number
+  buildWideContributionCount: number
+}
 
 export type ComputeSkillInstanceInput = {
   active: SkillDefinition

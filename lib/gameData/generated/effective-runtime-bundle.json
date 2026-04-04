@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "datasetVersion": {
-    "id": 1,
+    "id": 3,
     "season": "ss12",
-    "versionLabel": "ss12-4c6daa13687bb819",
+    "versionLabel": "ss12-2fa05d141b4dab64",
     "sourceKind": "effective-json",
-    "importedAt": "2026-04-04T06:44:04.458Z"
+    "importedAt": "2026-04-04T07:40:50.656Z"
   },
   "activeSkills": {
     "meta": {
@@ -14,8 +14,8 @@
       "generatedAt": "2026-04-04T05:35:35.975Z",
       "parserVersion": "1",
       "sourceCount": 153,
-      "warningsCount": 12,
-      "effectiveLayer": "overrides@demo-1"
+      "warningsCount": 28,
+      "effectiveLayer": "overrides@p0-4e2-1"
     },
     "skills": [
       {
@@ -80,6 +80,41 @@
             }
           ],
           "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 28,
+              "castTime": 1.05,
+              "cooldown": 4,
+              "addedDamageEffectiveness": 1,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 22,
+              "castTime": 0.98,
+              "cooldown": 3.7,
+              "addedDamageEffectiveness": 1.15,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 16,
+              "castTime": 0.92,
+              "cooldown": 3.4,
+              "addedDamageEffectiveness": 1.32,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 12,
+              "castTime": 0.88,
+              "cooldown": 3.1,
+              "addedDamageEffectiveness": 1.48,
+              "partial": false
+            }
+          },
           "mechanics": [
             {
               "hookId": "override:post20",
@@ -94,6 +129,7 @@
           ]
         },
         "warnings": [
+          "[override-note] 4E-1: per-level mana / attack time / effectiveness (curated). Post-20 demo kept.",
           "[override-note] Sample: variant ladder + post-20 tier tweak + manual modifier append (ETL override demo)."
         ]
       },
@@ -169,8 +205,42 @@
               "sourceText": "造成 157% 武器攻擊傷害"
             }
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 24,
+              "castTime": 0.95,
+              "addedDamageEffectiveness": 1,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 18,
+              "castTime": 0.88,
+              "addedDamageEffectiveness": 1.18,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 13,
+              "castTime": 0.82,
+              "addedDamageEffectiveness": 1.38,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 10,
+              "castTime": 0.78,
+              "addedDamageEffectiveness": 1.55,
+              "partial": false
+            }
+          }
+        },
+        "warnings": [
+          "[override-note] 4E-1 P0: levelTable from TLIDB-style progression (mana / cast / added eff)."
+        ]
       },
       {
         "parseStatus": "ok",
@@ -270,13 +340,49 @@
               "sourceText": "造成 369% 武器攻擊傷害"
             }
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 32,
+              "castTime": 1.1,
+              "addedDamageEffectiveness": 0.95,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 26,
+              "castTime": 1.02,
+              "addedDamageEffectiveness": 1.12,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 20,
+              "castTime": 0.95,
+              "addedDamageEffectiveness": 1.3,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 16,
+              "castTime": 0.9,
+              "addedDamageEffectiveness": 1.46,
+              "partial": false
+            }
+          }
+        },
+        "warnings": [
+          "[override-note] 4E-1 P0: levelTable curated."
+        ]
       },
       {
-        "parseStatus": "partial",
+        "parseStatus": "ok",
         "warnings": [
-          "high_tier_expectation_not_met"
+          "high_tier_expectation_not_met",
+          "[override] 4E-1 composite baseDamage mid-band per TLIDB summary; refine per element in later ETL.",
+          "[override-note] 4E-1: spell base hit from summary band (composite); parse lifted to ok after structured patch."
         ],
         "definition": {
           "id": "skill:Chromatic_Shot",
@@ -302,7 +408,42 @@
           "detailText": [
             "五彩魔矢：造成 91-152 法術物理傷害造成 102-189 法術火焰傷害造成 13-254 法術閃電傷害造成 87-131 法術冰冷傷害造成 97-97 法術腐蝕傷害基礎發射 1 個投射物該技能 +2 投射物數量該技能發射的投射物可以命中同一個敵人該技能的散彈效應衰減係數為 70%"
           ],
-          "parserVersion": "1/1"
+          "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 36,
+              "castTime": 0.85,
+              "baseDamage": 180,
+              "addedDamageEffectiveness": 1.2,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 30,
+              "castTime": 0.8,
+              "baseDamage": 280,
+              "addedDamageEffectiveness": 1.35,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 24,
+              "castTime": 0.75,
+              "baseDamage": 400,
+              "addedDamageEffectiveness": 1.5,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 19,
+              "castTime": 0.7,
+              "baseDamage": 510,
+              "addedDamageEffectiveness": 1.65,
+              "partial": false
+            }
+          }
         }
       },
       {
@@ -690,8 +831,42 @@
               "sourceText": "造成 138% 武器攻擊傷害"
             }
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 20,
+              "castTime": 0.4,
+              "addedDamageEffectiveness": 0.9,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 17,
+              "castTime": 0.38,
+              "addedDamageEffectiveness": 1.08,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 14,
+              "castTime": 0.36,
+              "addedDamageEffectiveness": 1.25,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 11,
+              "castTime": 0.34,
+              "addedDamageEffectiveness": 1.4,
+              "partial": false
+            }
+          }
+        },
+        "warnings": [
+          "[override-note] 4E-1 P0: channel-style attack times as castTime proxy."
+        ]
       },
       {
         "parseStatus": "ok",
@@ -764,8 +939,42 @@
               "sourceText": "造成 308% 武器攻擊傷害"
             }
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 18,
+              "castTime": 0.72,
+              "addedDamageEffectiveness": 1,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 15,
+              "castTime": 0.68,
+              "addedDamageEffectiveness": 1.14,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 12,
+              "castTime": 0.64,
+              "addedDamageEffectiveness": 1.28,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 10,
+              "castTime": 0.6,
+              "addedDamageEffectiveness": 1.42,
+              "partial": false
+            }
+          }
+        },
+        "warnings": [
+          "[override-note] 4E-1 P0: levelTable curated."
+        ]
       },
       {
         "parseStatus": "ok",
@@ -776,7 +985,8 @@
           "tags": [
             "持續",
             "防護",
-            "法術"
+            "法術",
+            "光環"
           ],
           "sourceUrl": "https://tlidb.com/tw/Stoneskin",
           "locale": "tw",
@@ -789,7 +999,10 @@
             "釋放該技能獲得防護：吸收 吸收70%受到的傷害，無法吸收持續傷害共吸收1500點傷害 自身受到的傷害最多吸收 吸收70%受到的傷害，無法吸收持續傷害共吸收1500點傷害 點持續 6 秒"
           ],
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: mark as aura-style active for regression — no weapon%/base hit; inferDamageRole → aura-only."
+        ]
       },
       {
         "parseStatus": "ok",
@@ -1295,9 +1508,11 @@
         }
       },
       {
-        "parseStatus": "partial",
+        "parseStatus": "ok",
         "warnings": [
-          "high_tier_expectation_not_met"
+          "high_tier_expectation_not_met",
+          "[override] 4E-1 baseDamage uses midpoint of stated cold hit band at gem L20.",
+          "[override-note] 4E-1: baseDamage ~mid of 203-303 L20 band; parse ok."
         ],
         "definition": {
           "id": "skill:Blizzard",
@@ -1319,7 +1534,42 @@
           "detailText": [
             "暴風雪：造成 203-303 法術冰冷傷害基礎落下 1 波暴風雪該技能 +2 總波次額外 +10% 受到的冰冷傷害"
           ],
-          "parserVersion": "1/1"
+          "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 40,
+              "castTime": 1.2,
+              "baseDamage": 150,
+              "addedDamageEffectiveness": 1.15,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 34,
+              "castTime": 1.1,
+              "baseDamage": 205,
+              "addedDamageEffectiveness": 1.28,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 28,
+              "castTime": 1,
+              "baseDamage": 253,
+              "addedDamageEffectiveness": 1.42,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 23,
+              "castTime": 0.95,
+              "baseDamage": 300,
+              "addedDamageEffectiveness": 1.55,
+              "partial": false
+            }
+          }
         }
       },
       {
@@ -1526,8 +1776,42 @@
               "sourceText": "造成 421% 武器攻擊傷害"
             }
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 26,
+              "castTime": 0.88,
+              "addedDamageEffectiveness": 0.98,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 21,
+              "castTime": 0.82,
+              "addedDamageEffectiveness": 1.15,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 17,
+              "castTime": 0.76,
+              "addedDamageEffectiveness": 1.33,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 14,
+              "castTime": 0.72,
+              "addedDamageEffectiveness": 1.5,
+              "partial": false
+            }
+          }
+        },
+        "warnings": [
+          "[override-note] 4E-1 P0: levelTable curated."
+        ]
       },
       {
         "parseStatus": "ok",
@@ -1606,9 +1890,11 @@
         }
       },
       {
-        "parseStatus": "partial",
+        "parseStatus": "ok",
         "warnings": [
-          "high_tier_expectation_not_met"
+          "high_tier_expectation_not_met",
+          "[override] 4E-1 baseDamage interpolated from TLIDB L1 band toward L20 representative strike.",
+          "[override-note] 4E-1: baseDamage scaled from summary min-max; parse ok."
         ],
         "definition": {
           "id": "skill:Chain_Lightning",
@@ -1629,7 +1915,42 @@
           "detailText": [
             "閃電鏈：造成 73-1393 法術閃電傷害該技能 +2 彈射次數"
           ],
-          "parserVersion": "1/1"
+          "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 14,
+              "castTime": 0.65,
+              "baseDamage": 120,
+              "addedDamageEffectiveness": 1.25,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 12,
+              "castTime": 0.6,
+              "baseDamage": 420,
+              "addedDamageEffectiveness": 1.4,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 10,
+              "castTime": 0.55,
+              "baseDamage": 733,
+              "addedDamageEffectiveness": 1.55,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 9,
+              "castTime": 0.52,
+              "baseDamage": 980,
+              "addedDamageEffectiveness": 1.68,
+              "partial": false
+            }
+          }
         }
       },
       {
@@ -1712,9 +2033,11 @@
         }
       },
       {
-        "parseStatus": "partial",
+        "parseStatus": "ok",
         "warnings": [
-          "high_tier_expectation_not_met"
+          "high_tier_expectation_not_met",
+          "[override] 4E-1 baseDamage midpoint of stated band at high gem levels.",
+          "[override-note] 4E-1: baseDamage mid 612-918; parse ok."
         ],
         "definition": {
           "id": "skill:Ring_of_Ice",
@@ -1735,7 +2058,42 @@
           "detailText": [
             "冰環：造成 612-918 法術冰冷傷害該技能擊敗敵人時， +20% 機率在敵人的位置再次觸發該技能；每圈冰環只能觸發一次該效果"
           ],
-          "parserVersion": "1/1"
+          "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 44,
+              "castTime": 0.9,
+              "baseDamage": 400,
+              "addedDamageEffectiveness": 1.1,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 38,
+              "castTime": 0.85,
+              "baseDamage": 580,
+              "addedDamageEffectiveness": 1.22,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 32,
+              "castTime": 0.8,
+              "baseDamage": 765,
+              "addedDamageEffectiveness": 1.35,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 27,
+              "castTime": 0.75,
+              "baseDamage": 920,
+              "addedDamageEffectiveness": 1.48,
+              "partial": false
+            }
+          }
         }
       },
       {
@@ -2466,8 +2824,42 @@
               "sourceText": "造成 134% 武器攻擊傷害"
             }
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "levelScalingMode": "table",
+          "levelTable": {
+            "1": {
+              "level": 1,
+              "manaCost": 22,
+              "castTime": 1,
+              "addedDamageEffectiveness": 0.95,
+              "partial": false
+            },
+            "10": {
+              "level": 10,
+              "manaCost": 18,
+              "castTime": 0.92,
+              "addedDamageEffectiveness": 1.12,
+              "partial": false
+            },
+            "20": {
+              "level": 20,
+              "manaCost": 15,
+              "castTime": 0.86,
+              "addedDamageEffectiveness": 1.3,
+              "partial": false
+            },
+            "30": {
+              "level": 30,
+              "manaCost": 12,
+              "castTime": 0.82,
+              "addedDamageEffectiveness": 1.45,
+              "partial": false
+            }
+          }
+        },
+        "warnings": [
+          "[override-note] 4E-1 P0: levelTable curated."
+        ]
       },
       {
         "parseStatus": "ok",
@@ -7267,8 +7659,8 @@
       "generatedAt": "2026-04-04T05:35:35.975Z",
       "parserVersion": "1",
       "sourceCount": 122,
-      "warningsCount": 2,
-      "effectiveLayer": "overrides@demo-1"
+      "warningsCount": 12,
+      "effectiveLayer": "overrides@p0-4e2-1"
     },
     "skills": [
       {
@@ -7369,19 +7761,17 @@
           "supportRules": {
             "requiresProjectile": true,
             "allowedSkillTags": [
-              "Projectile",
-              "Support"
+              "Projectile"
             ],
             "rawRequirementLines": [
-              "[override] Demo: enforce projectile tag expectation when wiki text is ambiguous."
+              "[override 4E-2] Projectile active skills only; TLIDB text 輔助投射物技能."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
         },
         "warnings": [
-          "[override] supportRulesMerge patched from data/overrides",
-          "[override-note] Sample: curated support restriction when auto-parse misses pairing rules."
+          "[override-note] 4E-2: allowedSkillTags must match active tags (Projectile), not support-gem tag only."
         ]
       },
       {
@@ -7461,19 +7851,20 @@
           ],
           "supportRules": {
             "requiresAttack": true,
-            "requiresChanneled": true,
+            "requiresChanneled": false,
             "allowedSkillTags": [
-              "Support",
               "Attack"
             ],
             "rawRequirementLines": [
-              "Inferred: requires attack skill",
-              "Inferred: requires channeled skill"
+              "[override 4E-2] 輔助攻擊技能 — channeled optional in game; engine uses false for broad attach."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: remove erroneous requiresChanneled from auto-parse; keep attack"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -7564,16 +7955,18 @@
           "supportRules": {
             "requiresProjectile": true,
             "allowedSkillTags": [
-              "Projectile",
-              "Support"
+              "Projectile"
             ],
             "rawRequirementLines": [
-              "Inferred: requires projectile skill"
+              "[override 4E-2] 拋射 / projectile actives."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: projectile pairing"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -7704,12 +8097,18 @@
           ],
           "supportRules": {
             "allowedSkillTags": [
-              "Support"
+              "Area"
+            ],
+            "rawRequirementLines": [
+              "[override 4E-2] Area-tagged actives (TLIDB 輔助範圍技能)."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: 範圍技能 → Area canonical tag"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -7884,17 +8283,19 @@
           "supportRules": {
             "requiresAttack": true,
             "allowedSkillTags": [
-              "Support",
-              "Melee",
-              "Attack"
+              "Attack",
+              "Melee"
             ],
             "rawRequirementLines": [
-              "Inferred: requires attack skill"
+              "[override 4E-2] Melee attacks only."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: melee attack"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -7984,16 +8385,18 @@
           "supportRules": {
             "requiresSpell": true,
             "allowedSkillTags": [
-              "Support",
               "Spell"
             ],
             "rawRequirementLines": [
-              "Inferred: requires spell skill"
+              "[override 4E-2] 輔助法術技能."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: spell-only"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -8068,16 +8471,34 @@
               "stat": "skill.manaCostMultiplier",
               "value": 1.1,
               "sourceText": "魔力消耗倍率 110.0%"
+            },
+            {
+              "id": "p0-tendonslicer-dmg",
+              "selector": {
+                "kind": "supportedSkill"
+              },
+              "operation": "mul",
+              "stat": "damage.increased",
+              "value": 7.5,
+              "valueKind": "increased",
+              "sourceText": "4E-2 curated from summary: 額外物理傷害%"
             }
           ],
           "supportRules": {
             "allowedSkillTags": [
-              "Support"
+              "Attack",
+              "Spell"
+            ],
+            "rawRequirementLines": [
+              "[override 4E-2] 擊中 / damage-dealing actives."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: hitting skills — Attack or Spell"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -8152,16 +8573,33 @@
               "stat": "skill.manaCostMultiplier",
               "value": 1.1,
               "sourceText": "魔力消耗倍率 110.0%"
+            },
+            {
+              "id": "p0-glacial-cold",
+              "selector": {
+                "kind": "supportedSkill"
+              },
+              "operation": "mul",
+              "stat": "damage.increased",
+              "value": 10.3,
+              "valueKind": "increased",
+              "sourceText": "4E-2 curated: 冰冷傷害%"
             }
           ],
           "supportRules": {
             "allowedSkillTags": [
-              "Support"
+              "Cold"
+            ],
+            "rawRequirementLines": [
+              "[override 4E-2] Cold-tagged actives."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: cold hits"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -11980,12 +12418,19 @@
           ],
           "supportRules": {
             "allowedSkillTags": [
-              "Support"
+              "Spell"
+            ],
+            "requiresSpell": true,
+            "rawRequirementLines": [
+              "[override 4E-2] Spell skills (added fire)."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: spell gem"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -13142,12 +13587,19 @@
           ],
           "supportRules": {
             "allowedSkillTags": [
-              "Support"
+              "Spell"
+            ],
+            "requiresSpell": true,
+            "rawRequirementLines": [
+              "[override 4E-2] Spell skills (added cold)."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: spell gem"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -15243,17 +15695,19 @@
           "supportRules": {
             "requiresAttack": true,
             "allowedSkillTags": [
-              "Support",
-              "Melee",
-              "Attack"
+              "Attack",
+              "Melee"
             ],
             "rawRequirementLines": [
-              "Inferred: requires attack skill"
+              "[override 4E-2] 輔助近戰攻擊技能."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: melee attack-only for regression (spell mains skip on requiresAttack)"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -18741,12 +19195,19 @@
           ],
           "supportRules": {
             "allowedSkillTags": [
-              "Support"
+              "Attack"
+            ],
+            "requiresAttack": true,
+            "rawRequirementLines": [
+              "[override 4E-2] 輔助擊中 — attack skills."
             ]
           },
           "levelScalingMode": "breakpoints",
           "parserVersion": "1/1"
-        }
+        },
+        "warnings": [
+          "[override-note] 4E-2: attack gem — requires Attack"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -24348,8 +24809,8 @@
       "generatedAt": "2026-04-04T05:35:35.975Z",
       "parserVersion": "1",
       "sourceCount": 55,
-      "warningsCount": 1,
-      "effectiveLayer": "overrides@demo-1"
+      "warningsCount": 6,
+      "effectiveLayer": "overrides@p0-4e2-1"
     },
     "skills": [
       {
@@ -24376,20 +24837,20 @@
           "parserVersion": "1/1",
           "modifiers": [
             {
-              "id": "override-demo-fearless",
+              "id": "p0-fearless-dmg",
               "selector": {
                 "kind": "skill"
               },
-              "operation": "add",
-              "stat": "skill.damage.more",
-              "value": 0,
-              "valueKind": "more",
-              "sourceText": "[override demo] zero-op audit modifier"
+              "operation": "mul",
+              "stat": "damage.increased",
+              "value": 12,
+              "valueKind": "increased",
+              "sourceText": "4E-2 curated from TLIDB summary (近戰額外傷害)."
             }
           ]
         },
         "warnings": [
-          "[override-note] Sample passive: manual modifier patch only (no formula engine change)."
+          "[override-note] 4E-2: aura passive — real `skill` selector so linked/global inject affects instances."
         ]
       },
       {
@@ -24413,8 +24874,24 @@
           "detailText": [
             "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +34% 物理傷害"
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "modifiers": [
+            {
+              "id": "p0-wpn-amp",
+              "selector": {
+                "kind": "skill"
+              },
+              "operation": "mul",
+              "stat": "damage.increased",
+              "value": 18,
+              "valueKind": "increased",
+              "sourceText": "4E-2 curated physical hit damage (光環)."
+            }
+          ]
+        },
+        "warnings": [
+          "[override-note] 4E-2: 武器增幅 aura → physical damage to supported skills"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -24531,8 +25008,24 @@
           "detailText": [
             "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +34% 法術傷害"
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "modifiers": [
+            {
+              "id": "p0-spell-amp",
+              "selector": {
+                "kind": "skill"
+              },
+              "operation": "mul",
+              "stat": "damage.increased",
+              "value": 18,
+              "valueKind": "increased",
+              "sourceText": "4E-2 curated spell damage (光環)."
+            }
+          ]
+        },
+        "warnings": [
+          "[override-note] 4E-2: 法術增幅"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -24627,8 +25120,24 @@
           "detailText": [
             "啟動光環，自身和一定範圍內的所有友軍獲得增益：+10% 元素抗性額外 -12% 受到的元素傷害"
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "modifiers": [
+            {
+              "id": "p0-elem-res",
+              "selector": {
+                "kind": "skill"
+              },
+              "operation": "mul",
+              "stat": "damage.increased",
+              "value": 6,
+              "valueKind": "increased",
+              "sourceText": "4E-2 placeholder elemental affinity on skill (manifest)."
+            }
+          ]
+        },
+        "warnings": [
+          "[override-note] 4E-2: small universal more as placeholder resist-to-skill bridge"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -24650,8 +25159,24 @@
           "detailText": [
             "啟動光環，自身和一定範圍內的所有友軍獲得增益：14.5% 移動速度"
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "modifiers": [
+            {
+              "id": "p0-swift-as",
+              "selector": {
+                "kind": "skill"
+              },
+              "operation": "add",
+              "stat": "skill.attackSpeedIncreased",
+              "value": 14,
+              "valueKind": "flat",
+              "sourceText": "4E-2 curated attack speed (光環)."
+            }
+          ]
+        },
+        "warnings": [
+          "[override-note] 4E-2: 疾速 → attack speed to linked skill"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -24986,8 +25511,24 @@
             "啟動貫注，獲得增益：額外 +7% 火焰傷害+10% 點燃機率附加 2 - 2 基礎點燃傷害",
             "熔火貫注：造成點燃時，該技能獲得 15 點貫注值；該效果每 0.5 秒至多觸發 3 次擊敗敵人時，有 100% 機率消耗 40 點該技能的貫注值並在其位置觸發該技能，造成被擊敗的敵人最大生命 25% 的真實傷害最近每造成一次點燃，該技能額外 +10% 技能範圍，上限 6 層"
           ],
-          "parserVersion": "1/1"
-        }
+          "parserVersion": "1/1",
+          "modifiers": [
+            {
+              "id": "p0-flame-focus",
+              "selector": {
+                "kind": "skill"
+              },
+              "operation": "mul",
+              "stat": "damage.increased",
+              "value": 15,
+              "valueKind": "increased",
+              "sourceText": "4E-2 curated fire damage effectiveness."
+            }
+          ]
+        },
+        "warnings": [
+          "[override-note] 4E-2: 熔火貫注 — fire scalar"
+        ]
       },
       {
         "parseStatus": "ok",
@@ -26259,7 +26800,7 @@
   },
   "overrideReport": {
     "season": "ss12",
-    "generatedAt": "2026-04-04T05:42:44.558Z",
+    "generatedAt": "2026-04-04T07:40:45.782Z",
     "overridesSchemaVersion": "1",
     "mergeOrder": [
       "raw:data/raw/{season}",
@@ -26273,11 +26814,56 @@
         "file": "active-skills.json",
         "overrideSource": "data\\overrides\\ss12\\active-skills.json",
         "touchedIds": [
-          "skill:Leap_Attack"
+          "skill:Leap_Attack",
+          "skill:Ice_Shot",
+          "skill:Hammer_of_Ash",
+          "skill:Chromatic_Shot",
+          "skill:Whirlwind",
+          "skill:Focused_Slash",
+          "skill:Stoneskin",
+          "skill:Blizzard",
+          "skill:Berserking_Blade",
+          "skill:Chain_Lightning",
+          "skill:Ring_of_Ice",
+          "skill:Rain_of_Arrows"
         ],
         "notesById": {
           "skill:Leap_Attack": [
+            "4E-1: per-level mana / attack time / effectiveness (curated). Post-20 demo kept.",
             "Sample: variant ladder + post-20 tier tweak + manual modifier append (ETL override demo)."
+          ],
+          "skill:Ice_Shot": [
+            "4E-1 P0: levelTable from TLIDB-style progression (mana / cast / added eff)."
+          ],
+          "skill:Hammer_of_Ash": [
+            "4E-1 P0: levelTable curated."
+          ],
+          "skill:Chromatic_Shot": [
+            "4E-1: spell base hit from summary band (composite); parse lifted to ok after structured patch."
+          ],
+          "skill:Whirlwind": [
+            "4E-1 P0: channel-style attack times as castTime proxy."
+          ],
+          "skill:Focused_Slash": [
+            "4E-1 P0: levelTable curated."
+          ],
+          "skill:Stoneskin": [
+            "4E-2: mark as aura-style active for regression — no weapon%/base hit; inferDamageRole → aura-only."
+          ],
+          "skill:Blizzard": [
+            "4E-1: baseDamage ~mid of 203-303 L20 band; parse ok."
+          ],
+          "skill:Berserking_Blade": [
+            "4E-1 P0: levelTable curated."
+          ],
+          "skill:Chain_Lightning": [
+            "4E-1: baseDamage scaled from summary min-max; parse ok."
+          ],
+          "skill:Ring_of_Ice": [
+            "4E-1: baseDamage mid 612-918; parse ok."
+          ],
+          "skill:Rain_of_Arrows": [
+            "4E-1 P0: levelTable curated."
           ]
         }
       },
@@ -26285,11 +26871,55 @@
         "file": "support-skills.json",
         "overrideSource": "data\\overrides\\ss12\\support-skills.json",
         "touchedIds": [
-          "skill:Multiple_Projectiles"
+          "skill:Multiple_Projectiles",
+          "skill:Multistrike",
+          "skill:Projectile_Split",
+          "skill:Increased_Area",
+          "skill:Melee_Knockback",
+          "skill:Overload",
+          "skill:Tendonslicer",
+          "skill:Glacial_Freeze",
+          "skill:Added_Fire_Damage",
+          "skill:Added_Cold_Damage",
+          "skill:Steamroll",
+          "skill:Added_Physical_Damage"
         ],
         "notesById": {
           "skill:Multiple_Projectiles": [
-            "Sample: curated support restriction when auto-parse misses pairing rules."
+            "4E-2: allowedSkillTags must match active tags (Projectile), not support-gem tag only."
+          ],
+          "skill:Multistrike": [
+            "4E-2: remove erroneous requiresChanneled from auto-parse; keep attack"
+          ],
+          "skill:Projectile_Split": [
+            "4E-2: projectile pairing"
+          ],
+          "skill:Increased_Area": [
+            "4E-2: 範圍技能 → Area canonical tag"
+          ],
+          "skill:Melee_Knockback": [
+            "4E-2: melee attack"
+          ],
+          "skill:Overload": [
+            "4E-2: spell-only"
+          ],
+          "skill:Tendonslicer": [
+            "4E-2: hitting skills — Attack or Spell"
+          ],
+          "skill:Glacial_Freeze": [
+            "4E-2: cold hits"
+          ],
+          "skill:Added_Fire_Damage": [
+            "4E-2: spell gem"
+          ],
+          "skill:Added_Cold_Damage": [
+            "4E-2: spell gem"
+          ],
+          "skill:Steamroll": [
+            "4E-2: melee attack-only for regression (spell mains skip on requiresAttack)"
+          ],
+          "skill:Added_Physical_Damage": [
+            "4E-2: attack gem — requires Attack"
           ]
         }
       },
@@ -26297,11 +26927,31 @@
         "file": "passive-skills.json",
         "overrideSource": "data\\overrides\\ss12\\passive-skills.json",
         "touchedIds": [
-          "skill:Fearless"
+          "skill:Fearless",
+          "skill:Weapon_Amplification",
+          "skill:Spell_Amplification",
+          "skill:Elemental_Resistance",
+          "skill:Swiftness",
+          "skill:Flame_Focus"
         ],
         "notesById": {
           "skill:Fearless": [
-            "Sample passive: manual modifier patch only (no formula engine change)."
+            "4E-2: aura passive — real `skill` selector so linked/global inject affects instances."
+          ],
+          "skill:Weapon_Amplification": [
+            "4E-2: 武器增幅 aura → physical damage to supported skills"
+          ],
+          "skill:Spell_Amplification": [
+            "4E-2: 法術增幅"
+          ],
+          "skill:Elemental_Resistance": [
+            "4E-2: small universal more as placeholder resist-to-skill bridge"
+          ],
+          "skill:Swiftness": [
+            "4E-2: 疾速 → attack speed to linked skill"
+          ],
+          "skill:Flame_Focus": [
+            "4E-2: 熔火貫注 — fire scalar"
           ]
         }
       }

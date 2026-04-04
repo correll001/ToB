@@ -1,11 +1,26 @@
-import type { AggregatedBuckets, BuildSidebarCombatStats, CombatBreakdown } from '@/types/combat'
-
-/** Level-only bases (explicit, not from random). */
-const HP_PER_STR = 4
-const MP_PER_INT = 3
+import type {
+  AggregatedBuckets,
+  BuildSidebarCombatStats,
+  CombatBreakdown,
+  DerivedCombatFieldProvenance,
+  DerivedCombatLayerConfidence,
+  DerivedCombatFallbackTrace,
+  DerivedCombatRulesPrimarySource,
+} from '@/types/combat'
+import { getDerivedCombatBaseRules } from '@/lib/runtime/runtimeRulesLookup'
 
 function clamp(n: number, lo: number, hi: number) {
   return Math.min(hi, Math.max(lo, n))
+}
+
+export type ComputeDerivedCombatOptions = {
+  /**
+   * When set, used as the additive hit base before build `baseDamageFlat` / increased / more.
+   * Typically from `SkillLevelEntry.baseDamage` (numeric or averaged min–max).
+   */
+  skillHitBaseFromLevel?: number | null
+  /** Set when `skillHitBaseFromLevel` was (min+max)/2 from a range row. */
+  skillHitBaseFromMinMaxAverage?: boolean
 }
 
 export type DerivedCombatResult = {
@@ -13,20 +28,36 @@ export type DerivedCombatResult = {
   breakdown: CombatBreakdown
 }
 
+function deriveLayerConfidence(
+  primary: DerivedCombatRulesPrimarySource,
+  hitProv: DerivedCombatFieldProvenance,
+  layerFallbacks: DerivedCombatFallbackTrace[],
+): DerivedCombatLayerConfidence {
+  if (hitProv !== 'skill_level_row') return 'partial'
+  if (primary === 'legacy_fallback') return 'partial'
+  if (layerFallbacks.length > 0) return 'partial'
+  return 'ready'
+}
+
 /**
  * Derive panel combat stats from aggregated buckets + level.
- * MP 額外来自 divinity 文字長度（明示規則，非隨機）。
+ * 4E-4: constants come from bundled rules merge (extension → Character_Build parse → flagged legacy);
+ * hit base prefers skill level row when provided — never treat placeholder weapon curve as authoritative.
  */
 export function computeDerivedCombat(
   level: number,
   agg: AggregatedBuckets,
-  divinityTextCharCount: number
+  divinityTextCharCount: number,
+  opts?: ComputeDerivedCombatOptions,
 ): DerivedCombatResult {
   const lv = Number.isFinite(level) ? Math.max(1, Math.floor(level)) : 1
+  const rulesRes = getDerivedCombatBaseRules()
+  const R = rulesRes.values
+  const layerFallbacks = [...rulesRes.fallbacks]
 
-  const baseStr = 8 + lv * 1.5
-  const baseDex = 8 + lv * 1.5
-  const baseInt = 8 + lv * 1.5
+  const baseStr = R.baseAttrStart + lv * R.baseAttrPerLevel
+  const baseDex = R.baseAttrStart + lv * R.baseAttrPerLevel
+  const baseInt = R.baseAttrStart + lv * R.baseAttrPerLevel
 
   const bonusStr = agg.strength
   const bonusDex = agg.dexterity
@@ -36,18 +67,47 @@ export function computeDerivedCombat(
   const dexTotal = baseDex + bonusDex
   const intTotal = baseInt + bonusInt
 
-  const hpBeforePctRaw = 120 + lv * 18 + strTotal * HP_PER_STR + agg.hpFlat
+  const hpBeforePctRaw = R.hpBaseFlat + lv * R.hpPerLevel + strTotal * R.hpPerStrength + agg.hpFlat
   const hpBeforePct = Math.max(1, hpBeforePctRaw)
   const hpPctTotal = agg.hpPct
   const hp = hpBeforePct * (1 + hpPctTotal / 100)
 
-  const mpFromDivinityText = Math.min(50, Math.floor(divinityTextCharCount * 0.1))
-  const mpBeforePctRaw = 40 + lv * 6 + intTotal * MP_PER_INT + agg.mpFlat + mpFromDivinityText
+  const mpFromDivinityText = Math.min(
+    R.mpFromDivinityMax,
+    Math.floor(divinityTextCharCount * R.mpFromDivinityPerChar),
+  )
+  const mpBeforePctRaw =
+    R.mpBaseFlat + lv * R.mpPerLevel + intTotal * R.mpPerIntelligence + agg.mpFlat + mpFromDivinityText
   const mpBeforePct = Math.max(1, mpBeforePctRaw)
   const mpPctTotal = agg.mpPct
   const mp = mpBeforePct * (1 + mpPctTotal / 100)
 
-  const baseWeaponDamage = 25 + lv * 3
+  let hitDamageBaseProvenance: DerivedCombatFieldProvenance = 'legacy_placeholder'
+  let hitDamageBaseNote = `placeholder weapon base + per level (${R.weaponDamageBase}+${R.weaponDamagePerLevel}×Lv)`
+  let baseWeaponDamage = R.weaponDamageBase + lv * R.weaponDamagePerLevel
+
+  const skillBase = opts?.skillHitBaseFromLevel
+  const fromMinMaxAvg = opts?.skillHitBaseFromMinMaxAverage === true
+  if (skillBase != null && Number.isFinite(skillBase) && skillBase > 0) {
+    baseWeaponDamage = skillBase
+    hitDamageBaseProvenance = 'skill_level_row'
+    hitDamageBaseNote = fromMinMaxAvg
+      ? 'skill level row · baseDamage (min–max average)'
+      : 'skill level row · baseDamage (numeric)'
+    if (fromMinMaxAvg) {
+      layerFallbacks.push({
+        key: 'hit_damage_base',
+        reason: 'averaged_min_max_from_level_row',
+      })
+    }
+  } else {
+    layerFallbacks.push({
+      key: 'hit_damage_base',
+      reason: 'no_numeric_skill_base_used_weapon_placeholder',
+      detail: hitDamageBaseNote,
+    })
+  }
+
   const damageBeforePct = baseWeaponDamage + agg.baseDamageFlat
   const damagePctTotal = agg.damagePct
   const afterInc = damageBeforePct * (1 + damagePctTotal / 100)
@@ -55,14 +115,17 @@ export function computeDerivedCombat(
   const damageAfterMore = afterInc * moreDamageMult
   const hitDamage = Math.max(1, damageAfterMore)
 
-  const baseAttackSpeed = 1 + lv * 0.002
+  const baseAttackSpeed = R.attackSpeedBase + lv * R.attackSpeedPerLevel
   const attackSpeedPctTotal = agg.attackSpeedPct
-  const attackSpeedFinal = clamp(baseAttackSpeed * (1 + attackSpeedPctTotal / 100), 0.35, 6)
+  const attackSpeedFinal = clamp(
+    baseAttackSpeed * (1 + attackSpeedPctTotal / 100),
+    R.attackSpeedClampMin,
+    R.attackSpeedClampMax,
+  )
 
   const p = Math.min(1, Math.max(0, agg.critChancePct / 100))
   const cd = Math.max(0, agg.critDamagePct / 100)
-  /** 基礎暴擊 1.5x，critDamagePct 為「暴擊時額外乘區」的簡化加成。 */
-  const multOnCrit = 1.5 * (1 + cd)
+  const multOnCrit = R.critBaseMultiplier * (1 + cd)
   const critExpectedMult = 1 - p + p * multOnCrit
 
   const dps = hitDamage * attackSpeedFinal * critExpectedMult
@@ -77,6 +140,12 @@ export function computeDerivedCombat(
     hp: Math.round(hp),
     mp: Math.round(mp),
   }
+
+  const derivedCombatConfidence = deriveLayerConfidence(
+    rulesRes.primarySource,
+    hitDamageBaseProvenance,
+    layerFallbacks,
+  )
 
   const breakdown: CombatBreakdown = {
     level: lv,
@@ -107,6 +176,11 @@ export function computeDerivedCombat(
     critExpectedMult: Math.round(critExpectedMult * 1000) / 1000,
     dps: combat.dps,
     contributionCount: 0,
+    derivedRulesPrimarySource: rulesRes.primarySource,
+    derivedCombatFallbacks: layerFallbacks,
+    derivedCombatConfidence,
+    hitDamageBaseProvenance,
+    hitDamageBaseNote,
   }
 
   return { combat, breakdown }

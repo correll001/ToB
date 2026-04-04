@@ -1,6 +1,6 @@
 {
   "season": "ss12",
-  "generatedAt": "2026-04-04T05:42:44.558Z",
+  "generatedAt": "2026-04-04T07:40:45.782Z",
   "overridesSchemaVersion": "1",
   "mergeOrder": [
     "raw:data/raw/{season}",
@@ -14,11 +14,56 @@
       "file": "active-skills.json",
       "overrideSource": "data\\overrides\\ss12\\active-skills.json",
       "touchedIds": [
-        "skill:Leap_Attack"
+        "skill:Leap_Attack",
+        "skill:Ice_Shot",
+        "skill:Hammer_of_Ash",
+        "skill:Chromatic_Shot",
+        "skill:Whirlwind",
+        "skill:Focused_Slash",
+        "skill:Stoneskin",
+        "skill:Blizzard",
+        "skill:Berserking_Blade",
+        "skill:Chain_Lightning",
+        "skill:Ring_of_Ice",
+        "skill:Rain_of_Arrows"
       ],
       "notesById": {
         "skill:Leap_Attack": [
+          "4E-1: per-level mana / attack time / effectiveness (curated). Post-20 demo kept.",
           "Sample: variant ladder + post-20 tier tweak + manual modifier append (ETL override demo)."
+        ],
+        "skill:Ice_Shot": [
+          "4E-1 P0: levelTable from TLIDB-style progression (mana / cast / added eff)."
+        ],
+        "skill:Hammer_of_Ash": [
+          "4E-1 P0: levelTable curated."
+        ],
+        "skill:Chromatic_Shot": [
+          "4E-1: spell base hit from summary band (composite); parse lifted to ok after structured patch."
+        ],
+        "skill:Whirlwind": [
+          "4E-1 P0: channel-style attack times as castTime proxy."
+        ],
+        "skill:Focused_Slash": [
+          "4E-1 P0: levelTable curated."
+        ],
+        "skill:Stoneskin": [
+          "4E-2: mark as aura-style active for regression — no weapon%/base hit; inferDamageRole → aura-only."
+        ],
+        "skill:Blizzard": [
+          "4E-1: baseDamage ~mid of 203-303 L20 band; parse ok."
+        ],
+        "skill:Berserking_Blade": [
+          "4E-1 P0: levelTable curated."
+        ],
+        "skill:Chain_Lightning": [
+          "4E-1: baseDamage scaled from summary min-max; parse ok."
+        ],
+        "skill:Ring_of_Ice": [
+          "4E-1: baseDamage mid 612-918; parse ok."
+        ],
+        "skill:Rain_of_Arrows": [
+          "4E-1 P0: levelTable curated."
         ]
       }
     },
@@ -26,11 +71,55 @@
       "file": "support-skills.json",
       "overrideSource": "data\\overrides\\ss12\\support-skills.json",
       "touchedIds": [
-        "skill:Multiple_Projectiles"
+        "skill:Multiple_Projectiles",
+        "skill:Multistrike",
+        "skill:Projectile_Split",
+        "skill:Increased_Area",
+        "skill:Melee_Knockback",
+        "skill:Overload",
+        "skill:Tendonslicer",
+        "skill:Glacial_Freeze",
+        "skill:Added_Fire_Damage",
+        "skill:Added_Cold_Damage",
+        "skill:Steamroll",
+        "skill:Added_Physical_Damage"
       ],
       "notesById": {
         "skill:Multiple_Projectiles": [
-          "Sample: curated support restriction when auto-parse misses pairing rules."
+          "4E-2: allowedSkillTags must match active tags (Projectile), not support-gem tag only."
+        ],
+        "skill:Multistrike": [
+          "4E-2: remove erroneous requiresChanneled from auto-parse; keep attack"
+        ],
+        "skill:Projectile_Split": [
+          "4E-2: projectile pairing"
+        ],
+        "skill:Increased_Area": [
+          "4E-2: 範圍技能 → Area canonical tag"
+        ],
+        "skill:Melee_Knockback": [
+          "4E-2: melee attack"
+        ],
+        "skill:Overload": [
+          "4E-2: spell-only"
+        ],
+        "skill:Tendonslicer": [
+          "4E-2: hitting skills — Attack or Spell"
+        ],
+        "skill:Glacial_Freeze": [
+          "4E-2: cold hits"
+        ],
+        "skill:Added_Fire_Damage": [
+          "4E-2: spell gem"
+        ],
+        "skill:Added_Cold_Damage": [
+          "4E-2: spell gem"
+        ],
+        "skill:Steamroll": [
+          "4E-2: melee attack-only for regression (spell mains skip on requiresAttack)"
+        ],
+        "skill:Added_Physical_Damage": [
+          "4E-2: attack gem — requires Attack"
         ]
       }
     },
@@ -38,11 +127,31 @@
       "file": "passive-skills.json",
       "overrideSource": "data\\overrides\\ss12\\passive-skills.json",
       "touchedIds": [
-        "skill:Fearless"
+        "skill:Fearless",
+        "skill:Weapon_Amplification",
+        "skill:Spell_Amplification",
+        "skill:Elemental_Resistance",
+        "skill:Swiftness",
+        "skill:Flame_Focus"
       ],
       "notesById": {
         "skill:Fearless": [
-          "Sample passive: manual modifier patch only (no formula engine change)."
+          "4E-2: aura passive — real `skill` selector so linked/global inject affects instances."
+        ],
+        "skill:Weapon_Amplification": [
+          "4E-2: 武器增幅 aura → physical damage to supported skills"
+        ],
+        "skill:Spell_Amplification": [
+          "4E-2: 法術增幅"
+        ],
+        "skill:Elemental_Resistance": [
+          "4E-2: small universal more as placeholder resist-to-skill bridge"
+        ],
+        "skill:Swiftness": [
+          "4E-2: 疾速 → attack speed to linked skill"
+        ],
+        "skill:Flame_Focus": [
+          "4E-2: 熔火貫注 — fire scalar"
         ]
       }
     }

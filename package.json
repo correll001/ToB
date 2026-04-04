@@ -20,11 +20,15 @@
     "audit:no-runtime-remote-skill-fetch": "tsx scripts/audit/noRuntimeRemoteSkillFetch.ts",
     "verify:skill-data-integrity": "tsx scripts/verify/verifySkillDataIntegrity.ts",
     "verify:skill-regression": "tsx scripts/verify/skillRegressionCases.ts",
+    "verify:p0-active-level-tables": "tsx scripts/verify/verifyP0ActiveLevelTables.ts",
+    "verify:inspected-skill-selectors": "tsx scripts/verify/verifyInspectedSkillSelectors.ts",
+    "verify:4e": "npm run verify:skill-data-integrity && npm run verify:skill-regression && npm run verify:p0-active-level-tables && npm run verify:inspected-skill-selectors && npm run check:skill-engine",
+    "report:structured-skill-coverage": "tsx scripts/verify/reportStructuredSkillCoverage.ts",
     "data:import:effective": "tsx scripts/import/importEffectiveData.ts",
     "data:freeze:from-effective": "tsx scripts/import/freezeEffectiveDataset.ts",
     "data:verify:local": "tsx scripts/verify/verifyLocalDataset.ts",
     "data:verify:frozen": "tsx scripts/verify/verifyFrozenDataset.ts",
-    "release:check": "npm run audit:no-external-runtime-fetch && npm run audit:no-runtime-remote-skill-fetch && npm run check:data-policy && npm run data:verify:local && npm run verify:skill-data-integrity && npm run verify:skill-regression && npm run check:skill-engine && npm run build"
+    "release:check": "npm run audit:no-external-runtime-fetch && npm run audit:no-runtime-remote-skill-fetch && npm run check:data-policy && npm run data:verify:local && npm run verify:skill-data-integrity && npm run verify:skill-regression && npm run verify:p0-active-level-tables && npm run verify:inspected-skill-selectors && npm run check:skill-engine && npm run build"
   },
   "dependencies": {
     "better-sqlite3": "^12.6.2",

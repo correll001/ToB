@@ -7,11 +7,11 @@ import type { NormalizedManifest } from '@/types/normalized'
 
 /** Allowed TLIDB index pages for *maintenance-only* ingestion (listed in policy docs). */
 export const MAINTENANCE_TLIDB_SOURCE_PAGES = [
-  'https://tlidb.com/Active_Skill',
-  'https://tlidb.com/Support_Skill',
-  'https://tlidb.com/Passive_Skill',
-  'https://tlidb.com/en/Skill_Level',
-  'https://tlidb.com/en/Character_Build',
+  'https://tlidb.com/Active_Skill', // data-policy-allow: archival index labels for freeze manifest only
+  'https://tlidb.com/Support_Skill', // data-policy-allow
+  'https://tlidb.com/Passive_Skill', // data-policy-allow
+  'https://tlidb.com/en/Skill_Level', // data-policy-allow
+  'https://tlidb.com/en/Character_Build', // data-policy-allow
 ] as const
 
 /** Record-level counts at freeze time (derived from files + manifest). */

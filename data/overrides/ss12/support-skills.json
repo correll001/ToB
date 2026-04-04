@@ -1,18 +1,139 @@
 {
   "season": "ss12",
-  "version": "demo-1",
+  "version": "p0-4e2-1",
   "family": "support",
   "entries": [
     {
       "id": "skill:Multiple_Projectiles",
-      "notes": ["Sample: curated support restriction when auto-parse misses pairing rules."],
+      "notes": ["4E-2: allowedSkillTags must match active tags (Projectile), not support-gem tag only."],
       "supportRulesMerge": {
+        "requiresProjectile": true,
+        "allowedSkillTags": ["Projectile"],
         "rawRequirementLines": [
-          "[override] Demo: enforce projectile tag expectation when wiki text is ambiguous."
-        ],
-        "requiresProjectile": true
-      },
-      "warningsAppend": ["supportRulesMerge patched from data/overrides"]
+          "[override 4E-2] Projectile active skills only; TLIDB text 輔助投射物技能."
+        ]
+      }
+    },
+    {
+      "id": "skill:Projectile_Split",
+      "notes": ["4E-2: projectile pairing"],
+      "supportRulesMerge": {
+        "requiresProjectile": true,
+        "allowedSkillTags": ["Projectile"],
+        "rawRequirementLines": ["[override 4E-2] 拋射 / projectile actives."]
+      }
+    },
+    {
+      "id": "skill:Increased_Area",
+      "notes": ["4E-2: 範圍技能 → Area canonical tag"],
+      "supportRulesMerge": {
+        "allowedSkillTags": ["Area"],
+        "rawRequirementLines": ["[override 4E-2] Area-tagged actives (TLIDB 輔助範圍技能)."]
+      }
+    },
+    {
+      "id": "skill:Tendonslicer",
+      "notes": ["4E-2: hitting skills — Attack or Spell"],
+      "modifiersAppend": [
+        {
+          "id": "p0-tendonslicer-dmg",
+          "selector": { "kind": "supportedSkill" },
+          "operation": "mul",
+          "stat": "damage.increased",
+          "value": 7.5,
+          "valueKind": "increased",
+          "sourceText": "4E-2 curated from summary: 額外物理傷害%"
+        }
+      ],
+      "supportRulesMerge": {
+        "allowedSkillTags": ["Attack", "Spell"],
+        "rawRequirementLines": ["[override 4E-2] 擊中 / damage-dealing actives."]
+      }
+    },
+    {
+      "id": "skill:Glacial_Freeze",
+      "notes": ["4E-2: cold hits"],
+      "modifiersAppend": [
+        {
+          "id": "p0-glacial-cold",
+          "selector": { "kind": "supportedSkill" },
+          "operation": "mul",
+          "stat": "damage.increased",
+          "value": 10.3,
+          "valueKind": "increased",
+          "sourceText": "4E-2 curated: 冰冷傷害%"
+        }
+      ],
+      "supportRulesMerge": {
+        "allowedSkillTags": ["Cold"],
+        "rawRequirementLines": ["[override 4E-2] Cold-tagged actives."]
+      }
+    },
+    {
+      "id": "skill:Added_Physical_Damage",
+      "notes": ["4E-2: attack gem — requires Attack"],
+      "supportRulesMerge": {
+        "requiresAttack": true,
+        "allowedSkillTags": ["Attack"],
+        "rawRequirementLines": ["[override 4E-2] 輔助擊中 — attack skills."]
+      }
+    },
+    {
+      "id": "skill:Added_Fire_Damage",
+      "notes": ["4E-2: spell gem"],
+      "supportRulesMerge": {
+        "requiresSpell": true,
+        "allowedSkillTags": ["Spell"],
+        "rawRequirementLines": ["[override 4E-2] Spell skills (added fire)."]
+      }
+    },
+    {
+      "id": "skill:Added_Cold_Damage",
+      "notes": ["4E-2: spell gem"],
+      "supportRulesMerge": {
+        "requiresSpell": true,
+        "allowedSkillTags": ["Spell"],
+        "rawRequirementLines": ["[override 4E-2] Spell skills (added cold)."]
+      }
+    },
+    {
+      "id": "skill:Melee_Knockback",
+      "notes": ["4E-2: melee attack"],
+      "supportRulesMerge": {
+        "requiresAttack": true,
+        "allowedSkillTags": ["Attack", "Melee"],
+        "rawRequirementLines": ["[override 4E-2] Melee attacks only."]
+      }
+    },
+    {
+      "id": "skill:Steamroll",
+      "notes": ["4E-2: melee attack-only for regression (spell mains skip on requiresAttack)"],
+      "supportRulesMerge": {
+        "requiresAttack": true,
+        "allowedSkillTags": ["Attack", "Melee"],
+        "rawRequirementLines": ["[override 4E-2] 輔助近戰攻擊技能."]
+      }
+    },
+    {
+      "id": "skill:Multistrike",
+      "notes": ["4E-2: remove erroneous requiresChanneled from auto-parse; keep attack"],
+      "supportRulesMerge": {
+        "requiresAttack": true,
+        "requiresChanneled": false,
+        "allowedSkillTags": ["Attack"],
+        "rawRequirementLines": [
+          "[override 4E-2] 輔助攻擊技能 — channeled optional in game; engine uses false for broad attach."
+        ]
+      }
+    },
+    {
+      "id": "skill:Overload",
+      "notes": ["4E-2: spell-only"],
+      "supportRulesMerge": {
+        "requiresSpell": true,
+        "allowedSkillTags": ["Spell"],
+        "rawRequirementLines": ["[override 4E-2] 輔助法術技能."]
+      }
     }
   ]
 }

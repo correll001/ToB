@@ -20,6 +20,9 @@ export type GlobalCombatRuleSet = {
   /**
    * Escape hatch for tables not yet classified — keep structured subtrees,
    * not a single blob string.
+   *
+   * Runtime (4E-4): optional `derivedCombatPanel` may supply numeric panel derive constants
+   * (`hpBaseFlat`, `weaponDamagePerLevel`, …) — see `getDerivedCombatBaseRules`.
    */
   extensions?: Record<string, JsonValue>
 }

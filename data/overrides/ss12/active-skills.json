@@ -1,17 +1,16 @@
 {
   "season": "ss12",
-  "version": "demo-1",
+  "version": "p0-4e2-1",
   "family": "active",
   "entries": [
     {
       "id": "skill:Leap_Attack",
       "notes": [
+        "4E-1: per-level mana / attack time / effectiveness (curated). Post-20 demo kept.",
         "Sample: variant ladder + post-20 tier tweak + manual modifier append (ETL override demo)."
       ],
       "familyOverride": "medium",
-      "post20": {
-        "tier21to30PerLevelMorePct": 12
-      },
+      "post20": { "tier21to30PerLevelMorePct": 12 },
       "modifiersAppend": [
         {
           "id": "override-demo-leap-audit",
@@ -22,7 +21,143 @@
           "valueKind": "more",
           "sourceText": "[override demo] placeholder — replace with real parsed stat when TLIDB row is wrong"
         }
-      ]
+      ],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 28, "castTime": 1.05, "cooldown": 4, "addedDamageEffectiveness": 1.0, "partial": false },
+        "10": { "level": 10, "manaCost": 22, "castTime": 0.98, "cooldown": 3.7, "addedDamageEffectiveness": 1.15, "partial": false },
+        "20": { "level": 20, "manaCost": 16, "castTime": 0.92, "cooldown": 3.4, "addedDamageEffectiveness": 1.32, "partial": false },
+        "30": { "level": 30, "manaCost": 12, "castTime": 0.88, "cooldown": 3.1, "addedDamageEffectiveness": 1.48, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Ice_Shot",
+      "notes": ["4E-1 P0: levelTable from TLIDB-style progression (mana / cast / added eff)."],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 24, "castTime": 0.95, "addedDamageEffectiveness": 1.0, "partial": false },
+        "10": { "level": 10, "manaCost": 18, "castTime": 0.88, "addedDamageEffectiveness": 1.18, "partial": false },
+        "20": { "level": 20, "manaCost": 13, "castTime": 0.82, "addedDamageEffectiveness": 1.38, "partial": false },
+        "30": { "level": 30, "manaCost": 10, "castTime": 0.78, "addedDamageEffectiveness": 1.55, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Hammer_of_Ash",
+      "notes": ["4E-1 P0: levelTable curated."],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 32, "castTime": 1.1, "addedDamageEffectiveness": 0.95, "partial": false },
+        "10": { "level": 10, "manaCost": 26, "castTime": 1.02, "addedDamageEffectiveness": 1.12, "partial": false },
+        "20": { "level": 20, "manaCost": 20, "castTime": 0.95, "addedDamageEffectiveness": 1.3, "partial": false },
+        "30": { "level": 30, "manaCost": 16, "castTime": 0.9, "addedDamageEffectiveness": 1.46, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Whirlwind",
+      "notes": ["4E-1 P0: channel-style attack times as castTime proxy."],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 20, "castTime": 0.4, "addedDamageEffectiveness": 0.9, "partial": false },
+        "10": { "level": 10, "manaCost": 17, "castTime": 0.38, "addedDamageEffectiveness": 1.08, "partial": false },
+        "20": { "level": 20, "manaCost": 14, "castTime": 0.36, "addedDamageEffectiveness": 1.25, "partial": false },
+        "30": { "level": 30, "manaCost": 11, "castTime": 0.34, "addedDamageEffectiveness": 1.4, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Focused_Slash",
+      "notes": ["4E-1 P0: levelTable curated."],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 18, "castTime": 0.72, "addedDamageEffectiveness": 1.0, "partial": false },
+        "10": { "level": 10, "manaCost": 15, "castTime": 0.68, "addedDamageEffectiveness": 1.14, "partial": false },
+        "20": { "level": 20, "manaCost": 12, "castTime": 0.64, "addedDamageEffectiveness": 1.28, "partial": false },
+        "30": { "level": 30, "manaCost": 10, "castTime": 0.6, "addedDamageEffectiveness": 1.42, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Rain_of_Arrows",
+      "notes": ["4E-1 P0: levelTable curated."],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 22, "castTime": 1.0, "addedDamageEffectiveness": 0.95, "partial": false },
+        "10": { "level": 10, "manaCost": 18, "castTime": 0.92, "addedDamageEffectiveness": 1.12, "partial": false },
+        "20": { "level": 20, "manaCost": 15, "castTime": 0.86, "addedDamageEffectiveness": 1.3, "partial": false },
+        "30": { "level": 30, "manaCost": 12, "castTime": 0.82, "addedDamageEffectiveness": 1.45, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Berserking_Blade",
+      "notes": ["4E-1 P0: levelTable curated."],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 26, "castTime": 0.88, "addedDamageEffectiveness": 0.98, "partial": false },
+        "10": { "level": 10, "manaCost": 21, "castTime": 0.82, "addedDamageEffectiveness": 1.15, "partial": false },
+        "20": { "level": 20, "manaCost": 17, "castTime": 0.76, "addedDamageEffectiveness": 1.33, "partial": false },
+        "30": { "level": 30, "manaCost": 14, "castTime": 0.72, "addedDamageEffectiveness": 1.5, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Chromatic_Shot",
+      "notes": [
+        "4E-1: spell base hit from summary band (composite); parse lifted to ok after structured patch."
+      ],
+      "recordPatch": { "parseStatus": "ok" },
+      "warningsAppend": ["4E-1 composite baseDamage mid-band per TLIDB summary; refine per element in later ETL."],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 36, "castTime": 0.85, "baseDamage": 180, "addedDamageEffectiveness": 1.2, "partial": false },
+        "10": { "level": 10, "manaCost": 30, "castTime": 0.8, "baseDamage": 280, "addedDamageEffectiveness": 1.35, "partial": false },
+        "20": { "level": 20, "manaCost": 24, "castTime": 0.75, "baseDamage": 400, "addedDamageEffectiveness": 1.5, "partial": false },
+        "30": { "level": 30, "manaCost": 19, "castTime": 0.7, "baseDamage": 510, "addedDamageEffectiveness": 1.65, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Blizzard",
+      "notes": ["4E-1: baseDamage ~mid of 203-303 L20 band; parse ok."],
+      "recordPatch": { "parseStatus": "ok" },
+      "warningsAppend": ["4E-1 baseDamage uses midpoint of stated cold hit band at gem L20."],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 40, "castTime": 1.2, "baseDamage": 150, "addedDamageEffectiveness": 1.15, "partial": false },
+        "10": { "level": 10, "manaCost": 34, "castTime": 1.1, "baseDamage": 205, "addedDamageEffectiveness": 1.28, "partial": false },
+        "20": { "level": 20, "manaCost": 28, "castTime": 1.0, "baseDamage": 253, "addedDamageEffectiveness": 1.42, "partial": false },
+        "30": { "level": 30, "manaCost": 23, "castTime": 0.95, "baseDamage": 300, "addedDamageEffectiveness": 1.55, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Chain_Lightning",
+      "notes": ["4E-1: baseDamage scaled from summary min-max; parse ok."],
+      "recordPatch": { "parseStatus": "ok" },
+      "warningsAppend": ["4E-1 baseDamage interpolated from TLIDB L1 band toward L20 representative strike."],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 14, "castTime": 0.65, "baseDamage": 120, "addedDamageEffectiveness": 1.25, "partial": false },
+        "10": { "level": 10, "manaCost": 12, "castTime": 0.6, "baseDamage": 420, "addedDamageEffectiveness": 1.4, "partial": false },
+        "20": { "level": 20, "manaCost": 10, "castTime": 0.55, "baseDamage": 733, "addedDamageEffectiveness": 1.55, "partial": false },
+        "30": { "level": 30, "manaCost": 9, "castTime": 0.52, "baseDamage": 980, "addedDamageEffectiveness": 1.68, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Ring_of_Ice",
+      "notes": ["4E-1: baseDamage mid 612-918; parse ok."],
+      "recordPatch": { "parseStatus": "ok" },
+      "warningsAppend": ["4E-1 baseDamage midpoint of stated band at high gem levels."],
+      "definitionMerge": { "levelScalingMode": "table" },
+      "levelTableMerge": {
+        "1": { "level": 1, "manaCost": 44, "castTime": 0.9, "baseDamage": 400, "addedDamageEffectiveness": 1.1, "partial": false },
+        "10": { "level": 10, "manaCost": 38, "castTime": 0.85, "baseDamage": 580, "addedDamageEffectiveness": 1.22, "partial": false },
+        "20": { "level": 20, "manaCost": 32, "castTime": 0.8, "baseDamage": 765, "addedDamageEffectiveness": 1.35, "partial": false },
+        "30": { "level": 30, "manaCost": 27, "castTime": 0.75, "baseDamage": 920, "addedDamageEffectiveness": 1.48, "partial": false }
+      }
+    },
+    {
+      "id": "skill:Stoneskin",
+      "notes": [
+        "4E-2: mark as aura-style active for regression — no weapon%/base hit; inferDamageRole → aura-only."
+      ],
+      "definitionMerge": {
+        "tags": ["持續", "防護", "法術", "光環"]
+      }
     }
   ]
 }

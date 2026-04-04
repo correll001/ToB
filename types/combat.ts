@@ -76,6 +76,51 @@ export type BuildSidebarCombatStats = {
   mp: number
 }
 
+/** Trace when derive combat used legacy / heuristic instead of bundled structured rules (4E-4). */
+export type DerivedCombatFallbackTrace = {
+  key: string
+  reason: string
+  detail?: string
+}
+
+/** Where the bulk of derive constants came from (audit). */
+export type DerivedCombatRulesPrimarySource =
+  | 'bundle_extension'
+  | 'character_build_parsed'
+  | 'legacy_fallback'
+
+/** Per-axis provenance for hit damage base / panel placeholders. */
+export type DerivedCombatFieldProvenance =
+  | 'bundle_extension'
+  | 'character_build'
+  | 'skill_level_row'
+  | 'legacy_placeholder'
+  | 'panel_heuristic'
+
+/** Confidence for the derive *layer* only (independent of skill-instance confidence). */
+export type DerivedCombatLayerConfidence = 'ready' | 'partial' | 'unsupported'
+
+/** Resolved numeric constants for `computeDerivedCombat` (merged extension → Character_Build parse → legacy). */
+export type DerivedCombatBaseValues = {
+  hpBaseFlat: number
+  hpPerLevel: number
+  hpPerStrength: number
+  mpBaseFlat: number
+  mpPerLevel: number
+  mpPerIntelligence: number
+  mpFromDivinityMax: number
+  mpFromDivinityPerChar: number
+  baseAttrStart: number
+  baseAttrPerLevel: number
+  weaponDamageBase: number
+  weaponDamagePerLevel: number
+  attackSpeedBase: number
+  attackSpeedPerLevel: number
+  attackSpeedClampMin: number
+  attackSpeedClampMax: number
+  critBaseMultiplier: number
+}
+
 /** Explainable intermediate values for sidebar / debug. */
 export type CombatBreakdown = {
   level: number
@@ -106,4 +151,12 @@ export type CombatBreakdown = {
   critExpectedMult: number
   dps: number
   contributionCount: number
+
+  /** 4E-4 — rules-first derive; never pretend fallbacks are authoritative. */
+  derivedRulesPrimarySource: DerivedCombatRulesPrimarySource
+  derivedCombatFallbacks: DerivedCombatFallbackTrace[]
+  derivedCombatConfidence: DerivedCombatLayerConfidence
+  hitDamageBaseProvenance: DerivedCombatFieldProvenance
+  /** Short human-readable note (e.g. "skill level row numeric", "placeholder weapon curve"). */
+  hitDamageBaseNote: string
 }

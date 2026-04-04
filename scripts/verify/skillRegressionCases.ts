@@ -5,20 +5,28 @@
  */
 import type { BuildSnapshot, MainSkillSlot } from '@/types/build'
 import type { SkillDefinition } from '@/types/skillData'
+import type { SkillCombatRole } from '@/types/skillDamageRole'
 import { createEmptyBuildSnapshot } from '@/lib/defaultBuildSnapshot'
 import { normalizeBuildSnapshot } from '@/lib/normalizeBuildSnapshot'
 import { computeSkillInstanceForMainSlot } from '@/lib/formula/collectBuildContributions'
 import { computeSkillInstance, skillInstanceToContribution } from '@/lib/formula/skills/computeSkillInstance'
 import { selectInspectedSkillDamageView } from '@/selectors/buildComputedStats'
 import { encodeBuildToShareCode, decodeBuildFromShareCode } from '@/lib/shareCodec'
+import { getSkillDefinitionById } from '@/lib/runtime/runtimeSkillLookup'
 import { getRuntimeDataset } from '@/lib/runtime/runtimeDataset'
-import {
-  getSkillDefinitionById,
-  isMainSlotSkillFamily,
-  listSkillsByFamily,
-} from '@/lib/runtime/runtimeSkillLookup'
-import { isDamagingInspectedSkillRole } from '@/lib/formula/skills/inferDamageRole'
+import { inferSkillCombatRole, isDamagingInspectedSkillRole } from '@/lib/formula/skills/inferDamageRole'
 import { passiveModifiersForActiveSkill } from '@/lib/formula/collectBuildContributions'
+
+function firstBundledActiveWithRole(role: SkillCombatRole): SkillDefinition | null {
+  const file = getRuntimeDataset().activeSkillsFile
+  for (const lv of [20, 10, 1, 30]) {
+    for (const r of file.skills) {
+      const inferred = inferSkillCombatRole(r.definition, lv, { parseStatus: r.parseStatus })
+      if (inferred === role) return r.definition
+    }
+  }
+  return null
+}
 
 function sk(
   partial: Pick<SkillDefinition, 'id' | 'name' | 'family' | 'tags'> &
@@ -91,31 +99,106 @@ function main() {
       },
       createEmptyBuildSnapshot(),
     )
-    assert('leap+scatter skipped (no projectile)', !!leapInst && !leapInst.supports[0]?.applied)
+    assert('non-projectile main + projectile support = skipped', !!leapInst && !leapInst.supports[0]?.applied)
   }
 
-  let auraSkillId: string | null = null
-  for (const def of getRuntimeDataset().definitionsById.values()) {
-    if (!isMainSlotSkillFamily(def.family)) continue
-    const hay = def.tags.join(' ').toLowerCase()
-    if (hay.includes('aura') || def.tags.some((t) => t.includes('光環'))) {
-      auraSkillId = def.id
-      break
-    }
+  const blizzard = getSkillDefinitionById('skill:Blizzard')
+  const steamroll = getSkillDefinitionById('skill:Steamroll')
+  if (blizzard && steamroll) {
+    const spellSkipMelee = computeSkillInstanceForMainSlot(
+      {
+        slot: 1,
+        skillId: 'skill:Blizzard',
+        supports: [{ supportSkillId: steamroll.id, level: 20, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      createEmptyBuildSnapshot(),
+    )
+    assert(
+      'spell main + attack-only support = skipped',
+      !!spellSkipMelee && !spellSkipMelee.supports[0]?.applied,
+      spellSkipMelee?.supports[0]?.skipReason,
+    )
   }
-  if (auraSkillId) {
+
+  const overload = getSkillDefinitionById('skill:Overload')
+  if (blizzard && overload) {
+    const spellSpellSup = computeSkillInstanceForMainSlot(
+      {
+        slot: 1,
+        skillId: 'skill:Blizzard',
+        supports: [{ supportSkillId: overload.id, level: 20, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      createEmptyBuildSnapshot(),
+    )
+    assert('spell main + spell support = applied', !!spellSpellSup && !!spellSpellSup.supports[0]?.applied)
+  }
+
+  if (ice && overload) {
+    const atkNoSpellSup = computeSkillInstanceForMainSlot(
+      {
+        slot: 1,
+        skillId: ice.id,
+        supports: [{ supportSkillId: overload.id, level: 20, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      createEmptyBuildSnapshot(),
+    )
+    assert(
+      'projectile attack main + spell-only support = skipped',
+      !!atkNoSpellSup && !atkNoSpellSup.supports[0]?.applied,
+    )
+  }
+
+  const projArea = getSkillDefinitionById('skill:Increased_Area')
+  if (ice && projArea) {
+    const iceArea = computeSkillInstanceForMainSlot(
+      {
+        slot: 1,
+        skillId: ice.id,
+        supports: [{ supportSkillId: projArea.id, level: 20, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      createEmptyBuildSnapshot(),
+    )
+    assert('projectile main + area support = applied', !!iceArea && !!iceArea.supports[0]?.applied)
+  }
+
+  const whirl = getSkillDefinitionById('skill:Whirlwind')
+  const multi = getSkillDefinitionById('skill:Multistrike')
+  if (whirl && multi) {
+    const wwMs = computeSkillInstanceForMainSlot(
+      {
+        slot: 1,
+        skillId: whirl.id,
+        supports: [{ supportSkillId: multi.id, level: 20, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      createEmptyBuildSnapshot(),
+    )
+    assert('channeled attack main + multistrike = applied', !!wwMs && !!wwMs.supports[0]?.applied)
+  }
+
+  const stoneskin = getSkillDefinitionById('skill:Stoneskin')
+  if (stoneskin) {
     const auraSnap: BuildSnapshot = {
       ...createEmptyBuildSnapshot(),
       meta: { ...createEmptyBuildSnapshot().meta, inspectedMainSkillSlot: 1 },
       skills: [
-        { slot: 1, skillId: auraSkillId, supports: [], skillLevel: 10, enabled: true },
+        { slot: 1, skillId: stoneskin.id, supports: [], skillLevel: 10, enabled: true },
         ...createEmptyBuildSnapshot().skills.slice(1),
       ],
     }
     const auraInst = computeSkillInstanceForMainSlot(auraSnap.skills[0]!, auraSnap)
     if (auraInst?.damageRole === 'aura-only') {
       const auraView = selectInspectedSkillDamageView(auraSnap)
-      assert('aura-only inspected → no primary DPS path', auraView.mode !== 'damaging', JSON.stringify(auraView))
+      assert('aura-only active inspected → not damaging mode', auraView.mode !== 'damaging', JSON.stringify(auraView))
     }
   }
 
@@ -129,16 +212,12 @@ function main() {
   }
   const supInst = computeSkillInstanceForMainSlot(supportMain.skills[0]!, supportMain)
   assert('support gem as main slot → rejected by main-slot family gate', supInst == null)
+  assert(
+    '4E-5: support as main → inspected view must not be damaging (no fake DPS)',
+    selectInspectedSkillDamageView(supportMain).mode !== 'damaging',
+  )
 
-  const passiveList = listSkillsByFamily('passive')
-  let pid: string | null = null
-  for (const row of passiveList) {
-    const d = getSkillDefinitionById(row.id)
-    if (d && (d.modifiers?.length ?? 0) > 0) {
-      pid = row.id
-      break
-    }
-  }
+  const wpnAmp = getSkillDefinitionById('skill:Weapon_Amplification')
   const passiveLinked2: BuildSnapshot = {
     ...createEmptyBuildSnapshot(),
     skills: [
@@ -149,7 +228,7 @@ function main() {
     passives: [
       {
         slot: 1,
-        skillId: pid,
+        skillId: wpnAmp?.id ?? null,
         enabled: true,
         applyMode: 'linked',
         linkedMainSkillSlots: [2 as MainSkillSlot],
@@ -158,10 +237,19 @@ function main() {
       ...createEmptyBuildSnapshot().passives.slice(1),
     ],
   }
-  if (pid) {
+  if (wpnAmp) {
     const m1 = passiveModifiersForActiveSkill(ice!.id, passiveLinked2, 1).length
     const m2 = passiveModifiersForActiveSkill(ice!.id, passiveLinked2, 2).length
     assert('passive linked only slot 2: slot1 excluded', m1 === 0 && m2 > 0, `m1=${m1} m2=${m2}`)
+    const instOn1 = computeSkillInstanceForMainSlot(passiveLinked2.skills[0]!, passiveLinked2)
+    const instOn2 = computeSkillInstanceForMainSlot(passiveLinked2.skills[1]!, passiveLinked2)
+    const p1 = instOn1?.breakdown.passiveModifierCount ?? 0
+    const p2 = instOn2?.breakdown.passiveModifierCount ?? 0
+    assert(
+      'linked passive injects stats only on linked main slot',
+      !!instOn1 && !!instOn2 && p2 > p1,
+      `p1=${p1} p2=${p2}`,
+    )
   }
 
   const base = normalizeBuildSnapshot(createEmptyBuildSnapshot())
@@ -171,6 +259,72 @@ function main() {
 
   const share = decodeBuildFromShareCode(encodeBuildToShareCode(base))
   assert('share import/export', share.skills.length === base.skills.length)
+
+  const baseInsp3 = normalizeBuildSnapshot({
+    ...createEmptyBuildSnapshot(),
+    meta: { ...createEmptyBuildSnapshot().meta, inspectedMainSkillSlot: 3 },
+    skills: createEmptyBuildSnapshot().skills.map((row) =>
+      row.slot === 3 ? { ...row, skillId: 'skill:Ice_Shot', skillLevel: 20, enabled: true } : row,
+    ),
+  })
+  assert(
+    '4E-6: share round-trip preserves inspectedMainSkillSlot (slot 3 must have a skill — finalize otherwise repicks)',
+    decodeBuildFromShareCode(encodeBuildToShareCode(baseInsp3)).meta.inspectedMainSkillSlot === 3,
+  )
+
+  const dualSwitch = normalizeBuildSnapshot({
+    ...createEmptyBuildSnapshot(),
+    meta: { ...createEmptyBuildSnapshot().meta, inspectedMainSkillSlot: 1 },
+    skills: [
+      { slot: 1, skillId: 'skill:Ice_Shot', supports: [], skillLevel: 20, enabled: true },
+      { slot: 2, skillId: 'skill:Stoneskin', supports: [], skillLevel: 10, enabled: true },
+      ...createEmptyBuildSnapshot().skills.slice(2),
+    ],
+  })
+  const viewIce = selectInspectedSkillDamageView(dualSwitch)
+  const viewStone = selectInspectedSkillDamageView({
+    ...dualSwitch,
+    meta: { ...dualSwitch.meta, inspectedMainSkillSlot: 2 },
+  })
+  assert(
+    '4E-6: inspected slot switch must change mode (Ice damaging vs Stoneskin non-DPS)',
+    viewIce.mode !== viewStone.mode,
+    `${viewIce.mode} vs ${viewStone.mode}`,
+  )
+
+  const utilDef = firstBundledActiveWithRole('utility')
+  if (utilDef) {
+    const uSnap = normalizeBuildSnapshot({
+      ...createEmptyBuildSnapshot(),
+      meta: { ...createEmptyBuildSnapshot().meta, inspectedMainSkillSlot: 1 },
+      skills: [
+        { slot: 1, skillId: utilDef.id, supports: [], skillLevel: 20, enabled: true },
+        ...createEmptyBuildSnapshot().skills.slice(1),
+      ],
+    })
+    assert(
+      '4E-6: utility-role active must not show damaging inspected mode',
+      selectInspectedSkillDamageView(uSnap).mode !== 'damaging',
+      utilDef.id,
+    )
+  }
+
+  const unkDef = firstBundledActiveWithRole('unknown')
+  if (unkDef) {
+    const uSnap = normalizeBuildSnapshot({
+      ...createEmptyBuildSnapshot(),
+      meta: { ...createEmptyBuildSnapshot().meta, inspectedMainSkillSlot: 1 },
+      skills: [
+        { slot: 1, skillId: unkDef.id, supports: [], skillLevel: 20, enabled: true },
+        ...createEmptyBuildSnapshot().skills.slice(1),
+      ],
+    })
+    assert(
+      '4E-6: unknown-role active must not show damaging inspected mode',
+      selectInspectedSkillDamageView(uSnap).mode !== 'damaging',
+      unkDef.id,
+    )
+  }
 
   const levelOnlyRow = sk({
     id: 'skill:Mock_LevelManaOnly',
@@ -194,6 +348,38 @@ function main() {
       `${manaInst.damageRole} ${manaInst.calculationConfidence}`,
     )
   }
+
+  const cooldownOnlyRow = sk({
+    id: 'skill:Mock_LevelCooldownOnly',
+    name: 'Mock cooldown row only',
+    family: 'active',
+    tags: ['法術'],
+    levelTable: {
+      10: { level: 10, cooldown: 2.2, partial: false },
+    },
+  })
+  assert(
+    'cooldown-only level row: not classified as damaging (no damage signals in row)',
+    inferSkillCombatRole(cooldownOnlyRow, 10) !== 'damaging',
+    `role@10=${inferSkillCombatRole(cooldownOnlyRow, 10)}`,
+  )
+  const cdInst = computeSkillInstance({ active: cooldownOnlyRow, level: 10, supports: [] })
+  if (cdInst) {
+    assert(
+      'cooldown-only: cannot be damaging+ready (would fabricate hit scaling)',
+      cdInst.damageRole !== 'damaging' || cdInst.calculationConfidence !== 'ready',
+      `${cdInst.damageRole} ${cdInst.calculationConfidence}`,
+    )
+  }
+
+  const plainUnknown = sk({
+    id: 'skill:Mock_PlainUnknownActive',
+    name: 'plain unknown',
+    family: 'active',
+    tags: [],
+    modifiers: [],
+  })
+  assert('plain active no tags: unknown role', inferSkillCombatRole(plainUnknown, 10) === 'unknown')
 
   const legacyRaw = {
     ...createEmptyBuildSnapshot(),

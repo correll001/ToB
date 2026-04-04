@@ -1,20 +1,95 @@
 {
   "season": "ss12",
-  "version": "demo-1",
+  "version": "p0-4e2-1",
   "family": "passive",
   "entries": [
     {
       "id": "skill:Fearless",
-      "notes": ["Sample passive: manual modifier patch only (no formula engine change)."],
+      "notes": ["4E-2: aura passive — real `skill` selector so linked/global inject affects instances."],
+      "modifiersReplace": [
+        {
+          "id": "p0-fearless-dmg",
+          "selector": { "kind": "skill" },
+          "operation": "mul",
+          "stat": "damage.increased",
+          "value": 12,
+          "valueKind": "increased",
+          "sourceText": "4E-2 curated from TLIDB summary (近戰額外傷害)."
+        }
+      ]
+    },
+    {
+      "id": "skill:Weapon_Amplification",
+      "notes": ["4E-2: 武器增幅 aura → physical damage to supported skills"],
       "modifiersAppend": [
         {
-          "id": "override-demo-fearless",
+          "id": "p0-wpn-amp",
+          "selector": { "kind": "skill" },
+          "operation": "mul",
+          "stat": "damage.increased",
+          "value": 18,
+          "valueKind": "increased",
+          "sourceText": "4E-2 curated physical hit damage (光環)."
+        }
+      ]
+    },
+    {
+      "id": "skill:Spell_Amplification",
+      "notes": ["4E-2: 法術增幅"],
+      "modifiersAppend": [
+        {
+          "id": "p0-spell-amp",
+          "selector": { "kind": "skill" },
+          "operation": "mul",
+          "stat": "damage.increased",
+          "value": 18,
+          "valueKind": "increased",
+          "sourceText": "4E-2 curated spell damage (光環)."
+        }
+      ]
+    },
+    {
+      "id": "skill:Swiftness",
+      "notes": ["4E-2: 疾速 → attack speed to linked skill"],
+      "modifiersAppend": [
+        {
+          "id": "p0-swift-as",
           "selector": { "kind": "skill" },
           "operation": "add",
-          "stat": "skill.damage.more",
-          "value": 0,
-          "valueKind": "more",
-          "sourceText": "[override demo] zero-op audit modifier"
+          "stat": "skill.attackSpeedIncreased",
+          "value": 14,
+          "valueKind": "flat",
+          "sourceText": "4E-2 curated attack speed (光環)."
+        }
+      ]
+    },
+    {
+      "id": "skill:Flame_Focus",
+      "notes": ["4E-2: 熔火貫注 — fire scalar"],
+      "modifiersAppend": [
+        {
+          "id": "p0-flame-focus",
+          "selector": { "kind": "skill" },
+          "operation": "mul",
+          "stat": "damage.increased",
+          "value": 15,
+          "valueKind": "increased",
+          "sourceText": "4E-2 curated fire damage effectiveness."
+        }
+      ]
+    },
+    {
+      "id": "skill:Elemental_Resistance",
+      "notes": ["4E-2: small universal more as placeholder resist-to-skill bridge"],
+      "modifiersAppend": [
+        {
+          "id": "p0-elem-res",
+          "selector": { "kind": "skill" },
+          "operation": "mul",
+          "stat": "damage.increased",
+          "value": 6,
+          "valueKind": "increased",
+          "sourceText": "4E-2 placeholder elemental affinity on skill (manifest)."
         }
       ]
     }

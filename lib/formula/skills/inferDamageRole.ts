@@ -30,6 +30,8 @@ function mechanicsSuggestDamage(def: SkillDefinition): boolean {
 
 /**
  * True only when structured data (not textLines alone) implies a direct damage pipeline.
+ * Note: level rows that only provide mana / cooldown / castTime / projectileCount do not emit
+ * damage modifiers — they must not alone justify `damaging` (4E-5).
  */
 export function hasStructuralDamageEvidence(
   def: SkillDefinition,

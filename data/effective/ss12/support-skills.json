@@ -5,8 +5,8 @@
     "generatedAt": "2026-04-04T05:35:35.975Z",
     "parserVersion": "1",
     "sourceCount": 122,
-    "warningsCount": 2,
-    "effectiveLayer": "overrides@demo-1"
+    "warningsCount": 12,
+    "effectiveLayer": "overrides@p0-4e2-1"
   },
   "skills": [
     {
@@ -107,19 +107,17 @@
         "supportRules": {
           "requiresProjectile": true,
           "allowedSkillTags": [
-            "Projectile",
-            "Support"
+            "Projectile"
           ],
           "rawRequirementLines": [
-            "[override] Demo: enforce projectile tag expectation when wiki text is ambiguous."
+            "[override 4E-2] Projectile active skills only; TLIDB text 輔助投射物技能."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
       },
       "warnings": [
-        "[override] supportRulesMerge patched from data/overrides",
-        "[override-note] Sample: curated support restriction when auto-parse misses pairing rules."
+        "[override-note] 4E-2: allowedSkillTags must match active tags (Projectile), not support-gem tag only."
       ]
     },
     {
@@ -199,19 +197,20 @@
         ],
         "supportRules": {
           "requiresAttack": true,
-          "requiresChanneled": true,
+          "requiresChanneled": false,
           "allowedSkillTags": [
-            "Support",
             "Attack"
           ],
           "rawRequirementLines": [
-            "Inferred: requires attack skill",
-            "Inferred: requires channeled skill"
+            "[override 4E-2] 輔助攻擊技能 — channeled optional in game; engine uses false for broad attach."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: remove erroneous requiresChanneled from auto-parse; keep attack"
+      ]
     },
     {
       "parseStatus": "ok",
@@ -302,16 +301,18 @@
         "supportRules": {
           "requiresProjectile": true,
           "allowedSkillTags": [
-            "Projectile",
-            "Support"
+            "Projectile"
           ],
           "rawRequirementLines": [
-            "Inferred: requires projectile skill"
+            "[override 4E-2] 拋射 / projectile actives."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: projectile pairing"
+      ]
     },
     {
       "parseStatus": "ok",
@@ -442,12 +443,18 @@
         ],
         "supportRules": {
           "allowedSkillTags": [
-            "Support"
+            "Area"
+          ],
+          "rawRequirementLines": [
+            "[override 4E-2] Area-tagged actives (TLIDB 輔助範圍技能)."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: 範圍技能 → Area canonical tag"
+      ]
     },
     {
       "parseStatus": "ok",
@@ -622,17 +629,19 @@
         "supportRules": {
           "requiresAttack": true,
           "allowedSkillTags": [
-            "Support",
-            "Melee",
-            "Attack"
+            "Attack",
+            "Melee"
           ],
           "rawRequirementLines": [
-            "Inferred: requires attack skill"
+            "[override 4E-2] Melee attacks only."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: melee attack"
+      ]
     },
     {
       "parseStatus": "ok",
@@ -722,16 +731,18 @@
         "supportRules": {
           "requiresSpell": true,
           "allowedSkillTags": [
-            "Support",
             "Spell"
           ],
           "rawRequirementLines": [
-            "Inferred: requires spell skill"
+            "[override 4E-2] 輔助法術技能."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: spell-only"
+      ]
     },
     {
       "parseStatus": "ok",
@@ -806,16 +817,34 @@
             "stat": "skill.manaCostMultiplier",
             "value": 1.1,
             "sourceText": "魔力消耗倍率 110.0%"
+          },
+          {
+            "id": "p0-tendonslicer-dmg",
+            "selector": {
+              "kind": "supportedSkill"
+            },
+            "operation": "mul",
+            "stat": "damage.increased",
+            "value": 7.5,
+            "valueKind": "increased",
+            "sourceText": "4E-2 curated from summary: 額外物理傷害%"
           }
         ],
         "supportRules": {
           "allowedSkillTags": [
-            "Support"
+            "Attack",
+            "Spell"
+          ],
+          "rawRequirementLines": [
+            "[override 4E-2] 擊中 / damage-dealing actives."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: hitting skills — Attack or Spell"
+      ]
     },
     {
       "parseStatus": "ok",
@@ -890,16 +919,33 @@
             "stat": "skill.manaCostMultiplier",
             "value": 1.1,
             "sourceText": "魔力消耗倍率 110.0%"
+          },
+          {
+            "id": "p0-glacial-cold",
+            "selector": {
+              "kind": "supportedSkill"
+            },
+            "operation": "mul",
+            "stat": "damage.increased",
+            "value": 10.3,
+            "valueKind": "increased",
+            "sourceText": "4E-2 curated: 冰冷傷害%"
           }
         ],
         "supportRules": {
           "allowedSkillTags": [
-            "Support"
+            "Cold"
+          ],
+          "rawRequirementLines": [
+            "[override 4E-2] Cold-tagged actives."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: cold hits"
+      ]
     },
     {
       "parseStatus": "ok",
@@ -4718,12 +4764,19 @@
         ],
         "supportRules": {
           "allowedSkillTags": [
-            "Support"
+            "Spell"
+          ],
+          "requiresSpell": true,
+          "rawRequirementLines": [
+            "[override 4E-2] Spell skills (added fire)."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: spell gem"
+      ]
     },
     {
       "parseStatus": "ok",
@@ -5880,12 +5933,19 @@
         ],
         "supportRules": {
           "allowedSkillTags": [
-            "Support"
+            "Spell"
+          ],
+          "requiresSpell": true,
+          "rawRequirementLines": [
+            "[override 4E-2] Spell skills (added cold)."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: spell gem"
+      ]
     },
     {
       "parseStatus": "ok",
@@ -7981,17 +8041,19 @@
         "supportRules": {
           "requiresAttack": true,
           "allowedSkillTags": [
-            "Support",
-            "Melee",
-            "Attack"
+            "Attack",
+            "Melee"
           ],
           "rawRequirementLines": [
-            "Inferred: requires attack skill"
+            "[override 4E-2] 輔助近戰攻擊技能."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: melee attack-only for regression (spell mains skip on requiresAttack)"
+      ]
     },
     {
       "parseStatus": "ok",
@@ -11479,12 +11541,19 @@
         ],
         "supportRules": {
           "allowedSkillTags": [
-            "Support"
+            "Attack"
+          ],
+          "requiresAttack": true,
+          "rawRequirementLines": [
+            "[override 4E-2] 輔助擊中 — attack skills."
           ]
         },
         "levelScalingMode": "breakpoints",
         "parserVersion": "1/1"
-      }
+      },
+      "warnings": [
+        "[override-note] 4E-2: attack gem — requires Attack"
+      ]
     },
     {
       "parseStatus": "ok",
