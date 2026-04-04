@@ -1,14 +1,14 @@
 {
   "season": "ss12",
   "parserVersion": "1",
-  "generatedAt": "2026-04-04T05:22:39.159Z",
+  "generatedAt": "2026-04-04T08:35:24.962Z",
   "entries": [
     {
       "sourceUrl": "https://tlidb.com/en/Character_Build",
       "kind": "character-build",
       "locale": "en",
       "season": "ss12",
-      "fetchedAt": "2026-04-04T05:22:39.159Z",
+      "fetchedAt": "2026-04-04T08:35:24.962Z",
       "status": "ok",
       "outputPath": "data/raw/ss12/indexes/Character_Build.html",
       "contentSha256": "5c7e72c983fa84bab3c30f0c1074aeb0738b1d1651fd5ffd222d9412777b79a3",

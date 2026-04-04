@@ -2,15 +2,19 @@
   "meta": {
     "season": "ss12",
     "locale": "tw",
-    "generatedAt": "2026-04-04T05:35:35.975Z",
-    "parserVersion": "1",
+    "generatedAt": "2026-04-04T08:56:57.176Z",
+    "parserVersion": "3",
     "sourceCount": 55,
-    "warningsCount": 6,
+    "warningsCount": 61,
     "effectiveLayer": "overrides@p0-4e2-1"
   },
   "skills": [
     {
       "parseStatus": "ok",
+      "warnings": [
+        "high_tier_expectation_not_met",
+        "[override-note] 4E-2: aura passive — real `skill` selector so linked/global inject affects instances."
+      ],
       "definition": {
         "id": "skill:Fearless",
         "name": "狂猛",
@@ -30,7 +34,7 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：近戰技能 +79% 爆擊值近戰技能額外 +29% 傷害"
         ],
-        "parserVersion": "1/1",
+        "parserVersion": "1/3",
         "modifiers": [
           {
             "id": "p0-fearless-dmg",
@@ -44,13 +48,14 @@
             "sourceText": "4E-2 curated from TLIDB summary (近戰額外傷害)."
           }
         ]
-      },
-      "warnings": [
-        "[override-note] 4E-2: aura passive — real `skill` selector so linked/global inject affects instances."
-      ]
+      }
     },
     {
       "parseStatus": "ok",
+      "warnings": [
+        "high_tier_expectation_not_met",
+        "[override-note] 4E-2: 武器增幅 aura → physical damage to supported skills"
+      ],
       "definition": {
         "id": "skill:Weapon_Amplification",
         "name": "武器增幅",
@@ -70,7 +75,7 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +34% 物理傷害"
         ],
-        "parserVersion": "1/1",
+        "parserVersion": "1/3",
         "modifiers": [
           {
             "id": "p0-wpn-amp",
@@ -84,13 +89,13 @@
             "sourceText": "4E-2 curated physical hit damage (光環)."
           }
         ]
-      },
-      "warnings": [
-        "[override-note] 4E-2: 武器增幅 aura → physical damage to supported skills"
-      ]
+      }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
       "definition": {
         "id": "skill:Rejuvenation",
         "name": "再生",
@@ -109,11 +114,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：+95 生命每秒自然恢復"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
       "definition": {
         "id": "skill:Electric_Conversion",
         "name": "電能轉化",
@@ -133,11 +141,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +34% 閃電傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
       "definition": {
         "id": "skill:Frigid_Domain",
         "name": "冰寒領域",
@@ -157,11 +168,14 @@
         "detailText": [
           "啟動光環，12 米內的所有敵軍獲得減益：受該技能影響的敵人額外 +37% 受到的冰冷傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
       "definition": {
         "id": "skill:Nimbleness",
         "name": "靈敏",
@@ -180,11 +194,15 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：+6000 閃避值額外 +10% 閃避值"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
       "parseStatus": "ok",
+      "warnings": [
+        "high_tier_expectation_not_met",
+        "[override-note] 4E-2: 法術增幅"
+      ],
       "definition": {
         "id": "skill:Spell_Amplification",
         "name": "法術增幅",
@@ -204,7 +222,7 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +34% 法術傷害"
         ],
-        "parserVersion": "1/1",
+        "parserVersion": "1/3",
         "modifiers": [
           {
             "id": "p0-spell-amp",
@@ -218,13 +236,13 @@
             "sourceText": "4E-2 curated spell damage (光環)."
           }
         ]
-      },
-      "warnings": [
-        "[override-note] 4E-2: 法術增幅"
-      ]
+      }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Energy_Fortress",
         "name": "能量壁壘",
@@ -243,11 +261,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：319.7 最大護盾額外 13.37% 最大護盾"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Magical_Source",
         "name": "魔源",
@@ -266,11 +287,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：+140 魔力每秒自然恢復"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise_Projectiles",
         "name": "精準投射",
@@ -290,11 +314,15 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +35% 投射物傷害額外 +35% 投射物造成的異常傷害+10% 投射物速度"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
       "parseStatus": "ok",
+      "warnings": [
+        "passive_no_injectable_modifiers",
+        "[override-note] 4E-2: small universal more as placeholder resist-to-skill bridge"
+      ],
       "definition": {
         "id": "skill:Elemental_Resistance",
         "name": "元素抵抗",
@@ -316,7 +344,7 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：+10% 元素抗性額外 -12% 受到的元素傷害"
         ],
-        "parserVersion": "1/1",
+        "parserVersion": "1/3",
         "modifiers": [
           {
             "id": "p0-elem-res",
@@ -330,13 +358,14 @@
             "sourceText": "4E-2 placeholder elemental affinity on skill (manifest)."
           }
         ]
-      },
-      "warnings": [
-        "[override-note] 4E-2: small universal more as placeholder resist-to-skill bridge"
-      ]
+      }
     },
     {
       "parseStatus": "ok",
+      "warnings": [
+        "passive_no_injectable_modifiers",
+        "[override-note] 4E-2: 疾速 → attack speed to linked skill"
+      ],
       "definition": {
         "id": "skill:Swiftness",
         "name": "疾速",
@@ -355,7 +384,7 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：14.5% 移動速度"
         ],
-        "parserVersion": "1/1",
+        "parserVersion": "1/3",
         "modifiers": [
           {
             "id": "p0-swift-as",
@@ -369,13 +398,13 @@
             "sourceText": "4E-2 curated attack speed (光環)."
           }
         ]
-      },
-      "warnings": [
-        "[override-note] 4E-2: 疾速 → attack speed to linked skill"
-      ]
+      }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
       "definition": {
         "id": "skill:Deep_Pain",
         "name": "深層苦痛",
@@ -394,11 +423,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +34% 持續傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
       "definition": {
         "id": "skill:Erosion_Amplification",
         "name": "腐蝕增幅",
@@ -418,11 +450,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +34% 腐蝕傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Charged_Flames",
         "name": "烈焰充能",
@@ -442,11 +477,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +35% 火焰傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "high_tier_expectation_not_met"
+      ],
       "definition": {
         "id": "skill:Steadfast",
         "name": "堅固",
@@ -465,11 +503,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：+6000 護甲值額外 +10% 護甲值"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Summon_Fire_Magus",
         "name": "召喚火焰之靈",
@@ -501,11 +542,14 @@
           }
         ],
         "levelScalingMode": "breakpoints",
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Summon_Frost_Magus",
         "name": "召喚寒冰之靈",
@@ -537,11 +581,14 @@
           }
         ],
         "levelScalingMode": "breakpoints",
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Summon_Thunder_Magus",
         "name": "召喚雷霆之靈",
@@ -573,11 +620,14 @@
           }
         ],
         "levelScalingMode": "breakpoints",
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Acuteness_Focus",
         "name": "銳利貫注",
@@ -599,11 +649,14 @@
           "啟動貫注，獲得增益：額外 13.5% 物理傷害+10% 創傷機率附加 5 - 5 基礎創傷傷害近戰擊中時，該技能獲得 25 點貫注值，該效果有 0.2 秒間隔該技能的貫注值達到 100 後，下一次近戰擊中時會消耗 100 點貫注值，並對擊中目標 5 米內的最多 4 個敵人觸發該技能，在矩形範圍內生成尖刺，造成物理攻擊傷害",
           "銳利打擊：造成 479% 武器攻擊傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Corrosion_Focus",
         "name": "侵蝕貫注",
@@ -629,11 +682,14 @@
           "侵蝕貫注：每隔 0.1 秒，該技能獲得 6.5 點貫注值該技能的貫注值達到 100 後，若侵蝕法球不存在，使用主動技能時會向敵人觸發該技能侵蝕法球存在時，使用其他技能會使該技能消耗 50 點貫注值並使法球造成一次範圍傷害，間隔 0.15 秒",
           "侵蝕法球：造成 648-648 法術腐蝕傷害投射物持續 2 秒"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Ice_Focus",
         "name": "寒冰貫注",
@@ -654,11 +710,14 @@
         "detailText": [
           "寒冰尖刺：造成 467-701 法術冰冷傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Thunder_Focus",
         "name": "雷霆貫注",
@@ -681,11 +740,15 @@
           "雷霆貫注：該技能 100% 物理傷害轉化為閃電傷害每移動 2 米，該技能獲得 5 點貫注值該技能的貫注值達到 100 後，使用非位移攻擊技能會消耗 100 點貫注值，並向前方觸發該技能",
           "雷擊：造成 1109% 武器攻擊傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
       "parseStatus": "ok",
+      "warnings": [
+        "passive_no_injectable_modifiers",
+        "[override-note] 4E-2: 熔火貫注 — fire scalar"
+      ],
       "definition": {
         "id": "skill:Flame_Focus",
         "name": "熔火貫注",
@@ -707,7 +770,7 @@
           "啟動貫注，獲得增益：額外 +7% 火焰傷害+10% 點燃機率附加 2 - 2 基礎點燃傷害",
           "熔火貫注：造成點燃時，該技能獲得 15 點貫注值；該效果每 0.5 秒至多觸發 3 次擊敗敵人時，有 100% 機率消耗 40 點該技能的貫注值並在其位置觸發該技能，造成被擊敗的敵人最大生命 25% 的真實傷害最近每造成一次點燃，該技能額外 +10% 技能範圍，上限 6 層"
         ],
-        "parserVersion": "1/1",
+        "parserVersion": "1/3",
         "modifiers": [
           {
             "id": "p0-flame-focus",
@@ -721,13 +784,13 @@
             "sourceText": "4E-2 curated fire damage effectiveness."
           }
         ]
-      },
-      "warnings": [
-        "[override-note] 4E-2: 熔火貫注 — fire scalar"
-      ]
+      }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Summon_Rock_Magus",
         "name": "召喚磐石之靈",
@@ -759,11 +822,14 @@
           }
         ],
         "levelScalingMode": "breakpoints",
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Summon_Erosion_Magus",
         "name": "召喚腐化之靈",
@@ -795,11 +861,14 @@
           }
         ],
         "levelScalingMode": "breakpoints",
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Radical_Order",
         "name": "激進號令",
@@ -819,11 +888,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +35% 召喚物傷害+25% 召喚物侵略性（不受光環效果影響）"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Cruelty",
         "name": "暴虐",
@@ -843,11 +915,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +19% 攻擊傷害自身擊敗敵人時獲得 1 層增益；擊中勁敵時 +40% 機率獲得 5 層增益每層增益使該技能額外 2.5% 光環效果，持續 4 秒，最多增加 40 次（不受光環效果影響）"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Domain_Expansion",
         "name": "領域擴張",
@@ -866,11 +941,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +33% 範圍傷害額外 +33% 範圍技能造成的異常傷害10 米內至少有 8 個敵人時， +20% 技能範圍"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Ailment_Amplification",
         "name": "異常增幅",
@@ -889,11 +967,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 23.5% 異常傷害+10% 機率造成傷害型異常狀態+10% 異常狀態持續時間"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Fearless",
         "name": "精密 狂猛",
@@ -913,11 +994,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：近戰技能 +79% 爆擊值近戰技能額外 +29% 傷害+8% 近戰攻擊速度"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Weapon_Amplification",
         "name": "精密 武器增幅",
@@ -937,11 +1021,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +34% 物理傷害擊中時， +30% 機率造成癱瘓"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Rejuvenation",
         "name": "精密 再生",
@@ -960,11 +1047,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：+95 生命每秒自然恢復+5% 生命恢復速度"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Electric_Conversion",
         "name": "精密 電能轉化",
@@ -984,11 +1074,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +40% 閃電傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Frigid_Domain",
         "name": "精密 冰寒領域",
@@ -1008,11 +1101,14 @@
         "detailText": [
           "啟動光環，12 米內的所有敵軍獲得減益：受該技能影響的敵人額外 +44% 受到的冰冷傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Nimbleness",
         "name": "精密 靈敏",
@@ -1031,11 +1127,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：+6000 閃避值額外 +20% 閃避值"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Spell_Amplification",
         "name": "精密 法術增幅",
@@ -1055,11 +1154,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +40% 法術傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Energy_Fortress",
         "name": "精密 能量壁壘",
@@ -1078,11 +1180,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：319.7 最大護盾額外 17.97% 最大護盾"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Magical_Source",
         "name": "精密 魔源",
@@ -1101,11 +1206,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：+140 魔力每秒自然恢復+15% 魔力自然恢復速度"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Precise_Projectiles",
         "name": "精密 精準投射",
@@ -1125,11 +1233,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +39% 投射物傷害額外 +39% 投射物造成的異常傷害+10% 投射物速度"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Elemental_Resistance",
         "name": "精密 元素抵抗",
@@ -1151,11 +1262,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：+10% 元素抗性額外 -14% 受到的元素傷害+15% 機率避免元素異常狀態"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Swiftness",
         "name": "精密 疾速",
@@ -1174,11 +1288,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：20.5% 移動速度"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Deep_Pain",
         "name": "精密 深層苦痛",
@@ -1197,11 +1314,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +40% 持續傷害+30 每秒施加加劇值"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Erosion_Amplification",
         "name": "精密 腐蝕增幅",
@@ -1221,11 +1341,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +40% 腐蝕傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Charged_Flames",
         "name": "精密 烈焰充能",
@@ -1245,11 +1368,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +39% 火焰傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Steadfast",
         "name": "精密 堅固",
@@ -1268,11 +1394,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：+6000 護甲值額外 +20% 護甲值"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Acuteness_Focus",
         "name": "精密 銳利貫注",
@@ -1294,11 +1423,14 @@
           "啟動貫注，獲得增益：額外 15.6% 物理傷害+15% 創傷機率附加 5 - 5 基礎創傷傷害近戰擊中時，該技能獲得 25 點貫注值，該效果有 0.2 秒間隔該技能的貫注值達到 100 後，下一次近戰擊中時會消耗 100 點貫注值，並對擊中目標 5 米內的最多 4 個敵人觸發該技能，在矩形範圍內生成尖刺，造成物理攻擊傷害該技能額外 +4% 傷害",
           "銳利打擊：造成 479% 武器攻擊傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Corrosion_Focus",
         "name": "精密 侵蝕貫注",
@@ -1324,11 +1456,14 @@
           "侵蝕貫注：每隔 0.1 秒，該技能獲得 6.5 點貫注值該技能的貫注值達到 100 後，若侵蝕法球不存在，使用主動技能時會向敵人觸發該技能侵蝕法球存在時，使用其他技能會使該技能消耗 50 點貫注值並使法球造成一次範圍傷害，間隔 0.15 秒該技能額外 +4% 傷害",
           "侵蝕法球：造成 648-648 法術腐蝕傷害投射物持續 2 秒"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Ice_Focus",
         "name": "精密 寒冰貫注",
@@ -1349,11 +1484,14 @@
         "detailText": [
           "寒冰尖刺：造成 467-701 法術冰冷傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Thunder_Focus",
         "name": "精密 雷霆貫注",
@@ -1376,11 +1514,14 @@
           "雷霆貫注：該技能 100% 物理傷害轉化為閃電傷害每移動 2 米，該技能獲得 5 點貫注值該技能的貫注值達到 100 後，使用非位移攻擊技能會消耗 100 點貫注值，並向前方觸發該技能該技能額外 +4% 傷害",
           "雷擊：造成 1109% 武器攻擊傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Flame_Focus",
         "name": "精密 熔火貫注",
@@ -1402,11 +1543,14 @@
           "啟動貫注，獲得增益：額外 +9% 火焰傷害+15% 點燃機率附加 2 - 2 基礎點燃傷害",
           "熔火貫注：造成點燃時，該技能獲得 15 點貫注值；該效果每 0.5 秒至多觸發 3 次擊敗敵人時，有 100% 機率消耗 40 點該技能的貫注值並在其位置觸發該技能，造成被擊敗的敵人最大生命 25% 的真實傷害最近每造成一次點燃，該技能額外 +10% 技能範圍，上限 6 層該技能額外 +4% 傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Radical_Order",
         "name": "精密 激進號令",
@@ -1426,11 +1570,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +40% 召喚物傷害+50% 召喚物侵略性（不受光環效果影響）額外 +10% 召喚物最大生命（不受光環效果影響）"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Cruelty",
         "name": "精密 暴虐",
@@ -1450,11 +1597,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +22% 攻擊傷害自身擊敗敵人時獲得 1 層增益；擊中勁敵時 +40% 機率獲得 5 層增益每層增益使該技能額外 2.5% 光環效果，持續 8 秒，最多增加 40 次（不受光環效果影響）"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Domain_Expansion",
         "name": "精密 領域擴張",
@@ -1473,11 +1623,14 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +33% 範圍傷害額外 +33% 範圍技能造成的異常傷害10 米內至少有 5 個敵人時， +20% 技能範圍10 米內至少有 5 個敵人時，額外 +4% 範圍傷害10 米內至少有 5 個敵人時，額外 +4% 範圍技能造成的異常傷害"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     },
     {
-      "parseStatus": "ok",
+      "parseStatus": "partial",
+      "warnings": [
+        "passive_no_injectable_modifiers"
+      ],
       "definition": {
         "id": "skill:Precise:_Ailment_Amplification",
         "name": "精密 異常增幅",
@@ -1496,7 +1649,7 @@
         "detailText": [
           "啟動光環，自身和一定範圍內的所有友軍獲得增益：額外 +25% 異常傷害+17% 機率造成傷害型異常狀態+10% 異常狀態持續時間"
         ],
-        "parserVersion": "1/1"
+        "parserVersion": "1/3"
       }
     }
   ]

@@ -5,13 +5,18 @@
 import type { ModifierDefinition, SkillDefinition } from '@/types/skillData'
 import type { ParseStatus } from '@/types/normalized'
 import type { SkillCombatRole, SkillDamageRole } from '@/types/skillDamageRole'
-import { modifiersFromSkillLevelRow, resolveLevelRow } from '@/lib/formula/skills/levelRowModifiers'
+import {
+  modifiersFromSkillLevelRow,
+  resolveLevelRow,
+  tryResolveBaseDamageRangeMidpoint,
+} from '@/lib/formula/skills/levelRowModifiers'
 
 export type { SkillCombatRole, SkillDamageRole } from '@/types/skillDamageRole'
 
 const norm = (s: string) => s.trim().toLowerCase()
 
-function modifierSuggestsDirectDamage(m: ModifierDefinition): boolean {
+/** Exported for level-row / confidence gates (4F-5): hit-scaling stats from folded modifiers. */
+export function modifierSuggestsDirectDamage(m: ModifierDefinition): boolean {
   const s = m.stat.toLowerCase()
   if (s.includes('damage') && !s.includes('mana') && !s.includes('cost')) return true
   if (s === 'skill.addedbasedamage') return true
@@ -40,6 +45,22 @@ export function hasStructuralDamageEvidence(
 ): boolean {
   const { row } = resolveLevelRow(def, level)
   if (row?.baseDamage != null && typeof row.baseDamage === 'number' && Number.isFinite(row.baseDamage)) {
+    return true
+  }
+  if (
+    row?.baseDamage != null &&
+    typeof row.baseDamage === 'object' &&
+    row.baseDamage !== null &&
+    'min' in row.baseDamage &&
+    'max' in row.baseDamage
+  ) {
+    if (tryResolveBaseDamageRangeMidpoint(row.baseDamage as { min: number; max: number })) return true
+  }
+  if (
+    row?.weaponDamagePct != null &&
+    typeof row.weaponDamagePct === 'number' &&
+    Number.isFinite(row.weaponDamagePct)
+  ) {
     return true
   }
   if (

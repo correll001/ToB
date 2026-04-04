@@ -1,14 +1,14 @@
 {
   "season": "ss12",
   "parserVersion": "1",
-  "generatedAt": "2026-04-04T05:22:37.870Z",
+  "generatedAt": "2026-04-04T08:35:24.225Z",
   "entries": [
     {
       "sourceUrl": "https://tlidb.com/tw/Active_Skill",
       "kind": "active",
       "locale": "tw",
       "season": "ss12",
-      "fetchedAt": "2026-04-04T05:22:37.870Z",
+      "fetchedAt": "2026-04-04T08:35:24.225Z",
       "status": "ok",
       "outputPath": "data/raw/ss12/indexes/Active_Skill.html",
       "contentSha256": "a679d5ffff65bef206fea39075598b09bab54b6565702224b36fcbab92fa95d0",

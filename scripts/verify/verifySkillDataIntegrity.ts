@@ -8,7 +8,6 @@ import path from 'node:path'
 import type { EffectiveRuntimeBundle } from '@/lib/data/types'
 import type { BuildSnapshot, MainSkillSlot } from '@/types/build'
 import type { ParseStatus } from '@/types/normalized'
-import type { SupportRule } from '@/types/skillData'
 import { createEmptyBuildSnapshot } from '@/lib/defaultBuildSnapshot'
 import { normalizeBuildSnapshot } from '@/lib/normalizeBuildSnapshot'
 import { encodeBuildToShareCode, decodeBuildFromShareCode } from '@/lib/shareCodec'
@@ -17,6 +16,13 @@ import {
   selectBuildStatsPanelDerived,
   selectInspectedSkillDebugView,
 } from '@/selectors/buildComputedStats'
+import { modifiersFromSkillLevelRow } from '@/lib/formula/skills/levelRowModifiers'
+import { isMainSlotSkillFamily } from '@/lib/runtime/runtimeSkillLookup'
+import {
+  computeFullSkillCoverageMetrics,
+  evaluateFullSkillCoverageGate,
+  supportRulesMeaningful,
+} from '@/scripts/verify/fullSkillCoverageContract'
 import { P0_ACTIVE_SKILL_IDS, P0_SUPPORT_SKILL_IDS } from '@/scripts/verify/p0SkillIds'
 
 const ROOT = process.cwd()
@@ -35,18 +41,6 @@ function tallyParse(files: EffectiveRuntimeBundle['activeSkills'][]): Record<Par
 
 function sumWarningMeta(files: EffectiveRuntimeBundle['activeSkills'][]): number {
   return files.reduce((a, f) => a + (f.meta.warningsCount ?? 0), 0)
-}
-
-/** supportRules must carry at least one structured compatibility signal (not `{}`). */
-function supportRulesMeaningful(r: SupportRule | undefined): boolean {
-  if (!r || typeof r !== 'object') return false
-  if (Array.isArray(r.allowedSkillTags) && r.allowedSkillTags.length > 0) return true
-  if (Array.isArray(r.forbiddenSkillTags) && r.forbiddenSkillTags.length > 0) return true
-  if (Array.isArray(r.rawRequirementLines) && r.rawRequirementLines.length > 0) return true
-  if (r.requiresAttack || r.requiresSpell || r.requiresProjectile || r.requiresChanneled) return true
-  if (typeof r.maxSupportsPerSkill === 'number') return true
-  if (Array.isArray(r.socketColors) && r.socketColors.length > 0) return true
-  return false
 }
 
 function main() {
@@ -117,6 +111,42 @@ function main() {
   if (p0Issues.length) {
     console.error('[verify:skill-data-integrity] P0 contracts FAILED:\n  - ' + p0Issues.join('\n  - '))
     process.exit(1)
+  }
+
+  const passiveIssues: string[] = []
+  for (const row of passiveSkills.skills) {
+    const def = row.definition
+    const id = def.id
+    for (const m of def.modifiers ?? []) {
+      if (!m.stat || typeof m.stat !== 'string') {
+        passiveIssues.push(`${id}: passive modifier must have stat string (4F-4)`)
+      }
+      const k = m.selector?.kind
+      if (k === 'statPath' || k === 'custom') {
+        passiveIssues.push(`${id}: passive uses non-injectable selector ${k} (4F-4)`)
+      }
+    }
+    const modN = def.modifiers?.length ?? 0
+    const rowMods = modifiersFromSkillLevelRow(def, 20).length
+    if (row.parseStatus === 'ok' && modN === 0 && rowMods === 0) {
+      passiveIssues.push(`${id}: parseStatus ok but no modifiers and no Lv20 row inject (4F-4)`)
+    }
+  }
+  if (passiveIssues.length) {
+    console.error('[verify:skill-data-integrity] passive inject FAILED:\n  - ' + passiveIssues.join('\n  - '))
+    process.exit(1)
+  }
+
+  const coverageMetrics = computeFullSkillCoverageMetrics(bundle)
+  const fullGate = evaluateFullSkillCoverageGate(coverageMetrics)
+  if (!fullGate.ok) {
+    console.error(
+      '[verify:skill-data-integrity] full-skill coverage gate FAILED:\n  - ' + fullGate.failures.join('\n  - '),
+    )
+    process.exit(1)
+  }
+  for (const w of fullGate.warnings) {
+    console.warn('[verify:skill-data-integrity] coverage WARN: ' + w)
   }
 
   const selectorIssues: string[] = []
@@ -211,8 +241,59 @@ function main() {
     process.exit(1)
   }
 
+  const emptySweep = createEmptyBuildSnapshot()
+  for (const row of activeSkills.skills) {
+    const def = row.definition
+    if (!isMainSlotSkillFamily(def.family)) continue
+    const snap = normalizeBuildSnapshot({
+      ...emptySweep,
+      meta: { ...emptySweep.meta, inspectedMainSkillSlot: 1 },
+      skills: [
+        { slot: 1, skillId: def.id, supports: [], skillLevel: 20, enabled: true },
+        ...emptySweep.skills.slice(1),
+      ],
+    })
+    noThrow(`full-skill:activeInspected:${def.id}`, () => selectInspectedSkillDamageView(snap))
+    noThrow(`full-skill:activeDerived:${def.id}`, () => selectBuildStatsPanelDerived(snap))
+    noThrow(`full-skill:activeInspectedConsistency:${def.id}`, () => {
+      const v = selectInspectedSkillDamageView(snap)
+      if (
+        v.mode === 'damaging' &&
+        v.damagingPresentation === 'authoritative' &&
+        v.effectiveCalculationConfidence !== 'ready'
+      ) {
+        throw new Error('authoritative damaging card without effective ready')
+      }
+    })
+  }
+  for (const row of supportSkills.skills) {
+    const id = row.definition.id
+    const snap = normalizeBuildSnapshot({
+      ...emptySweep,
+      meta: { ...emptySweep.meta, inspectedMainSkillSlot: 1 },
+      skills: [
+        { slot: 1, skillId: id, supports: [], skillLevel: 20, enabled: true },
+        ...emptySweep.skills.slice(1),
+      ],
+    })
+    noThrow(`full-skill:supportAsMain:${id}`, () => selectInspectedSkillDamageView(snap))
+    noThrow(`full-skill:supportAsMainNoDamaging:${id}`, () => {
+      const v = selectInspectedSkillDamageView(snap)
+      if (v.mode === 'damaging') {
+        throw new Error('support gem as main must not use damaging inspected primary card')
+      }
+    })
+  }
+
+  if (selectorIssues.length) {
+    console.error('[verify:skill-data-integrity] full-skill selector sweep FAILED:\n  - ' + selectorIssues.join('\n  - '))
+    process.exit(1)
+  }
+
+  console.log('[verify:skill-data-integrity] passive inject: OK')
   console.log('[verify:skill-data-integrity] P0 contracts: OK')
-  console.log('[verify:skill-data-integrity] selectors + share round-trip: OK')
+  console.log('[verify:skill-data-integrity] full-skill coverage gate: OK')
+  console.log('[verify:skill-data-integrity] selectors + share + all-skills sweep: OK')
   console.log('[verify:skill-data-integrity] OK')
 }
 

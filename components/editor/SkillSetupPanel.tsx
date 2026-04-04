@@ -15,6 +15,7 @@ import {
   listSkillsByFamily,
 } from '@/lib/runtime/runtimeSkillLookup'
 import { computeSkillInstanceForMainSlot } from '@/lib/formula/collectBuildContributions'
+import { useBuildComputedStats } from '@/hooks/useBuildComputedStats'
 import { activeCanonicalTagSet } from '@/lib/formula/skills/tagVocabulary'
 import { inferSkillCombatRole } from '@/lib/formula/skills/inferDamageRole'
 import { nextSupportLinkSlot } from '@/lib/build/supportLinks'
@@ -108,6 +109,7 @@ export default function SkillSetupPanel() {
   const clearPassive = useBuildStore((s) => s.clearPassive)
   const setInspectedMainSkill = useBuildStore((s) => s.setInspectedMainSkill)
   const inspectedMainSkillSlot = snapshot.meta.inspectedMainSkillSlot
+  const { inspectedTargetSlot, inspectedPresentationMode, inspectedSkillDamageView } = useBuildComputedStats()
 
   const [debugMode, setDebugMode] = React.useState(false)
 
@@ -161,6 +163,18 @@ export default function SkillSetupPanel() {
               </>
             ) : (
               <span className="text-slate-500">未選取 — 可在主技能卡片按「檢查此技能」或下方編號</span>
+            )}
+          </div>
+          <div className="mt-1.5 text-[10px] leading-relaxed text-slate-500">
+            {inspectedTargetSlot != null ? (
+              <>
+                面板模式 <span className="font-mono text-slate-400">{inspectedPresentationMode}</span>
+                {inspectedSkillDamageView.mode === 'damaging' ? null : (
+                  <span className="text-slate-600"> · 左欄不會當成主 DPS 輸出卡（與此一致）</span>
+                )}
+              </>
+            ) : (
+              <span className="text-slate-600">左欄檢查技能區以「未選槽」狀態顯示。</span>
             )}
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2">

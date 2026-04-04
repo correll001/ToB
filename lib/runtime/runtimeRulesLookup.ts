@@ -14,6 +14,9 @@ import type { NormalizedGlobalRulesFile } from '@/types/normalized'
 
 import { getRuntimeDataset } from './runtimeDataset'
 
+/** Re-export for verify / selectors — single policy with `levelRowModifiers` midpoint rules. */
+export { skillHitBaseAnchorFromLevelRow } from '@/lib/formula/skills/levelRowModifiers'
+
 const DERIVED_COMBAT_EXT_KEY = 'derivedCombatPanel'
 
 /** Last-resort static aligns with TLIDB Character_Build help text when parse fails (still flagged). */

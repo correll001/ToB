@@ -7,10 +7,13 @@ import type { BuildSnapshot, MainSkillSlot } from '@/types/build'
 import { createEmptyBuildSnapshot } from '@/lib/defaultBuildSnapshot'
 import { normalizeBuildSnapshot } from '@/lib/normalizeBuildSnapshot'
 import {
+  deriveInspectedPresentationMode,
+  selectBuildStatsPanelDerived,
   selectInspectedSkillDamageView,
   selectInspectedSkillDebugView,
   selectInspectedSkillPrimaryInstance,
 } from '@/selectors/buildComputedStats'
+import { getSkillDefinitionById } from '@/lib/runtime/runtimeSkillLookup'
 
 function snap(partial: Partial<BuildSnapshot>): BuildSnapshot {
   const base = createEmptyBuildSnapshot()
@@ -34,6 +37,10 @@ function main() {
   const empty = normalizeBuildSnapshot(createEmptyBuildSnapshot())
   empty.meta.inspectedMainSkillSlot = null
   assert('cleared inspected → no_slot', selectInspectedSkillDamageView(empty).mode === 'none')
+  assert(
+    '4F-7: cleared → none_no_slot presentation',
+    deriveInspectedPresentationMode(selectInspectedSkillDamageView(empty)) === 'none_no_slot',
+  )
   assert(
     'cleared primary',
     selectInspectedSkillPrimaryInstance(empty) == null,
@@ -83,6 +90,20 @@ function main() {
     `${iceView.mode} vs ${stoneView.mode}`,
   )
 
+  const seqIce = selectBuildStatsPanelDerived(dual).inspectedViewSequenceKey
+  const seqStone = selectBuildStatsPanelDerived(dualAura).inspectedViewSequenceKey
+  assert(
+    '4F-7: inspectedViewSequenceKey must differ when switching slot/skill',
+    seqIce !== seqStone,
+    `${seqIce} vs ${seqStone}`,
+  )
+  assert(
+    '4F-7: presentationMode tracks damage view',
+    deriveInspectedPresentationMode(iceView) !== deriveInspectedPresentationMode(stoneView) ||
+      iceView.mode !== stoneView.mode,
+    `${deriveInspectedPresentationMode(iceView)} / ${deriveInspectedPresentationMode(stoneView)}`,
+  )
+
   const dualLv = snap({
     meta: { ...createEmptyBuildSnapshot().meta, inspectedMainSkillSlot: 1 },
     skills: [
@@ -101,8 +122,69 @@ function main() {
     const diff =
       v20.manaCost !== v30.manaCost ||
       v20.castTimeSec !== v30.castTimeSec ||
-      v20.combat.dps !== v30.combat.dps
+      v20.combat.dps !== v30.combat.dps ||
+      v20.combat.hitDamage !== v30.combat.hitDamage
     assert('Lv20 vs L30 inspected readout differs', diff, `mana ${v20.manaCost}/${v30.manaCost}`)
+  }
+
+  const spellSecond = getSkillDefinitionById('skill:Blizzard') ?? getSkillDefinitionById('skill:Fireball')
+  if (spellSecond) {
+    const dualAtkSpell = snap({
+      meta: { ...createEmptyBuildSnapshot().meta, inspectedMainSkillSlot: 1 },
+      skills: [
+        { slot: 1, skillId: 'skill:Ice_Shot', supports: [], skillLevel: 20, enabled: true },
+        { slot: 2, skillId: spellSecond.id, supports: [], skillLevel: 20, enabled: true },
+        ...createEmptyBuildSnapshot().skills.slice(2),
+      ],
+    })
+    const vIce = selectInspectedSkillDamageView(dualAtkSpell)
+    const vSpell = selectInspectedSkillDamageView({
+      ...dualAtkSpell,
+      meta: { ...dualAtkSpell.meta, inspectedMainSkillSlot: 2 },
+    })
+    if (vIce.mode === 'damaging' && vSpell.mode === 'damaging') {
+      assert(
+        '4F-6: two damaging mains — switch inspected slot changes primary combat numbers',
+        vIce.combat.dps !== vSpell.combat.dps || vIce.combat.hitDamage !== vSpell.combat.hitDamage,
+        `dps ${vIce.combat.dps}/${vSpell.combat.dps} hit ${vIce.combat.hitDamage}/${vSpell.combat.hitDamage}`,
+      )
+    }
+  }
+
+  const addedLightId = 'skill:Added_Lightning_Damage'
+  const iceNoSup = snap({
+    meta: { ...createEmptyBuildSnapshot().meta, inspectedMainSkillSlot: 1 },
+    skills: [
+      { slot: 1, skillId: 'skill:Ice_Shot', supports: [], skillLevel: 20, enabled: true },
+      ...createEmptyBuildSnapshot().skills.slice(1),
+    ],
+  })
+  const iceWithSup = snap({
+    ...iceNoSup,
+    skills: [
+      {
+        slot: 1,
+        skillId: 'skill:Ice_Shot',
+        supports: [{ supportSkillId: addedLightId, level: 20, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      ...createEmptyBuildSnapshot().skills.slice(1),
+    ],
+  })
+  const noSupView = selectInspectedSkillDamageView(iceNoSup)
+  const supView = selectInspectedSkillDamageView(iceWithSup)
+  if (
+    noSupView.mode === 'damaging' &&
+    supView.mode === 'damaging' &&
+    supView.supportApplied > 0
+  ) {
+    assert(
+      '4F-6: same skill — different support links change inspected hit/dps',
+      noSupView.combat.hitDamage !== supView.combat.hitDamage ||
+        noSupView.combat.dps !== supView.combat.dps,
+      `hit ${noSupView.combat.hitDamage}/${supView.combat.hitDamage}`,
+    )
   }
 
   /** Bypass `normalizeBuildSnapshot` finalizer so out-of-range slots survive (selector must still handle). */

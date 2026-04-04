@@ -293,28 +293,58 @@ async function main(): Promise<void> {
     }
   }
 
+  const rawExtractedBeforeDedupe = allSkills.length;
   const dedupe = new Map<string, SkillUrlRecord>();
+  let kindConflictCount = 0;
   for (const s of allSkills) {
-    if (!dedupe.has(s.sourceUrl)) dedupe.set(s.sourceUrl, s);
+    const existing = dedupe.get(s.sourceUrl);
+    if (existing) {
+      if (existing.kind !== s.kind) kindConflictCount++;
+      continue;
+    }
+    dedupe.set(s.sourceUrl, s);
   }
   const skillList = [...dedupe.values()];
+  const dedupeDropped = rawExtractedBeforeDedupe - skillList.length;
+
+  const stats = {
+    indexTargets: TARGETS.map((t) => t.key),
+    rawExtractedBeforeDedupe,
+    uniqueAfterSourceUrlDedupe: skillList.length,
+    dedupeDroppedDuplicateUrls: dedupeDropped,
+    kindConflictOnDuplicateUrl: kindConflictCount,
+    byKind: {
+      active: skillList.filter((s) => s.kind === "active").length,
+      support: skillList.filter((s) => s.kind === "support").length,
+      passive: skillList.filter((s) => s.kind === "passive").length,
+    },
+  };
+
+  if (kindConflictCount > 0) {
+    console.warn(
+      `[index] same sourceUrl appeared with different kind ${kindConflictCount} time(s); first record kept`,
+    );
+  }
 
   await writeJsonFile(path.join(manifestsDir(), "skill-urls.json"), {
     season: SEASON,
     parserVersion: PARSER_VERSION,
     generatedAt: new Date().toISOString(),
     count: skillList.length,
+    stats,
     skills: skillList,
   });
 
   await writeJsonFile(path.join(manifestsDir(), "all-indexes.manifest.json"), indexMetaManifest);
 
-  const byKind = {
-    active: skillList.filter((s) => s.kind === "active").length,
-    support: skillList.filter((s) => s.kind === "support").length,
-    passive: skillList.filter((s) => s.kind === "passive").length,
-  };
-  console.log("[index] deduped skill urls:", byKind, "total", skillList.length);
+  console.log(
+    "[index] skill url dedupe:",
+    `raw=${stats.rawExtractedBeforeDedupe}`,
+    `unique=${stats.uniqueAfterSourceUrlDedupe}`,
+    `dropped=${stats.dedupeDroppedDuplicateUrls}`,
+    "byKind",
+    stats.byKind,
+  );
 }
 
 main().catch((e) => {

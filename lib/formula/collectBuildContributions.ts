@@ -78,11 +78,13 @@ export function passiveModifiersForActiveSkill(
   const out: ModifierDefinition[] = []
   for (const p of snapshot.passives ?? []) {
     if (!p?.skillId || p.enabled === false) continue
-    if (p.applyMode === 'linked') {
+    const mode = p.applyMode ?? 'global'
+    if (mode === 'linked') {
       const linked = p.linkedMainSkillSlots ?? []
       if (linked.length === 0) continue
       if (!isMainSkillSlot(mainSlot) || !linked.includes(mainSlot)) continue
     }
+    /* applyMode === 'global' (default): inject into every main skill slot. */
     const def = getSkillDefinitionById(p.skillId)
     if (def?.family !== 'passive') continue
     const pLv = Math.max(1, Math.floor(p.skillLevel ?? 1))

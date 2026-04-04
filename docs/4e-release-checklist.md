@@ -17,7 +17,15 @@
 
 ## 發版前必跑指令
 
-**單一 4E 技能驗收子集**（無 audit、無資料庫、無 build，適合快速迴歸）：
+**4F 全技能 coverage gate（推薦列為技能釋出主驗收）**：
+
+```bash
+npm run verify:4f
+```
+
+說明見 **`docs/4f-release-checklist.md`**（全 bundle 門檻、partial 可接受範圍、絕對不可發版條件）。
+
+**單一 4E 技能驗收子集**（無 audit、無資料庫、無 build，適合快速迴歸；內容含舊有 structural / level-row 等）：
 
 ```bash
 npm run verify:4e
@@ -32,20 +40,20 @@ npm run release:check
 其內容包含（順序簡述）：
 
 - `audit:no-external-runtime-fetch`
-- `audit:no-runtime-remote-skill-fetch`
 - `check:data-policy`
 - `data:verify:local`
-- `verify:skill-data-integrity`（含 P0 欄位合約 + inspected selector 不 throw）
-- `verify:skill-regression`（support／passive link／aura／share／slot 切換等）
-- `verify:p0-active-level-tables`
-- `verify:inspected-skill-selectors`
+- **`verify:4f`**（`verify:full-skill-coverage-gate`、`verify:skill-data-integrity` 含全技能 selector sweep、`verify:skill-regression`、`verify:inspected-skill-selectors`、`verify:p0-active-level-tables`、`audit:no-runtime-remote-skill-fetch`）
+- `verify:active-skill-structural`
+- `verify:level-row-confidence`
 - `check:skill-engine`
 - `npm run build`
 
-## P0 合約（由 `verify:skill-data-integrity` 守護）
+## P0 合約（由 `verify:skill-data-integrity` + `verify:p0-active-level-tables` 守護）
 
 - **P0 active**（`scripts/verify/p0SkillIds.ts`）：bundle 內需存在，且 **`levelTable` 不可為空**（與 `data/overrides/ss12/active-skills.json` 意圖一致）。
 - **P0 support**：**`modifiers` 與 `supportRules` 不可同時為空**（至少一邊要有可結構化配對或數值，见 4E-2 overrides）。
+
+**4F-8 補充**：**全技能**等級列／support hollow／passive inject／parse 比例等，改由 `scripts/verify/fullSkillCoverageContract.ts` 與 **`npm run verify:4f`** 守護；P0 仍保留為「高精度試玩主技能」迴歸。
 
 ## partial / unsupported 的 UI 原則（4E-4 / 4E-5）
 

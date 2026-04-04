@@ -19,6 +19,11 @@ export type StatBlock = {
 
   baseDamageFlat?: number
   damagePct?: number
+  /**
+   * Attack skills: % of character weapon hit used as base (from `skill.weaponDamagePct`, summed).
+   * Applied in `computeDerivedCombat` only when `skillHitBaseFromLevel` is unset — explicit, not folded into `damagePct`.
+   */
+  weaponDamageEffectivenessPct?: number
   /** "More" damage: per source multiplies as ∏(1 + pct/100). */
   moreDamagePct?: number
 
@@ -59,6 +64,7 @@ export type AggregatedBuckets = {
   attackSpeedPct: number
   baseDamageFlat: number
   damagePct: number
+  weaponDamageEffectivenessPct: number
   moreDamageMult: number
   critChancePct: number
   critDamagePct: number
@@ -94,6 +100,7 @@ export type DerivedCombatFieldProvenance =
   | 'bundle_extension'
   | 'character_build'
   | 'skill_level_row'
+  | 'skill_weapon_effectiveness' // weaponDamagePct from skill aggregate × placeholder weapon base
   | 'legacy_placeholder'
   | 'panel_heuristic'
 
@@ -159,4 +166,6 @@ export type CombatBreakdown = {
   hitDamageBaseProvenance: DerivedCombatFieldProvenance
   /** Short human-readable note (e.g. "skill level row numeric", "placeholder weapon curve"). */
   hitDamageBaseNote: string
+  /** Sum from skill StatBlocks: % multiplier on placeholder weapon base when no level-row spell anchor. */
+  weaponDamageEffectivenessPct: number
 }

@@ -171,6 +171,11 @@ function main() {
   console.log(`[freeze] OK dataset_version_id=${result.datasetVersionId} version_label=${versionLabel}`)
   console.log(`[freeze] wrote ${path.relative(repoRoot, manifestPath)}`)
   console.log(`[freeze] activate=${activate}`)
+  console.log(`[freeze] next: npm run data:verify:frozen -- --season=${season}`)
+  console.log(`[freeze] versions: npm run data:list-dataset-versions -- --season=${season}`)
+  console.log(
+    `[freeze] rollback: npm run data:import:effective -- --set-active --season=${season} --version-label=<previous-label>`,
+  )
 }
 
 main()

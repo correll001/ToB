@@ -212,7 +212,17 @@ async function main(): Promise<void> {
   };
   await writeJsonFile(manifestPath, outManifest);
 
-  console.log(`[pages] done ok=${ok} skipped=${skipped} errors=${errors} total=${skills.length}`);
+  const byKind = { active: 0, support: 0, passive: 0 };
+  for (const s of skills) {
+    if (s.kind === "active" || s.kind === "support" || s.kind === "passive") {
+      byKind[s.kind]++;
+    }
+  }
+  console.log(
+    `[pages] done ok=${ok} skipped=${skipped} errors=${errors} total=${skills.length}`,
+    "byKind",
+    byKind,
+  );
 }
 
 main().catch((e) => {

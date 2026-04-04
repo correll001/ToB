@@ -38,7 +38,11 @@ function tallyParse(files: EffectiveRuntimeBundle['activeSkills'][]): Record<Par
 
 function missingLevelTable(def: SkillDefinition): boolean {
   const t = def.levelTable
-  return t == null || typeof t !== 'object' || Object.keys(t).length === 0
+  const empty = t == null || typeof t !== 'object' || Object.keys(t).length === 0
+  if (!empty) return false
+  if ((def.levelBreakpoints?.length ?? 0) > 0) return false
+  if (def.unsupportedLevelDataReason) return false
+  return true
 }
 
 function supportModifierCountAtLevel(sup: SkillDefinition, level: number): number {
@@ -123,6 +127,7 @@ function main() {
   )
 
   const activeNoLevelRow20 = activeSkills.skills
+    .filter((r) => !r.definition.unsupportedLevelDataReason)
     .filter((r) => resolveLevelRow(r.definition, 20).source === 'none')
     .map((r) => ({ id: r.definition.id, name: r.definition.name, parseStatus: r.parseStatus }))
   console.log('')

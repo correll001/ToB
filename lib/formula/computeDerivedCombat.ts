@@ -33,6 +33,7 @@ function deriveLayerConfidence(
   hitProv: DerivedCombatFieldProvenance,
   layerFallbacks: DerivedCombatFallbackTrace[],
 ): DerivedCombatLayerConfidence {
+  /* Only a numeric spell/baseDamage anchor from the level row yields full readiness; weapon% × placeholder stays partial. */
   if (hitProv !== 'skill_level_row') return 'partial'
   if (primary === 'legacy_fallback') return 'partial'
   if (layerFallbacks.length > 0) return 'partial'
@@ -108,7 +109,23 @@ export function computeDerivedCombat(
     })
   }
 
-  const damageBeforePct = baseWeaponDamage + agg.baseDamageFlat
+  const wEffRaw = agg.weaponDamageEffectivenessPct
+  const wEffAgg = Math.max(0, Number.isFinite(wEffRaw) ? wEffRaw : 0)
+
+  let weaponDamageEffectivenessApplied = 0
+  let weaponPortion = baseWeaponDamage
+
+  const hasSpellHitAnchor =
+    skillBase != null && Number.isFinite(skillBase) && skillBase > 0
+
+  if (!hasSpellHitAnchor && wEffAgg > 0) {
+    weaponPortion = baseWeaponDamage * (wEffAgg / 100)
+    weaponDamageEffectivenessApplied = wEffAgg
+    hitDamageBaseProvenance = 'skill_weapon_effectiveness'
+    hitDamageBaseNote = `${wEffAgg}% weapon effectiveness (skill data) × ${hitDamageBaseNote}`
+  }
+
+  const damageBeforePct = weaponPortion + agg.baseDamageFlat
   const damagePctTotal = agg.damagePct
   const afterInc = damageBeforePct * (1 + damagePctTotal / 100)
   const moreDamageMult = agg.moreDamageMult
@@ -181,6 +198,7 @@ export function computeDerivedCombat(
     derivedCombatConfidence,
     hitDamageBaseProvenance,
     hitDamageBaseNote,
+    weaponDamageEffectivenessPct: weaponDamageEffectivenessApplied,
   }
 
   return { combat, breakdown }

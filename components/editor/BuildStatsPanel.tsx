@@ -5,7 +5,7 @@ import React from 'react'
 import { useBuildStore } from '@/stores/useBuildStore'
 import { useBuildComputedStats } from '@/hooks/useBuildComputedStats'
 import type { MainSkillSlot } from '@/types/build'
-import type { CalculationConfidence } from '@/types/skillInstance'
+import type { CalculationConfidence, InspectedSkillPresentationMode } from '@/types/skillInstance'
 import type { SkillCombatRole } from '@/types/skillDamageRole'
 import { getSkillDefinitionById } from '@/lib/runtime/runtimeSkillLookup'
 
@@ -54,6 +54,26 @@ function confidenceLabel(c: CalculationConfidence): string {
   return map[c] ?? c
 }
 
+function inspectedPresentationLabel(m: InspectedSkillPresentationMode): string {
+  const map: Record<InspectedSkillPresentationMode, string> = {
+    damaging_ready: '輸出檢視 · 就緒（權威）',
+    damaging_partial: '輸出檢視 · 部分／估算',
+    role_support_only: '輔助石（無主 DPS 卡）',
+    role_aura_only: '光環／範圍（無主 DPS 卡）',
+    role_utility: '功能／詛咒／位移（無主 DPS 卡）',
+    role_unknown: '未分類（無主 DPS 卡）',
+    role_summon_driver: '召喚／圖騰驅動（無主 DPS 卡）',
+    dps_blocked_instance_unsupported: '阻擋：instance 不支援精算',
+    dps_blocked_effective_unsupported: '阻擋：合併層不支援精算',
+    none_no_slot: '未選檢視槽',
+    none_invalid_slot: '檢視槽無效',
+    none_empty_slot: '檢視槽空白',
+    none_disabled: '檢視槽已停用',
+    none_unsupported_main_family: '主欄位不支援（如輔助作主料）',
+  }
+  return map[m] ?? m
+}
+
 export default function BuildStatsPanel() {
   const dirty = useBuildStore((s) => s.dirty)
   const setTitle = useBuildStore((s) => s.setTitle)
@@ -67,6 +87,9 @@ export default function BuildStatsPanel() {
     combat,
     breakdown,
     skillInstanceBreakdowns,
+    inspectedTargetSlot,
+    inspectedPresentationMode,
+    inspectedViewSequenceKey,
     inspectedSkillBreakdown,
     inspectedSkillPrimaryInstance,
     inspectedSkillDamageView,
@@ -89,12 +112,13 @@ export default function BuildStatsPanel() {
 
   const level = snapshot.meta.level
   const dv = inspectedSkillDamageView
-  const inspectedConfidence: CalculationConfidence =
+  /** Never fall back to a previous slot’s breakdown when the current frame is `none`. */
+  const inspectedConfidence: CalculationConfidence | null =
     dv.mode === 'damaging' || dv.mode === 'dpsBlocked'
       ? dv.effectiveCalculationConfidence
       : dv.mode === 'nonDamaging'
         ? dv.calculationConfidence
-        : inspectedSkillBreakdown?.calculationConfidence ?? 'partial'
+        : null
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-slate-700/55 bg-gradient-to-b from-[#111820] via-[#0b0f14] to-[#080b0f] shadow-[0_12px_40px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.04)]">
@@ -257,7 +281,12 @@ export default function BuildStatsPanel() {
 
         <div className="mb-2 rounded-md border border-slate-800/60 bg-black/20 px-2.5 py-1.5 font-mono text-[9px] text-slate-600">
           <span className="text-slate-500">Inspected 解析</span> · {inspectedSkillDebugView.resolution}
-          {inspectedSkillDebugView.resolvedSlot != null ? ` · slot ${inspectedSkillDebugView.resolvedSlot}` : ''}
+          {inspectedTargetSlot != null ? ` · meta 槽 ${inspectedTargetSlot}` : ' · meta 槽 ∅'}
+          {inspectedSkillDebugView.resolvedSlot != null
+            ? ` · core 槽 ${inspectedSkillDebugView.resolvedSlot}`
+            : ''}
+          <span className="text-slate-500"> · </span>
+          <span className="text-slate-400">{inspectedPresentationMode}</span>
           <span className="text-slate-600">
             {' '}
             · 貢獻列 scoped {inspectedSkillDebugView.inspectedFilteredContributionCount} / build{' '}
@@ -287,16 +316,24 @@ export default function BuildStatsPanel() {
                 {damageRoleLabel(inspectedSkillBreakdown.damageRole)}{' '}
                 <span className="font-mono text-slate-600">({inspectedSkillBreakdown.damageRole})</span>
               </span>
+              {inspectedConfidence != null ? (
+                <span
+                  className={`rounded-md px-1.5 py-0.5 text-[10px] font-semibold uppercase ring-1 ${
+                    inspectedConfidence === 'ready'
+                      ? 'bg-cyan-950/55 text-cyan-200 ring-cyan-800/40'
+                      : inspectedConfidence === 'partial'
+                        ? 'bg-amber-950/50 text-amber-200 ring-amber-800/35'
+                        : 'bg-slate-900/70 text-slate-400 ring-slate-700/50'
+                  }`}
+                >
+                  {confidenceLabel(inspectedConfidence)}
+                </span>
+              ) : null}
               <span
-                className={`rounded-md px-1.5 py-0.5 text-[10px] font-semibold uppercase ring-1 ${
-                  inspectedConfidence === 'ready'
-                    ? 'bg-cyan-950/55 text-cyan-200 ring-cyan-800/40'
-                    : inspectedConfidence === 'partial'
-                      ? 'bg-amber-950/50 text-amber-200 ring-amber-800/35'
-                      : 'bg-slate-900/70 text-slate-400 ring-slate-700/50'
-                }`}
+                className="rounded-md bg-slate-900/75 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-slate-400 ring-1 ring-slate-700/60"
+                title="4F-7 產品分流"
               >
-                {confidenceLabel(inspectedConfidence)}
+                {inspectedPresentationLabel(inspectedPresentationMode)}
               </span>
             </div>
             <div className="mt-1 text-sm font-semibold text-slate-100">{inspectedSkillBreakdown.activeName}</div>
@@ -340,29 +377,53 @@ export default function BuildStatsPanel() {
             ) : null}
           </div>
         ) : dv.mode === 'none' ? (
-          <p className="mb-3 rounded-lg border border-slate-800/70 bg-black/20 px-3 py-2 text-[11px] text-slate-500">
-            {dv.reason === 'no_slot'
-              ? '請選擇要檢查的主技能槽（上方快速切換或技能頁）。'
-              : dv.reason === 'invalid_slot'
-                ? ' inspected 槽位無效（必須為 1–5）。'
-                : dv.reason === 'disabled'
-                  ? '此槽主技能組已停用。'
-                  : dv.reason === 'unsupported_main_family'
-                    ? '此槽非主技能家族（例如輔助石放在主連結），無法作為檢查主技能。'
-                    : '此槽無有效主技能或未選技能。'}
-          </p>
+          <div className="mb-3 rounded-lg border border-slate-800/70 bg-black/20 px-3 py-2 text-[11px] text-slate-500">
+            <p className="font-semibold text-slate-400">
+              {inspectedPresentationLabel(inspectedPresentationMode)}
+            </p>
+            <p className="mt-1 leading-relaxed">
+              {dv.reason === 'no_slot'
+                ? '請選擇要檢查的主技能槽（上方快速切換或技能頁）。'
+                : dv.reason === 'invalid_slot'
+                  ? 'inspected 槽位無效（必須為 1–5）。'
+                  : dv.reason === 'disabled'
+                    ? inspectedTargetSlot != null
+                      ? `槽 ${inspectedTargetSlot} 主技能組已停用。`
+                      : '此槽主技能組已停用。'
+                    : dv.reason === 'unsupported_main_family'
+                      ? inspectedTargetSlot != null
+                        ? `槽 ${inspectedTargetSlot}：非主技能家族（例如輔助石放在主連結），無法作為檢查主技能。`
+                        : '此槽非主技能家族（例如輔助石放在主連結），無法作為檢查主技能。'
+                      : dv.reason === 'empty_slot'
+                        ? inspectedTargetSlot != null
+                          ? `槽 ${inspectedTargetSlot} 尚未配置技能。`
+                          : '此槽無有效主技能或未選技能。'
+                        : '此槽無有效主技能或未選技能。'}
+            </p>
+            <p className="mt-2 text-[10px] text-slate-600">
+              此狀態不顯示單技能 DPS；切換檢視槽時主卡會清空，不沿用上一技能數字。
+            </p>
+          </div>
         ) : null}
 
-        <div
-          key={`inspected-output-${inspectedMainSkillSlot ?? 'x'}-${inspectedSkillPrimaryInstance?.activeId ?? 'none'}`}
-        >
+        <div key={inspectedViewSequenceKey}>
         {dv.mode === 'damaging' ? (
           <>
             <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500">
-              {dv.damagingPresentation === 'authoritative'
-                ? '此技能輸出（Build + 僅此槽技能貢獻）'
-                : '此技能輸出估算（資料不完整 · 僅供參考）'}
+              {inspectedPresentationMode === 'damaging_ready'
+                ? '此技能輸出（Build + 僅此槽技能貢獻 · 就緒）'
+                : '此技能輸出（部分／估算 · 非完整權威）'}
             </div>
+            {inspectedSkillPrimaryInstance ? (
+              <p className="mb-2 text-[10px] text-slate-500">
+                技能實例信心 <span className="font-mono">{confidenceLabel(inspectedSkillPrimaryInstance.calculationConfidence)}</span>
+                {' · '}
+                合併有效 <span className="font-mono">{confidenceLabel(dv.effectiveCalculationConfidence)}</span>
+                {inspectedPresentationMode === 'damaging_partial' ? (
+                  <span className="text-amber-200/80"> · 請一併閱讀下方 derive fallback</span>
+                ) : null}
+              </p>
+            ) : null}
             {dv.damagingPresentation === 'estimate' ? (
               <div className="mb-2 rounded-md border border-amber-800/45 bg-amber-950/25 px-2.5 py-2 text-[10px] leading-relaxed text-amber-100/90">
                 <span className="font-semibold text-amber-200/95">缺失／警告 · </span>
@@ -422,13 +483,21 @@ export default function BuildStatsPanel() {
         ) : dv.mode === 'dpsBlocked' ? (
           <div className="rounded-lg border border-rose-900/40 bg-rose-950/15 px-3 py-2.5">
             <div className="text-[11px] font-semibold text-rose-200/95">
-              不顯示主 DPS 卡 · {damageRoleLabel(dv.role)}{' '}
-              <span className="font-mono text-[10px] text-slate-500">({dv.blockReason})</span>
+              {inspectedPresentationLabel(inspectedPresentationMode)}{' '}
+              <span className="font-mono text-[10px] font-normal text-slate-500">
+                · {damageRoleLabel(dv.role)} ({dv.blockReason})
+              </span>
             </div>
             <p className="mt-1 text-[10px] leading-relaxed text-slate-500">
-              family <span className="font-mono text-slate-400">{dv.family}</span> · instance{' '}
-              {confidenceLabel(dv.calculationConfidence)} · effective{' '}
-              {confidenceLabel(dv.effectiveCalculationConfidence)}
+              role <span className="font-mono text-slate-400">{dv.role}</span> · tags{' '}
+              <span className="font-mono text-slate-500">
+                {dv.tags.slice(0, 6).join('、') || '—'}
+              </span>
+              <span className="block mt-0.5">
+                family <span className="font-mono text-slate-400">{dv.family}</span> · instance{' '}
+                {confidenceLabel(dv.calculationConfidence)} · effective{' '}
+                {confidenceLabel(dv.effectiveCalculationConfidence)}
+              </span>
             </p>
             <ul className="mt-2 list-inside list-disc space-y-0.5 text-[10px] text-slate-400">
               {dv.whyNoDpsLines.map((line, i) => (
@@ -488,6 +557,16 @@ export default function BuildStatsPanel() {
                 </ul>
               </div>
             ) : null}
+            {dv.passiveAuraLines.length ? (
+              <div className="mt-2">
+                <div className="text-[9px] font-bold uppercase text-slate-600">被動／光環 · 全域 vs 連結槽</div>
+                <ul className="mt-1 list-inside list-disc text-[10px] text-slate-500">
+                  {dv.passiveAuraLines.map((line, i) => (
+                    <li key={`dpsblk-passive-${i}-${line.slice(0, 32)}`}>{line}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             {dv.modifierLines.length ? (
               <div className="mt-2 max-h-20 overflow-y-auto font-mono text-[8px] text-slate-500">
                 {dv.modifierLines.slice(0, 8).map((l) => (
@@ -502,10 +581,11 @@ export default function BuildStatsPanel() {
         ) : dv.mode === 'nonDamaging' ? (
           <div className="rounded-lg border border-amber-900/35 bg-amber-950/10 px-3 py-2.5">
             <div className="text-[11px] font-semibold text-amber-200/95">
-              不以主 DPS 卡呈現 · {damageRoleLabel(dv.role)}
+              {inspectedPresentationLabel(inspectedPresentationMode)}
             </div>
             <p className="mt-1 text-[10px] leading-relaxed text-slate-500">
-              family <span className="font-mono text-slate-400">{dv.family}</span> · calculationConfidence{' '}
+              role <span className="font-mono text-slate-400">{dv.role}</span> · family{' '}
+              <span className="font-mono text-slate-400">{dv.family}</span> · calculationConfidence{' '}
               {confidenceLabel(dv.calculationConfidence)}
             </p>
             <ul className="mt-2 list-inside list-disc space-y-0.5 text-[10px] text-slate-400">
@@ -513,6 +593,18 @@ export default function BuildStatsPanel() {
                 <li key={`non-dmg-why-${i}-${line.slice(0, 48)}`}>{line}</li>
               ))}
             </ul>
+            {dv.tags.length ? (
+              <div className="mt-2 flex flex-wrap gap-1">
+                {dv.tags.slice(0, 16).map((t) => (
+                  <span
+                    key={t}
+                    className="rounded border border-slate-800/80 bg-black/25 px-1 py-0.5 text-[8px] text-slate-500"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            ) : null}
             {dv.missingDataHints.length ? (
               <div className="mt-2 rounded border border-slate-800/60 bg-black/20 px-2 py-1.5">
                 <div className="text-[9px] font-bold uppercase text-slate-500">資料缺口提示</div>

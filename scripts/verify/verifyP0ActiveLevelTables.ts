@@ -1,5 +1,8 @@
 /**
- * 4E-1: P0 active skills must have non-empty levelTable (effective / bundled snapshot).
+ * 4E-1 / 4F-8: P0 active skills — deep levelTable shape + L10/L20 delta smoke (curated list).
+ *
+ * Full-bundle structural gates live in `verify:skill-data-integrity` + `verify:full-skill-coverage-gate`
+ * (`fullSkillCoverageContract.ts`). Keep this script for high-signal playable-actives regression.
  *
  *   npm run verify:p0-active-level-tables
  */

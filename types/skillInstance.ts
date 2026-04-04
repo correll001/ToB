@@ -75,6 +75,9 @@ export type SkillInstanceBreakdown = {
     source: "levelTable" | "breakpoints" | "none"
     partial: boolean
     modifierCount: number
+    /** True when emitted level-row modifiers include hit/damage stats (4F-5). */
+    hitScalingFromRow?: boolean
+    warnings?: string[]
     textLineHints?: string[]
   }
   supports: Array<{
@@ -109,6 +112,9 @@ export type SkillInstanceTrace = {
   passiveInjects: Array<{ refId: string; stat: string; operation: string }>
   post20Applied: boolean
   post20RefId?: string
+  levelRowSource?: "levelTable" | "breakpoints" | "none"
+  levelRowHitScaling?: boolean
+  levelRowWarnings?: string[]
 }
 
 export type SkillInstance = {
@@ -210,6 +216,26 @@ export type InspectedSkillDamageView =
   | InspectedSkillDamageViewDpsBlocked
   | InspectedSkillDamageViewNonDamaging
 
+/**
+ * Product-facing inspected branch (4F-7) — strict mode separation for panel routing.
+ * Derive only from `InspectedSkillDamageView` + `none` reasons; do not infer from stale instance.
+ */
+export type InspectedSkillPresentationMode =
+  | 'damaging_ready'
+  | 'damaging_partial'
+  | 'role_support_only'
+  | 'role_aura_only'
+  | 'role_utility'
+  | 'role_unknown'
+  | 'role_summon_driver'
+  | 'dps_blocked_instance_unsupported'
+  | 'dps_blocked_effective_unsupported'
+  | 'none_no_slot'
+  | 'none_invalid_slot'
+  | 'none_empty_slot'
+  | 'none_disabled'
+  | 'none_unsupported_main_family'
+
 /** Selector-only audit bundle for inspected skill (4E-3). */
 export type InspectedSkillDebugView = {
   metaSlotRaw: number | null
@@ -223,6 +249,8 @@ export type InspectedSkillDebugView = {
     | 'unsupported_main_family'
   primaryInstance: SkillInstance | null
   damageViewMode: InspectedSkillDamageView['mode']
+  /** 4F-7 — same frame as damage view; use for routing without re-deriving. */
+  presentationMode: InspectedSkillPresentationMode
   inspectedFilteredContributionCount: number
   buildWideContributionCount: number
 }

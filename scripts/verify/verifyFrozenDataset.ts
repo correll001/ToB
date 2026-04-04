@@ -28,12 +28,13 @@ function main() {
 
     const row = db
       .prepare(
-        `SELECT id, season, version_label, imported_at, frozen_at, source_snapshot_manifest, provenance_json, is_active
+        `SELECT id, season, source_kind, version_label, imported_at, frozen_at, source_snapshot_manifest, provenance_json, is_active
          FROM dataset_versions WHERE id = ?`,
       )
       .get(vid) as {
       id: number
       season: string
+      source_kind: string
       version_label: string
       imported_at: string
       frozen_at: string | null
@@ -64,9 +65,22 @@ function main() {
         if (prov.schemaVersion !== 1) issues.push('provenance schemaVersion !== 1')
         if (!prov.sourceUrls?.length) issues.push('provenance.sourceUrls empty')
         if (!prov.recordCounts) issues.push('provenance.recordCounts missing')
+        if (prov.season !== row.season) issues.push(`provenance.season ${prov.season} !== row.season ${row.season}`)
+        if (prov.frozenDatasetVersion !== row.version_label) {
+          issues.push(
+            `provenance.frozenDatasetVersion ${prov.frozenDatasetVersion} !== row.version_label ${row.version_label}`,
+          )
+        }
+        if (prov.datasetVersionId !== row.id) {
+          issues.push(`provenance.datasetVersionId ${prov.datasetVersionId} !== row.id ${row.id}`)
+        }
       } catch {
         issues.push('provenance_json not valid JSON')
       }
+    }
+
+    if (!row.source_kind) {
+      issues.push('source_kind is empty')
     }
 
     const frozenPath = path.join(repoRoot, 'data', 'frozen', season, `frozen-${safeFilePart(row.version_label)}.json`)
@@ -87,7 +101,14 @@ function main() {
     }
 
     console.log(`[data:verify:frozen] active id=${row.id} season=${row.season} version_label=${row.version_label}`)
+    console.log(`  imported_at: ${row.imported_at}`)
+    console.log(`  source_kind: ${row.source_kind}`)
     console.log(`  frozen_at: ${row.frozen_at ?? '—'}`)
+    const overrideLine =
+      prov?.override != null
+        ? `override layer schema=${prov.override.overridesSchemaVersion ?? '—'} at=${prov.override.generatedAt ?? '—'}`
+        : 'override: (none in provenance — OK if no override-report in effective/)'
+    console.log(`  ${overrideLine}`)
     console.log(`  provenance: ${prov ? `urls=${prov.sourceUrls.length} counts=active ${prov.recordCounts.activeSkills}` : '—'}`)
 
     if (issues.length) {

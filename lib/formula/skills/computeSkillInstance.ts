@@ -20,6 +20,8 @@ import {
 import { composeSkillModifiers } from "./composeSkillModifiers"
 import { skillInstanceToContribution } from "./skillInstanceAdapter"
 import {
+  levelRowModifiersIndicateHitScaling,
+  levelRowWarningAffectsConfidence,
   modifiersFromSkillLevelRow,
   modifiersFromSupportGemLevelRowAppliedToActive,
   resolveLevelRow,
@@ -33,12 +35,15 @@ function deriveCalculationConfidence(
   levelSource: "levelTable" | "breakpoints" | "none",
   levelRowPartial: boolean,
   damagingEvidence: boolean,
+  /** When a level row exists, hit scaling must appear in emitted level modifiers (not mana/cooldown alone). 4F-5 */
+  levelRowHitScaling: boolean,
   engineWarnings: string[],
 ): CalculationConfidence {
   if (parseStatus === "failed") return "unsupported"
   if (role === "damaging") {
     if (!damagingEvidence) return "unsupported"
     if (parseStatus === "partial" || levelRowPartial || levelSource === "none") return "partial"
+    if (levelSource !== "none" && !levelRowHitScaling) return "partial"
     if (engineWarnings.length > 0) return "partial"
     return "ready"
   }
@@ -66,9 +71,14 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
 
   const { source: levelSource, row: levelRowResolved } = resolveLevelRow(active, level)
   const levelMods = modifiersFromSkillLevelRow(active, level)
-  warnings.push(...warningsForSkillLevelRow(active, level))
+  const levelRowWarningsFull = warningsForSkillLevelRow(active, level)
+  for (const w of levelRowWarningsFull) {
+    if (!levelRowWarningAffectsConfidence(w)) continue
+    warnings.push(w)
+  }
 
   const structuralDamageEvidence = hasStructuralDamageEvidence(active, level, levelMods)
+  const levelRowHitScaling = levelSource === "none" || levelRowModifiersIndicateHitScaling(levelMods)
   const damageRole = inferSkillCombatRole(active, level, {
     parseStatus: input.activeParse?.status,
     levelModsFromRow: levelMods,
@@ -103,6 +113,7 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
       }
       const supRowMods = modifiersFromSupportGemLevelRowAppliedToActive(active.id, sup, gemLevel)
       for (const w of warningsForSkillLevelRow(sup, gemLevel)) {
+        if (!levelRowWarningAffectsConfidence(w)) continue
         warnings.push(`support_${sup.id}:${w}`)
       }
       for (const m of supRowMods) {
@@ -170,6 +181,7 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
     levelSource,
     levelRowResolved?.partial ?? false,
     structuralDamageEvidence,
+    levelRowHitScaling,
     warnings,
   )
 
@@ -189,6 +201,9 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
     })),
     post20Applied: post20Mult > 1 && !post20Disabled,
     post20RefId,
+    levelRowSource: levelSource,
+    levelRowHitScaling,
+    levelRowWarnings: levelRowWarningsFull.length ? levelRowWarningsFull : undefined,
   }
 
   const breakdown: SkillInstanceBreakdown = {
@@ -206,6 +221,8 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
       source: levelSource,
       partial: levelRowResolved?.partial ?? false,
       modifierCount: levelMods.length,
+      hitScalingFromRow: levelRowHitScaling,
+      warnings: levelRowWarningsFull.length ? levelRowWarningsFull : undefined,
       textLineHints:
         levelRowResolved?.textLines && levelRowResolved.textLines.length
           ? levelRowResolved.textLines.slice(0, 3)

@@ -78,7 +78,11 @@ const multistrike = sk({
   name: "連續攻擊",
   family: "support",
   tags: ["攻擊", "輔助"],
-  supportRules: { requiresAttack: true },
+  supportRules: {
+    requiresAttack: true,
+    forbiddenSkillTags: ["Mobility", "Channeled"],
+    allowedSkillTags: ["Attack"],
+  },
   modifiers: [
     {
       selector: { kind: "supportedSkill" },
@@ -122,7 +126,10 @@ function main(): void {
   })
 
   const c = computeSkillInstance({ active: leap, level: 25, supports: [multistrike] })
-  cases.push({ name: "Leap+Multistrike_applies", ok: c.supports[0].applied })
+  cases.push({ name: "Leap+Multistrike_skipped_mobility", ok: !c.supports[0].applied })
+
+  const c2 = computeSkillInstance({ active: iceShot, level: 25, supports: [multistrike] })
+  cases.push({ name: "IceShot+Multistrike_applies", ok: c2.supports[0].applied })
 
   const d = computeSkillInstance({ active: iceShot, level: 32, supports: [scatter] })
   const exp = post20MoreMultiplier(32, TLIDB_DEFAULT_POST20)

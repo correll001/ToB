@@ -1,8 +1,26 @@
 {
   "season": "ss12",
   "parserVersion": "1",
-  "generatedAt": "2026-04-04T05:22:39.205Z",
+  "generatedAt": "2026-04-04T08:35:25.012Z",
   "count": 330,
+  "stats": {
+    "indexTargets": [
+      "Active_Skill",
+      "Support_Skill",
+      "Passive_Skill",
+      "Skill_Level",
+      "Character_Build"
+    ],
+    "rawExtractedBeforeDedupe": 350,
+    "uniqueAfterSourceUrlDedupe": 330,
+    "dedupeDroppedDuplicateUrls": 20,
+    "kindConflictOnDuplicateUrl": 20,
+    "byKind": {
+      "active": 153,
+      "support": 122,
+      "passive": 55
+    }
+  },
   "skills": [
     {
       "sourceUrl": "https://tlidb.com/tw/Leap_Attack",

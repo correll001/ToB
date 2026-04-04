@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "generatedAt": "2026-04-04T08:36:11.490Z",
+    "indexSkillUrlsDeclared": 330,
+    "indexStatsFromFile": {
+      "indexTargets": [
+        "Active_Skill",
+        "Support_Skill",
+        "Passive_Skill",
+        "Skill_Level",
+        "Character_Build"
+      ],
+      "rawExtractedBeforeDedupe": 350,
+      "uniqueAfterSourceUrlDedupe": 330,
+      "dedupeDroppedDuplicateUrls": 20,
+      "kindConflictOnDuplicateUrl": 20,
+      "byKind": {
+        "active": 153,
+        "support": 122,
+        "passive": 55
+      }
+    },
+    "pagesManifestEntryRows": 330,
+    "duplicateManifestRowsForSameUrl": 0,
+    "uniqueUrlsInManifest": 330,
+    "byKindExpectedFromIndex": {
+      "active": 153,
+      "support": 122,
+      "passive": 55
+    },
+    "detailPagesOk": 330,
+    "missingManifest": 0,
+    "manifestHttpError": 0,
+    "missingFile": 0,
+    "suspiciousStubHtml": 0,
+    "readyForNormalize": true
+  },
+  "missingManifest": [],
+  "manifestHttpError": [],
+  "missingFile": [],
+  "suspiciousContent": [],
+  "sampleProblemRows": []
+}

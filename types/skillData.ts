@@ -37,6 +37,10 @@ export type SkillLevelEntry = {
   cooldown?: number | null
   castTime?: number | null
   projectileCount?: number | null
+  /** Weapon hit: percent of weapon attack damage (e.g. 313 = 313%). From TLIDB growth column / text. */
+  weaponDamagePct?: number | null
+  /** Support gem row: 被輔助技能額外 +X% 傷害 style increased damage (additive % bucket). */
+  supportMoreDamageIncreasedPct?: number | null
   /** Flat damage interval or scalar when known. */
   baseDamage?: number | { min: number; max: number } | null
   /** Added damage effectiveness ratio if known (e.g. 0–1+). */
@@ -101,6 +105,8 @@ export type SupportRule = {
   requiresSpell?: boolean
   requiresProjectile?: boolean
   requiresChanneled?: boolean
+  /** Supported active must carry 近戰 (Melee) tag. */
+  requiresMelee?: boolean
   /** Unstructured requirements not yet mapped to booleans. */
   rawRequirementLines?: string[]
 }
@@ -144,4 +150,10 @@ export type SkillDefinition = {
   /** ETL / authorship metadata (optional). */
   parserVersion?: string
   fetchedAt?: string
+
+  /**
+   * When the wiki snapshot has no `成長` table rows we could parse, document why level scaling is absent.
+   * Satisfies structural coverage contracts for utility / edge pages.
+   */
+  unsupportedLevelDataReason?: string
 }

@@ -15,7 +15,15 @@ export default function DebugDatasetPage() {
       <div className="mx-auto max-w-2xl rounded-xl border border-slate-800 bg-slate-950/80 p-6 shadow-xl">
         <h1 className="text-lg font-semibold text-slate-100">Bundled dataset (internal)</h1>
         <p className="mt-2 text-sm text-slate-500">
-          內部溯源與誠實度標記；非官方授權聲明。執行時只做本地 bundle + 公式，不向技能資料站請求。
+          內部溯源與誠實度標記；非官方授權聲明。產品 runtime 僅讀本地{' '}
+          <code className="text-slate-500">effective-runtime-bundle.json</code>；不向技能資料站即時請求。維護端凍結／DB 見{' '}
+          <code className="text-slate-500">docs/skill-data-policy.md</code>（4F-9）。
+        </p>
+        <p className="mt-3 rounded-lg border border-slate-800/80 bg-slate-900/40 px-3 py-2 text-[11px] leading-relaxed text-slate-500">
+          <span className="text-slate-400">Maintenance</span>：驗版本{' '}
+          <code className="text-slate-500">npm run data:list-dataset-versions</code> · 凍結鏈{' '}
+          <code className="text-slate-500">npm run data:verify:frozen</code> · 切換 API{' '}
+          <code className="text-slate-500">npm run data:verify:dataset-governance</code>
         </p>
 
         {mismatch ? (

@@ -1,5 +1,14 @@
 import type { ModifierDefinition, SkillDefinition, SkillLevelEntry } from '@/types/skillData'
 
+/** Keep local to avoid circular import with inferDamageRole (same rules as modifierSuggestsDirectDamage). */
+function levelModSuggestsHitScaling(m: ModifierDefinition): boolean {
+  const s = m.stat.toLowerCase()
+  if (s.includes('damage') && !s.includes('mana') && !s.includes('cost')) return true
+  if (s === 'skill.addedbasedamage') return true
+  if (s.includes('skill.weapon')) return true
+  return false
+}
+
 export function resolveLevelRow(
   active: SkillDefinition,
   level: number,
@@ -23,13 +32,49 @@ export function resolveLevelRow(
   return { row: undefined, source: 'none' }
 }
 
-function levelRowTraceWarnings(row: SkillLevelEntry): string[] {
+/** Auditable fallback only — must not downgrade calculationConfidence to partial (4F-5). */
+export const LEVEL_ROW_INFO_ONLY_WARNINGS = new Set<string>(['level_row:baseDamage_range_midpoint_fallback'])
+
+export function levelRowWarningAffectsConfidence(w: string): boolean {
+  return !LEVEL_ROW_INFO_ONLY_WARNINGS.has(w)
+}
+
+/** Min–max interval on the row: when unsafe, do not emit a numeric modifier (stay partial / trace only). */
+export function tryResolveBaseDamageRangeMidpoint(range: { min: number; max: number }): {
+  midpoint: number
+} | null {
+  const min = range.min
+  const max = range.max
+  if (!Number.isFinite(min) || !Number.isFinite(max)) return null
+  if (min > max) return null
+  if (min < 0 || max < 0) return null
+  const mean = (min + max) / 2
+  if (mean <= 0) return null
+  const spread = max - min
+  if (min > 0 && max / min > 80) return null
+  if (spread / mean > 2.5) return null
+  return { midpoint: mean }
+}
+
+/** True when resolved level-row modifiers include hit / damage scaling (not mana, cooldown, cast time, projectiles alone). */
+export function levelRowModifiersIndicateHitScaling(levelMods: ModifierDefinition[]): boolean {
+  return levelMods.some((m) => levelModSuggestsHitScaling(m))
+}
+
+function levelRowTraceWarnings(row: SkillLevelEntry, emittedFromRangeMidpoint: boolean, rangeRejected: boolean): string[] {
   const w: string[] = []
   if (row.partial) {
     w.push('level_row:parse_partial')
   }
-  if (row.baseDamage != null && typeof row.baseDamage === 'object' && 'min' in row.baseDamage) {
-    w.push('level_row:baseDamage_range_not_numeric_skipped')
+  if (emittedFromRangeMidpoint) {
+    w.push('level_row:baseDamage_range_midpoint_fallback')
+  }
+  if (rangeRejected) {
+    w.push('level_row:baseDamage_range_unsafe_or_skipped')
+  }
+  const bd = row.baseDamage
+  if (bd != null && typeof bd === 'object' && 'min' in bd && !('max' in bd)) {
+    w.push('level_row:baseDamage_range_missing_max')
   }
   return w
 }
@@ -53,13 +98,14 @@ export function modifiersFromSupportGemLevelRowAppliedToActive(
   })
 }
 
-export function modifiersFromSkillLevelRow(active: SkillDefinition, level: number): ModifierDefinition[] {
-  const { row } = resolveLevelRow(active, level)
-  if (!row) return []
+type RowEmitFlags = { baseDamageFromRangeMidpoint: boolean; baseDamageRangeRejected: boolean }
 
-  const refs: ModifierDefinition[] = []
-  const sid = active.id
-
+function pushLevelRowModifiersFromRow(
+  row: SkillLevelEntry,
+  sid: string,
+  refs: ModifierDefinition[],
+  flags: RowEmitFlags,
+): void {
   if (row.projectileCount != null && typeof row.projectileCount === 'number' && row.projectileCount !== 0) {
     refs.push({
       selector: { kind: 'skill', skillId: sid },
@@ -101,6 +147,17 @@ export function modifiersFromSkillLevelRow(active: SkillDefinition, level: numbe
     })
   }
 
+  if (row.weaponDamagePct != null && typeof row.weaponDamagePct === 'number' && Number.isFinite(row.weaponDamagePct)) {
+    refs.push({
+      selector: { kind: 'skill', skillId: sid },
+      operation: 'add',
+      stat: 'skill.weaponDamagePct',
+      value: row.weaponDamagePct,
+      valueKind: 'flat',
+      sourceText: row.textLines?.[0] ?? `level ${row.level} weaponDamagePct`,
+    })
+  }
+
   if (row.baseDamage != null) {
     if (typeof row.baseDamage === 'number' && Number.isFinite(row.baseDamage)) {
       refs.push({
@@ -111,7 +168,37 @@ export function modifiersFromSkillLevelRow(active: SkillDefinition, level: numbe
         valueKind: 'flat',
         sourceText: row.textLines?.[0] ?? `level ${row.level} baseDamage`,
       })
+    } else if (typeof row.baseDamage === 'object' && row.baseDamage !== null && 'min' in row.baseDamage && 'max' in row.baseDamage) {
+      const resolved = tryResolveBaseDamageRangeMidpoint(row.baseDamage as { min: number; max: number })
+      if (resolved) {
+        flags.baseDamageFromRangeMidpoint = true
+        refs.push({
+          selector: { kind: 'skill', skillId: sid },
+          operation: 'add',
+          stat: 'skill.addedBaseDamage',
+          value: resolved.midpoint,
+          valueKind: 'flat',
+          sourceText: `${row.textLines?.[0] ?? `level ${row.level}`} · addedBaseDamage (min+max)/2 fallback`,
+        })
+      } else {
+        flags.baseDamageRangeRejected = true
+      }
     }
+  }
+
+  if (
+    row.supportMoreDamageIncreasedPct != null &&
+    typeof row.supportMoreDamageIncreasedPct === 'number' &&
+    Number.isFinite(row.supportMoreDamageIncreasedPct)
+  ) {
+    refs.push({
+      selector: { kind: 'skill', skillId: sid },
+      operation: 'mul',
+      stat: 'damage.increased',
+      value: row.supportMoreDamageIncreasedPct,
+      valueKind: 'increased',
+      sourceText: row.textLines?.[0] ?? `level ${row.level} supportMoreDamageIncreasedPct`,
+    })
   }
 
   if (row.addedDamageEffectiveness != null && typeof row.addedDamageEffectiveness === 'number') {
@@ -124,13 +211,48 @@ export function modifiersFromSkillLevelRow(active: SkillDefinition, level: numbe
       sourceText: row.textLines?.[0] ?? `level ${row.level} addedDamageEffectiveness`,
     })
   }
-
-  return refs
 }
 
-/** Warnings for level row traceability (partial / skipped structured fields). */
+function buildLevelRowModifierEmit(row: SkillLevelEntry, sid: string): {
+  mods: ModifierDefinition[]
+  flags: RowEmitFlags
+} {
+  const refs: ModifierDefinition[] = []
+  const flags: RowEmitFlags = { baseDamageFromRangeMidpoint: false, baseDamageRangeRejected: false }
+  pushLevelRowModifiersFromRow(row, sid, refs, flags)
+  return { mods: refs, flags }
+}
+
+export function modifiersFromSkillLevelRow(active: SkillDefinition, level: number): ModifierDefinition[] {
+  const { row } = resolveLevelRow(active, level)
+  if (!row) return []
+  return buildLevelRowModifierEmit(row, active.id).mods
+}
+
+/** Warnings for level row traceability (partial / skipped structured fields / range fallback). */
 export function warningsForSkillLevelRow(active: SkillDefinition, level: number): string[] {
   const { row } = resolveLevelRow(active, level)
   if (!row) return []
-  return levelRowTraceWarnings(row)
+  const { flags } = buildLevelRowModifierEmit(row, active.id)
+  return levelRowTraceWarnings(row, flags.baseDamageFromRangeMidpoint, flags.baseDamageRangeRejected)
+}
+
+/**
+ * Spell hit anchor for `computeDerivedCombat` — same policy as level-row modifiers (`tryResolveBaseDamageRangeMidpoint`).
+ * Does not include weaponDamagePct (that flows via `weaponDamageEffectivenessPct` on StatBlock).
+ */
+export function skillHitBaseAnchorFromLevelRow(row: SkillLevelEntry | undefined): {
+  value: number | null
+  fromMinMaxAverage: boolean
+} {
+  if (!row || row.baseDamage == null) return { value: null, fromMinMaxAverage: false }
+  const bd = row.baseDamage
+  if (typeof bd === 'number' && Number.isFinite(bd) && bd > 0) {
+    return { value: bd, fromMinMaxAverage: false }
+  }
+  if (typeof bd === 'object' && bd !== null && 'min' in bd && 'max' in bd) {
+    const resolved = tryResolveBaseDamageRangeMidpoint(bd as { min: number; max: number })
+    if (resolved) return { value: resolved.midpoint, fromMinMaxAverage: true }
+  }
+  return { value: null, fromMinMaxAverage: false }
 }

@@ -27,16 +27,15 @@ export function skillInstanceToContribution(instance: SkillInstance): Contributi
   const combinedMore = post * (1 + moreDamagePctFromProducts / 100)
   const morePct = (combinedMore - 1) * 100
 
-  const weapon = st["skill.weaponDamagePct"] ?? 0
-  /** Bridge uses only composed stats from parsed modifiers — no invented flats. */
-  const bridgeDamagePct = inc + weapon * 0.12
+  const weaponEff = st["skill.weaponDamagePct"] ?? 0
 
   return {
     kind: "skill",
     refId: `instance:${instance.activeId}`,
     label: `Skill instance · ${instance.activeName} (Lv${instance.level})`,
     block: {
-      damagePct: bridgeDamagePct,
+      damagePct: inc,
+      weaponDamageEffectivenessPct: weaponEff > 0 ? weaponEff : undefined,
       moreDamagePct: morePct,
       attackSpeedPct: st["skill.attackSpeedIncreased"] ?? 0,
       baseDamageFlat: st["skill.addedBaseDamage"] ?? 0,

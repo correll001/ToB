@@ -1,14 +1,14 @@
 {
   "season": "ss12",
   "parserVersion": "1",
-  "generatedAt": "2026-04-04T05:22:38.949Z",
+  "generatedAt": "2026-04-04T08:35:24.736Z",
   "entries": [
     {
       "sourceUrl": "https://tlidb.com/tw/Support_Skill",
       "kind": "support",
       "locale": "tw",
       "season": "ss12",
-      "fetchedAt": "2026-04-04T05:22:38.949Z",
+      "fetchedAt": "2026-04-04T08:35:24.736Z",
       "status": "ok",
       "outputPath": "data/raw/ss12/indexes/Support_Skill.html",
       "contentSha256": "cf2e6562340db9288895fc70896077516f6a1217d28c013e650bc4144b2e831d",

@@ -36,6 +36,9 @@ function ruleFailsOnTags(activeCanon: Set<string>, rule: SupportRule): string | 
   if (rule.requiresChanneled && !activeCanon.has("Channeled")) {
     return "requires_channeled"
   }
+  if (rule.requiresMelee && !activeCanon.has("Melee")) {
+    return "requires_melee"
+  }
 
   return null
 }

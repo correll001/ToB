@@ -13,6 +13,7 @@ export function aggregateStatBlocks(blocks: StatBlock[]): AggregatedBuckets {
     attackSpeedPct: 0,
     baseDamageFlat: 0,
     damagePct: 0,
+    weaponDamageEffectivenessPct: 0,
     moreDamageMult: 1,
     critChancePct: 0,
     critDamagePct: 0,
@@ -29,6 +30,7 @@ export function aggregateStatBlocks(blocks: StatBlock[]): AggregatedBuckets {
     out.attackSpeedPct += b.attackSpeedPct ?? 0
     out.baseDamageFlat += b.baseDamageFlat ?? 0
     out.damagePct += b.damagePct ?? 0
+    out.weaponDamageEffectivenessPct += b.weaponDamageEffectivenessPct ?? 0
     out.critChancePct += b.critChancePct ?? 0
     out.critDamagePct += b.critDamagePct ?? 0
     const m = b.moreDamagePct

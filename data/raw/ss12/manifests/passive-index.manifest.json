@@ -1,14 +1,14 @@
 {
   "season": "ss12",
   "parserVersion": "1",
-  "generatedAt": "2026-04-04T05:22:39.048Z",
+  "generatedAt": "2026-04-04T08:35:24.859Z",
   "entries": [
     {
       "sourceUrl": "https://tlidb.com/tw/Passive_Skill",
       "kind": "passive",
       "locale": "tw",
       "season": "ss12",
-      "fetchedAt": "2026-04-04T05:22:39.048Z",
+      "fetchedAt": "2026-04-04T08:35:24.859Z",
       "status": "ok",
       "outputPath": "data/raw/ss12/indexes/Passive_Skill.html",
       "contentSha256": "4ad28c0c0e38bc46a83d8332cbaed43be35feab87988e2a3c3929dee31168443",

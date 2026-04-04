@@ -13,7 +13,7 @@ export const SEASON = "ss12";
 export const PARSER_VERSION = "1";
 
 /** Bump when normalize (HTML → JSON) logic changes. */
-export const NORMALIZE_PARSER_VERSION = "1";
+export const NORMALIZE_PARSER_VERSION = "3";
 
 export const USER_AGENT = "tob-etl/1.0 (offline skill snapshot; +local)";
 

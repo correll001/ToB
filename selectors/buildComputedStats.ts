@@ -5,12 +5,13 @@
  */
 import type { BuildSnapshot, MainSkillSlot, SkillSetup } from '@/types/build'
 import { isMainSkillSlot } from '@/lib/build/supportLinks'
-import type { BuildSidebarCombatStats, CombatBreakdown, ContributionEntry } from '@/types/combat'
+import type { BuildSidebarCombatStats, CombatBreakdown, ContributionEntry, StatBlock } from '@/types/combat'
 import type {
   CalculationConfidence,
   InspectedSkillDamageView,
   InspectedSkillDebugView,
   InspectedSkillNoneReason,
+  InspectedSkillPresentationMode,
   SkillInstance,
   SkillInstanceBreakdown,
 } from '@/types/skillInstance'
@@ -29,37 +30,107 @@ import {
 } from '@/data/mockGameData'
 import { aggregateStatBlocks } from '@/lib/formula/aggregateStats'
 import { computeDerivedCombat } from '@/lib/formula/computeDerivedCombat'
-import { resolveLevelRow } from '@/lib/formula/skills/levelRowModifiers'
+import { resolveLevelRow, skillHitBaseAnchorFromLevelRow } from '@/lib/formula/skills/levelRowModifiers'
 import type { SkillDamageRole } from '@/types/skillDamageRole'
 import { getSkillDefinitionById } from '@/lib/runtime/runtimeSkillLookup'
-import type { SkillDefinition, SkillLevelEntry } from '@/types/skillData'
+import type { SkillDefinition } from '@/types/skillData'
 import type { DerivedCombatLayerConfidence } from '@/types/combat'
 
 export type { BuildSidebarCombatStats } from '@/types/combat'
+export type { InspectedSkillPresentationMode } from '@/types/skillInstance'
+
+/** Single source for panel routing (4F-7) — only depends on current-frame `InspectedSkillDamageView`. */
+export function deriveInspectedPresentationMode(dv: InspectedSkillDamageView): InspectedSkillPresentationMode {
+  if (dv.mode === 'none') {
+    const map: Record<InspectedSkillNoneReason, InspectedSkillPresentationMode> = {
+      no_slot: 'none_no_slot',
+      invalid_slot: 'none_invalid_slot',
+      empty_slot: 'none_empty_slot',
+      disabled: 'none_disabled',
+      unsupported_main_family: 'none_unsupported_main_family',
+    }
+    return map[dv.reason]
+  }
+  if (dv.mode === 'dpsBlocked') {
+    return dv.blockReason === 'instance_unsupported'
+      ? 'dps_blocked_instance_unsupported'
+      : 'dps_blocked_effective_unsupported'
+  }
+  if (dv.mode === 'nonDamaging') {
+    switch (dv.role) {
+      case 'support-only':
+        return 'role_support_only'
+      case 'aura-only':
+        return 'role_aura_only'
+      case 'utility':
+        return 'role_utility'
+      case 'unknown':
+        return 'role_unknown'
+      case 'summon-driver':
+        return 'role_summon_driver'
+      default:
+        return 'role_unknown'
+    }
+  }
+  if (dv.mode === 'damaging') {
+    if (dv.effectiveCalculationConfidence === 'ready' && dv.damagingPresentation === 'authoritative') {
+      return 'damaging_ready'
+    }
+    return 'damaging_partial'
+  }
+  return 'role_unknown'
+}
+
+/** Deterministic remount id: must change on slot / resolution / skill identity / presentation branch switch. */
+export function buildInspectedViewSequenceKey(args: {
+  metaSlotRaw: number | null
+  coreResolution: InspectedSkillDebugView['resolution']
+  coreSlot: MainSkillSlot | null
+  activeId: string | null
+  presentationMode: InspectedSkillPresentationMode
+  damageViewMode: InspectedSkillDamageView['mode']
+}): string {
+  const slot = args.metaSlotRaw
+  return [
+    slot === null || slot === undefined ? '∅' : String(slot),
+    args.coreResolution,
+    args.coreSlot === null || args.coreSlot === undefined ? '∅' : String(args.coreSlot),
+    args.activeId ?? '∅',
+    args.damageViewMode,
+    args.presentationMode,
+  ].join('|')
+}
 
 function worstCalculationConfidence(a: CalculationConfidence, b: CalculationConfidence): CalculationConfidence {
   const rank: Record<CalculationConfidence, number> = { unsupported: 0, partial: 1, ready: 2 }
   return rank[a] <= rank[b] ? a : b
 }
 
-/** Prefer numeric `baseDamage` from level row for rules-first hit base; min–max → average (flagged). */
-function skillHitBaseFromLevelRow(row: SkillLevelEntry | undefined): {
-  value: number | null
-  fromMinMaxAvg: boolean
-} {
-  if (!row || row.baseDamage == null) return { value: null, fromMinMaxAvg: false }
-  const bd = row.baseDamage
-  if (typeof bd === 'number' && Number.isFinite(bd)) {
-    return { value: bd, fromMinMaxAvg: false }
-  }
-  if (typeof bd === 'object' && 'min' in bd && 'max' in bd) {
-    const min = Number((bd as { min: number }).min)
-    const max = Number((bd as { max: number }).max)
-    if (Number.isFinite(min) && Number.isFinite(max)) {
-      return { value: (min + max) / 2, fromMinMaxAvg: true }
+/**
+ * Level-row spell/base anchor is merged into hit base in derive; strip the same amount from skill `baseDamageFlat`
+ * so `skill.addedBaseDamage` from the row is not double-counted (supports / passives still add flat).
+ */
+function contributionBlocksForInspectedAggregate(
+  filtered: ContributionEntry[],
+  slot: MainSkillSlot,
+  hitAnchor: number | null,
+): StatBlock[] {
+  const prefix = `Skill slot ${slot} ·`
+  return filtered.map((e) => {
+    if (
+      hitAnchor == null ||
+      !(hitAnchor > 0) ||
+      e.kind !== 'skill' ||
+      !e.label.startsWith(prefix)
+    ) {
+      return e.block
     }
-  }
-  return { value: null, fromMinMaxAvg: false }
+    const b = { ...e.block }
+    const f = b.baseDamageFlat ?? 0
+    const sub = Math.min(f, hitAnchor)
+    b.baseDamageFlat = f - sub
+    return b
+  })
 }
 
 function collectMissingDataHints(inst: SkillInstance): string[] {
@@ -105,10 +176,19 @@ export type BuildStatsPanelDerived = {
   breakdown: CombatBreakdown
   skillInstanceBreakdowns: SkillInstanceBreakdown[]
   /**
-   * Valid main slot 1–5 when `meta.inspectedMainSkillSlot` is usable; null if unset or invalid.
-   * UI highlights should still read `snapshot.meta.inspectedMainSkillSlot` when distinguishing “cleared” vs “invalid”.
+   * Meta inspected slot when 1–5; null if cleared or non-numeric.
+   * Prefer this for “正在檢視槽 N” even when the row is empty (4F-7).
+   */
+  inspectedTargetSlot: MainSkillSlot | null
+  /**
+   * Legacy: same as today — non-null only when `selectInspectedSkillPrimaryCore` resolves `ok` (instance exists).
+   * Prefer `inspectedTargetSlot` + `inspectedSkillDamageView` for full truth.
    */
   inspectedMainSkillSlot: MainSkillSlot | null
+  /** 4F-7 — strict panel branch; derived from `inspectedSkillDamageView` only. */
+  inspectedPresentationMode: InspectedSkillPresentationMode
+  /** Force subtree remount so no DPS / copy survives across inspected transitions. */
+  inspectedViewSequenceKey: string
   inspectedSkillBreakdown: SkillInstanceBreakdown | null
   /** @deprecated Renamed in 4E-3 — use `inspectedSkillPrimaryInstance`. */
   inspectedSkillInstance: SkillInstance | null
@@ -397,6 +477,21 @@ export function selectInspectedSkillDamageView(snapshot: BuildSnapshot): Inspect
     return buildNonDamagingInspectedView(snapshot, slot, inst, supportApplied, supportSkipped)
   }
 
+  if (!inst.structuralDamageEvidence) {
+    return buildDpsBlockedInspectedView(
+      snapshot,
+      slot,
+      inst,
+      'instance_unsupported',
+      supportApplied,
+      supportSkipped,
+      {
+        effectiveCalculationConfidence: 'unsupported',
+        extraMissingHints: ['無結構化傷害證據：不以 damaging-ready／主 DPS 卡呈現。'],
+      },
+    )
+  }
+
   if (inst.calculationConfidence === 'unsupported') {
     return buildDpsBlockedInspectedView(
       snapshot,
@@ -411,14 +506,16 @@ export function selectInspectedSkillDamageView(snapshot: BuildSnapshot): Inspect
 
   const entries: ContributionEntry[] = collectBuildContributions(snapshot)
   const filtered = filterContributionsForInspectedMainSkill(entries, slot)
-  const agg = aggregateStatBlocks(filtered.map((e) => e.block))
+  const levelRowMeta = resolveLevelRow(inst.activeDefinition, inst.level)
+  const hitBase = skillHitBaseAnchorFromLevelRow(levelRowMeta.row)
+  const agg = aggregateStatBlocks(
+    contributionBlocksForInspectedAggregate(filtered, slot, hitBase.value),
+  )
   const textChars = selectDivinityBoardTextChars(snapshot)
   const level = snapshot.meta?.level ?? 1
-  const levelRowMeta = resolveLevelRow(inst.activeDefinition, inst.level)
-  const hitBase = skillHitBaseFromLevelRow(levelRowMeta.row)
   const { combat, breakdown } = computeDerivedCombat(level, agg, textChars, {
     skillHitBaseFromLevel: hitBase.value,
-    skillHitBaseFromMinMaxAverage: hitBase.fromMinMaxAvg,
+    skillHitBaseFromMinMaxAverage: hitBase.fromMinMaxAverage,
   })
 
   let derivedLayerConf: DerivedCombatLayerConfidence = breakdown.derivedCombatConfidence
@@ -477,9 +574,11 @@ export function selectInspectedSkillDamageView(snapshot: BuildSnapshot): Inspect
   }
 }
 
-export function selectInspectedSkillDebugView(snapshot: BuildSnapshot): InspectedSkillDebugView {
-  const core = selectInspectedSkillPrimaryCore(snapshot)
-  const damageView = selectInspectedSkillDamageView(snapshot)
+function buildInspectedSkillDebugView(
+  snapshot: BuildSnapshot,
+  core: InspectedPrimaryCore,
+  damageView: InspectedSkillDamageView,
+): InspectedSkillDebugView {
   const entries = collectBuildContributions(snapshot)
   const slot = core.resolvedSlot
   const filteredLen =
@@ -490,9 +589,16 @@ export function selectInspectedSkillDebugView(snapshot: BuildSnapshot): Inspecte
     resolution: core.resolution,
     primaryInstance: core.instance,
     damageViewMode: damageView.mode,
+    presentationMode: deriveInspectedPresentationMode(damageView),
     inspectedFilteredContributionCount: filteredLen,
     buildWideContributionCount: entries.length,
   }
+}
+
+export function selectInspectedSkillDebugView(snapshot: BuildSnapshot): InspectedSkillDebugView {
+  const core = selectInspectedSkillPrimaryCore(snapshot)
+  const damageView = selectInspectedSkillDamageView(snapshot)
+  return buildInspectedSkillDebugView(snapshot, core, damageView)
 }
 
 /**
@@ -513,13 +619,33 @@ export function selectBuildStatsPanelDerived(snapshot: BuildSnapshot): BuildStat
 
   const inspectedSkillPrimaryInstance = selectInspectedSkillPrimaryInstance(snapshot)
   const inspectedSkillDamageView = selectInspectedSkillDamageView(snapshot)
-  const inspectedSkillDebugView = selectInspectedSkillDebugView(snapshot)
+  const inspectedSkillDebugView = buildInspectedSkillDebugView(
+    snapshot,
+    core,
+    inspectedSkillDamageView,
+  )
+
+  const metaSlot = snapshot.meta.inspectedMainSkillSlot ?? null
+  const inspectedTargetSlot =
+    metaSlot != null && isMainSkillSlot(metaSlot) ? (metaSlot as MainSkillSlot) : null
+  const presentationMode = deriveInspectedPresentationMode(inspectedSkillDamageView)
+  const inspectedViewSequenceKey = buildInspectedViewSequenceKey({
+    metaSlotRaw: metaSlot,
+    coreResolution: inspectedSkillDebugView.resolution,
+    coreSlot: inspectedSkillDebugView.resolvedSlot,
+    activeId: inspectedSkillDebugView.primaryInstance?.activeId ?? null,
+    presentationMode,
+    damageViewMode: inspectedSkillDamageView.mode,
+  })
 
   return {
     combat,
     breakdown,
     skillInstanceBreakdowns,
+    inspectedTargetSlot,
     inspectedMainSkillSlot: slot,
+    inspectedPresentationMode: presentationMode,
+    inspectedViewSequenceKey,
     inspectedSkillBreakdown,
     inspectedSkillInstance: inspectedSkillPrimaryInstance,
     inspectedSkillPrimaryInstance,

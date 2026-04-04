@@ -3,6 +3,7 @@
  *
  *   npm run verify:skill-regression
  */
+import type { EffectiveRuntimeBundle } from '@/lib/data/types'
 import type { BuildSnapshot, MainSkillSlot } from '@/types/build'
 import type { SkillDefinition } from '@/types/skillData'
 import type { SkillCombatRole } from '@/types/skillDamageRole'
@@ -10,7 +11,17 @@ import { createEmptyBuildSnapshot } from '@/lib/defaultBuildSnapshot'
 import { normalizeBuildSnapshot } from '@/lib/normalizeBuildSnapshot'
 import { computeSkillInstanceForMainSlot } from '@/lib/formula/collectBuildContributions'
 import { computeSkillInstance, skillInstanceToContribution } from '@/lib/formula/skills/computeSkillInstance'
-import { selectInspectedSkillDamageView } from '@/selectors/buildComputedStats'
+import {
+  deriveInspectedPresentationMode,
+  selectBuildStatsPanelDerived,
+  selectInspectedSkillDamageView,
+} from '@/selectors/buildComputedStats'
+import {
+  computeFullSkillCoverageMetrics,
+  evaluateFullSkillCoverageGate,
+} from '@/scripts/verify/fullSkillCoverageContract'
+import { existsSync, readFileSync } from 'node:fs'
+import path from 'node:path'
 import { encodeBuildToShareCode, decodeBuildFromShareCode } from '@/lib/shareCodec'
 import { getSkillDefinitionById } from '@/lib/runtime/runtimeSkillLookup'
 import { getRuntimeDataset } from '@/lib/runtime/runtimeDataset'
@@ -182,7 +193,76 @@ function main() {
       },
       createEmptyBuildSnapshot(),
     )
-    assert('channeled attack main + multistrike = applied', !!wwMs && !!wwMs.supports[0]?.applied)
+    assert(
+      'channeled main + multistrike forbidden = skipped',
+      !!wwMs && !wwMs.supports[0]?.applied,
+      wwMs?.supports[0]?.skipReason,
+    )
+  }
+
+  if (ice && multi) {
+    const iceMs = computeSkillInstanceForMainSlot(
+      {
+        slot: 1,
+        skillId: ice.id,
+        supports: [{ supportSkillId: multi.id, level: 20, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      createEmptyBuildSnapshot(),
+    )
+    assert('non-channeled attack + multistrike = applied', !!iceMs && !!iceMs.supports[0]?.applied)
+  }
+
+  const blink = getSkillDefinitionById('skill:Blink')
+  const quickDecision = getSkillDefinitionById('skill:Quick_Decision')
+  if (blink && quickDecision) {
+    const blkQd = computeSkillInstanceForMainSlot(
+      {
+        slot: 1,
+        skillId: blink.id,
+        supports: [{ supportSkillId: quickDecision.id, level: 20, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      createEmptyBuildSnapshot(),
+    )
+    assert(
+      'mobility spell + support that forbids mobility = skipped',
+      !!blkQd && !blkQd.supports[0]?.applied,
+      blkQd?.supports[0]?.skipReason,
+    )
+  }
+
+  const addedLight = getSkillDefinitionById('skill:Added_Lightning_Damage')
+  if (ice && addedLight?.levelTable && Object.keys(addedLight.levelTable).length > 0) {
+    const low = computeSkillInstanceForMainSlot(
+      {
+        slot: 1,
+        skillId: ice.id,
+        supports: [{ supportSkillId: addedLight.id, level: 5, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      createEmptyBuildSnapshot(),
+    )
+    const high = computeSkillInstanceForMainSlot(
+      {
+        slot: 1,
+        skillId: ice.id,
+        supports: [{ supportSkillId: addedLight.id, level: 20, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      createEmptyBuildSnapshot(),
+    )
+    const a = low?.computedStats['skill.addedBaseDamage'] ?? 0
+    const b = high?.computedStats['skill.addedBaseDamage'] ?? 0
+    assert(
+      'support gem level row changes structured added damage on main',
+      !!low?.supports[0]?.applied && b > a,
+      `added=${a} vs ${b}`,
+    )
   }
 
   const stoneskin = getSkillDefinitionById('skill:Stoneskin')
@@ -199,6 +279,17 @@ function main() {
     if (auraInst?.damageRole === 'aura-only') {
       const auraView = selectInspectedSkillDamageView(auraSnap)
       assert('aura-only active inspected → not damaging mode', auraView.mode !== 'damaging', JSON.stringify(auraView))
+      assert(
+        '4F-7: aura-only → presentation role_aura_only',
+        deriveInspectedPresentationMode(auraView) === 'role_aura_only',
+        deriveInspectedPresentationMode(auraView),
+      )
+      const dAura = selectBuildStatsPanelDerived(auraSnap)
+      assert(
+        '4F-7: derived sequence key + mode stay non-damaging for aura',
+        dAura.inspectedPresentationMode === 'role_aura_only' && dAura.inspectedSkillDamageView.mode !== 'damaging',
+        dAura.inspectedViewSequenceKey,
+      )
     }
   }
 
@@ -215,6 +306,10 @@ function main() {
   assert(
     '4E-5: support as main → inspected view must not be damaging (no fake DPS)',
     selectInspectedSkillDamageView(supportMain).mode !== 'damaging',
+  )
+  assert(
+    '4F-7: support main → none_unsupported_main_family',
+    deriveInspectedPresentationMode(selectInspectedSkillDamageView(supportMain)) === 'none_unsupported_main_family',
   )
 
   const wpnAmp = getSkillDefinitionById('skill:Weapon_Amplification')
@@ -250,6 +345,38 @@ function main() {
       !!instOn1 && !!instOn2 && p2 > p1,
       `p1=${p1} p2=${p2}`,
     )
+
+    const passiveGlobal: BuildSnapshot = {
+      ...createEmptyBuildSnapshot(),
+      skills: [
+        { slot: 1, skillId: ice!.id, supports: [], skillLevel: 20, enabled: true },
+        { slot: 2, skillId: ice!.id, supports: [], skillLevel: 20, enabled: true },
+        ...createEmptyBuildSnapshot().skills.slice(2),
+      ],
+      passives: [
+        {
+          slot: 1,
+          skillId: wpnAmp.id,
+          enabled: true,
+          applyMode: 'global',
+          linkedMainSkillSlots: [],
+          skillLevel: 10,
+        },
+        ...createEmptyBuildSnapshot().passives.slice(1),
+      ],
+    }
+    const g1 = passiveModifiersForActiveSkill(ice!.id, passiveGlobal, 1).length
+    const g2 = passiveModifiersForActiveSkill(ice!.id, passiveGlobal, 2).length
+    assert('global passive injects into every linked main slot', g1 > 0 && g1 === g2, `g1=${g1} g2=${g2}`)
+    const iG1 = computeSkillInstanceForMainSlot(passiveGlobal.skills[0]!, passiveGlobal)
+    const iG2 = computeSkillInstanceForMainSlot(passiveGlobal.skills[1]!, passiveGlobal)
+    const dG1 = iG1?.computedStats['damage.increased'] ?? 0
+    const dG2 = iG2?.computedStats['damage.increased'] ?? 0
+    assert(
+      'global passive: same damage.increased on both main skills',
+      !!iG1 && !!iG2 && dG1 === dG2 && dG1 > 0,
+      `${dG1} vs ${dG2}`,
+    )
   }
 
   const base = normalizeBuildSnapshot(createEmptyBuildSnapshot())
@@ -259,6 +386,13 @@ function main() {
 
   const share = decodeBuildFromShareCode(encodeBuildToShareCode(base))
   assert('share import/export', share.skills.length === base.skills.length)
+
+  const bundlePath = path.join(process.cwd(), 'lib', 'gameData', 'generated', 'effective-runtime-bundle.json')
+  if (existsSync(bundlePath)) {
+    const bundle = JSON.parse(readFileSync(bundlePath, 'utf8')) as EffectiveRuntimeBundle
+    const gate = evaluateFullSkillCoverageGate(computeFullSkillCoverageMetrics(bundle))
+    assert('4F-8: full-skill coverage gate (regression hook)', gate.ok, gate.failures.join(' | '))
+  }
 
   const baseInsp3 = normalizeBuildSnapshot({
     ...createEmptyBuildSnapshot(),
@@ -326,6 +460,28 @@ function main() {
     )
   }
 
+  const noStructEvidence = sk({
+    id: 'skill:Mock_ActiveDamagingTagNoStruct',
+    name: 'Mock attack tag only',
+    family: 'active',
+    tags: ['攻擊'],
+    levelTable: {
+      20: { level: 20, manaCost: 5, partial: false },
+    },
+    modifiers: [],
+  })
+  const noStructInst = computeSkillInstance({
+    active: noStructEvidence,
+    level: 20,
+    supports: [],
+    activeParse: { status: 'ok' },
+  })
+  assert(
+    '4F-6: no structural damage evidence → not damaging-ready (no weapon%/base/weapon mod)',
+    noStructInst.damageRole !== 'damaging' || noStructInst.calculationConfidence !== 'ready',
+    `${noStructInst.damageRole} ${noStructInst.calculationConfidence} evidence=${noStructInst.structuralDamageEvidence}`,
+  )
+
   const levelOnlyRow = sk({
     id: 'skill:Mock_LevelManaOnly',
     name: 'Mock mana row only',
@@ -371,6 +527,86 @@ function main() {
       `${cdInst.damageRole} ${cdInst.calculationConfidence}`,
     )
   }
+
+  const manaRowDefWpn = sk({
+    id: 'skill:Mock_ManaRowDefWeapon',
+    name: 'Mock mana row + def weapon pct',
+    family: 'active',
+    tags: ['攻擊'],
+    levelTable: {
+      20: { level: 20, manaCost: 10, partial: false },
+    },
+    modifiers: [
+      {
+        selector: { kind: 'skill' },
+        operation: 'add',
+        stat: 'skill.weaponDamagePct',
+        value: 120,
+        valueKind: 'flat',
+      },
+    ],
+  })
+  const mwd = computeSkillInstance({
+    active: manaRowDefWpn,
+    level: 20,
+    supports: [],
+    activeParse: { status: 'ok' },
+  })
+  assert(
+    '4F-5: level row resource-only cannot yield damaging+ready when hit scaling is only on definition',
+    mwd.damageRole === 'damaging' && mwd.calculationConfidence === 'partial',
+    `${mwd.damageRole} ${mwd.calculationConfidence} hitScaling=${mwd.breakdown.levelRow.hitScalingFromRow}`,
+  )
+
+  const rangeSafe = sk({
+    id: 'skill:Mock_BaseDamageRangeSafe',
+    name: 'Mock safe baseDamage range',
+    family: 'active',
+    tags: ['法術'],
+    levelTable: {
+      10: { level: 10, baseDamage: { min: 10, max: 30 }, partial: false },
+    },
+  })
+  const rs = computeSkillInstance({
+    active: rangeSafe,
+    level: 10,
+    supports: [],
+    activeParse: { status: 'ok' },
+  })
+  assert(
+    '4F-5: safe min-max baseDamage emits midpoint modifier',
+    (rs.computedStats['skill.addedBaseDamage'] ?? 0) === 20,
+    String(rs.computedStats['skill.addedBaseDamage']),
+  )
+  assert(
+    '4F-5: baseDamage range + row hit scaling allows ready at ok parse',
+    rs.damageRole === 'damaging' &&
+      rs.calculationConfidence === 'ready' &&
+      rs.breakdown.levelRow.hitScalingFromRow === true,
+    `${rs.damageRole} ${rs.calculationConfidence}`,
+  )
+
+  const rangeUnsafe = sk({
+    id: 'skill:Mock_BaseDamageRangeUnsafe',
+    name: 'Mock unsafe baseDamage range',
+    family: 'active',
+    tags: ['法術'],
+    levelTable: {
+      10: { level: 10, baseDamage: { min: 1, max: 9999 }, partial: false },
+    },
+  })
+  const ru = computeSkillInstance({ active: rangeUnsafe, level: 10, supports: [] })
+  assert(
+    '4F-5: unsafe range does not fabricate addedBaseDamage',
+    (ru.computedStats['skill.addedBaseDamage'] ?? 0) === 0,
+    String(ru.computedStats['skill.addedBaseDamage']),
+  )
+  assert(
+    '4F-5: unsafe range warns',
+    ru.warnings.some((w) => w.includes('baseDamage_range_unsafe')) ||
+      ru.breakdown.levelRow.warnings?.some((w) => w.includes('unsafe')) === true,
+    ru.breakdown.levelRow.warnings?.join(','),
+  )
 
   const plainUnknown = sk({
     id: 'skill:Mock_PlainUnknownActive',
