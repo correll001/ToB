@@ -1,6 +1,6 @@
 {
   "season": "ss12",
-  "version": "p0-4e2-1",
+  "version": "p0-4e2-2",
   "family": "support",
   "entries": [
     {
@@ -67,33 +67,6 @@
       "supportRulesMerge": {
         "allowedSkillTags": ["Cold"],
         "rawRequirementLines": ["[override 4E-2] Cold-tagged actives."]
-      }
-    },
-    {
-      "id": "skill:Added_Physical_Damage",
-      "notes": ["4E-2: attack gem — requires Attack"],
-      "supportRulesMerge": {
-        "requiresAttack": true,
-        "allowedSkillTags": ["Attack"],
-        "rawRequirementLines": ["[override 4E-2] 輔助擊中 — attack skills."]
-      }
-    },
-    {
-      "id": "skill:Added_Fire_Damage",
-      "notes": ["4E-2: spell gem"],
-      "supportRulesMerge": {
-        "requiresSpell": true,
-        "allowedSkillTags": ["Spell"],
-        "rawRequirementLines": ["[override 4E-2] Spell skills (added fire)."]
-      }
-    },
-    {
-      "id": "skill:Added_Cold_Damage",
-      "notes": ["4E-2: spell gem"],
-      "supportRulesMerge": {
-        "requiresSpell": true,
-        "allowedSkillTags": ["Spell"],
-        "rawRequirementLines": ["[override 4E-2] Spell skills (added cold)."]
       }
     },
     {

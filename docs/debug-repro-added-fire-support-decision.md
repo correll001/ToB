@@ -1,6 +1,6 @@
 # 最小重現 — Hammer_of_Ash × Added_Fire_Damage（4E-4）
 
-Generated: 2026-04-04T11:36:57.107Z
+Generated: 2026-04-04T15:28:50.411Z
 
 資料來源：`getSkillDefinitionById`（與 runtime bundle 一致）。
 
@@ -13,23 +13,22 @@ Generated: 2026-04-04T11:36:57.107Z
 
 ```json
 {
-  "applied": false,
+  "applied": true,
   "warnings": [
-    "allowedSkillTags_unsatisfied:Spell"
+    "support_raw_requirements_trace:TLIDB: 輔助擊中敵人 → Attack|Spell"
   ],
-  "skipReason": "allowedSkillTags_unsatisfied:Spell",
   "rawRequirementLines": [
-    "[override 4E-2] Spell skills (added fire)."
+    "TLIDB: 輔助擊中敵人 → Attack|Spell"
   ]
 }
 ```
 
 ### 欄位摘要（驗收用）
 
-- **applied**: `false`
-- **skipReason**: `allowedSkillTags_unsatisfied:Spell`
-- **warnings**: ["allowedSkillTags_unsatisfied:Spell"]
-- **rawRequirementLines**: ["[override 4E-2] Spell skills (added fire)."]
+- **applied**: `true`
+- **skipReason**: `—`
+- **warnings**: ["support_raw_requirements_trace:TLIDB: 輔助擊中敵人 → Attack|Spell"]
+- **rawRequirementLines**: ["TLIDB: 輔助擊中敵人 → Attack|Spell"]
 - **active 原始 tags**: ["範圍","火焰","攻擊","投射物","近戰","破擊","直射"]
 - **active canonical tags**（`activeCanonicalTagSet`）: ["Area","Attack","Demolish","Fire","Melee","Projectile","投射物","攻擊","火焰","直射","破擊","範圍","近戰"]
 
@@ -38,12 +37,12 @@ Generated: 2026-04-04T11:36:57.107Z
 ```json
 {
   "allowedSkillTags": [
+    "Attack",
     "Spell"
   ],
   "rawRequirementLines": [
-    "[override 4E-2] Spell skills (added fire)."
-  ],
-  "requiresSpell": true
+    "TLIDB: 輔助擊中敵人 → Attack|Spell"
+  ]
 }
 ```
 
@@ -53,11 +52,11 @@ Generated: 2026-04-04T11:36:57.107Z
 - **B** — `skipReason === requires_spell`
 - **C** — `skipReason` 為 `allowedSkillTags_unsatisfied:…`（本例常為 Spell）
 
-**本 run 分類**: `C`
+**本 run 分類**: `applied`
 
 ## 明確結論（驗收一句）
 
-> 此 case 是 **allowedSkillTags Spell-only gate**（`skipReason` 為 `allowedSkillTags_unsatisfied:…`，允許標籤未命中）。
+> 此 case **可套用**（`applied: true`，無 skipReason）。
 
 ## 備註
 

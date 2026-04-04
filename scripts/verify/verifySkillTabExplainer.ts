@@ -139,6 +139,7 @@ function main() {
 
   const addedLightId = 'skill:Added_Lightning_Damage'
   const addedColdId = 'skill:Added_Cold_Damage'
+  const multipleProjId = 'skill:Multiple_Projectiles'
 
   const iceNoSup = snap({
     meta: { ...createEmptyBuildSnapshot().meta, inspectedMainSkillSlot: 1 },
@@ -169,6 +170,20 @@ function main() {
         slot: 1,
         skillId: 'skill:Ice_Shot',
         supports: [{ supportSkillId: addedColdId, level: 20, enabled: true, linkSlot: 1 }],
+        skillLevel: 20,
+        enabled: true,
+      },
+      ...createEmptyBuildSnapshot().skills.slice(1),
+    ],
+  })
+
+  const iceMultiProj = snap({
+    ...iceNoSup,
+    skills: [
+      {
+        slot: 1,
+        skillId: 'skill:Ice_Shot',
+        supports: [{ supportSkillId: multipleProjId, level: 20, enabled: true, linkSlot: 1 }],
         skillLevel: 20,
         enabled: true,
       },
@@ -245,6 +260,7 @@ function main() {
     iceNoSup,
     iceLight,
     iceCold,
+    iceMultiProj,
     iceDisabledLink,
     ...(passiveLinkedSlot2Only ? [passiveLinkedSlot2Only] : []),
     ...(passiveGlobal ? [passiveGlobal] : []),
@@ -289,12 +305,13 @@ function main() {
 
   const exNo = selectSkillTabExplanation(iceNoSup)
   const exLight = selectSkillTabExplanation(iceLight)
-  const exCold = selectSkillTabExplanation(iceCold)
-  if (exLight.coreResolution === 'ok' && exCold.coreResolution === 'ok') {
+  const exMultiProj = selectSkillTabExplanation(iceMultiProj)
+  // Flat ele supports can share the same removal-delta shape on the same active; compare vs a mechanical gem.
+  if (exLight.coreResolution === 'ok' && exMultiProj.coreResolution === 'ok') {
     assert(
       'different support gems → different local removal fingerprints',
-      deltaFingerprint(exLight) !== deltaFingerprint(exCold),
-      `${deltaFingerprint(exLight)} vs ${deltaFingerprint(exCold)}`,
+      deltaFingerprint(exLight) !== deltaFingerprint(exMultiProj),
+      `${deltaFingerprint(exLight)} vs ${deltaFingerprint(exMultiProj)}`,
     )
   }
 

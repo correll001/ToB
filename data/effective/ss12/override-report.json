@@ -1,6 +1,6 @@
 {
   "season": "ss12",
-  "generatedAt": "2026-04-04T12:47:51.229Z",
+  "generatedAt": "2026-04-04T15:28:38.191Z",
   "overridesSchemaVersion": "1",
   "mergeOrder": [
     "raw:data/raw/{season}",
@@ -79,10 +79,7 @@
         "skill:Overload",
         "skill:Tendonslicer",
         "skill:Glacial_Freeze",
-        "skill:Added_Fire_Damage",
-        "skill:Added_Cold_Damage",
-        "skill:Steamroll",
-        "skill:Added_Physical_Damage"
+        "skill:Steamroll"
       ],
       "notesById": {
         "skill:Multiple_Projectiles": [
@@ -109,17 +106,8 @@
         "skill:Glacial_Freeze": [
           "4E-2: cold hits"
         ],
-        "skill:Added_Fire_Damage": [
-          "4E-2: spell gem"
-        ],
-        "skill:Added_Cold_Damage": [
-          "4E-2: spell gem"
-        ],
         "skill:Steamroll": [
           "4E-2: melee attack-only for regression (spell mains skip on requiresAttack)"
-        ],
-        "skill:Added_Physical_Damage": [
-          "4E-2: attack gem — requires Attack"
         ]
       }
     },

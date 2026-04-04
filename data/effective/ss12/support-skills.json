@@ -5,8 +5,8 @@
     "generatedAt": "2026-04-04T12:46:37.728Z",
     "parserVersion": "3",
     "sourceCount": 122,
-    "warningsCount": 17,
-    "effectiveLayer": "overrides@p0-4e2-1"
+    "warningsCount": 14,
+    "effectiveLayer": "overrides@p0-4e2-2"
   },
   "skills": [
     {
@@ -12402,19 +12402,16 @@
         },
         "supportRules": {
           "allowedSkillTags": [
+            "Attack",
             "Spell"
           ],
           "rawRequirementLines": [
-            "[override 4E-2] Spell skills (added fire)."
-          ],
-          "requiresSpell": true
+            "TLIDB: 輔助擊中敵人 → Attack|Spell"
+          ]
         },
         "levelScalingMode": "table",
         "parserVersion": "1/3"
-      },
-      "warnings": [
-        "[override-note] 4E-2: spell gem"
-      ]
+      }
     },
     {
       "parseStatus": "ok",
@@ -13893,19 +13890,16 @@
         },
         "supportRules": {
           "allowedSkillTags": [
+            "Attack",
             "Spell"
           ],
           "rawRequirementLines": [
-            "[override 4E-2] Spell skills (added cold)."
-          ],
-          "requiresSpell": true
+            "TLIDB: 輔助擊中敵人 → Attack|Spell"
+          ]
         },
         "levelScalingMode": "table",
         "parserVersion": "1/3"
-      },
-      "warnings": [
-        "[override-note] 4E-2: spell gem"
-      ]
+      }
     },
     {
       "parseStatus": "ok",
@@ -28339,19 +28333,16 @@
         },
         "supportRules": {
           "allowedSkillTags": [
-            "Attack"
+            "Attack",
+            "Spell"
           ],
           "rawRequirementLines": [
-            "[override 4E-2] 輔助擊中 — attack skills."
-          ],
-          "requiresAttack": true
+            "TLIDB: 輔助擊中敵人 → Attack|Spell"
+          ]
         },
         "levelScalingMode": "table",
         "parserVersion": "1/3"
-      },
-      "warnings": [
-        "[override-note] 4E-2: attack gem — requires Attack"
-      ]
+      }
     },
     {
       "parseStatus": "ok",
