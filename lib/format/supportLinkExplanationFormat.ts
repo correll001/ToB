@@ -68,23 +68,23 @@ export function summarizeSupportModifierList(mods: ModifierDefinition[]): {
 
 /** Map engine skip tokens to short Chinese for players. */
 export function formatSupportSkipReasonZh(reason: string | undefined): string {
-  if (!reason) return '未套用（原因未標註）。'
-  if (reason === 'link_disabled') return '此連結在編輯器中停用，引擎未計算。'
-  if (reason === 'not_support_family') return '此槽不是輔助技能資料，引擎略過。'
-  if (reason === 'main_skill_disabled') return '主技能已停用，未計算輔助套用。'
-  if (reason === 'unsupported_main_family') return '主技能類型不支援技能 instance：未計算輔助套用。'
-  if (reason === 'not_in_engine_instance') return '主技能 instance 未建立，無法評估輔助。'
+  if (!reason) return '沒套用（原因未註記）。'
+  if (reason === 'link_disabled') return '這格連結關著，不會算進去。'
+  if (reason === 'not_support_family') return '這顆不是輔助技能，略過。'
+  if (reason === 'main_skill_disabled') return '主技能關閉，輔助不生效。'
+  if (reason === 'unsupported_main_family') return '主技能類型不支援這種連結計算。'
+  if (reason === 'not_in_engine_instance') return '主技能尚未建立計算資料，無法判斷輔助。'
   if (reason.startsWith('forbidden_tag:')) {
-    return `與主技能標籤衝突（禁止：${reason.slice('forbidden_tag:'.length)}）。`
+    return `與主技能類型不合（${reason.slice('forbidden_tag:'.length)}）。`
   }
   if (reason.startsWith('allowedSkillTags_unsatisfied:')) {
     const rest = reason.replace('allowedSkillTags_unsatisfied:', '')
-    return `未滿足輔助所需技能標籤（需要其中之一：${rest}）。`
+    return `主技能缺必要標籤，需要其一：${rest}`
   }
-  if (reason === 'requires_attack') return '需要「攻擊 Attack」類主技能。'
-  if (reason === 'requires_spell') return '需要「法術 Spell」類主技能。'
-  if (reason === 'requires_projectile') return '需要「投射物 Projectile」標籤。'
-  if (reason === 'requires_channeled') return '需要「引導 Channeled」標籤。'
-  if (reason === 'requires_melee') return '需要「近戰 Melee」標籤。'
-  return `未套用：${reason}`
+  if (reason === 'requires_attack') return '需要攻擊類主技能。'
+  if (reason === 'requires_spell') return '需要法術類主技能。'
+  if (reason === 'requires_projectile') return '需要投射物類主技能。'
+  if (reason === 'requires_channeled') return '需要引導類主技能。'
+  if (reason === 'requires_melee') return '需要近戰類主技能。'
+  return `沒套用（${reason}）`
 }
