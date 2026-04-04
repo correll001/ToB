@@ -25,6 +25,7 @@ import path from 'node:path'
 import { encodeBuildToShareCode, decodeBuildFromShareCode } from '@/lib/shareCodec'
 import { getSkillDefinitionById } from '@/lib/runtime/runtimeSkillLookup'
 import { getRuntimeDataset } from '@/lib/runtime/runtimeDataset'
+import { evaluateSupportAttachment } from '@/lib/formula/skills/applySupportRules'
 import { inferSkillCombatRole, isDamagingInspectedSkillRole } from '@/lib/formula/skills/inferDamageRole'
 import { passiveModifiersForActiveSkill } from '@/lib/formula/collectBuildContributions'
 
@@ -73,6 +74,23 @@ function main() {
   const sc = getSkillDefinitionById('skill:Multiple_Projectiles')
   assert('bundle Ice_Shot', !!ice)
   assert('bundle Scatter', !!sc)
+
+  /**
+   * 4E-5 — Added_Fire_Damage × Hammer_of_Ash：僅 **存在性** 與 **規則試算記錄**。
+   * 不斷言 applied / skipReason「應該」為何（修 override 後可能變為可套用）。
+   */
+  {
+    const hammer = getSkillDefinitionById('skill:Hammer_of_Ash')
+    const addedFire = getSkillDefinitionById('skill:Added_Fire_Damage')
+    assert('4E-5: Hammer_of_Ash present in runtime bundle', !!hammer)
+    assert('4E-5: Added_Fire_Damage present in runtime bundle', !!addedFire)
+    if (hammer && addedFire) {
+      const ev = evaluateSupportAttachment(hammer, addedFire)
+      console.log(
+        `[verify:skill-regression] 4E-5 Added_Fire probe: applied=${ev.applied} skipReason=${ev.skipReason ?? '—'} rawLines=${JSON.stringify(ev.rawRequirementLines ?? null)} warnings=${JSON.stringify(ev.warnings)}`,
+      )
+    }
+  }
 
   const compatible = computeSkillInstanceForMainSlot(
     {
