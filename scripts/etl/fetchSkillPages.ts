@@ -1,6 +1,6 @@
 /**
- * Offline ETL: batch-fetch skill detail pages from skill-urls.json.
- * Resumable: skips unchanged snapshots (local hash vs manifest) unless --force.
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
+ * Offline ETL: batch-fetch detail pages when run manually; product runtime never imports this module.
  */
 import { access, constants, readFile } from "node:fs/promises";
 import path from "node:path";

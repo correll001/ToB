@@ -1,3 +1,7 @@
+/**
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
+ * Shared helpers for offline ETL (may define HTTP for manual fetch runs only).
+ */
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";

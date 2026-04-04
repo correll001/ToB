@@ -71,6 +71,7 @@ export const TALENT_NODE_CONTRIBUTIONS: Record<string, StatBlock> = {
   div_003: _({ moreDamagePct: 6, baseDamageFlat: 8 }),
 }
 
+/** @deprecated Skills now use `computeSkillInstance` + bundled definitions (4C-2). Kept for reference only. */
 export const SKILL_CONTRIBUTIONS: Record<string, StatBlock> = {
   skill_bombard: _({ baseDamageFlat: 22, damagePct: 4 }),
   skill_blink: _({ mpFlat: 10, dexterity: 2 }),

@@ -1,4 +1,5 @@
 /**
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
  * Raw Skill_Level + Character_Build index pages → normalized global rule JSON.
  */
 import * as cheerio from "cheerio";

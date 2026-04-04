@@ -88,12 +88,27 @@ export function mergeSnapshotWithDefaults(raw: unknown): BuildSnapshot {
           return {
             slot: base.slot,
             skillId: row.skillId ?? null,
-            supports: Array.isArray(row.supports) ? row.supports : [],
+            supports: Array.isArray(row.supports)
+              ? row.supports.filter((x): x is string => typeof x === 'string')
+              : [],
             enabled: typeof row.enabled === 'boolean' ? row.enabled : true,
             notes: typeof row.notes === 'string' ? row.notes : base.notes,
           }
         })
       : b.skills
+
+  const passives =
+    Array.isArray(s.passives) && s.passives.length === 3
+      ? s.passives.map((row, i) => {
+          const base = b.passives[i]!
+          if (!row || typeof row !== 'object') return base
+          return {
+            slot: base.slot,
+            skillId: row.skillId ?? null,
+            enabled: typeof row.enabled === 'boolean' ? row.enabled : true,
+          }
+        })
+      : b.passives
 
   const pactspirits =
     Array.isArray(s.pactspirits) && s.pactspirits.length === 3
@@ -131,6 +146,7 @@ export function mergeSnapshotWithDefaults(raw: unknown): BuildSnapshot {
     },
     talents,
     skills,
+    passives,
     gear,
     pactspirits,
     notes: {

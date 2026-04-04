@@ -1,3 +1,7 @@
+/**
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
+ * Override merge helpers for offline ETL.
+ */
 import type { NormalizedSkillRecord } from "../../types/normalized"
 import type { Post20OverrideSpec, SkillOverrideEntry } from "../../types/override"
 import type { JsonValue } from "../../types/skillData"

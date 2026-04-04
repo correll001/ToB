@@ -1,4 +1,5 @@
 /**
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
  * Compare two normalized-style skill JSON files (or roots) for season drift / override verification.
  */
 import path from "node:path";

@@ -32,6 +32,11 @@ export function createEmptyBuildSnapshot(): BuildSnapshot {
       { slot: 4, skillId: null, supports: [], enabled: true },
       { slot: 5, skillId: null, supports: [], enabled: true },
     ],
+    passives: [
+      { slot: 1, skillId: null, enabled: true },
+      { slot: 2, skillId: null, enabled: true },
+      { slot: 3, skillId: null, enabled: true },
+    ],
     gear: {
       helmet: { gearBaseId: null, legendaryItemId: null, customMods: [] },
       chest: { gearBaseId: null, legendaryItemId: null, customMods: [] },

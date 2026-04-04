@@ -43,7 +43,7 @@ function ruleFailsOnTags(activeCanon: Set<string>, rule: SupportRule): string | 
 export function evaluateSupportAttachment(
   active: SkillDefinition,
   support: SkillDefinition,
-): Pick<SupportAttachment, "applied" | "warnings" | "skipReason"> {
+): Pick<SupportAttachment, "applied" | "warnings" | "skipReason" | "rawRequirementLines"> {
   const warnings: string[] = []
 
   if (support.family !== "support") {
@@ -60,11 +60,16 @@ export function evaluateSupportAttachment(
     return { applied: true, warnings }
   }
 
+  const rawLines = rule.rawRequirementLines?.length ? [...rule.rawRequirementLines] : undefined
+  if (rawLines?.length) {
+    warnings.push(`support_raw_requirements_trace:${rawLines.join(" │ ")}`)
+  }
+
   const activeCanon = activeCanonicalTagSet(active.tags)
   const fail = ruleFailsOnTags(activeCanon, rule)
   if (fail) {
-    return { applied: false, warnings: [fail], skipReason: fail }
+    return { applied: false, warnings: [fail], skipReason: fail, rawRequirementLines: rawLines }
   }
 
-  return { applied: true, warnings }
+  return { applied: true, warnings, rawRequirementLines: rawLines }
 }

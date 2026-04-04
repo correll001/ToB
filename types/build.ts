@@ -46,6 +46,13 @@ export interface SkillSetup {
   notes?: string
 }
 
+/** Passive / aura gems applied to the build (minimal v1 — inject into main skill instances). */
+export interface PassiveSkillSetup {
+  slot: 1 | 2 | 3
+  skillId: string | null
+  enabled: boolean
+}
+
 export interface GearSelection {
   gearBaseId: string | null
   legendaryItemId: string | null
@@ -79,6 +86,7 @@ export interface BuildSnapshot {
   hero: HeroSelection
   talents: Record<TreeName, string[]>
   skills: SkillSetup[]
+  passives: PassiveSkillSetup[]
   gear: Record<GearSlot, GearSelection>
   pactspirits: PactspiritSelection[]
   notes: BuildNotes

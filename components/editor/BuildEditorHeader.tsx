@@ -55,6 +55,19 @@ export default function BuildEditorHeader({
             <span>
               最後更新 <span className="text-slate-400">{lastUpdatedLabel}</span>
             </span>
+            {process.env.NODE_ENV === 'development' ? (
+              <>
+                <span className="text-slate-700" aria-hidden>
+                  ·
+                </span>
+                <a
+                  href="/debug/dataset"
+                  className="text-slate-500 underline decoration-slate-600 underline-offset-2 hover:text-sky-400/90"
+                >
+                  資料集（內部）
+                </a>
+              </>
+            ) : null}
           </div>
         </div>
 

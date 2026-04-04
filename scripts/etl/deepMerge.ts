@@ -1,4 +1,7 @@
-/** Minimal RFC7396-style merge for JSON-like trees. `null` removes a key from objects. */
+/**
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
+ * Minimal RFC7396-style merge for JSON-like trees. `null` removes a key from objects.
+ */
 
 export function isPlainObject(x: unknown): x is Record<string, unknown> {
   return x !== null && typeof x === "object" && !Array.isArray(x)

@@ -1,6 +1,6 @@
 /**
- * TLIDB skill detail HTML → NormalizedSkillRecord.
- * Relies on stable class names (card / explicitMod / tag); when layout shifts, expect more partials.
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
+ * Skill detail HTML → NormalizedSkillRecord (offline parser).
  */
 import * as cheerio from "cheerio";
 import type { NormalizedSkillRecord, ParseStatus } from "../../types/normalized";

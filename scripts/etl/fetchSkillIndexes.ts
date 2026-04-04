@@ -1,6 +1,6 @@
 /**
- * Offline ETL: fetch TLIDB skill index pages + reference pages, extract detail URLs.
- * Does not run in the Next.js frontend.
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
+ * Offline ETL: may fetch public index pages when run manually; product runtime never imports this module.
  */
 import * as cheerio from "cheerio";
 import path from "node:path";

@@ -40,7 +40,7 @@ export default function BuildStatsPanel() {
   const snapshot = useBuildStore((s) => s.snapshot)
 
   const derived = useBuildComputedStats()
-  const { combat, breakdown, validationErrors, summary } = derived
+  const { combat, breakdown, skillInstanceBreakdowns, validationErrors, summary } = derived
 
   const [localTitle, setLocalTitle] = React.useState(snapshot.meta.title)
   React.useEffect(() => {
@@ -203,6 +203,55 @@ export default function BuildStatsPanel() {
             ))}
           </dl>
         </div>
+
+        {skillInstanceBreakdowns.length > 0 ? (
+          <details className="mt-3 rounded-lg border border-violet-900/40 bg-violet-950/15 px-3 py-2">
+            <summary className="cursor-pointer select-none text-[11px] font-medium text-violet-300/90">
+              技能实例 breakdown（4C-3）
+            </summary>
+            <div className="mt-2 max-h-64 space-y-3 overflow-y-auto text-[10px] leading-relaxed text-slate-400">
+              {skillInstanceBreakdowns.map((s) => (
+                <div
+                  key={`${s.slotLabel}-${s.activeId}`}
+                  className="rounded-md border border-slate-800/60 bg-black/20 p-2"
+                >
+                  <div className="font-semibold text-slate-300">
+                    {s.slotLabel} · {s.activeName}
+                  </div>
+                  <div className="mt-1 font-mono text-[9px] text-slate-500">
+                    parse: {s.parseStatus ?? '—'}
+                    {s.recordWarnings?.length ? ` · record: ${s.recordWarnings.join('; ')}` : ''}
+                  </div>
+                  <Row
+                    k="等級列"
+                    v={`${s.levelRow.source} · modifiers ${s.levelRow.modifierCount} · partial=${s.levelRow.partial}`}
+                  />
+                  <Row
+                    k="Post-20 ×"
+                    v={`${formatNum(s.post20.multiplier, 4)} (21–30 ${s.post20.tier21to30PerLevelMorePct}% / 31+ ${s.post20.tier31PlusPerLevelMorePct}%)${s.post20.disabledByMechanic ? ' · disabled' : ''}`}
+                  />
+                  <Row k="Passive 注入 mods" v={String(s.passiveModifierCount)} />
+                  <div className="mt-1 text-[9px] text-slate-500">支援</div>
+                  <ul className="list-inside list-disc space-y-0.5 text-[9px]">
+                    {s.supports.map((u) => (
+                      <li key={u.id}>
+                        {u.applied ? '✓' : '✗'} {u.name}
+                        {!u.applied && u.skipReason ? ` (${u.skipReason})` : ''}
+                        {u.rawRequirementLines?.length
+                          ? ` · raw: ${u.rawRequirementLines[0]?.slice(0, 48)}…`
+                          : ''}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-1 text-[9px] text-slate-500">引擎 warnings</div>
+                  <div className="max-h-16 overflow-y-auto font-mono text-[9px] text-amber-200/80">
+                    {s.engineWarnings.length ? s.engineWarnings.join(' · ') : '—'}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </details>
+        ) : null}
 
         <details className="mt-3 rounded-lg border border-slate-800/60 bg-slate-950/30 px-3 py-2">
           <summary className="cursor-pointer select-none text-[11px] font-medium text-slate-500">

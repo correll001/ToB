@@ -2,7 +2,7 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
-import type { BuildSnapshot, GearSlot, TreeName } from '@/types/build'
+import type { BuildSnapshot, GearSlot, PassiveSkillSetup, TreeName } from '@/types/build'
 import { createEmptyBuildSnapshot } from '@/lib/defaultBuildSnapshot'
 import { normalizeBuildSnapshot } from '@/lib/normalizeBuildSnapshot'
 
@@ -58,7 +58,11 @@ type BuildStore = {
   clearTalentTree: (tree: TreeName) => void
 
   setSkill: (slot: number, skillId: string | null) => void
+  setSkillSupports: (slot: number, supportIds: string[]) => void
   clearSkill: (slot: number) => void
+
+  setPassiveSkill: (slot: number, skillId: string | null) => void
+  clearPassive: (slot: number) => void
 
   setGearBase: (slot: GearSlot, gearBaseId: string | null) => void
   setLegendaryItem: (slot: GearSlot, legendaryItemId: string | null) => void
@@ -142,6 +146,11 @@ export const useBuildStore = create<BuildStore>()(
             skill.notes = ''
           })
 
+          state.snapshot.passives.forEach((p: PassiveSkillSetup) => {
+            p.skillId = null
+            p.enabled = true
+          })
+
           bumpMeta(state)
         }),
 
@@ -188,6 +197,14 @@ export const useBuildStore = create<BuildStore>()(
           bumpMeta(state)
         }),
 
+      setSkillSupports: (slot, supportIds) =>
+        set((state) => {
+          const target = state.snapshot.skills[slot - 1]
+          if (!target) return
+          target.supports = [...supportIds]
+          bumpMeta(state)
+        }),
+
       clearSkill: (slot) =>
         set((state) => {
           const target = state.snapshot.skills[slot - 1]
@@ -196,6 +213,23 @@ export const useBuildStore = create<BuildStore>()(
           target.supports = []
           target.enabled = true
           target.notes = ''
+          bumpMeta(state)
+        }),
+
+      setPassiveSkill: (slot, skillId) =>
+        set((state) => {
+          const target = state.snapshot.passives[slot - 1]
+          if (!target) return
+          target.skillId = skillId
+          bumpMeta(state)
+        }),
+
+      clearPassive: (slot) =>
+        set((state) => {
+          const target = state.snapshot.passives[slot - 1]
+          if (!target) return
+          target.skillId = null
+          target.enabled = true
           bumpMeta(state)
         }),
 
@@ -290,7 +324,7 @@ export const useBuildStore = create<BuildStore>()(
     {
       name: 'tli-build-editor',
       /** Bump when persisted snapshot shape needs migration (e.g. new `divinityBoard`). */
-      version: 2,
+      version: 3,
       migrate: (persistedState, _oldVersion) => {
         try {
           const p = persistedState as { snapshot?: unknown } | null

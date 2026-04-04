@@ -14,9 +14,15 @@
     "etl:normalize": "tsx scripts/etl/normalizeData.ts",
     "etl:apply-overrides": "tsx scripts/etl/applyOverrides.ts",
     "etl:diff-season": "tsx scripts/etl/diffSeasonData.ts",
-    "check:skill-engine": "tsx lib/formula/skills/skillEngineSmokeTest.ts"
+    "check:skill-engine": "tsx lib/formula/skills/skillEngineSmokeTest.ts",
+    "check:data-policy": "tsx scripts/checkNoRuntimeTlidb.ts",
+    "audit:no-external-runtime-fetch": "tsx scripts/audit/noExternalRuntimeFetch.ts",
+    "data:import:effective": "tsx scripts/import/importEffectiveData.ts",
+    "data:verify:local": "tsx scripts/verify/verifyLocalDataset.ts",
+    "release:check": "npm run audit:no-external-runtime-fetch && npm run check:data-policy && npm run data:verify:local && npm run check:skill-engine && npm run build"
   },
   "dependencies": {
+    "better-sqlite3": "^12.6.2",
     "immer": "^11.1.4",
     "lz-string": "^1.5.0",
     "next": "^16.2.2",
@@ -25,6 +31,7 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "^25.5.0",
     "@types/react": "19.2.14",

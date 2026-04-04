@@ -1,7 +1,16 @@
-import type { BuildSnapshot, GearSlot, TreeName } from '@/types/build'
+import type { BuildSnapshot, GearSlot, SkillSetup, TreeName } from '@/types/build'
 import type { ContributionEntry, StatBlock } from '@/types/combat'
+import type { ModifierDefinition, SkillDefinition } from '@/types/skillData'
+import type { SkillInstance } from '@/types/skillInstance'
+import { bundledGlobalCombatRuleLayer } from '@/lib/runtime/runtimeRulesLookup'
+import {
+  getSkillDefinitionById,
+  getNormalizedSkillRecord,
+  isMainSlotSkillFamily,
+} from '@/lib/runtime/runtimeSkillLookup'
+import { computeSkillInstance } from '@/lib/formula/skills'
+import { remapPassiveModifiersForActiveSkill } from '@/lib/formula/skills/passiveModifiers'
 
-/** Optional: `appendSkillInstanceContributions(entries, instances, skillInstanceToContribution)` from `@/lib/formula/skills`. */
 import {
   DIVINITY_BOARD_OPTION_CONTRIBUTIONS,
   GEAR_BASE_CONTRIBUTIONS,
@@ -9,7 +18,6 @@ import {
   LEGENDARY_CONTRIBUTIONS,
   PACTSPIRIT_CONTRIBUTIONS,
   RELIC_CONTRIBUTIONS,
-  SKILL_CONTRIBUTIONS,
   SPECIALTY_CONTRIBUTIONS,
   TALENT_NODE_CONTRIBUTIONS,
   TRAIT_CONTRIBUTIONS,
@@ -20,12 +28,13 @@ import {
   mockHeroes,
   mockLegendaryItems,
   mockRelics,
-  mockSkills,
   mockSpecialties,
   mockTraits,
 } from '@/data/mockGameData'
 
 const TREE_NAMES: TreeName[] = ['godTree', 'classTree', 'tree3', 'tree4', 'divinity']
+
+const globalLayerSingleton = bundledGlobalCombatRuleLayer()
 
 function push(
   out: ContributionEntry[],
@@ -41,6 +50,47 @@ function push(
 function blockFor(table: Record<string, StatBlock>, id: string | null | undefined): StatBlock | undefined {
   if (!id) return undefined
   return table[id]
+}
+
+export function passiveModifiersForActiveSkill(
+  activeId: string,
+  snapshot: BuildSnapshot,
+): ModifierDefinition[] {
+  const out: ModifierDefinition[] = []
+  for (const p of snapshot.passives ?? []) {
+    if (!p?.skillId || p.enabled === false) continue
+    const def = getSkillDefinitionById(p.skillId)
+    if (def?.family !== 'passive') continue
+    out.push(...remapPassiveModifiersForActiveSkill(activeId, def.id, def.modifiers ?? []))
+  }
+  return out
+}
+
+/** One main-slot skill row → full instance (or null if empty / not in dataset / wrong family). */
+export function computeSkillInstanceForMainSlot(row: SkillSetup, snapshot: BuildSnapshot): SkillInstance | null {
+  if (!row?.skillId || row.enabled === false) return null
+  const def = getSkillDefinitionById(row.skillId)
+  if (!def || !isMainSlotSkillFamily(def.family)) return null
+
+  const skillGemLevel = Math.max(1, Math.floor(snapshot.meta?.level ?? 1))
+  const supDefs: SkillDefinition[] = []
+  for (const sid of row.supports ?? []) {
+    const s = getSkillDefinitionById(sid)
+    if (s?.family === 'support') supDefs.push(s)
+  }
+
+  const rec = getNormalizedSkillRecord(row.skillId)
+  const passiveMods = passiveModifiersForActiveSkill(def.id, snapshot)
+
+  return computeSkillInstance({
+    active: def,
+    level: skillGemLevel,
+    supports: supDefs,
+    globalLayer: globalLayerSingleton,
+    passiveModifiers: passiveMods,
+    activeParse: rec ? { status: rec.parseStatus, warnings: rec.warnings } : undefined,
+    slotLabel: `Skill slot ${row.slot}`,
+  })
 }
 
 export function collectBuildContributions(snapshot: BuildSnapshot): ContributionEntry[] {
@@ -113,9 +163,9 @@ export function collectBuildContributions(snapshot: BuildSnapshot): Contribution
   const skills = snapshot.skills
   if (Array.isArray(skills)) {
     for (const row of skills) {
-      if (!row?.skillId || row.enabled === false) continue
-      const name = mockSkills.find((s) => s.id === row.skillId)?.name ?? row.skillId
-      push(out, 'skill', row.skillId, `Skill slot ${row.slot} · ${name}`, SKILL_CONTRIBUTIONS[row.skillId])
+      const inst = computeSkillInstanceForMainSlot(row, snapshot)
+      if (!inst) continue
+      push(out, 'skill', row.skillId!, `Skill slot ${row.slot} · ${inst.activeName}`, inst.contributionBlock)
     }
   }
 

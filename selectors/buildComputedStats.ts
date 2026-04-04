@@ -5,6 +5,8 @@
  */
 import type { BuildSnapshot } from '@/types/build'
 import type { BuildSidebarCombatStats, CombatBreakdown } from '@/types/combat'
+import type { SkillInstanceBreakdown } from '@/types/skillInstance'
+import { computeSkillInstanceForMainSlot } from '@/lib/formula/collectBuildContributions'
 import { selectDivinityBoardTextChars, selectFilledGearCount, selectValidationErrors } from '@/selectors/buildSelectors'
 import {
   mockDivinityBoardOptions,
@@ -33,6 +35,8 @@ export type BuildStatsPanelDerived = {
   combat: BuildSidebarCombatStats
   /** 可解釋的中間值（近真實引擎 v1）。 */
   breakdown: CombatBreakdown
+  /** Per main-slot skill: level row / supports / post-20 / stats（4C-3）。 */
+  skillInstanceBreakdowns: SkillInstanceBreakdown[]
   validationErrors: string[]
   summary: BuildStatsPanelSummaryLabels
 }
@@ -87,9 +91,14 @@ function selectBuildStatsPanelSummary(snapshot: BuildSnapshot): BuildStatsPanelS
 
 export function selectBuildStatsPanelDerived(snapshot: BuildSnapshot): BuildStatsPanelDerived {
   const { combat, breakdown } = runCombatPipeline(snapshot)
+  const skillInstanceBreakdowns = snapshot.skills
+    .map((row) => computeSkillInstanceForMainSlot(row, snapshot))
+    .filter((inst): inst is NonNullable<typeof inst> => inst != null)
+    .map((inst) => inst.breakdown)
   return {
     combat,
     breakdown,
+    skillInstanceBreakdowns,
     validationErrors: selectValidationErrors(snapshot),
     summary: selectBuildStatsPanelSummary(snapshot),
   }

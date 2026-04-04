@@ -45,3 +45,7 @@ next-env.d.ts
 /data/raw/**/indexes/*.md
 /data/raw/**/pages/**/*.html
 /data/raw/**/pages/**/*.md
+
+# Local SQLite (import via npm run data:import:effective); keep data/local/.gitkeep
+/data/local/*.db
+/data/local/*.db-journal

@@ -1,5 +1,6 @@
 /**
- * One-shot: skills + global rules + aggregate manifest.json
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
+ * One-shot: skills + global rules + aggregate manifest.json (offline).
  */
 import path from "node:path";
 import type { NormalizedManifest } from "../../types/normalized";

@@ -1,5 +1,10 @@
 import type { ModifierDefinition, SkillDefinition } from "@/types/skillData"
-import type { AppliedModifierRef, ComputeSkillInstanceInput, SkillInstance } from "@/types/skillInstance"
+import type {
+  AppliedModifierRef,
+  ComputeSkillInstanceInput,
+  SkillInstance,
+  SkillInstanceBreakdown,
+} from "@/types/skillInstance"
 import { activeCanonicalTagSet } from "./tagVocabulary"
 import { evaluateSupportAttachment } from "./applySupportRules"
 import {
@@ -8,16 +13,14 @@ import {
   post20MoreMultiplier,
   resolvePost20ConfigForSkill,
 } from "./applyPost20Scaling"
-import { composeSkillModifiers, mergeMoreProducts } from "./composeSkillModifiers"
+import { composeSkillModifiers } from "./composeSkillModifiers"
 import { skillInstanceToContribution } from "./skillInstanceAdapter"
-
-function levelRowModifiers(_active: SkillDefinition, _level: number): ModifierDefinition[] {
-  /** SkillLevelEntry has no structured modifiers yet — hook for future normalization. */
-  return []
-}
+import { modifiersFromSkillLevelRow, resolveLevelRow, warningsForSkillLevelRow } from "./levelRowModifiers"
 
 export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillInstance {
-  const { active, level, supports, externalModifiers = [] } = input
+  const { active, level, supports } = input
+  const passiveMods = input.passiveModifiers ?? []
+  const externalMods = input.externalModifiers ?? []
   const layer = input.globalLayer ?? defaultGlobalCombatRuleLayer()
   const warnings: string[] = []
   const appliedModifiers: AppliedModifierRef[] = []
@@ -26,7 +29,11 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
   const canon = activeCanonicalTagSet(active.tags)
   const computedTags = [...new Set([...active.tags, ...[...canon]])]
 
-  for (const m of levelRowModifiers(active, level)) {
+  const { source: levelSource } = resolveLevelRow(active, level)
+  const levelMods = modifiersFromSkillLevelRow(active, level)
+  warnings.push(...warningsForSkillLevelRow(active, level))
+
+  for (const m of levelMods) {
     modBag.push(m)
     appliedModifiers.push({ source: "levelRow", refId: active.id, modifier: m })
   }
@@ -35,6 +42,8 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
     modBag.push(m)
     appliedModifiers.push({ source: "active", refId: active.id, modifier: m })
   }
+
+  let appliedSupportModifierCount = 0
 
   const supportAttachments = supports.map((sup) => {
     const ev = evaluateSupportAttachment(active, sup)
@@ -48,6 +57,7 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
       for (const m of sup.modifiers ?? []) {
         modBag.push(m)
         appliedModifiers.push({ source: "support", refId: sup.id, modifier: m })
+        appliedSupportModifierCount += 1
       }
     }
 
@@ -58,10 +68,16 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
       applied: ev.applied,
       warnings: ev.warnings,
       skipReason: ev.skipReason,
+      rawRequirementLines: ev.rawRequirementLines,
     }
   })
 
-  for (const m of externalModifiers) {
+  for (const m of passiveMods) {
+    modBag.push(m)
+    appliedModifiers.push({ source: "passive", refId: m.id ?? "passive", modifier: m })
+  }
+
+  for (const m of externalMods) {
     modBag.push(m)
     appliedModifiers.push({ source: "external", refId: "external", modifier: m })
   }
@@ -94,6 +110,48 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
     })
   }
 
+  const levelRowResolved = resolveLevelRow(active, level).row
+  const slotLabel = input.slotLabel ?? `Skill · ${active.name}`
+
+  const breakdown: SkillInstanceBreakdown = {
+    activeId: active.id,
+    activeName: active.name,
+    slotLabel,
+    level: Math.max(1, Math.floor(level)),
+    parseStatus: input.activeParse?.status,
+    recordWarnings: input.activeParse?.warnings,
+    levelRow: {
+      source: levelSource,
+      partial: levelRowResolved?.partial ?? false,
+      modifierCount: levelMods.length,
+      textLineHints:
+        levelRowResolved?.textLines && levelRowResolved.textLines.length
+          ? levelRowResolved.textLines.slice(0, 3)
+          : undefined,
+    },
+    supports: supportAttachments.map((s) => ({
+      id: s.supportRefId,
+      name: s.supportName,
+      applied: s.applied,
+      skipReason: s.skipReason,
+      warnings: s.warnings,
+      rawRequirementLines: s.rawRequirementLines,
+    })),
+    post20: {
+      multiplier: post20Mult,
+      tier21to30PerLevelMorePct: postCfg.tier21to30PerLevelMorePct,
+      tier31PlusPerLevelMorePct: postCfg.tier31PlusPerLevelMorePct,
+      disabledByMechanic: post20Disabled,
+    },
+    passiveModifierCount: passiveMods.length,
+    externalModifierCount: externalMods.length,
+    levelModifierCount: levelMods.length,
+    activeBaseModifierCount: active.modifiers?.length ?? 0,
+    appliedSupportModifierCount,
+    computedStats: { ...computedStats },
+    engineWarnings: [...warnings],
+  }
+
   const instance: SkillInstance = {
     activeId: active.id,
     activeName: active.name,
@@ -107,6 +165,7 @@ export function computeSkillInstance(input: ComputeSkillInstanceInput): SkillIns
     warnings,
     post20MoreMultiplier: post20Mult,
     contributionBlock: {},
+    breakdown,
   }
 
   instance.contributionBlock = skillInstanceToContribution(instance).block

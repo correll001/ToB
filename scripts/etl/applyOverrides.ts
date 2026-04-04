@@ -1,4 +1,5 @@
 /**
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
  * Merge `data/overrides/{season}` onto `data/normalized/{season}` → `data/effective/{season}`.
  * Does not modify normalized files.
  */

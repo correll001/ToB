@@ -1,4 +1,5 @@
 /**
+ * MAINTENANCE-ONLY — not a production or `next build` dependency.
  * Raw HTML skill pages → normalized JSON (active / support / passive).
  */
 import { readFile } from "node:fs/promises";
