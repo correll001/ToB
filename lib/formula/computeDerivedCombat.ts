@@ -7,7 +7,17 @@ import type {
   DerivedCombatFallbackTrace,
   DerivedCombatRulesPrimarySource,
 } from '@/types/combat'
-import { getDerivedCombatBaseRules } from '@/lib/runtime/runtimeRulesLookup'
+import type { DamageForm } from '@/types/combatRules'
+import {
+  getDamageFormulaRules,
+  getDamageFormsRules,
+  getDerivedCombatBaseRules,
+} from '@/lib/runtime/runtimeRulesLookup'
+import { trueDamageIgnoresResistAndArmor } from '@/lib/formula/rules/damageFormApplicability'
+import { computeCritAndDoubleDamageForForm } from '@/lib/formula/rules/critAndDoubleDamage'
+import { incomingConversionEligibility, outgoingConversionEligibility } from '@/lib/formula/rules/damageTypeConversion'
+import { effectiveArmorMitigationPercentForDamageCalc } from '@/lib/formula/rules/armorReductionPenetration'
+import { effectiveResistancePercentForDamageCalc } from '@/lib/formula/rules/resistancePenetration'
 
 function clamp(n: number, lo: number, hi: number) {
   return Math.min(hi, Math.max(lo, n))
@@ -21,6 +31,10 @@ export type ComputeDerivedCombatOptions = {
   skillHitBaseFromLevel?: number | null
   /** Set when `skillHitBaseFromLevel` was (min+max)/2 from a range row. */
   skillHitBaseFromMinMaxAverage?: boolean
+  /** Default `hit` — sidebar DPS path; other forms gate crit / outgoing conversion / armor pen per rules. */
+  damageForm?: DamageForm
+  /** When set, double-damage EV applied (hit-only per rules). Otherwise traced, mult stays 1. */
+  doubleDamageChancePct?: number | null
 }
 
 export type DerivedCombatResult = {
@@ -55,6 +69,46 @@ export function computeDerivedCombat(
   const rulesRes = getDerivedCombatBaseRules()
   const R = rulesRes.values
   const layerFallbacks = [...rulesRes.fallbacks]
+  const form: DamageForm = opts?.damageForm ?? 'hit'
+
+  const formulaRules = getDamageFormulaRules()
+  if (!formulaRules) {
+    layerFallbacks.push({ key: 'damage_formula', reason: 'structured_rules_missing' })
+  } else if (formulaRules.status === 'blocked_needs_user_rule') {
+    layerFallbacks.push({ key: 'damage_formula', reason: 'blocked_needs_user_rule' })
+  } else if (
+    formulaRules.structure !== 'base_times_product_of_one_plus_increased_times_product_of_one_plus_more'
+  ) {
+    layerFallbacks.push({ key: 'damage_formula', reason: 'structure_mismatch_with_bundle' })
+  }
+
+  const outConv = outgoingConversionEligibility(form)
+  if (outConv.rulesMissing) {
+    layerFallbacks.push({ key: 'outgoing_damage_type_conversion', reason: 'rules_missing' })
+  }
+
+  const inConv = incomingConversionEligibility(form)
+  if (inConv.rulesMissing) {
+    layerFallbacks.push({ key: 'incoming_damage_type_conversion', reason: 'rules_missing' })
+  } else if (!inConv.applies) {
+    layerFallbacks.push({ key: 'incoming_damage_type_conversion', reason: 'form_excluded', detail: form })
+  }
+
+  if (form === 'true_damage' && trueDamageIgnoresResistAndArmor(getDamageFormsRules())) {
+    layerFallbacks.push({
+      key: 'mitigation',
+      reason: 'true_damage_ignores_resist_and_armor_per_structured_rules',
+    })
+  }
+
+  const neutralResistPipe = effectiveResistancePercentForDamageCalc(form, 0, 0)
+  const neutralArmorPipe = effectiveArmorMitigationPercentForDamageCalc(form, 0, 0)
+  if (neutralResistPipe.skipped && neutralResistPipe.reason === 'rules_missing') {
+    layerFallbacks.push({ key: 'resistance_penetration', reason: 'rules_missing_or_disabled' })
+  }
+  if (neutralArmorPipe.skipped && neutralArmorPipe.reason === 'rules_missing') {
+    layerFallbacks.push({ key: 'armor_reduction_penetration', reason: 'rules_missing_or_disabled' })
+  }
 
   const baseStr = R.baseAttrStart + lv * R.baseAttrPerLevel
   const baseDex = R.baseAttrStart + lv * R.baseAttrPerLevel
@@ -140,12 +194,26 @@ export function computeDerivedCombat(
     R.attackSpeedClampMax,
   )
 
-  const p = Math.min(1, Math.max(0, agg.critChancePct / 100))
-  const cd = Math.max(0, agg.critDamagePct / 100)
-  const multOnCrit = R.critBaseMultiplier * (1 + cd)
-  const critExpectedMult = 1 - p + p * multOnCrit
+  const critDouble = computeCritAndDoubleDamageForForm(form, agg, {
+    legacyCritBaseMultiplier: R.critBaseMultiplier,
+    doubleDamageChancePct: opts?.doubleDamageChancePct,
+  })
+  const pushCritTrace = (t: (typeof critDouble.traces)[number]) => {
+    layerFallbacks.push({ key: t.key, reason: t.reason, detail: t.detail })
+  }
+  for (const t of critDouble.traces) {
+    if (
+      t.reason === 'blocked_needs_user_rule' ||
+      t.reason === 'structured_default_crit_damage_pct_missing_used_legacy_panel' ||
+      t.reason === 'final_crit_value_formula_blocked_needs_user_rule'
+    ) {
+      pushCritTrace(t)
+    }
+  }
+  const critExpectedMult = critDouble.critExpectedMult
+  const doubleDamageExpectedMult = critDouble.doubleDamageExpectedMult
 
-  const dps = hitDamage * attackSpeedFinal * critExpectedMult
+  const dps = hitDamage * attackSpeedFinal * critExpectedMult * doubleDamageExpectedMult
 
   const combat: BuildSidebarCombatStats = {
     dps: Math.round(dps * 100) / 100,

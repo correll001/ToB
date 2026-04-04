@@ -11,6 +11,19 @@ import type {
 import type { GlobalCombatRuleLayer, Post20ScalingConfig } from '@/types/skillInstance'
 import { defaultGlobalCombatRuleLayer, TLIDB_DEFAULT_POST20 } from '@/lib/formula/skills/applyPost20Scaling'
 import type { NormalizedGlobalRulesFile } from '@/types/normalized'
+import type {
+  ArmorReductionPenetrationRuleBlock,
+  CombatRulesExtensions,
+  CritRuleBlock,
+  DamageConversionRuleBlock,
+  DamageFormulaRuleBlock,
+  DamageFormsRuleBlock,
+  DamageTypesRuleBlock,
+  DoubleDamageRuleBlock,
+  ResistancePenetrationRuleBlock,
+  RuleStatus,
+  StructuredCombatRules,
+} from '@/types/combatRules'
 
 import { getRuntimeDataset } from './runtimeDataset'
 
@@ -77,6 +90,80 @@ export function getBundledCombatRulesFile(): NormalizedGlobalRulesFile {
 /** Resolved `rules` object inside the bundled Character_Build / combat rules file. */
 export function getBundledCombatRules(): GlobalCombatRuleSet {
   return getBundledCombatRulesFile().rules
+}
+
+/** 4E-4 — Authoritative structured combat rules from bundled `combat-rules.json` (undefined if ingest predates 4E-2). */
+export function getBundledStructuredCombatRules(): StructuredCombatRules | undefined {
+  return getBundledCombatRules().structuredCombatRules
+}
+
+function structuredCombatExtensions(): CombatRulesExtensions | undefined {
+  return getBundledStructuredCombatRules()?.rules.extensions
+}
+
+export function getDamageFormsRules(): DamageFormsRuleBlock | undefined {
+  return structuredCombatExtensions()?.damageForms
+}
+
+export function getDamageTypesRules(): DamageTypesRuleBlock | undefined {
+  return structuredCombatExtensions()?.damageTypes
+}
+
+export function getDamageConversionRules(): DamageConversionRuleBlock | undefined {
+  return structuredCombatExtensions()?.damageConversion
+}
+
+export function getResistancePenetrationRules(): ResistancePenetrationRuleBlock | undefined {
+  return structuredCombatExtensions()?.resistancePenetration
+}
+
+export function getArmorReductionPenetrationRules(): ArmorReductionPenetrationRuleBlock | undefined {
+  return structuredCombatExtensions()?.armorReductionPenetration
+}
+
+export function getDamageFormulaRules(): DamageFormulaRuleBlock | undefined {
+  return structuredCombatExtensions()?.damageFormula
+}
+
+export function getCritRules(): CritRuleBlock | undefined {
+  return structuredCombatExtensions()?.critRules
+}
+
+export function getDoubleDamageRules(): DoubleDamageRuleBlock | undefined {
+  return structuredCombatExtensions()?.doubleDamageRules
+}
+
+/** Per-block status + source refs (manifest topicIds) for admin / verify — not per-field provenance. */
+export type StructuredCombatBlockProvenanceRow = {
+  block: keyof CombatRulesExtensions
+  status: RuleStatus | undefined
+  sourceRefCount: number
+  topicIds: string[]
+}
+
+export function getStructuredCombatRulesProvenanceSummary(): StructuredCombatBlockProvenanceRow[] {
+  const ext = structuredCombatExtensions()
+  const keys: (keyof CombatRulesExtensions)[] = [
+    'damageForms',
+    'damageTypes',
+    'damageConversion',
+    'resistancePenetration',
+    'armorReductionPenetration',
+    'damageFormula',
+    'critRules',
+    'doubleDamageRules',
+  ]
+  return keys.map((block) => {
+    const b = ext?.[block] as { status?: RuleStatus; sources?: { topicId?: string }[] } | undefined
+    const sources = b?.sources ?? []
+    const topicIds = [...new Set(sources.map((s) => s.topicId).filter(Boolean) as string[])]
+    return {
+      block,
+      status: b?.status,
+      sourceRefCount: sources.length,
+      topicIds,
+    }
+  })
 }
 
 function joinSectionBullets(rules: GlobalCombatRuleSet, sectionId: string): string {

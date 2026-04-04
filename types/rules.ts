@@ -5,6 +5,7 @@
  */
 
 import type { JsonValue } from "./skillData"
+import type { StructuredCombatRules } from "./combatRules"
 
 /** One document aggregating wiki-derived global rules for a season. */
 export type GlobalCombatRuleSet = {
@@ -25,6 +26,11 @@ export type GlobalCombatRuleSet = {
    * (`hpBaseFlat`, `weaponDamagePerLevel`, …) — see `getDerivedCombatBaseRules`.
    */
   extensions?: Record<string, JsonValue>
+  /**
+   * 4E-1: authoritative combat rules as typed blocks (`types/combatRules.ts`).
+   * Optional until ETL ingests transcripts + manifest; does not replace `extensions` escape hatch.
+   */
+  structuredCombatRules?: StructuredCombatRules
 }
 
 /** Describes how skills (or modifiers) scale after the standard cap (e.g. Lv20+). */

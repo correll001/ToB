@@ -2,9 +2,9 @@
   "meta": {
     "season": "ss12",
     "locale": "en",
-    "generatedAt": "2026-04-04T05:35:33.722Z",
-    "parserVersion": "1",
-    "sourceCount": 58,
+    "generatedAt": "2026-04-04T12:46:32.515Z",
+    "parserVersion": "3",
+    "sourceCount": 66,
     "warningsCount": 0
   },
   "rules": {
@@ -13,7 +13,8 @@
     "version": "1.0.0",
     "locale": "en",
     "sourceUrls": [
-      "https://tlidb.com/en/Character_Build"
+      "https://tlidb.com/en/Character_Build",
+      "data/raw/ss12/global-rules/screenshot-sources.json"
     ],
     "characterBuildRules": [
       {
@@ -425,6 +426,398 @@
     ],
     "extensions": {
       "tabSectionCount": 58
+    },
+    "structuredCombatRules": {
+      "meta": {
+        "schemaId": "tob.structuredCombatRules.v1",
+        "season": "ss12",
+        "locale": "zh-Hant",
+        "ingestedAt": "2026-04-04T12:46:32.515Z",
+        "primaryManifestRelativePath": "data/raw/ss12/global-rules/screenshot-sources.json"
+      },
+      "rules": {
+        "extensions": {
+          "damageForms": {
+            "status": "partial",
+            "sources": [
+              {
+                "manifestRelativePath": "data/raw/ss12/global-rules/screenshot-sources.json",
+                "topicId": "damage_forms",
+                "sourceId": "auth-text-damage-forms-a",
+                "transcriptRelativePath": "docs/game-rule-transcripts/damage-forms.md",
+                "quoteBlockIndices": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ],
+                "clauseNumbers": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11
+                ]
+              }
+            ],
+            "blockedParts": [
+              {
+                "termId": "aggravate",
+                "status": "blocked_needs_user_rule",
+                "note": "權威來源章節 I — 尚未完整定義演算法"
+              },
+              {
+                "termId": "reap",
+                "status": "blocked_needs_user_rule",
+                "note": "權威來源章節 I — 尚未完整定義演算法"
+              },
+              {
+                "termId": "damage_redirection",
+                "status": "blocked_needs_user_rule",
+                "note": "權威來源章節 I — 尚未完整定義演算法"
+              },
+              {
+                "termId": "damage_buffer",
+                "status": "blocked_needs_user_rule",
+                "note": "權威來源章節 I — 尚未完整定義演算法"
+              },
+              {
+                "termId": "block",
+                "status": "blocked_needs_user_rule",
+                "note": "權威來源章節 I — 尚未完整定義演算法"
+              },
+              {
+                "termId": "damage_avoidance",
+                "status": "blocked_needs_user_rule",
+                "note": "權威來源章節 I — 尚未完整定義演算法"
+              },
+              {
+                "termId": "grievous",
+                "status": "blocked_needs_user_rule",
+                "note": "權威來源章節 I — 尚未完整定義演算法"
+              },
+              {
+                "termId": "special_fusion_bonus_formula",
+                "status": "blocked_needs_user_rule",
+                "note": "權威來源章節 I — 完整公式未定；C.7 另有「最多一次」限制詞"
+              }
+            ],
+            "unspecifiedSkillDamageDefaultForm": "hit",
+            "hitDamage": {
+              "typicallyFromAttackOrSpell": true,
+              "singleSettlement": true
+            },
+            "mechanismsAffectingHit": [
+              "hit_and_evasion",
+              "armor",
+              "critical_strike",
+              "outgoing_damage_type_conversion_and_added",
+              "incoming_damage_type_conversion",
+              "double_damage",
+              "damage_redirection",
+              "damage_buffer",
+              "block",
+              "damage_avoidance",
+              "grievous"
+            ],
+            "dotDamage": {
+              "overTime": true,
+              "mechanismsAffecting": [
+                "aggravate",
+                "reap",
+                "incoming_damage_type_conversion"
+              ]
+            },
+            "mechanismsCannotAffectDot": [
+              "hit_and_evasion",
+              "armor",
+              "critical_strike",
+              "outgoing_damage_type_conversion_and_added",
+              "double_damage",
+              "damage_redirection",
+              "damage_buffer",
+              "block",
+              "damage_avoidance",
+              "grievous"
+            ],
+            "indirectDamage": {
+              "neitherHitNorDot": true,
+              "mechanismsAffecting": [
+                "incoming_damage_type_conversion",
+                "armor",
+                "damage_avoidance"
+              ]
+            },
+            "reflectDamage": {
+              "defenderTakesHitOrIndirect": true,
+              "dealsReflectToAttacker": true
+            },
+            "trueDamage": {
+              "derivedFromFixedProportionOfOtherFormsFinal": true,
+              "noMostBonusesAgain": true,
+              "ignoresResistAndArmor": true
+            }
+          },
+          "damageTypes": {
+            "status": "ready",
+            "sources": [
+              {
+                "manifestRelativePath": "data/raw/ss12/global-rules/screenshot-sources.json",
+                "topicId": "damage_types",
+                "sourceId": "auth-text-damage-types-b",
+                "transcriptRelativePath": "docs/game-rule-transcripts/damage-types.md",
+                "quoteBlockIndices": [
+                  0,
+                  1
+                ],
+                "clauseNumbers": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "types": [
+              "physical",
+              "fire",
+              "cold",
+              "lightning",
+              "corrosion"
+            ],
+            "nonPhysicalAffectedByMatchingResistance": true,
+            "resistanceAppliesTo": {
+              "physical": false,
+              "fire": true,
+              "cold": true,
+              "lightning": true,
+              "corrosion": true
+            }
+          },
+          "damageConversion": {
+            "status": "partial",
+            "sources": [
+              {
+                "manifestRelativePath": "data/raw/ss12/global-rules/screenshot-sources.json",
+                "topicId": "damage_conversion",
+                "sourceId": "auth-text-damage-conversion-c",
+                "transcriptRelativePath": "docs/game-rule-transcripts/damage-conversion.md",
+                "quoteBlockIndices": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11
+                ],
+                "clauseNumbers": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12
+                ]
+              }
+            ],
+            "blockedParts": [
+              {
+                "termId": "special_fusion_bonus_formula",
+                "status": "blocked_needs_user_rule",
+                "note": "C.7 僅述及每次傷害計算最多一次加成，無完整演算式"
+              }
+            ],
+            "outgoingConversionOnlyAppliesToDamageForm": "hit",
+            "damageTypePriorityLowToHigh": [
+              "physical",
+              "lightning",
+              "cold",
+              "fire",
+              "corrosion"
+            ],
+            "outgoingConversionDirection": "low_to_high_only",
+            "sameSourceOutgoingOverCapRedistributesByWeight": true,
+            "convertedDamageReceivesSourceAndTargetTypeBonuses": true,
+            "specialFusionTypeBonus": {
+              "status": "blocked_needs_user_rule",
+              "atMostOncePerDamageCalculation": true
+            },
+            "incomingConversionPhase": "defender_mitigation_pipeline",
+            "mitigateUsingTypeAfterIncomingConversion": true,
+            "differentIncomingConversionSourcesStack": true,
+            "incomingOver100PercentRedistributesBySourceProportions": true,
+            "incomingConversionAppliesToAllDamageForms": true,
+            "incomingConversionAppliesToDamageForms": [
+              "hit",
+              "dot",
+              "indirect",
+              "reflect",
+              "true_damage"
+            ]
+          },
+          "resistancePenetration": {
+            "status": "ready",
+            "sources": [
+              {
+                "manifestRelativePath": "data/raw/ss12/global-rules/screenshot-sources.json",
+                "topicId": "resistance_penetration",
+                "sourceId": "auth-text-resistance-penetration-d",
+                "transcriptRelativePath": "docs/game-rule-transcripts/resistance-penetration.md",
+                "quoteBlockIndices": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "clauseNumbers": [
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            ],
+            "appliesToDefenderEffectiveResistance": true,
+            "subtractsFromMatchingResistanceForDamageCalc": true,
+            "doesNotChangeActualResistanceValue": true,
+            "appliesToDamageForms": [
+              "hit",
+              "dot",
+              "indirect",
+              "reflect"
+            ]
+          },
+          "armorReductionPenetration": {
+            "status": "ready",
+            "sources": [
+              {
+                "manifestRelativePath": "data/raw/ss12/global-rules/screenshot-sources.json",
+                "topicId": "armor_reduction_penetration",
+                "sourceId": "auth-text-armor-reduction-penetration-e",
+                "transcriptRelativePath": "docs/game-rule-transcripts/armor-reduction-penetration.md",
+                "quoteBlockIndices": [
+                  0,
+                  1,
+                  2
+                ],
+                "clauseNumbers": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "onlyAppliesWhenComputingHitDamage": true,
+            "reducesDefenderArmorMitigationPercentByPenetration": true,
+            "doesNotChangeActualArmorValue": true,
+            "mayDriveMitigationPercentNegativeToIncreaseDamageTaken": true
+          },
+          "damageFormula": {
+            "status": "ready",
+            "sources": [
+              {
+                "manifestRelativePath": "data/raw/ss12/global-rules/screenshot-sources.json",
+                "topicId": "damage_formula",
+                "sourceId": "auth-text-damage-formula-f",
+                "transcriptRelativePath": "docs/game-rule-transcripts/damage-formula-crit-double-damage.md",
+                "quoteBlockIndices": [
+                  0
+                ],
+                "clauseNumbers": [
+                  1
+                ]
+              }
+            ],
+            "structure": "base_times_product_of_one_plus_increased_times_product_of_one_plus_more"
+          },
+          "critRules": {
+            "status": "partial",
+            "sources": [
+              {
+                "manifestRelativePath": "data/raw/ss12/global-rules/screenshot-sources.json",
+                "topicId": "crit_rules",
+                "sourceId": "auth-text-crit-rules-g",
+                "transcriptRelativePath": "docs/game-rule-transcripts/damage-formula-crit-double-damage.md",
+                "quoteBlockIndices": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "clauseNumbers": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              }
+            ],
+            "critAppliesToHitDamage": true,
+            "multiHitTypicallySingleCritRoll": true,
+            "weaponBaseCritContributesWhenAttacking": true,
+            "spellBaseCritContributesWhenCasting": true,
+            "finalCritValueFormula": {
+              "status": "partial",
+              "symbolicShape": "base_sum_times_product_one_plus_non_extra_times_product_one_plus_extra"
+            },
+            "critChanceFromFinalCritValue": "final_crit_value_divided_by_100",
+            "defaultCritDamagePercent": 150
+          },
+          "doubleDamageRules": {
+            "status": "ready",
+            "sources": [
+              {
+                "manifestRelativePath": "data/raw/ss12/global-rules/screenshot-sources.json",
+                "topicId": "double_damage_rules",
+                "sourceId": "auth-text-double-damage-h",
+                "transcriptRelativePath": "docs/game-rule-transcripts/damage-formula-crit-double-damage.md",
+                "quoteBlockIndices": [
+                  0,
+                  1,
+                  2
+                ],
+                "clauseNumbers": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "evaluatedOnHit": true,
+            "eligibleDoubleDamageChanceStacksThenSingleRoll": true,
+            "onlyAppliesToHitDamage": true
+          }
+        }
+      }
     }
   }
 }

@@ -15,6 +15,7 @@ import {
   normalizedRoot,
   writeJsonFile,
 } from "./shared";
+import { buildStructuredCombatRules } from "./buildStructuredCombatRules";
 
 function extractSkillLevelRules(html: string): GlobalCombatRuleSet {
   const $ = cheerio.load(html);
@@ -119,16 +120,28 @@ export async function runNormalizeGlobalRules(): Promise<NormalizeGlobalRulesRes
     rules: skillRules,
   };
 
+  const structuredCombat = buildStructuredCombatRules(generatedAt);
+  const mergedCombatRules: GlobalCombatRuleSet = {
+    ...buildRules,
+    structuredCombatRules: structuredCombat,
+    sourceUrls: [
+      ...(buildRules.sourceUrls ?? []),
+      "data/raw/ss12/global-rules/screenshot-sources.json",
+    ],
+  };
+
   const combatDoc: NormalizedGlobalRulesFile = {
     meta: {
       season: SEASON,
       locale: "en",
       generatedAt,
       parserVersion: NORMALIZE_PARSER_VERSION,
-      sourceCount: buildRules.characterBuildRules?.length ?? 0,
+      sourceCount:
+        (buildRules.characterBuildRules?.length ?? 0) +
+        Object.keys(structuredCombat.rules.extensions).length,
       warningsCount: 0,
     },
-    rules: buildRules,
+    rules: mergedCombatRules,
   };
 
   await writeJsonFile(path.join(normalizedRoot(), "skill-level-rules.json"), skillDoc);
@@ -144,7 +157,9 @@ export async function runNormalizeGlobalRules(): Promise<NormalizeGlobalRulesRes
     {
       path: `data/normalized/${SEASON}/combat-rules.json`,
       kind: "combat-rules",
-      recordCount: buildRules.characterBuildRules?.length ?? 0,
+      recordCount:
+        (buildRules.characterBuildRules?.length ?? 0) +
+        Object.keys(structuredCombat.rules.extensions).length,
       warningsCount: 0,
     },
   ];
