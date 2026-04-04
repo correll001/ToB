@@ -16,6 +16,7 @@
     "etl:apply-overrides": "tsx scripts/etl/applyOverrides.ts",
     "etl:talent-affixes": "tsx scripts/etl/ingestTalentAffixLibrary.ts",
     "verify:talent-affixes": "tsx scripts/verify/verifyTalentAffixes.ts",
+    "verify:talent-panels": "tsx scripts/verify/verifyTalentPanels.ts",
     "report:combat-rules-norm-eff": "tsx scripts/verify/reportCombatRulesNormEffDiff.ts",
     "debug:runtime-structured-combat-rules": "tsx scripts/verify/debugRuntimeStructuredCombatRules.ts",
     "etl:diff-season": "tsx scripts/etl/diffSeasonData.ts",

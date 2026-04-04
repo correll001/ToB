@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "season": "ss12",
+  "sourceNote": "Hand-maintained nodes. Empty by design until you add real 3×6 placements. Same affixId may appear multiple times per panel or across panels. Do not invent nodes from TLIDB text.",
+  "nodeCount": 0,
+  "nodes": []
+}

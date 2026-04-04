@@ -1,0 +1,36 @@
+{
+  "_exampleOnly": true,
+  "_warning": "DO NOT copy into data/normalized/ss12/talent-panel-nodes.json. Topology below is illustrative only (not extracted from the game). AffixIds are real rows from talent-affixes.json for syntax demo.",
+  "schemaVersion": 1,
+  "season": "ss12",
+  "sourceNote": "Example file for docs / local experiments. Not validated by npm run verify:talent-panels.",
+  "nodeCount": 2,
+  "nodes": [
+    {
+      "nodeId": "talnode:ss12:god_God_of_Might:s0",
+      "panelId": "god_God_of_Might",
+      "affixId": "talaffix:ss12:core_talent:10001100",
+      "x": 0,
+      "y": 0,
+      "slotIndex": 0,
+      "nodeType": "keystone",
+      "maxRank": 1,
+      "requiresNodeIds": [],
+      "edgesTo": ["talnode:ss12:god_God_of_Might:s1"],
+      "notes": ["Example only — coordinates are placeholders."]
+    },
+    {
+      "nodeId": "talnode:ss12:god_God_of_Might:s1",
+      "panelId": "god_God_of_Might",
+      "affixId": "talaffix:ss12:core_talent:10001200",
+      "x": 1,
+      "y": 0,
+      "slotIndex": 1,
+      "nodeType": "major",
+      "maxRank": 1,
+      "requiresNodeIds": ["talnode:ss12:god_God_of_Might:s0"],
+      "edgesTo": [],
+      "notes": ["Example only."]
+    }
+  ]
+}
