@@ -3,11 +3,37 @@ import type { StatBlock } from '@/types/combat'
 const trim = (s: string) => s.trim()
 
 /**
+ * 英文／TLI 慣用條件子句：此類列不應併入泛用 StatBlock 桶（改列於「條件式」明細）。
+ */
+const CONDITIONAL_MARK_EN =
+  /\b(against|if you|when |while |recently|in the last|for every|for each|upon inflicting|upon |when at |when holding|while dual|while holding|if a |if an |if you have|if you deal|if you lose|if you take|if you use|if you cast|when performing|chance to |stacks up to|interval:|for 4s|per 1|per \d|proximity|sealed mana|fervor|frostbitten|frozen enemies|low life|cursed enemies|blinded enemies|damaging ailments|marked enemy|multistrike)\b/i
+
+/** 繁中說明／詞綴行：條件式場景（具名頂級 descriptionLines 等）。 */
+const CONDITIONAL_MARK_ZH =
+  /對(冰封|霜凍|致盲|受詛咒|低血|近距離)|對受|若擁有|若近期|當擁有|當.{1,12}時|過去.{1,14}秒|近期|每受到|每失去|同時擁有|未使用|靜止時|移動時|滿魔|雙持|收割|擊敗時|命中時|暴擊時獲得|每有一種|造成傷害時|獲得.{0,6}機率|間隔：/i
+
+/** 牆面節點 effectLines（英文）是否為條件式敘述。 */
+export function isConditionalTalentEffectLine(line: string): boolean {
+  const s = trim(line)
+  if (!s) return false
+  return CONDITIONAL_MARK_EN.test(s)
+}
+
+/** 明細列（英文節點行或中文說明）是否視為條件式。 */
+export function isConditionalEffectDisplayLine(line: string): boolean {
+  const s = trim(line)
+  if (!s) return false
+  if (CONDITIONAL_MARK_EN.test(s)) return true
+  return CONDITIONAL_MARK_ZH.test(s)
+}
+
+/**
  * 將牆面節點英文效果行解析為 StatBlock；解析不到則回 null（交由 UI 以純文字列顯示）。
  */
 export function parseTalentEffectLineToStatBlock(line: string): StatBlock | null {
   const s = trim(line)
   if (!s) return null
+  if (isConditionalTalentEffectLine(s)) return null
 
   let m: RegExpMatchArray | null
 

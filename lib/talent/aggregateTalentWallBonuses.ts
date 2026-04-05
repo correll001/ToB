@@ -4,7 +4,11 @@ import type { TalentPanelNode } from '@/types/talentPanel'
 import { aggregateStatBlocks } from '@/lib/formula/aggregateStats'
 import { suggestedTalentNodeId, TALENT_PANEL_NODES_FILE, TALENT_PANEL_SEASON } from '@/lib/talent/talentPanelClientData'
 import { translateTalentEffectLineEnToZh } from '@/lib/talent/talentEffectLineZh'
-import { statBlocksForTalentLineAndRank } from '@/lib/talent/parseTalentEffectLineToStatBlock'
+import {
+  isConditionalEffectDisplayLine,
+  isConditionalTalentEffectLine,
+  statBlocksForTalentLineAndRank,
+} from '@/lib/talent/parseTalentEffectLineToStatBlock'
 import {
   lookupCoreTalentAffix,
   NAMED_GRAND_TALENT_SLOT_COUNT,
@@ -27,6 +31,10 @@ const NODE_BY_ID = buildNodeById()
 export type TalentWallUnbucketedRollup = {
   lineZh: string
   stackedWeight: number
+}
+
+export type TalentWallManifestLineRollup = TalentWallUnbucketedRollup & {
+  conditional: boolean
 }
 
 export function aggregatedTalentWallBucketsToZh(b: AggregatedBuckets): string[] {
@@ -82,8 +90,8 @@ export function aggregatedTalentWallBucketsToZh(b: AggregatedBuckets): string[] 
 
 /**
  * 四盤天賦牆：節點效果解析進 StatBlock 後以 aggregateStatBlocks 合併；無法解析的列附在 unbucketed。
- * effectLineManifestZh 列出每一條已匯入效果（譯文）× 階級，含已進桶列，供 UI 完整展示。
- * 具名頂級天賦（核心天賦詞綴）修飾符一併併入同一套桶。
+ * effectLineManifestZh：逐行明細（條件式列不併入綠字桶）；具名頂級說明亦併入明細。
+ * 具名頂級修飾符仍進 StatBlock 桶（非條件式 label）。
  */
 export function aggregateTalentWallBonuses(snapshot: BuildSnapshot): {
   totalTalentPoints: number
@@ -92,12 +100,19 @@ export function aggregateTalentWallBonuses(snapshot: BuildSnapshot): {
   /** 無法解析進 StatBlock 的列（舊欄位，供除錯／腳本）。 */
   unbucketed: TalentWallUnbucketedRollup[]
   /** 已投入節點的每一條效果（譯文）× 階級加權；含已進數值桶者，不省略。 */
-  effectLineManifestZh: TalentWallUnbucketedRollup[]
+  effectLineManifestZh: TalentWallManifestLineRollup[]
 } {
   const blocks: StatBlock[] = []
   const textTally = new Map<string, number>()
-  const manifestTally = new Map<string, number>()
+  const manifestMap = new Map<string, TalentWallManifestLineRollup>()
   let totalTalentPoints = 0
+
+  function bumpManifest(lineZh: string, w: number, conditional: boolean) {
+    const key = `${conditional ? '1' : '0'}\t${lineZh}`
+    const cur = manifestMap.get(key)
+    if (cur) cur.stackedWeight += w
+    else manifestMap.set(key, { lineZh, stackedWeight: w, conditional })
+  }
 
   const boards = snapshot.talentWallBoards
   if (!Array.isArray(boards)) {
@@ -107,7 +122,7 @@ export function aggregateTalentWallBonuses(snapshot: BuildSnapshot): {
       buckets: empty,
       bucketLinesZh: [],
       unbucketed: [],
-      effectLineManifestZh: [],
+      effectLineManifestZh: [] as TalentWallManifestLineRollup[],
     }
   }
 
@@ -123,7 +138,7 @@ export function aggregateTalentWallBonuses(snapshot: BuildSnapshot): {
       blocks.push(...statBlocksFromAffixModifiers(affix.modifiers ?? []))
       for (const raw of affix.descriptionLines ?? []) {
         const t = raw.trim()
-        if (t) manifestTally.set(t, (manifestTally.get(t) ?? 0) + 1)
+        if (t) bumpManifest(t, 1, isConditionalEffectDisplayLine(t))
       }
     }
 
@@ -137,12 +152,12 @@ export function aggregateTalentWallBonuses(snapshot: BuildSnapshot): {
       if (!lines?.length) {
         const key = `（無匯入效果摘要 · ${board.panelId}）`
         textTally.set(key, (textTally.get(key) ?? 0) + r)
-        manifestTally.set(key, (manifestTally.get(key) ?? 0) + r)
+        bumpManifest(key, r, false)
         continue
       }
       for (const line of lines) {
         const zhLine = translateTalentEffectLineEnToZh(line)
-        manifestTally.set(zhLine, (manifestTally.get(zhLine) ?? 0) + r)
+        bumpManifest(zhLine, r, isConditionalTalentEffectLine(line))
 
         const parsed = statBlocksForTalentLineAndRank(line, r)
         if (parsed.length > 0) {
@@ -160,9 +175,11 @@ export function aggregateTalentWallBonuses(snapshot: BuildSnapshot): {
     .map(([lineZh, stackedWeight]) => ({ lineZh, stackedWeight }))
     .sort((a, b) => b.stackedWeight - a.stackedWeight || a.lineZh.localeCompare(b.lineZh, 'zh-Hant'))
 
-  const effectLineManifestZh: TalentWallUnbucketedRollup[] = [...manifestTally.entries()]
-    .map(([lineZh, stackedWeight]) => ({ lineZh, stackedWeight }))
-    .sort((a, b) => b.stackedWeight - a.stackedWeight || a.lineZh.localeCompare(b.lineZh, 'zh-Hant'))
+  const effectLineManifestZh: TalentWallManifestLineRollup[] = [...manifestMap.values()].sort((a, b) => {
+    if (a.conditional !== b.conditional) return a.conditional ? -1 : 1
+    if (b.stackedWeight !== a.stackedWeight) return b.stackedWeight - a.stackedWeight
+    return a.lineZh.localeCompare(b.lineZh, 'zh-Hant')
+  })
 
   return { totalTalentPoints, buckets, bucketLinesZh, unbucketed, effectLineManifestZh }
 }

@@ -653,32 +653,8 @@ export default function TalentTreePanel() {
       </div>
 
       <div className="border-t border-slate-800/60 bg-slate-950/20 px-5 py-4">
-        <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400/85">{tt.rollupTitle}</div>
-        <p className="mt-1 text-xs text-slate-500">
-          {tt.rollupIntroBeforePoints}
-          <span className="font-semibold text-slate-200">{bonusRollup.totalTalentPoints}</span>
-          {tt.rollupIntroAfterPoints}
-        </p>
-        {bonusRollup.effectLineManifestZh.length > 0 ? (
-          <>
-            <div className="mt-3 text-[10px] font-bold uppercase tracking-wider text-sky-500/90">
-              {tt.rollupManifestTitle}
-            </div>
-            <p className="mt-1 text-[10px] leading-relaxed text-slate-600">{tt.rollupManifestBlurb}</p>
-            <ul className="mt-1.5 max-h-[min(42vh,22rem)] space-y-1 overflow-y-auto text-[11px] leading-relaxed text-slate-200/95">
-              {bonusRollup.effectLineManifestZh.map((r, i) => (
-                <li key={i} className="flex gap-2 border-b border-slate-800/40 pb-1.5">
-                  <span className="shrink-0 tabular-nums text-slate-500">×{r.stackedWeight}</span>
-                  <span>{r.lineZh}</span>
-                </li>
-              ))}
-            </ul>
-          </>
-        ) : null}
-        <div className="mt-3 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-          {tt.rollupBucketsTitle}
-        </div>
-        <ul className="mt-1.5 max-h-[min(28vh,14rem)] space-y-1 overflow-y-auto text-[11px] leading-relaxed text-emerald-200/95">
+        <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{tt.rollupBucketsTitle}</div>
+        <ul className="mt-1.5 max-h-[min(32vh,16rem)] space-y-1 overflow-y-auto text-[11px] leading-relaxed text-emerald-200/95">
           {bonusRollup.bucketLinesZh.length === 0 ? (
             <li className="text-slate-600">{tt.rollupBucketsEmpty}</li>
           ) : (
@@ -689,6 +665,57 @@ export default function TalentTreePanel() {
             ))
           )}
         </ul>
+
+        <div className="mt-4 border-t border-slate-800/55 pt-4">
+          <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400/85">{tt.rollupTitle}</div>
+          <p className="mt-1 text-xs text-slate-500">
+            {tt.rollupIntroBeforePoints}
+            <span className="font-semibold text-slate-200">{bonusRollup.totalTalentPoints}</span>
+            {tt.rollupIntroAfterPoints}
+          </p>
+          {bonusRollup.effectLineManifestZh.length > 0 ? (
+            <>
+              {bonusRollup.effectLineManifestZh.some((r) => r.conditional) ? (
+                <>
+                  <div className="mt-3 text-[10px] font-bold uppercase tracking-wider text-amber-400/90">
+                    {tt.rollupManifestConditionalTitle}
+                  </div>
+                  <p className="mt-1 text-[10px] leading-relaxed text-slate-600">
+                    {tt.rollupManifestConditionalBlurb}
+                  </p>
+                  <ul className="mt-1.5 max-h-[min(28vh,14rem)] space-y-1 overflow-y-auto text-[11px] leading-relaxed text-amber-100/90">
+                    {bonusRollup.effectLineManifestZh
+                      .filter((r) => r.conditional)
+                      .map((r, i) => (
+                        <li key={`c-${i}`} className="flex gap-2 border-b border-slate-800/40 pb-1.5">
+                          <span className="shrink-0 tabular-nums text-amber-500/80">×{r.stackedWeight}</span>
+                          <span>{r.lineZh}</span>
+                        </li>
+                      ))}
+                  </ul>
+                </>
+              ) : null}
+              {bonusRollup.effectLineManifestZh.some((r) => !r.conditional) ? (
+                <>
+                  <div className="mt-3 text-[10px] font-bold uppercase tracking-wider text-sky-500/90">
+                    {tt.rollupManifestTitle}
+                  </div>
+                  <p className="mt-1 text-[10px] leading-relaxed text-slate-600">{tt.rollupManifestBlurb}</p>
+                  <ul className="mt-1.5 max-h-[min(36vh,18rem)] space-y-1 overflow-y-auto text-[11px] leading-relaxed text-slate-200/95">
+                    {bonusRollup.effectLineManifestZh
+                      .filter((r) => !r.conditional)
+                      .map((r, i) => (
+                        <li key={`u-${i}`} className="flex gap-2 border-b border-slate-800/40 pb-1.5">
+                          <span className="shrink-0 tabular-nums text-slate-500">×{r.stackedWeight}</span>
+                          <span>{r.lineZh}</span>
+                        </li>
+                      ))}
+                  </ul>
+                </>
+              ) : null}
+            </>
+          ) : null}
+        </div>
       </div>
     </div>
   )

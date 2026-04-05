@@ -1,5 +1,6 @@
 import type { StatBlock } from '@/types/combat'
 import type { TalentAffixModifierStub } from '@/types/talentAffix'
+import { isConditionalEffectDisplayLine } from '@/lib/talent/parseTalentEffectLineToStatBlock'
 import { percentIncreasedDamageFromLabelZh } from '@/lib/talent/mapIncreasedDamageLabelToStatBlock'
 
 /**
@@ -13,6 +14,7 @@ export function statBlocksFromAffixModifiers(modifiers: TalentAffixModifierStub[
     const label = m.labelZh
 
     if (m.kind === 'percent_increased') {
+      if (isConditionalEffectDisplayLine(label)) continue
       const dmg = percentIncreasedDamageFromLabelZh(label, v)
       if (dmg) {
         out.push(dmg)

@@ -18,7 +18,7 @@ export const talentTreePanelZh = {
   },
   pageTitle: '天賦樹',
   pageSubtitle:
-    '四塊盤面皆可自 30 張天賦牆擇一；主區 8×5 含牆上傳奇，右側以「第一階／第二階」下拉選擇具名頂級天賦（核心詞綴）。底部先列逐行效果明細，再列數值桶合併。',
+    '四塊盤面皆可自 30 張天賦牆擇一；主區 8×5 含牆上傳奇，右側以「第一階／第二階」下拉選擇具名頂級天賦（核心詞綴）。底部先列綠字數值桶，其下為四盤總覽與逐行明細（條件式單獨分組）。',
   currentWall: '本盤牆面：',
   sixGodsSection: '六神',
   professionWallsSection: '職業牆',
@@ -67,13 +67,15 @@ export const talentTreePanelZh = {
   rollupTitle: '四盤效果總覽',
   rollupIntroBeforePoints: '合計已投入 ',
   rollupIntroAfterPoints:
-    ' 牆面天賦點。下方綠字為可進引擎桶的合計（含抗性、技能消耗等）；泛用「傷害」與法術／攻擊／元素等分項分列，勿加總成單一百分比。額外傷害（additional）以連乘堆疊。具名頂級天賦的文案亦列在「逐行明細」。',
-  rollupBucketsTitle: '數值桶（引擎式）',
+    ' 牆面天賦點。上方綠字為可進引擎桶的合計；條件式加成不併入綠字桶，僅列於下方明細。泛用「傷害」與法術／攻擊／元素等分項分列。具名頂級說明亦在明細中。',
+  rollupBucketsTitle: '數值桶合計（引擎式）',
   rollupBucketsEmpty: '尚無可解析進桶的加成。',
   rollupUnbucketedTitle: '其他效果（未進數值桶）',
-  rollupManifestTitle: '天賦效果明細（逐行）',
-  rollupManifestBlurb:
-    '以下為牆面節點效果（× 階級）與具名頂級天賦說明；與綠字數值桶對照時，桶內可能將多列合併為同一欄（例如多種傷害分項）。',
+  rollupManifestTitle: '常駐效果（逐行）',
+  rollupManifestBlurb: '牆面節點 × 階級；與綠字桶對照時，多列可能合併為同一欄。',
+  rollupManifestConditionalTitle: '條件式／場景效果（不進桶）',
+  rollupManifestConditionalBlurb:
+    '對特定敵人狀態、時間窗、持有祝福等才生效；不計入上方綠字合計。',
 } as const
 
 export type TalentTreePanelMessages = typeof talentTreePanelZh
