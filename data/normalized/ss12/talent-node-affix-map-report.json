@@ -2,24 +2,42 @@
   "provenance": "applyTalentNodeAffixMapping:v2",
   "autoLayerProvenance": "mapTalentNodesToAffixes:v1",
   "totalNodes": 875,
-  "resolved": 249,
-  "unresolved": 626,
-  "unresolvedAfterAuto": 629,
+  "resolved": 271,
+  "unresolved": 604,
+  "unresolvedAfterAuto": 607,
   "resolvedByManualAdjudication": 3,
   "byConfidence": {
-    "normalized_text_talent_tree": 244,
+    "normalized_text_talent_tree": 265,
     "manual_adjudicated": 3,
-    "constrained_fallback_unique": 2
+    "constrained_fallback_unique": 3
   },
   "unresolvedReasons": {
-    "no_affix_text_match": 514,
+    "no_affix_text_match": 467,
     "missing_effect_lines_anchor": 58,
-    "multiple_candidates_same_text_modifiers_tie": 54
+    "multiple_candidates_same_text_modifiers_tie": 79
+  },
+  "comparison": {
+    "vsPreviousRun": {
+      "resolvedDelta": 22,
+      "unresolvedDelta": -22,
+      "previousResolved": 249,
+      "previousUnresolved": 626,
+      "previousUnresolvedReasons": {
+        "no_affix_text_match": 514,
+        "missing_effect_lines_anchor": 58,
+        "multiple_candidates_same_text_modifiers_tie": 54
+      },
+      "previousByConfidence": {
+        "normalized_text_talent_tree": 244,
+        "manual_adjudicated": 3,
+        "constrained_fallback_unique": 2
+      }
+    }
   },
   "adjudicationFile": "C:\\dev\\tob\\data\\manual\\ss12\\talent-node-affix-adjudications.json",
   "adjudicationParseErrors": [],
   "adjudicationApplyErrors": [],
-  "generatedAt": "2026-04-05T05:54:43.453Z",
+  "generatedAt": "2026-04-05T06:08:34.354Z",
   "sampleUnresolved": [
     {
       "i": 7,

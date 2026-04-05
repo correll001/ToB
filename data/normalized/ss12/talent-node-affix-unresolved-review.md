@@ -1,6 +1,6 @@
 # Talent node → affix unresolved review
 
-Generated: 2026-04-05T05:54:52.092Z
+Generated: 2026-04-05T06:08:40.901Z
 Season: ss12
 
 ---
@@ -9,6 +9,7 @@ Season: ss12
 
 - **panel**: `god_God_of_Might`  **slot**: 12  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -40,6 +41,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Might`  **slot**: 13  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -71,6 +73,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Might`  **slot**: 20  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -102,6 +105,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Might`  **slot**: 29  **type**: small
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -131,6 +135,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_God_of_Might`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -161,6 +166,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Might`  **slot**: 36  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `adjudication_followup` (priority 10) — 裁決表已有 tentative / rejected，或 approved 與節點狀態不一致；需延續治理流程。
 
 ### effectLines
 
@@ -199,6 +205,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_God_of_Might`  **slot**: 37  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `adjudication_followup` (priority 10) — 裁決表已有 tentative / rejected，或 approved 與節點狀態不一致；需延續治理流程。
 
 ### effectLines
 
@@ -233,6 +240,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Might`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -263,6 +271,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 4  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -297,6 +306,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -327,6 +337,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -357,6 +368,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 16  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -390,6 +402,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 21  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -421,6 +434,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 22  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -452,6 +466,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 25  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -483,6 +498,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 26  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -514,6 +530,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -544,6 +561,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -574,6 +592,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 29  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -605,6 +624,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -635,6 +655,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 36  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -668,6 +689,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Goddess_of_Hunting`  **slot**: 37  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -698,6 +720,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 3  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -729,6 +752,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 11  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -759,6 +783,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 12  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -789,6 +814,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -820,6 +846,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -851,6 +878,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 20  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -882,6 +910,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 21  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -913,6 +942,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -944,6 +974,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -974,6 +1005,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 29  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -1005,6 +1037,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -1035,6 +1068,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 37  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -1065,6 +1099,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Knowledge`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -1094,6 +1129,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_God_of_War`  **slot**: 4  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -1127,6 +1163,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_God_of_War`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -1158,6 +1195,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_War`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -1189,6 +1227,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_War`  **slot**: 20  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -1219,6 +1258,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_War`  **slot**: 21  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -1250,6 +1290,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_War`  **slot**: 22  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -1281,6 +1322,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_War`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -1311,6 +1353,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_War`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -1342,6 +1385,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_War`  **slot**: 34  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -1373,6 +1417,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_War`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -1404,6 +1449,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_War`  **slot**: 37  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -1437,6 +1483,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_God_of_War`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -1467,6 +1514,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 2  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -1500,6 +1548,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 3  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -1530,6 +1579,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -1561,6 +1611,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -1592,6 +1643,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -1621,7 +1673,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Goddess_of_Deception:s11
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 11  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -1633,42 +1686,15 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
-## talnode:ss12:god_Goddess_of_Deception:s12
-
-- **panel**: `god_Goddess_of_Deception`  **slot**: 12  **type**: medium
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +9% Damage Over Time
-- +2% Skill Effect Duration
-
-### source notes
-
-- `tli:ss11:node_608_176:91885bdf-13ef-4b75-9435-18643d48f19f`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:50040200` | 50040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:50050100` | 50050100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:50050200` | 50050200 | talent_tree | 中型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -1683,6 +1709,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 16  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -1716,6 +1743,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 20  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -1746,6 +1774,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 21  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -1777,6 +1806,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 27  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -1810,6 +1840,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 28  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -1840,6 +1871,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 29  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -1870,6 +1902,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -1901,6 +1934,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 37  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -1934,6 +1968,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Goddess_of_Deception`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -1964,6 +1999,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 2  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -1995,6 +2031,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 3  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2026,6 +2063,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 4  **type**: medium
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -2055,6 +2093,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_God_of_Machines`  **slot**: 5  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -2090,6 +2129,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_God_of_Machines`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2120,6 +2160,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 11  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -2155,6 +2196,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_God_of_Machines`  **slot**: 12  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2186,6 +2228,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -2215,6 +2258,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_God_of_Machines`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -2246,6 +2290,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -2277,6 +2322,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 20  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -2312,6 +2358,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_God_of_Machines`  **slot**: 21  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -2341,6 +2388,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_God_of_Machines`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -2370,6 +2418,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_God_of_Machines`  **slot**: 25  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2402,6 +2451,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 26  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2434,6 +2484,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2464,6 +2515,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 28  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2494,6 +2546,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 29  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2524,6 +2577,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 30  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2554,6 +2608,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 34  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2584,6 +2639,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2611,40 +2667,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_God_of_Machines:s36
-
-- **panel**: `god_God_of_Machines`  **slot**: 36  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +12% Sentry Damage
-
-### source notes
-
-- `tli:ss11:node_608_464:c0a2d378-d49e-44b4-9df4-b21b79cce924`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_God_of_Machines:s37
 
 - **panel**: `god_God_of_Machines`  **slot**: 37  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -2675,6 +2702,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_God_of_Machines`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -2705,6 +2733,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -2738,6 +2767,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_The_Brave`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -2771,6 +2801,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_The_Brave`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -2801,6 +2832,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -2831,6 +2863,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -2861,6 +2894,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 11  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -2891,6 +2925,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 12  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -2921,6 +2956,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 13  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -2952,6 +2988,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -2982,6 +3019,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -3012,6 +3050,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -3042,6 +3081,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 20  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -3072,6 +3112,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 21  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3102,6 +3143,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3132,6 +3174,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -3162,6 +3205,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -3192,6 +3236,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -3222,6 +3267,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 32  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -3255,6 +3301,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_The_Brave`  **slot**: 34  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -3288,6 +3335,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_The_Brave`  **slot**: 35  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -3318,6 +3366,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 37  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3349,6 +3398,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_The_Brave`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3380,6 +3430,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -3410,6 +3461,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3440,6 +3492,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3470,6 +3523,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 13  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -3500,6 +3554,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -3526,70 +3581,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Onslaughter:s18
-
-- **panel**: `god_Onslaughter`  **slot**: 18  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +3% Defense
-
-### source notes
-
-- `tli:ss11:node_352_272:1dc19d49-2a0a-48d6-895f-3755e875633a`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
-## talnode:ss12:god_Onslaughter:s19
-
-- **panel**: `god_Onslaughter`  **slot**: 19  **type**: medium
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +6% Defense
-
-### source notes
-
-- `tli:ss11:node_480_272:f7ba14da-bd95-4a65-9e5b-6950cb98fb27`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Onslaughter:s20
 
 - **panel**: `god_Onslaughter`  **slot**: 20  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3620,6 +3616,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 21  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3650,6 +3647,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 25  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -3680,6 +3678,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 26  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -3710,6 +3709,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -3741,6 +3741,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -3770,6 +3771,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Onslaughter`  **slot**: 32  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3800,6 +3802,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3830,6 +3833,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3860,6 +3864,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Onslaughter`  **slot**: 37  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3889,7 +3894,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Warlord:s0
 
 - **panel**: `god_Warlord`  **slot**: 0  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -3902,11 +3908,15 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:13010100` | 13010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:13040200` | 13040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:13050100` | 13050100 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -3921,6 +3931,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -3951,7 +3962,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Warlord:s4
 
 - **panel**: `god_Warlord`  **slot**: 4  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -3964,11 +3976,15 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:13010100` | 13010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:13040200` | 13040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:13050100` | 13050100 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -3983,6 +3999,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 5  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -4011,7 +4028,8 @@ Node has no effectLines; no deterministic text anchor.
 ## talnode:ss12:god_Warlord:s11
 
 - **panel**: `god_Warlord`  **slot**: 11  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -4024,11 +4042,15 @@ Node has no effectLines; no deterministic text anchor.
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:13010100` | 13010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:13040200` | 13040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:13050100` | 13050100 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -4043,6 +4065,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 12  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4074,6 +4097,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4105,6 +4129,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -4136,6 +4161,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -4167,6 +4193,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -4198,6 +4225,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -4229,6 +4257,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 20  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4260,6 +4289,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 21  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -4289,6 +4319,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Warlord`  **slot**: 25  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4319,6 +4350,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 26  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4349,6 +4381,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -4380,6 +4413,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -4408,7 +4442,8 @@ Node has no effectLines; no deterministic text anchor.
 ## talnode:ss12:god_Warlord:s29
 
 - **panel**: `god_Warlord`  **slot**: 29  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -4420,11 +4455,16 @@ Node has no effectLines; no deterministic text anchor.
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:13010100` | 13010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:13040200` | 13040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:13050100` | 13050100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:13060400` | 13060400 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -4439,6 +4479,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -4470,6 +4511,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 32  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4501,6 +4543,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4532,6 +4575,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 34  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -4563,6 +4607,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -4594,6 +4639,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4625,6 +4671,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 37  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -4658,6 +4705,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlord`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -4687,6 +4735,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Warrior`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -4720,6 +4769,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Warrior`  **slot**: 4  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -4753,6 +4803,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Warrior`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4783,6 +4834,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warrior`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4813,6 +4865,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warrior`  **slot**: 11  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -4839,70 +4892,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Warrior:s16
-
-- **panel**: `god_Warrior`  **slot**: 16  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +3% Defense
-
-### source notes
-
-- `tli:ss11:node_96_272:95d56708-4600-407f-90b1-bc1da433ba64`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
-## talnode:ss12:god_Warrior:s17
-
-- **panel**: `god_Warrior`  **slot**: 17  **type**: medium
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +6% Defense
-
-### source notes
-
-- `tli:ss11:node_224_272:b6e0c81f-f2ef-486d-b55f-aceb445730ab`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Warrior:s19
 
 - **panel**: `god_Warrior`  **slot**: 19  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -4933,6 +4927,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warrior`  **slot**: 20  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -4963,6 +4958,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warrior`  **slot**: 21  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -4993,6 +4989,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warrior`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -5022,6 +5019,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Warrior`  **slot**: 27  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -5056,6 +5054,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Warrior`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -5085,6 +5084,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Warrior`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5115,6 +5115,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warrior`  **slot**: 32  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -5149,6 +5150,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Warrior`  **slot**: 34  **type**: small
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -5178,6 +5180,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Warrior`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -5207,6 +5210,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Warrior`  **slot**: 36  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -5237,6 +5241,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warrior`  **slot**: 37  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -5271,6 +5276,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Warrior`  **slot**: 38  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5300,7 +5306,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Marksman:s0
 
 - **panel**: `god_Marksman`  **slot**: 0  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -5312,11 +5319,14 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:21010100` | 21010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:21060200` | 21060200 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -5331,6 +5341,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5361,6 +5372,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 2  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5392,6 +5404,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5422,6 +5435,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 11  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5452,6 +5466,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 12  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -5481,7 +5496,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Marksman:s13
 
 - **panel**: `god_Marksman`  **slot**: 13  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -5493,11 +5509,14 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:21010100` | 21010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:21060200` | 21060200 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -5512,6 +5531,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5542,6 +5562,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5572,6 +5593,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5602,6 +5624,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 21  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5632,6 +5655,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5662,6 +5686,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 27  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -5697,6 +5722,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Marksman`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -5728,6 +5754,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 29  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -5759,6 +5786,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -5789,6 +5817,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 32  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -5824,6 +5853,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Marksman`  **slot**: 34  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -5854,6 +5884,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -5884,6 +5915,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Marksman`  **slot**: 37  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -5919,6 +5951,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Marksman`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -5949,6 +5982,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -5982,6 +6016,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Bladerunner`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -6015,6 +6050,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Bladerunner`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -6045,6 +6081,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -6075,6 +6112,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -6105,6 +6143,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 9  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -6139,6 +6178,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Bladerunner`  **slot**: 10  **type**: medium
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -6174,6 +6214,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Bladerunner`  **slot**: 11  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -6204,6 +6245,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 13  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -6234,6 +6276,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -6264,6 +6307,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -6295,6 +6339,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -6326,6 +6371,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -6357,6 +6403,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -6388,6 +6435,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 21  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -6419,6 +6467,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -6448,6 +6497,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Bladerunner`  **slot**: 28  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -6479,6 +6529,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 29  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -6509,6 +6560,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Bladerunner`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -6538,6 +6590,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Bladerunner`  **slot**: 32  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -6572,6 +6625,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Bladerunner`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -6602,6 +6656,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -6632,6 +6687,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -6662,6 +6718,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -6692,6 +6749,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 12  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -6722,6 +6780,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 13  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -6752,6 +6811,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -6782,6 +6842,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -6813,6 +6874,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -6844,6 +6906,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -6875,6 +6938,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -6906,6 +6970,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 20  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -6935,6 +7000,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Druid`  **slot**: 21  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -6966,6 +7032,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -6991,70 +7058,11 @@ Node has no effectLines; no deterministic text anchor.
 
 ---
 
-## talnode:ss12:god_Druid:s25
-
-- **panel**: `god_Druid`  **slot**: 25  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +3% Defense
-
-### source notes
-
-- `tli:ss11:node_224_368:c6d44d2a-5c9d-4ba6-9ff8-d4bed887f1b1`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
-## talnode:ss12:god_Druid:s26
-
-- **panel**: `god_Druid`  **slot**: 26  **type**: medium
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +6% Defense
-
-### source notes
-
-- `tli:ss11:node_352_368:9888eb72-0511-4648-8a81-f130bd7a7c64`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Druid:s27
 
 - **panel**: `god_Druid`  **slot**: 27  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -7088,6 +7096,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Druid`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -7118,6 +7127,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 35  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -7148,6 +7158,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Druid`  **slot**: 36  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -7178,6 +7189,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 0  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -7209,6 +7221,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -7240,6 +7253,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -7270,6 +7284,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 11  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -7301,6 +7316,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 12  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -7329,7 +7345,8 @@ Node has no effectLines; no deterministic text anchor.
 ## talnode:ss12:god_Assassin:s13
 
 - **panel**: `god_Assassin`  **slot**: 13  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -7341,11 +7358,16 @@ Node has no effectLines; no deterministic text anchor.
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:24010100` | 24010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:24040200` | 24040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:24040400` | 24040400 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:24060200` | 24060200 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -7360,6 +7382,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -7390,6 +7413,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -7421,6 +7445,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -7452,6 +7477,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -7482,6 +7508,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 19  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -7511,6 +7538,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Assassin`  **slot**: 20  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -7540,6 +7568,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Assassin`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -7568,7 +7597,8 @@ Node has no effectLines; no deterministic text anchor.
 ## talnode:ss12:god_Assassin:s27
 
 - **panel**: `god_Assassin`  **slot**: 27  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -7580,11 +7610,16 @@ Node has no effectLines; no deterministic text anchor.
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:24010100` | 24010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:24040200` | 24040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:24040400` | 24040400 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:24060200` | 24060200 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -7599,6 +7634,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -7628,6 +7664,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Assassin`  **slot**: 29  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -7659,6 +7696,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -7688,6 +7726,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Assassin`  **slot**: 37  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -7719,6 +7758,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Assassin`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -7750,6 +7790,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -7783,6 +7824,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Magister`  **slot**: 3  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -7814,6 +7856,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -7844,6 +7887,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -7874,6 +7918,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -7904,6 +7949,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 11  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -7935,6 +7981,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 12  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -7964,6 +8011,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Magister`  **slot**: 13  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -7995,6 +8043,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -8025,6 +8074,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -8056,6 +8106,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8086,6 +8137,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 19  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -8115,6 +8167,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Magister`  **slot**: 25  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -8145,6 +8198,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 26  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -8175,6 +8229,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8205,6 +8260,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -8236,6 +8292,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 29  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -8269,6 +8326,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Magister`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -8298,6 +8356,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Magister`  **slot**: 32  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8328,6 +8387,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8358,6 +8418,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 34  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8388,6 +8449,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 35  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -8419,6 +8481,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -8449,6 +8512,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 37  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -8479,6 +8543,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Magister`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -8508,6 +8573,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Arcanist`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -8541,6 +8607,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Arcanist`  **slot**: 4  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -8572,6 +8639,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 5  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -8606,6 +8674,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Arcanist`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -8636,6 +8705,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 11  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -8670,6 +8740,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Arcanist`  **slot**: 12  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -8701,6 +8772,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 13  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8731,6 +8803,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8761,6 +8834,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8791,6 +8865,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8821,6 +8896,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8851,6 +8927,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8881,6 +8958,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 20  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -8915,6 +8993,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Arcanist`  **slot**: 21  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -8945,6 +9024,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -8975,6 +9055,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 28  **type**: medium
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -9004,6 +9085,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Arcanist`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9034,6 +9116,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 34  **type**: small
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -9063,6 +9146,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Arcanist`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9093,6 +9177,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Arcanist`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9123,6 +9208,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 0  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9153,6 +9239,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9183,6 +9270,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9213,6 +9301,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -9243,6 +9332,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9273,6 +9363,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 11  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9303,6 +9394,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 12  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -9333,6 +9425,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 13  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9363,6 +9456,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9393,6 +9487,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -9424,6 +9519,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -9455,6 +9551,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -9485,6 +9582,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -9515,6 +9613,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9545,6 +9644,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 29  **type**: small
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -9574,6 +9674,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Elementalist`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9604,6 +9705,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 32  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9634,6 +9736,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9664,6 +9767,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 34  **type**: small
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -9693,6 +9797,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Elementalist`  **slot**: 35  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -9718,40 +9823,11 @@ Node has no effectLines; no deterministic text anchor.
 
 ---
 
-## talnode:ss12:god_Elementalist:s36
-
-- **panel**: `god_Elementalist`  **slot**: 36  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +2% Elemental Resistance
-
-### source notes
-
-- `tli:ss11:node_608_464:fd6439ed-1f10-4567-aa67-4619ca8dc4a6`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Elementalist:s37
 
 - **panel**: `god_Elementalist`  **slot**: 37  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -9782,6 +9858,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Elementalist`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9811,7 +9888,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Prophet:s0
 
 - **panel**: `god_Prophet`  **slot**: 0  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -9823,11 +9901,15 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:34010100` | 34010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:34010500` | 34010500 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:34060500` | 34060500 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -9842,6 +9924,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9872,6 +9955,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9902,6 +9986,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9932,6 +10017,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -9962,6 +10048,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 11  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -9991,6 +10078,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Prophet`  **slot**: 12  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10021,6 +10109,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 13  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10051,6 +10140,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10081,6 +10171,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -10112,6 +10203,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -10143,6 +10235,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10173,6 +10266,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 19  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10203,6 +10297,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -10234,6 +10329,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 28  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -10265,6 +10361,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 29  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10296,6 +10393,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10326,6 +10424,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 32  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10357,6 +10456,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10388,6 +10488,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 35  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10419,6 +10520,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 36  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -10448,6 +10550,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Prophet`  **slot**: 37  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10479,6 +10582,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Prophet`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -10508,6 +10612,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Shadowdancer`  **slot**: 0  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10539,6 +10644,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10570,6 +10676,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10601,6 +10708,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10633,6 +10741,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 9  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10664,6 +10773,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 10  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10695,6 +10805,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 12  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10727,6 +10838,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 13  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10758,6 +10870,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -10789,6 +10902,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -10819,6 +10933,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -10849,6 +10964,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 21  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10879,6 +10995,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10909,6 +11026,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 26  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -10938,6 +11056,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Shadowdancer`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10968,6 +11087,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -10998,6 +11118,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 37  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -11028,6 +11149,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowdancer`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -11057,7 +11179,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Ronin:s0
 
 - **panel**: `god_Ronin`  **slot**: 0  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -11069,41 +11192,14 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
-## talnode:ss12:god_Ronin:s1
-
-- **panel**: `god_Ronin`  **slot**: 1  **type**: medium
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +18% Melee Damage
-
-### source notes
-
-- `tli:ss11:node_224_80:17e067a3-b756-46dc-a3a9-02be2698ed83`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:42010100` | 42010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:42060200` | 42060200 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -11118,6 +11214,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -11149,6 +11246,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 5  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -11179,6 +11277,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -11208,7 +11307,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Ronin:s13
 
 - **panel**: `god_Ronin`  **slot**: 13  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -11220,11 +11320,14 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:42010100` | 42010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:42060200` | 42060200 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -11239,6 +11342,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -11269,6 +11373,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -11300,6 +11405,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -11331,6 +11437,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -11362,6 +11469,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -11389,41 +11497,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Ronin:s20
-
-- **panel**: `god_Ronin`  **slot**: 20  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +18% Melee Damage
-- -4% Attack Speed
-
-### source notes
-
-- `tli:ss11:node_608_272:7ea91bde-944b-4ef2-a068-1ec09bd02b22`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Ronin:s21
 
 - **panel**: `god_Ronin`  **slot**: 21  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -11453,6 +11531,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Ronin`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -11483,6 +11562,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 28  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -11514,6 +11594,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 29  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -11545,6 +11626,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -11575,6 +11657,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 37  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -11605,6 +11688,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ronin`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -11635,6 +11719,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -11668,6 +11753,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Ranger`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -11698,6 +11784,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 5  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -11728,6 +11815,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 11  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -11758,6 +11846,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 13  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -11791,6 +11880,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Ranger`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -11820,6 +11910,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Ranger`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -11851,6 +11942,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -11882,6 +11974,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -11913,6 +12006,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -11944,6 +12038,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 20  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -11977,6 +12072,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Ranger`  **slot**: 21  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -12008,6 +12104,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 25  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -12038,6 +12135,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 26  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -12068,6 +12166,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 27  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -12094,70 +12193,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Ranger:s28
-
-- **panel**: `god_Ranger`  **slot**: 28  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +9% Melee Damage
-
-### source notes
-
-- `tli:ss11:node_608_368:55973b56-d6d4-45c3-ac58-6f9f0537a04f`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
-## talnode:ss12:god_Ranger:s29
-
-- **panel**: `god_Ranger`  **slot**: 29  **type**: medium
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +18% Melee Damage
-
-### source notes
-
-- `tli:ss11:node_736_368:272881e8-39b3-43c9-a640-2805cadbd21c`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Ranger:s30
 
 - **panel**: `god_Ranger`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -12188,6 +12228,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 32  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -12221,6 +12262,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Ranger`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -12251,6 +12293,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 34  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -12278,41 +12321,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Ranger:s35
-
-- **panel**: `god_Ranger`  **slot**: 35  **type**: medium
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +9% Projectile Damage
-- +6% Projectile Speed
-
-### source notes
-
-- `tli:ss11:node_480_464:f0437942-0641-4f3b-a591-4800e9017a6e`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Ranger:s36
 
 - **panel**: `god_Ranger`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -12343,6 +12356,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 37  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -12373,6 +12387,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Ranger`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -12403,6 +12418,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12434,6 +12450,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 5  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -12463,6 +12480,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Sentinel`  **slot**: 11  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -12493,6 +12511,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 12  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -12524,6 +12543,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 13  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12555,6 +12575,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -12585,6 +12606,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12616,6 +12638,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12647,6 +12670,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12678,6 +12702,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 19  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12708,6 +12733,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -12738,6 +12764,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 25  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12768,6 +12795,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 26  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12798,6 +12826,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 27  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12828,6 +12857,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 29  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12859,6 +12889,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -12891,6 +12922,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 32  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12922,6 +12954,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -12949,40 +12982,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Sentinel:s34
-
-- **panel**: `god_Sentinel`  **slot**: 34  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +3% Defense
-
-### source notes
-
-- `tli:ss11:node_352_464:7c85b282-ceca-4e64-bdd2-9a807bfd73b0`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Sentinel:s35
 
 - **panel**: `god_Sentinel`  **slot**: 35  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13013,6 +13017,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -13043,6 +13048,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Sentinel`  **slot**: 37  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13072,7 +13078,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Shadowmaster:s0
 
 - **panel**: `god_Shadowmaster`  **slot**: 0  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -13085,11 +13092,16 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:51010100` | 51010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51040200` | 51040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51050300` | 51050300 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51060400` | 51060400 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -13104,6 +13116,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13135,6 +13148,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 4  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -13171,6 +13185,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Shadowmaster`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -13201,6 +13216,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -13230,7 +13246,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Shadowmaster:s11
 
 - **panel**: `god_Shadowmaster`  **slot**: 11  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -13243,11 +13260,16 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:51010100` | 51010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51040200` | 51040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51050300` | 51050300 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51060400` | 51060400 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -13262,6 +13284,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 12  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -13291,6 +13314,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Shadowmaster`  **slot**: 13  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13321,6 +13345,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13352,6 +13377,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -13383,6 +13409,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -13414,6 +13441,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13444,6 +13472,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 19  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -13472,7 +13501,8 @@ Node has no effectLines; no deterministic text anchor.
 ## talnode:ss12:god_Shadowmaster:s20
 
 - **panel**: `god_Shadowmaster`  **slot**: 20  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -13485,11 +13515,16 @@ Node has no effectLines; no deterministic text anchor.
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:51010100` | 51010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51040200` | 51040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51050300` | 51050300 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51060400` | 51060400 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -13504,6 +13539,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 21  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13534,6 +13570,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 25  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13564,6 +13601,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 26  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13594,6 +13632,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -13625,6 +13664,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 28  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -13655,7 +13695,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Shadowmaster:s29
 
 - **panel**: `god_Shadowmaster`  **slot**: 29  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -13668,11 +13709,16 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:51010100` | 51010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51040200` | 51040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51050300` | 51050300 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:51060400` | 51060400 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -13687,6 +13733,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -13716,6 +13763,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Shadowmaster`  **slot**: 32  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13746,6 +13794,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13776,6 +13825,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 35  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13806,6 +13856,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 36  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13837,6 +13888,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Shadowmaster`  **slot**: 37  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -13865,7 +13917,8 @@ Node has no effectLines; no deterministic text anchor.
 ## talnode:ss12:god_Psychic:s0
 
 - **panel**: `god_Psychic`  **slot**: 0  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -13877,11 +13930,14 @@ Node has no effectLines; no deterministic text anchor.
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:52010100` | 52010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:52050500` | 52050500 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -13896,6 +13952,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13926,6 +13983,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 2  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13956,6 +14014,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 3  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -13986,6 +14045,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14016,6 +14076,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14046,6 +14107,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -14071,40 +14133,11 @@ Node has no effectLines; no deterministic text anchor.
 
 ---
 
-## talnode:ss12:god_Psychic:s9
-
-- **panel**: `god_Psychic`  **slot**: 9  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +2% Skill Effect Duration
-
-### source notes
-
-- `tli:ss11:node_224_176:2e2e7d38-2b7e-4608-8a61-579a6a3468bf`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Psychic:s10
 
 - **panel**: `god_Psychic`  **slot**: 10  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14135,6 +14168,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 11  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14165,6 +14199,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 13  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14196,6 +14231,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14227,6 +14263,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -14257,6 +14294,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -14287,6 +14325,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 21  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14317,6 +14356,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -14343,40 +14383,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Psychic:s25
-
-- **panel**: `god_Psychic`  **slot**: 25  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +3% Defense
-
-### source notes
-
-- `tli:ss11:node_224_368:0d5599da-ce84-4e3c-966f-7c0789678d4f`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Psychic:s26
 
 - **panel**: `god_Psychic`  **slot**: 26  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14407,6 +14418,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14437,6 +14449,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 28  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14467,6 +14480,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 29  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -14497,6 +14511,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 34  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14527,6 +14542,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14556,7 +14572,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Psychic:s36
 
 - **panel**: `god_Psychic`  **slot**: 36  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -14568,11 +14585,14 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:52010100` | 52010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:52050500` | 52050500 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -14587,6 +14607,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Psychic`  **slot**: 37  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -14616,6 +14637,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Warlock`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -14650,6 +14672,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Warlock`  **slot**: 2  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14681,6 +14704,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 3  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14712,6 +14736,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 4  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -14741,6 +14766,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Warlock`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -14771,6 +14797,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 9  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14801,6 +14828,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 10  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14832,6 +14860,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 11  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14862,6 +14891,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 12  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14892,6 +14922,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 13  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -14922,6 +14953,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -14953,6 +14985,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -14984,6 +15017,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -15015,6 +15049,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -15045,6 +15080,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 19  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -15075,6 +15111,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 20  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15105,6 +15142,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 21  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -15135,6 +15173,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 25  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -15166,6 +15205,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 26  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -15197,6 +15237,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15227,6 +15268,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 28  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15257,6 +15299,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 29  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -15291,6 +15334,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Warlock`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -15320,6 +15364,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Warlock`  **slot**: 32  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15350,6 +15395,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15380,6 +15426,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -15413,6 +15460,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15443,6 +15491,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Warlock`  **slot**: 37  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -15472,6 +15521,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Lich`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -15506,6 +15556,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Lich`  **slot**: 4  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -15540,6 +15591,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Lich`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -15574,6 +15626,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Lich`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15604,6 +15657,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 9  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15634,6 +15688,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 10  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15665,6 +15720,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 11  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15695,6 +15751,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 12  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15725,6 +15782,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 13  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15755,6 +15813,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15786,6 +15845,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -15817,6 +15877,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -15848,6 +15909,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15879,6 +15941,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 19  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15905,40 +15968,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Lich:s20
-
-- **panel**: `god_Lich`  **slot**: 20  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +2% Skill Effect Duration
-
-### source notes
-
-- `tli:ss11:node_608_272:6fe87360-e350-49ad-b3ac-e717f42414ba`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Lich:s21
 
 - **panel**: `god_Lich`  **slot**: 21  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15969,6 +16003,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -15999,6 +16034,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 28  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -16029,6 +16065,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 29  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -16060,6 +16097,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16090,6 +16128,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16120,6 +16159,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 37  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16150,6 +16190,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Lich`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16180,6 +16221,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -16213,6 +16255,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Machinist`  **slot**: 4  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -16246,6 +16289,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Machinist`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16276,6 +16320,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16306,6 +16351,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 12  **type**: small
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -16335,6 +16381,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Machinist`  **slot**: 13  **type**: medium
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -16364,6 +16411,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Machinist`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -16394,6 +16442,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -16425,6 +16474,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -16456,6 +16506,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16486,6 +16537,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16516,6 +16568,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 20  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16546,6 +16599,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 21  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16572,70 +16626,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Machinist:s25
-
-- **panel**: `god_Machinist`  **slot**: 25  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +7% Barrier Shield
-
-### source notes
-
-- `tli:ss11:node_224_368:458ca262-e83b-47b3-8855-e7723b682107`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
-## talnode:ss12:god_Machinist:s26
-
-- **panel**: `god_Machinist`  **slot**: 26  **type**: medium
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +14% Barrier Shield
-
-### source notes
-
-- `tli:ss11:node_352_368:c1231556-140a-4cfe-9314-5e5ce72a4d27`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Machinist:s27
 
 - **panel**: `god_Machinist`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -16667,6 +16662,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 28  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -16698,6 +16694,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 29  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -16727,6 +16724,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Machinist`  **slot**: 34  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16758,6 +16756,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16789,6 +16788,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16819,6 +16819,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Machinist`  **slot**: 37  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -16849,6 +16850,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -16884,6 +16886,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 4  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16914,6 +16917,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 5  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -16944,6 +16948,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 11  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -16979,6 +16984,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 12  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17009,6 +17015,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 13  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -17044,6 +17051,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17074,6 +17082,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -17105,6 +17114,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -17136,6 +17146,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -17167,6 +17178,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -17198,6 +17210,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 20  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17228,6 +17241,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 21  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17258,6 +17272,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17288,6 +17303,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 25  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17318,6 +17334,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 26  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17344,40 +17361,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Steel_Vanguard:s29
-
-- **panel**: `god_Steel_Vanguard`  **slot**: 29  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +7% Barrier Shield
-
-### source notes
-
-- `tli:ss11:node_736_368:ac9d7da3-4270-4406-bbc8-1f0520ca3a3f`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Steel_Vanguard:s30
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17404,40 +17392,11 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ---
 
-## talnode:ss12:god_Steel_Vanguard:s32
-
-- **panel**: `god_Steel_Vanguard`  **slot**: 32  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
-
-### effectLines
-
-- +2% Elemental Resistance
-
-### source notes
-
-- `tli:ss11:node_96_464:4ce7ac88-4f52-4e5c-9e74-9797564af688`
-
-### 為何自動層無法決定
-
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
-
-### candidate affix
-
-（無 — 多為 no_affix_text_match 或缺 effectLines）
-
-### 建議人工決策欄（填寫後寫入 adjudications.json）
-
-- chosenAffixId: 
-- reason: 
-- evidence: 
-- reviewedBy: 
-
----
-
 ## talnode:ss12:god_Steel_Vanguard:s33
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17468,6 +17427,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 34  **type**: small
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -17497,6 +17457,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 35  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -17527,6 +17488,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17557,6 +17519,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Steel_Vanguard`  **slot**: 37  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -17586,6 +17549,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Alchemist`  **slot**: 0  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -17620,6 +17584,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Alchemist`  **slot**: 5  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17650,6 +17615,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17681,6 +17647,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 11  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17711,6 +17678,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 12  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17741,6 +17709,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 13  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17771,6 +17740,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17802,6 +17772,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 16  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -17833,6 +17804,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 17  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -17864,6 +17836,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 19  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17894,6 +17867,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 20  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17924,6 +17898,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 21  **type**: small
 - **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -17958,6 +17933,7 @@ Multiple affix rows pass normalized text / modifier containment; matcher refuses
 
 - **panel**: `god_Alchemist`  **slot**: 22  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -17988,6 +17964,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 25  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -18019,6 +17996,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 26  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 60) — 效果含條件句、多段敘述或過長行；不適合窄 bridge 硬解。
 
 ### effectLines
 
@@ -18050,6 +18028,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 27  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18080,6 +18059,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 28  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18110,6 +18090,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 29  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18140,6 +18121,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18171,6 +18153,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 32  **type**: small
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -18200,6 +18183,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Alchemist`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -18229,6 +18213,7 @@ Node has no effectLines; no deterministic text anchor.
 
 - **panel**: `god_Alchemist`  **slot**: 34  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18259,6 +18244,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18289,6 +18275,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 36  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -18320,6 +18307,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 37  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -18351,6 +18339,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Alchemist`  **slot**: 38  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18381,7 +18370,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Artisan:s0
 
 - **panel**: `god_Artisan`  **slot**: 0  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -18393,11 +18383,15 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:64010100` | 64010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:64040200` | 64040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:64060100` | 64060100 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -18412,6 +18406,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 1  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18442,6 +18437,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 2  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18472,6 +18468,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 3  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18501,7 +18498,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Artisan:s5
 
 - **panel**: `god_Artisan`  **slot**: 5  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -18513,11 +18511,15 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:64010100` | 64010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:64040200` | 64040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:64060100` | 64060100 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -18532,6 +18534,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 6  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18562,6 +18565,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 9  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18592,6 +18596,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 10  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18621,7 +18626,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Artisan:s11
 
 - **panel**: `god_Artisan`  **slot**: 11  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -18633,11 +18639,15 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:64010100` | 64010100 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:64040200` | 64040200 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:64060100` | 64060100 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -18652,6 +18662,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 12  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18684,6 +18695,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 13  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18714,6 +18726,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 14  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18745,6 +18758,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 18  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -18775,6 +18789,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 19  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `deferred_special_mechanic` (priority 50) — 非 bridge 尾綴問題；EXACT/PHRASE 已產出純中文針但仍 no_affix_text_match（多為池內無對應列或文本漂移）。
 
 ### effectLines
 
@@ -18805,6 +18820,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 20  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18836,6 +18852,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 21  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -18866,7 +18883,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Artisan:s25
 
 - **panel**: `god_Artisan`  **slot**: 25  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -18878,11 +18896,14 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:64020400` | 64020400 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:64050400` | 64050400 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -18896,7 +18917,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Artisan:s26
 
 - **panel**: `god_Artisan`  **slot**: 26  **type**: medium
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -18908,11 +18930,14 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:64030400` | 64030400 | talent_tree | 中型天賦 |
+| `talaffix:ss12:talent_tree:64060400` | 64060400 | talent_tree | 中型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -18927,6 +18952,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 27  **type**: keystone
 - **unresolvedReason**: `missing_effect_lines_anchor`
+- **backlog**: `missing_anchor_priority` (priority 40) — 無 effectLines，無法做決定性文字錨點比對。
 
 ### effectLines
 
@@ -18955,7 +18981,8 @@ Node has no effectLines; no deterministic text anchor.
 ## talnode:ss12:god_Artisan:s28
 
 - **panel**: `god_Artisan`  **slot**: 28  **type**: small
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -18967,11 +18994,14 @@ Node has no effectLines; no deterministic text anchor.
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:64020400` | 64020400 | talent_tree | 小型天賦 |
+| `talaffix:ss12:talent_tree:64050400` | 64050400 | talent_tree | 小型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -18985,7 +19015,8 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 ## talnode:ss12:god_Artisan:s29
 
 - **panel**: `god_Artisan`  **slot**: 29  **type**: medium
-- **unresolvedReason**: `no_affix_text_match`
+- **unresolvedReason**: `multiple_candidates_same_text_modifiers_tie`
+- **backlog**: `manual_disambiguation_priority` (priority 20) — 自動層已縮池但仍多筆；不可靠 displayName 或 sourceOrderIndex 自動選（僅可作人工證據輔助）。
 
 ### effectLines
 
@@ -18997,11 +19028,14 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 ### 為何自動層無法決定
 
-No affix haystack contains all translated effect lines (translation gap or SS11/SS12 text drift).
+Multiple affix rows pass normalized text / modifier containment; matcher refuses to pick without disambiguation.
 
-### candidate affix
+### candidate affix（自動層留下的候選）
 
-（無 — 多為 no_affix_text_match 或缺 effectLines）
+| affixId | gameDataId | sourceTab | displayName |
+|---------|------------|-------------|-------------|
+| `talaffix:ss12:talent_tree:64030400` | 64030400 | talent_tree | 中型天賦 |
+| `talaffix:ss12:talent_tree:64060400` | 64060400 | talent_tree | 中型天賦 |
 
 ### 建議人工決策欄（填寫後寫入 adjudications.json）
 
@@ -19016,6 +19050,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 30  **type**: keystone
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -19046,6 +19081,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 32  **type**: small
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -19076,6 +19112,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 33  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 
@@ -19106,6 +19143,7 @@ No affix haystack contains all translated effect lines (translation gap or SS11/
 
 - **panel**: `god_Artisan`  **slot**: 35  **type**: medium
 - **unresolvedReason**: `no_affix_text_match`
+- **backlog**: `translation_bridge_priority` (priority 30) — 譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。
 
 ### effectLines
 

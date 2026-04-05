@@ -2653,7 +2653,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Goddess_of_Deception",
@@ -2673,10 +2673,13 @@
         "+9% Damage Over Time",
         "+2% Skill Effect Duration"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:50050200",
+      "affixGameDataId": "50050200",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Goddess_of_Deception",
@@ -3693,10 +3696,13 @@
       "effectLines": [
         "+12% Sentry Damage"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:60050500",
+      "affixGameDataId": "60050500",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_God_of_Machines",
@@ -4835,10 +4841,13 @@
       "effectLines": [
         "+3% Defense"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:12030300",
+      "affixGameDataId": "12030300",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Onslaughter",
@@ -4857,10 +4866,13 @@
       "effectLines": [
         "+6% Defense"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:12040300",
+      "affixGameDataId": "12040300",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Onslaughter",
@@ -5204,7 +5216,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Warlord",
@@ -5304,7 +5316,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Warlord",
@@ -5398,7 +5410,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Warlord",
@@ -5713,7 +5725,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Warlord",
@@ -6161,10 +6173,13 @@
       "effectLines": [
         "+3% Defense"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:14010300",
+      "affixGameDataId": "14010300",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Warrior",
@@ -6183,10 +6198,13 @@
       "effectLines": [
         "+6% Defense"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:14020300",
+      "affixGameDataId": "14020300",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Warrior",
@@ -6587,7 +6605,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Marksman",
@@ -6830,7 +6848,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Marksman",
@@ -8467,10 +8485,13 @@
       "effectLines": [
         "+3% Defense"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:23020400",
+      "affixGameDataId": "23020400",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Druid",
@@ -8489,10 +8510,13 @@
       "effectLines": [
         "+6% Defense"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:23030400",
+      "affixGameDataId": "23030400",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Druid",
@@ -8870,7 +8894,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Assassin",
@@ -9091,7 +9115,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Assassin",
@@ -11442,10 +11466,13 @@
       "effectLines": [
         "+2% Elemental Resistance"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:33050500",
+      "affixGameDataId": "33050500",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Elementalist",
@@ -11513,7 +11540,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Prophet",
@@ -12929,7 +12956,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Ronin",
@@ -12948,10 +12975,13 @@
       "effectLines": [
         "+18% Melee Damage"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "constrained_fallback_unique",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:42020100",
+      "affixGameDataId": "42020100",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Ronin",
@@ -13197,7 +13227,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Ronin",
@@ -13332,10 +13362,13 @@
         "+18% Melee Damage",
         "-4% Attack Speed"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:42050300",
+      "affixGameDataId": "42050300",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Ronin",
@@ -14075,10 +14108,13 @@
       "effectLines": [
         "+9% Melee Damage"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:43050400",
+      "affixGameDataId": "43050400",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Ranger",
@@ -14099,10 +14135,13 @@
       "effectLines": [
         "+18% Melee Damage"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:43060400",
+      "affixGameDataId": "43060400",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Ranger",
@@ -14213,10 +14252,13 @@
         "+9% Projectile Damage",
         "+6% Projectile Speed"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:43040500",
+      "affixGameDataId": "43040500",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Ranger",
@@ -14890,10 +14932,13 @@
       "effectLines": [
         "+3% Defense"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:44030500",
+      "affixGameDataId": "44030500",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Sentinel",
@@ -14984,7 +15029,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Shadowmaster",
@@ -15201,7 +15246,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Shadowmaster",
@@ -15378,7 +15423,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Shadowmaster",
@@ -15514,7 +15559,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Shadowmaster",
@@ -15666,7 +15711,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Psychic",
@@ -15817,10 +15862,13 @@
       "effectLines": [
         "+2% Skill Effect Duration"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:52020200",
+      "affixGameDataId": "52020200",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Psychic",
@@ -16069,10 +16117,13 @@
       "effectLines": [
         "+3% Defense"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:52020400",
+      "affixGameDataId": "52020400",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Psychic",
@@ -16279,7 +16330,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Psychic",
@@ -17401,10 +17452,13 @@
       "effectLines": [
         "+2% Skill Effect Duration"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:54050300",
+      "affixGameDataId": "54050300",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Lich",
@@ -18122,10 +18176,13 @@
       "effectLines": [
         "+7% Barrier Shield"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:61020400",
+      "affixGameDataId": "61020400",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Machinist",
@@ -18144,10 +18201,13 @@
       "effectLines": [
         "+14% Barrier Shield"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:61030400",
+      "affixGameDataId": "61030400",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Machinist",
@@ -18865,10 +18925,13 @@
       "effectLines": [
         "+7% Barrier Shield"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:62060400",
+      "affixGameDataId": "62060400",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Steel_Vanguard",
@@ -18910,10 +18973,13 @@
       "effectLines": [
         "+2% Elemental Resistance"
       ],
-      "mappingStatus": "unresolved",
+      "mappingStatus": "resolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingConfidence": "normalized_text_talent_tree",
+      "unresolvedReason": null,
+      "affixId": "talaffix:ss12:talent_tree:62010500",
+      "affixGameDataId": "62010500",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_Steel_Vanguard",
@@ -19754,7 +19820,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Artisan",
@@ -19842,7 +19908,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Artisan",
@@ -19931,7 +19997,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Artisan",
@@ -20164,7 +20230,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Artisan",
@@ -20188,7 +20254,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Artisan",
@@ -20229,7 +20295,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Artisan",
@@ -20253,7 +20319,7 @@
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
     },
     {
       "panelId": "god_Artisan",

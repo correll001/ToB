@@ -67,6 +67,13 @@ npx tsx scripts/verify/reviewTalentNodeAffixUnresolved.ts
 
 - 產出：`data/normalized/ss12/talent-node-affix-unresolved-review.json`、`.md`
 
+```bash
+npx tsx scripts/verify/reportTalentNodeAffixBacklog.ts
+```
+
+- 產出：`data/normalized/ss12/talent-node-affix-backlog.json`、`.md`（批次化 backlog + panel 排名）
+- Bridge 治理說明：`docs/talent-panels/translation-bridge-governance.md`
+
 ## Schema（`types/talentPanel.ts`）
 
 - `mappingStatus`: `resolved` | `unresolved`

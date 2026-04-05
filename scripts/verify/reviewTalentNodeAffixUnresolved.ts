@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { parseTalentNodeAdjudicationFile } from '@/lib/talent/applyTalentNodeAffixAdjudications'
+import { buildTalentNodeAffixBacklog } from '@/lib/talent/buildTalentNodeAffixBacklog'
 import { mapTalentPanelNodeToAffix } from '@/lib/talent/mapTalentNodesToAffixes'
 import { buildSuggestedNodeId } from '@/lib/talent/validateTalentPanelData'
 import type { TalentAffixNormalizedFile } from '@/types/talentAffix'
@@ -66,6 +67,25 @@ function main() {
   }
 
   const season = nodesFile.season
+
+  const backlog = buildTalentNodeAffixBacklog({
+    season,
+    nodes: nodesFile.nodes,
+    affixes: affixFile.affixes,
+    adjudications: adjList,
+  })
+  const backlogByNodeId = new Map(
+    backlog.entries.map((e) => [
+      e.nodeId,
+      {
+        batchKey: e.batchKey,
+        priority: e.priority,
+        recommendedAction: e.recommendedAction,
+        whyThisBucket: e.whyThisBucket,
+      },
+    ]),
+  )
+
   type ReviewEntry = {
     nodeId: string
     panelId: string
@@ -91,6 +111,10 @@ function main() {
       updatedAt: string
     }>
     suggestedNextStep: string
+    backlogBatchKey: string
+    backlogPriority: number
+    backlogRecommendedAction: string
+    backlogWhyThisBucket: string
   }
 
   const entries: ReviewEntry[] = []
@@ -109,6 +133,7 @@ function main() {
     const match = mapTalentPanelNodeToAffix(n, affixFile.affixes)
     const nid = nodeIdOf(n, season)
     const adjs = adjudicationsForNodeId(adjList, nid)
+    const bb = backlogByNodeId.get(nid)
     const row: ReviewEntry = {
       nodeId: nid,
       panelId: n.panelId,
@@ -149,6 +174,10 @@ function main() {
           : match.debugCandidateAffixIds?.length
             ? 'Pick one candidate in talent-node-affix-adjudications.json with evidence (e.g. exclude rows with extra stats not on node).'
             : 'Extend deterministic translation table or add external id mapping; or adjudicate with manual_external_reference_match if TLIDB row is provably unique.',
+      backlogBatchKey: bb?.batchKey ?? 'deferred_special_mechanic',
+      backlogPriority: bb?.priority ?? 99,
+      backlogRecommendedAction: bb?.recommendedAction ?? '',
+      backlogWhyThisBucket: bb?.whyThisBucket ?? '',
     }
     entries.push(row)
 
@@ -156,6 +185,9 @@ function main() {
     mdParts.push('')
     mdParts.push(`- **panel**: \`${n.panelId}\`  **slot**: ${n.slotIndex}  **type**: ${n.nodeType}`)
     mdParts.push(`- **unresolvedReason**: \`${n.unresolvedReason}\``)
+    mdParts.push(
+      `- **backlog**: \`${row.backlogBatchKey}\` (priority ${row.backlogPriority}) — ${row.backlogWhyThisBucket}`,
+    )
     mdParts.push('')
     mdParts.push('### effectLines')
     mdParts.push('')

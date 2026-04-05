@@ -16,7 +16,7 @@
 
 **優先級**
 
-- **必做**：擴充可驗證的 `EXACT_LINE_ZH` / `PHRASE`（`lib/talent/talentEffectLineZh.ts`），並重跑 apply；對 `multiple_candidates_*` 使用 **`talent-node-affix-adjudications.json` 人工裁決**或外部 id 表（非模糊匹配）。未決清單：`npm run review:talent-node-affix-unresolved`。
+- **必做**：擴充可驗證的 `EXACT_LINE_ZH` / `PHRASE`（`lib/talent/talentEffectLineZh.ts`），並重跑 apply；對 `multiple_candidates_*` 使用 **`talent-node-affix-adjudications.json` 人工裁決**或外部 id 表（非模糊匹配）。未決清單：`npm run review:talent-node-affix-unresolved`；批次 backlog：`npm run report:talent-node-affix-backlog`（見 `translation-bridge-governance.md`）。
 - **次要**：在 `notes` 或獨立 manifest 中保留 TLI `tlidbId` 與未來官方 id 的對照欄位（**不**刪現有追溯字串）。
 - **可延後**：跨 season SS11→SS12 全文自動對齊（僅在官方對照表齊備後）。
 

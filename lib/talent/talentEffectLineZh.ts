@@ -65,6 +65,24 @@ const EXACT_LINE_ZH: Record<string, string> = {
   '+9% Spell Damage': '+9% 法術傷害',
   '+9% Physical Damage': '+9% 物理傷害',
   '+18% Physical Damage': '+18% 物理傷害',
+  // TLIDB 字面已核對之窄範圍整行對照（見 translation-bridge-governance.md）
+  '+9% Damage Over Time': '+9% 持續傷害',
+  '+3% Defense': '+3% 防禦值',
+  '+6% Defense': '+6% 防禦值',
+  '+9% Minion Fire Damage': '+9% 召喚物火焰傷害',
+  '+18% Minion Fire Damage': '+18% 召喚物火焰傷害',
+  '+9% Minion Erosion Damage': '+9% 召喚物腐蝕傷害',
+  '+9% Fire Damage': '+9% 火焰傷害',
+  '+9% Lightning Damage': '+9% 閃電傷害',
+  '+9% Cold Damage': '+9% 冰冷傷害',
+  '+2% Skill Effect Duration': '+2% 技能效果持續時間',
+  '+2% Elemental Resistance': '+2% 元素抗性',
+  '+12% Sentry Damage': '+12% 哨衛傷害',
+  '+9% Projectile Damage': '+9% 投射物傷害',
+  '+9% Melee Damage': '+9% 近戰傷害',
+  '+18% Melee Damage': '+18% 近戰傷害',
+  '+7% Barrier Shield': '+7% 屏障吸收量',
+  '+14% Barrier Shield': '+14% 屏障吸收量',
 }
 
 const PHRASES: Array<[string, string]> = [
@@ -116,6 +134,12 @@ const PHRASES: Array<[string, string]> = [
   ['Stacks', '層數'],
   ['Duration', '持續時間'],
 ]
+
+/** 譯文仍帶「（原文：…）」尾綴 → 疑為可補 EXACT/PHRASE 的 bridge 缺口（供 backlog 分桶）。 */
+export function translationBridgeLikelyForEffectLines(lines: string[] | undefined): boolean {
+  if (!lines?.length) return false
+  return lines.some((en) => translateTalentEffectLineEnToZh(en).includes('（原文：'))
+}
 
 export function translateTalentEffectLineEnToZh(en: string): string {
   const t = en.trim()

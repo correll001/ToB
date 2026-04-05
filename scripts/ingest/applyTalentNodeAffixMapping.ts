@@ -24,7 +24,21 @@ const AFFIX = join(ROOT, 'data', 'normalized', 'ss12', 'talent-affixes.json')
 const REPORT = join(ROOT, 'data', 'normalized', 'ss12', 'talent-node-affix-map-report.json')
 const ADJ = join(ROOT, 'data', 'manual', 'ss12', 'talent-node-affix-adjudications.json')
 
+type PrevReportShape = {
+  resolved?: number
+  unresolved?: number
+  unresolvedReasons?: Record<string, number>
+  byConfidence?: Record<string, number>
+}
+
 function main() {
+  let previousReport: PrevReportShape | null = null
+  try {
+    previousReport = JSON.parse(readFileSync(REPORT, 'utf8')) as PrevReportShape
+  } catch {
+    previousReport = null
+  }
+
   const nodesFile = JSON.parse(readFileSync(NODES, 'utf8')) as TalentPanelNodesFile
   const affixFile = JSON.parse(readFileSync(AFFIX, 'utf8')) as TalentAffixNormalizedFile
   const affixes = affixFile.affixes
@@ -79,6 +93,22 @@ function main() {
     }
   }
 
+  const comparison =
+    previousReport &&
+    typeof previousReport.resolved === 'number' &&
+    typeof previousReport.unresolved === 'number'
+      ? {
+          vsPreviousRun: {
+            resolvedDelta: resolved - previousReport.resolved,
+            unresolvedDelta: unresolved - previousReport.unresolved,
+            previousResolved: previousReport.resolved,
+            previousUnresolved: previousReport.unresolved,
+            previousUnresolvedReasons: previousReport.unresolvedReasons ?? {},
+            previousByConfidence: previousReport.byConfidence ?? {},
+          },
+        }
+      : undefined
+
   const report = {
     provenance: 'applyTalentNodeAffixMapping:v2',
     autoLayerProvenance: autoReport.provenance,
@@ -89,6 +119,7 @@ function main() {
     resolvedByManualAdjudication: manualApplied,
     byConfidence,
     unresolvedReasons,
+    comparison,
     adjudicationFile: ADJ,
     adjudicationParseErrors,
     adjudicationApplyErrors,
