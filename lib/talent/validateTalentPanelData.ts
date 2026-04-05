@@ -221,7 +221,14 @@ export function validateTalentPanelDataset(
     }
 
     let resolvedAffix: string | null = null
-    if (n.affixPending === true) {
+    if (n.mappingStatus === 'unresolved') {
+      if (!n.unresolvedReason?.trim()) {
+        errors.push(`${label}: mappingStatus unresolved 需要 unresolvedReason`)
+      }
+      if (xyOk) resolvedAffix = `__unresolved__:${n.panelId}:s${exp}`
+    } else if (n.mappingStatus === 'resolved') {
+      resolvedAffix = resolveAffixIdForNode(n, affixRows, affixIdSet, label, errors)
+    } else if (n.affixPending === true) {
       const idTrim = n.affixId?.trim() ?? ''
       const gidRaw = n.affixGameDataId
       const gidTrim = gidRaw != null && String(gidRaw).trim() !== '' ? String(gidRaw).trim() : ''
@@ -235,7 +242,7 @@ export function validateTalentPanelDataset(
     }
 
     if (!resolvedAffix) {
-      if (!n.affixPending) {
+      if (!n.affixPending && n.mappingStatus !== 'unresolved') {
         stats.missingAffixReferences += 1
       }
       continue

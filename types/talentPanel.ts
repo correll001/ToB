@@ -40,6 +40,15 @@ export type TalentPanelDef = {
 
 export type TalentAffixSourceTabForNode = 'core_talent' | 'talent_tree'
 
+/** Node ↔ talent-affixes 對應狀態（取代籠統 affixPending）。 */
+export type TalentPanelNodeMappingStatus = 'resolved' | 'unresolved'
+
+/** 對應規則層級（僅 resolved 時有意義）。 */
+export type TalentPanelNodeMappingConfidence =
+  | 'normalized_text_talent_tree'
+  | 'normalized_text_core_talent'
+  | 'constrained_fallback_unique'
+
 export type TalentPanelNode = {
   /**
    * Stable id. Omit to auto-use `talnode:{season}:{panelId}:s{slotIndex}` (recommended for hand entry).
@@ -58,10 +67,18 @@ export type TalentPanelNode = {
   /** Required when `affixGameDataId` matches more than one affix (typically core vs tree). */
   affixSourceTab?: TalentAffixSourceTabForNode | null
   /**
+   * @deprecated 請改用 `mappingStatus`；保留僅供舊資料或過渡期驗證。
    * When true: no `affixId` / `affixGameDataId` required yet (topology-only ingest, e.g. TLI SS11 → grid).
-   * Remove once each node is linked to `talent-affixes.json`.
    */
   affixPending?: boolean
+  /** 與 `talent-affixes.json` 的對應狀態。 */
+  mappingStatus?: TalentPanelNodeMappingStatus
+  /** 僅 `resolved`：如何對上 affix（可追溯）。 */
+  mappingConfidence?: TalentPanelNodeMappingConfidence | null
+  /** `unresolved` 時必填（機讀原因碼）。 */
+  unresolvedReason?: string | null
+  /** 對應管線版本／腳本識別。 */
+  mappingProvenance?: string
   x: number
   y: number
   slotIndex: number

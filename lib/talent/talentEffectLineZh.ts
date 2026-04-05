@@ -4,8 +4,11 @@
  */
 
 const EXACT_LINE_ZH: Record<string, string> = {
+  '+2% Max Life': '+2% 最大生命',
   '+3% Max Life': '+3% 最大生命',
+  '+4% Max Life': '+4% 最大生命',
   '+6% Max Life': '+6% 最大生命',
+  '+8% Max Life': '+8% 最大生命',
   '+3% Max Energy Shield': '+3% 最大能量護盾',
   '+6% Max Energy Shield': '+6% 最大能量護盾',
   '+9% damage': '+9% 傷害',
@@ -45,6 +48,9 @@ const EXACT_LINE_ZH: Record<string, string> = {
   '+4% Movement Speed': '+4% 移動速度',
   '+3% Attack Speed': '+3% 攻擊速度',
   '+1 to Attack Skill Level': '+1 攻擊技能等級',
+  '-4 Attack Skill Cost': '-4 攻擊技能消耗',
+  '+3% Attack Speed': '+3% 攻擊速度',
+  '+6% Attack Speed': '+6% 攻擊速度',
   '+1 to Max Tenacity Blessing Stacks': '+1 堅韌祝福最大層數',
   '+1 to Max Agility Blessing Stacks': '+1 敏捷祝福最大層數',
   '+1 to Max Focus Blessing Stacks': '+1 專注祝福最大層數',

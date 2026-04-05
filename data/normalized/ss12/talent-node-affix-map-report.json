@@ -1,0 +1,369 @@
+{
+  "provenance": "mapTalentNodesToAffixes:v1",
+  "totalNodes": 875,
+  "resolved": 246,
+  "unresolved": 629,
+  "byConfidence": {
+    "normalized_text_talent_tree": 244,
+    "constrained_fallback_unique": 2
+  },
+  "unresolvedReasons": {
+    "no_affix_text_match": 515,
+    "multiple_candidates_same_text_modifiers_tie": 56,
+    "missing_effect_lines_anchor": 58
+  },
+  "generatedAt": "2026-04-05T05:24:45.326Z",
+  "sampleUnresolved": [
+    {
+      "i": 7,
+      "panelId": "god_God_of_Might",
+      "slot": 12,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 8,
+      "panelId": "god_God_of_Might",
+      "slot": 13,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 13,
+      "panelId": "god_God_of_Might",
+      "slot": 20,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 14,
+      "panelId": "god_God_of_Might",
+      "slot": 21,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 15,
+      "panelId": "god_God_of_Might",
+      "slot": 25,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
+      "mappingConfidence": null,
+      "debugCandidateAffixIds": [
+        "talaffix:ss12:talent_tree:10020400",
+        "talaffix:ss12:talent_tree:10050100",
+        "talaffix:ss12:talent_tree:10050500"
+      ]
+    },
+    {
+      "i": 16,
+      "panelId": "god_God_of_Might",
+      "slot": 26,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
+      "mappingConfidence": null,
+      "debugCandidateAffixIds": [
+        "talaffix:ss12:talent_tree:10030400",
+        "talaffix:ss12:talent_tree:10060100"
+      ]
+    },
+    {
+      "i": 19,
+      "panelId": "god_God_of_Might",
+      "slot": 29,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "missing_effect_lines_anchor",
+      "mappingConfidence": null
+    },
+    {
+      "i": 20,
+      "panelId": "god_God_of_Might",
+      "slot": 30,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 23,
+      "panelId": "god_God_of_Might",
+      "slot": 36,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
+      "mappingConfidence": null,
+      "debugCandidateAffixIds": [
+        "talaffix:ss12:talent_tree:10020400",
+        "talaffix:ss12:talent_tree:10050100",
+        "talaffix:ss12:talent_tree:10050500"
+      ]
+    },
+    {
+      "i": 24,
+      "panelId": "god_God_of_Might",
+      "slot": 37,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 25,
+      "panelId": "god_God_of_Might",
+      "slot": 38,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 26,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 4,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
+      "mappingConfidence": null,
+      "debugCandidateAffixIds": [
+        "talaffix:ss12:talent_tree:20020200",
+        "talaffix:ss12:talent_tree:20050100",
+        "talaffix:ss12:talent_tree:20060400"
+      ]
+    },
+    {
+      "i": 28,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 6,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 34,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 14,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 35,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 16,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
+      "mappingConfidence": null,
+      "debugCandidateAffixIds": [
+        "talaffix:ss12:talent_tree:20010300",
+        "talaffix:ss12:talent_tree:20050500"
+      ]
+    },
+    {
+      "i": 39,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 21,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 40,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 22,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 41,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 25,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 42,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 26,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 43,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 27,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 44,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 28,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 45,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 29,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 46,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 30,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 49,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 36,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
+      "mappingConfidence": null,
+      "debugCandidateAffixIds": [
+        "talaffix:ss12:talent_tree:20010300",
+        "talaffix:ss12:talent_tree:20050500"
+      ]
+    },
+    {
+      "i": 50,
+      "panelId": "god_Goddess_of_Hunting",
+      "slot": 37,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 52,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 3,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 57,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 11,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 58,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 12,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 63,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 18,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 64,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 19,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 65,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 20,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 66,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 21,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 69,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 27,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 70,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 28,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 71,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 29,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 72,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 30,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 75,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 37,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 76,
+      "panelId": "god_Goddess_of_Knowledge",
+      "slot": 38,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "missing_effect_lines_anchor",
+      "mappingConfidence": null
+    },
+    {
+      "i": 79,
+      "panelId": "god_God_of_War",
+      "slot": 4,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
+      "mappingConfidence": null,
+      "debugCandidateAffixIds": [
+        "talaffix:ss12:talent_tree:40050100",
+        "talaffix:ss12:talent_tree:40060500"
+      ]
+    },
+    {
+      "i": 88,
+      "panelId": "god_God_of_War",
+      "slot": 18,
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    }
+  ]
+}
