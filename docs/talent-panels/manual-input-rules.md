@@ -9,31 +9,49 @@
 
 | 檔案 | 內容 |
 |------|------|
-| `talent-panels.json` | 每一塊**固定神版**（或日後特殊板）的元資料：`panelId`、顯示名、3×6 網格宣告、`sourceKind`、備註。 |
-| `talent-panel-nodes.json` | 該板上**實際存在的節點**（空格不要建 node）、座標、`affixId`、類型、點數上限、前置與連線。 |
+| `talent-panels.json` | 每一塊**固定神版**（或日後特殊板）的元資料：`panelId`、顯示名、**8×5** 網格宣告、`sourceKind`、備註。 |
+| `talent-panel-nodes.json` | 該板上**實際存在的節點**（空格不要建 node）、座標、`affixId`（或短 **`affixGameDataId`**）、類型、點數上限、前置與連線。可選根欄位 **`readMeZh`**：給維護者的中文說明；**顯示用文案請讀詞綴庫**，不必在節點裡重複。 |
 | `talent-affixes.json` | **僅**詞綴文案與來源；不寫座標。 |
 
 ---
 
 ## 2. 座標與 `slotIndex`（寫死規則）
 
-- 每個面板為 **3 欄 × 6 列**。
-- **`x` ∈ {0, 1, 2}**（左→右）。
-- **`y` ∈ {0, 1, 2, 3, 4, 5}**（上→下）。
-- **`slotIndex` = `y * 3 + x`**（0–17）。
-- **掃描順序**（僅供人工填寫與對照習慣）：固定為 **先橫向再縱向** — 即 (0,0)→(1,0)→(2,0)→(0,1)→…→(2,5)。
+- 每個面板為 **8 欄 × 5 列**（寬 8、高 5）。
+- **`x` ∈ {0, …, 7}**（左→右）。
+- **`y` ∈ {0, …, 4}**（上→下）。
+- **`slotIndex` = `y * 8 + x`**（0–39）。
+- **掃描順序**（僅供人工填寫與對照習慣）：固定為 **先橫向再縱向** — 即 (0,0)→…→(7,0)→(0,1)→…→(7,4)。
 - 同一 `panelId` 內：**不得**兩個 node 共用同一組 `(x, y)` 或同一 `slotIndex`。
+
+### 2.1 僅拓撲：`affixPending`
+
+- 設 **`affixPending`: true** 時，**不要**填 `affixId` / `affixGameDataId`（驗證會拒絕混用）。
+- 用於從外部來源（例如 TLI Compendium SS11 `talent-tree` bundle）先匯入 **座標與連線**，之後再逐點對應詞綴庫並改回 `false`、補上 affix 引用。
+- 重新產生六基神板：`npm run ingest:tli-ss11-god-panels`（需先下載 `SS11-talent-tree-master.json` 到 `scripts/ingest/`，見該腳本註解）。
+
+### 2.2 較短 id：`affixGameDataId`
+
+- 詞綴庫每筆有 **`affixId`**（長、唯一）與可選 **`gameDataId`**（TLIDB 數字字串，較短）。
+- 手動填 node 時可**只填** `affixGameDataId` + `x`/`y`（及 `slotIndex`），**可不填** `affixId`。
+- **注意**：同一 `gameDataId` 常同時存在 **核心天賦點**與**天賦樹**兩列 → 必須加 **`affixSourceTab`**：`"core_talent"` 或 `"talent_tree"`；否則驗證會報「多筆對應」。
+- **Profession 列**多數沒有 `gameDataId` → 請仍用完整 **`affixId`**。
+- **`nodeId` 可省略**：驗證時會視為 `talnode:{season}:{panelId}:s{slotIndex}`；`requiresNodeIds` / `edgesTo` 請用**最終 nodeId**（省略時即上述自動 id）。
 
 ---
 
 ## 3. `panelId` / `nodeId` 命名
 
 - **`panelId`**：建議人工指定穩定 ASCII id（例如 `god_God_of_Might`）。**不要**從 TLIDB 平面列表推測整張板清單；缺板就**不要**建 panel。
-- **`nodeId`**（已定案）：
+- **`nodeId`**（已定案，可省略由驗證推導）：
 
   `talnode:{season}:{panelId}:s{slotIndex}`
 
   例：`talnode:ss12:god_God_of_Might:s0`
+
+## 3.1 遊戲規則（本層資料不強制檢查）
+
+- 「30 面牆選 4」「同一面牆不可重複選」等屬於**玩家建構／存檔**規則，**不在** `talent-panel-nodes.json` 逐筆驗證；日後聚合層再處理。
 
 ---
 
@@ -55,7 +73,7 @@
 
 ## 6. 其他欄位規則
 
-- **`maxRank`**：正整數，**≥ 1**。
+- **`maxRank`**：正整數，**≥ 1**。對應遊戲 UI：**0/N** → 填 **N**（可投點上限；每點疊加詞綴庫中的單級數值，由聚合／計算層處理）。
 - **`nodeType`**：`entry` | `small` | `medium` | `major` | `keystone` | `special`。無法從遊戲資料區分時請填 **`special`** 並在 `notes` 說明。
 - **`notes`**：panel / node 皆為**陣列**（可為空陣列 `[]`）。
 - **不要**為空格建立 node；**不要**為了「好看」合併不同 `affixId` 的列。
@@ -89,11 +107,11 @@
   "affixId": "talaffix:ss12:talent_tree:12345678",
   "x": 1,
   "y": 1,
-  "slotIndex": 4,
+  "slotIndex": 9,
   "nodeType": "small",
   "maxRank": 1,
   "requiresNodeIds": ["talnode:ss12:god_God_of_Might:s1"],
-  "edgesTo": ["talnode:ss12:god_God_of_Might:s7"],
+  "edgesTo": ["talnode:ss12:god_God_of_Might:s17"],
   "notes": []
 }
 ```

@@ -184,9 +184,28 @@ export function collectBuildContributions(snapshot: BuildSnapshot): Contribution
     }
   }
 
+  const talentWallBoards = snapshot.talentWallBoards
+  if (Array.isArray(talentWallBoards)) {
+    for (const board of talentWallBoards) {
+      if (!board?.ranks || typeof board.ranks !== 'object') continue
+      for (const [nodeId, raw] of Object.entries(board.ranks)) {
+        const r = Math.floor(Number(raw))
+        if (!Number.isFinite(r) || r < 1) continue
+        push(
+          out,
+          'talent',
+          nodeId,
+          `Talent · ${nodeId} ×${r}`,
+          TALENT_NODE_CONTRIBUTIONS[nodeId],
+        )
+      }
+    }
+  }
+
   const talents = snapshot.talents
   if (talents && typeof talents === 'object') {
     for (const tree of TREE_NAMES) {
+      if (tree === 'godTree') continue
       const ids = talents[tree]
       if (!Array.isArray(ids)) continue
       for (const nodeId of ids) {

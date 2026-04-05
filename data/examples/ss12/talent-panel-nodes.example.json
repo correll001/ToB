@@ -3,8 +3,12 @@
   "_warning": "DO NOT copy into data/normalized/ss12/talent-panel-nodes.json. Topology below is illustrative only (not extracted from the game). AffixIds are real rows from talent-affixes.json for syntax demo.",
   "schemaVersion": 1,
   "season": "ss12",
+  "readMeZh": [
+    "與正式檔相同：節點只存座標與 affix 引用；顯示用內容請查 talent-affixes.json。",
+    "網格為 8×5：x 為 0–7，y 為 0–4，slotIndex = y*8+x。"
+  ],
   "sourceNote": "Example file for docs / local experiments. Not validated by npm run verify:talent-panels.",
-  "nodeCount": 2,
+  "nodeCount": 3,
   "nodes": [
     {
       "nodeId": "talnode:ss12:god_God_of_Might:s0",
@@ -31,6 +35,19 @@
       "requiresNodeIds": ["talnode:ss12:god_God_of_Might:s0"],
       "edgesTo": [],
       "notes": ["Example only."]
+    },
+    {
+      "panelId": "god_God_of_Might",
+      "affixGameDataId": "10001300",
+      "affixSourceTab": "core_talent",
+      "x": 0,
+      "y": 2,
+      "slotIndex": 16,
+      "nodeType": "small",
+      "maxRank": 1,
+      "requiresNodeIds": [],
+      "edgesTo": [],
+      "notes": []
     }
   ]
 }

@@ -1,8 +1,9 @@
 /**
- * Pure validation for talent-panels + talent-panel-nodes against affix id set.
+ * Pure validation for talent-panels + talent-panel-nodes against affix rows.
  * No I/O — used by verify script and future loaders.
  */
-import type { TalentPanelDef, TalentPanelNode, TalentPanelNodesFile, TalentPanelsFile } from '@/types/talentPanel'
+import type { TalentAffixNormalized } from '@/types/talentAffix'
+import type { TalentPanelNode, TalentPanelNodesFile, TalentPanelsFile } from '@/types/talentPanel'
 
 const NODE_TYPES: Set<string> = new Set([
   'entry',
@@ -32,18 +33,84 @@ export type TalentPanelValidationResult = {
   stats: TalentPanelValidationStats
 }
 
+type AugNode = {
+  raw: TalentPanelNode
+  nodeId: string
+  affixId: string
+}
+
 function expectedSlot(x: number, y: number): number {
-  return y * 3 + x
+  return y * 8 + x
 }
 
 export function buildSuggestedNodeId(season: string, panelId: string, slotIndex: number): string {
   return `talnode:${season}:${panelId}:s${slotIndex}`
 }
 
+function resolveAffixIdForNode(
+  n: TalentPanelNode,
+  affixRows: TalentAffixNormalized[],
+  affixIdSet: Set<string>,
+  label: string,
+  errors: string[],
+): string | null {
+  const idTrim = n.affixId?.trim() ?? ''
+  const gidRaw = n.affixGameDataId
+  const gidTrim = gidRaw != null && String(gidRaw).trim() !== '' ? String(gidRaw).trim() : ''
+
+  if (!idTrim && !gidTrim) {
+    errors.push(`${label}: 需要 affixId 或 affixGameDataId 其一`)
+    return null
+  }
+
+  if (idTrim && !affixIdSet.has(idTrim)) {
+    errors.push(`${label}: affixId 不在 talent-affixes: ${idTrim}`)
+    return null
+  }
+
+  if (!gidTrim) {
+    return idTrim
+  }
+
+  const matches = affixRows.filter((a) => a.gameDataId === gidTrim)
+  if (matches.length === 0) {
+    errors.push(`${label}: affixGameDataId 找不到: ${gidTrim}`)
+    return null
+  }
+
+  let resolved: TalentAffixNormalized | undefined
+  if (matches.length === 1) {
+    resolved = matches[0]
+  } else {
+    const tab = n.affixSourceTab ?? undefined
+    if (!tab) {
+      errors.push(
+        `${label}: affixGameDataId「${gidTrim}」對應多筆（通常為核心／天賦樹各一筆），請填 affixSourceTab: "core_talent" 或 "talent_tree"，或改用 affixId`,
+      )
+      return null
+    }
+    resolved = matches.find((a) => a.sourceTab === tab)
+    if (!resolved) {
+      errors.push(`${label}: affixSourceTab「${tab}」與 gameDataId「${gidTrim}」無對應列`)
+      return null
+    }
+  }
+
+  if (idTrim && resolved.affixId !== idTrim) {
+    errors.push(
+      `${label}: affixId「${idTrim}」與 affixGameDataId 解析結果「${resolved.affixId}」不一致`,
+    )
+    return null
+  }
+
+  return resolved.affixId
+}
+
 export function validateTalentPanelDataset(
   panelsFile: TalentPanelsFile,
   nodesFile: TalentPanelNodesFile,
   affixIdSet: Set<string>,
+  affixRows: TalentAffixNormalized[],
 ): TalentPanelValidationResult {
   const errors: string[] = []
   const stats: TalentPanelValidationStats = {
@@ -58,6 +125,8 @@ export function validateTalentPanelDataset(
     unknownNodeTypeCount: 0,
     invalidMaxRankCount: 0,
   }
+
+  const season = panelsFile.season
 
   if (panelsFile.schemaVersion !== 1) {
     errors.push(`panels: unsupported schemaVersion ${panelsFile.schemaVersion}`)
@@ -94,11 +163,11 @@ export function validateTalentPanelDataset(
       errors.push(`duplicate panelId: ${p.panelId}`)
     }
     panelIds.add(p.panelId)
-    if (p.gridWidth !== 3) {
-      errors.push(`panel ${p.panelId}: gridWidth must be 3, got ${p.gridWidth}`)
+    if (p.gridWidth !== 8) {
+      errors.push(`panel ${p.panelId}: gridWidth must be 8, got ${p.gridWidth}`)
     }
-    if (p.gridHeight !== 6) {
-      errors.push(`panel ${p.panelId}: gridHeight must be 6, got ${p.gridHeight}`)
+    if (p.gridHeight !== 5) {
+      errors.push(`panel ${p.panelId}: gridHeight must be 5, got ${p.gridHeight}`)
     }
     if (p.manualTopology !== true) {
       errors.push(`panel ${p.panelId}: manualTopology must be true`)
@@ -112,7 +181,6 @@ export function validateTalentPanelDataset(
     stats.nodesPerPanel[p.panelId] = 0
   }
 
-  const nodeIds = new Set<string>()
   const nodesByPanel = new Map<string, TalentPanelNode[]>()
   for (const n of nodes) {
     const list = nodesByPanel.get(n.panelId) ?? []
@@ -124,57 +192,92 @@ export function validateTalentPanelDataset(
     stats.nodesPerPanel[pid] = list.length
   }
 
-  const slotOccupants = new Map<string, Map<string, string>>() // panelId -> slotKey -> nodeId
+  const aug: AugNode[] = []
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i]!
+    const label = `node[#${i} panel=${n.panelId} xy=(${n.x},${n.y})]`
 
-  for (const n of nodes) {
     if (!Array.isArray(n.requiresNodeIds) || !Array.isArray(n.edgesTo) || !Array.isArray(n.notes)) {
-      errors.push(
-        `node ${typeof n.nodeId === 'string' ? n.nodeId : '(missing nodeId)'}: requiresNodeIds, edgesTo, notes must be arrays`,
-      )
-    }
-    if (!n.nodeId) {
-      errors.push('node missing nodeId')
-      continue
-    }
-    if (nodeIds.has(n.nodeId)) {
-      errors.push(`duplicate nodeId: ${n.nodeId}`)
-    }
-    nodeIds.add(n.nodeId)
-
-    if (!panelIds.has(n.panelId)) {
-      errors.push(`node ${n.nodeId}: panelId not found: ${n.panelId}`)
+      errors.push(`${label}: requiresNodeIds, edgesTo, notes must be arrays`)
     }
 
-    if (!n.affixId) {
-      errors.push(`node ${n.nodeId}: affixId required`)
-    } else if (!affixIdSet.has(n.affixId)) {
-      stats.missingAffixReferences += 1
-      errors.push(`node ${n.nodeId}: affixId not in talent-affixes: ${n.affixId}`)
+    let xyOk = true
+    if (!Number.isInteger(n.x) || n.x < 0 || n.x > 7) {
+      errors.push(`${label}: x must be integer 0..7, got ${n.x}`)
+      xyOk = false
     }
-
-    if (!Number.isInteger(n.x) || n.x < 0 || n.x > 2) {
-      errors.push(`node ${n.nodeId}: x must be integer 0..2, got ${n.x}`)
-    }
-    if (!Number.isInteger(n.y) || n.y < 0 || n.y > 5) {
-      errors.push(`node ${n.nodeId}: y must be integer 0..5, got ${n.y}`)
+    if (!Number.isInteger(n.y) || n.y < 0 || n.y > 4) {
+      errors.push(`${label}: y must be integer 0..4, got ${n.y}`)
+      xyOk = false
     }
 
     const exp = expectedSlot(n.x, n.y)
     if (n.slotIndex !== exp) {
       stats.invalidSlotIndexCount += 1
       errors.push(
-        `node ${n.nodeId}: slotIndex ${n.slotIndex} !== y*3+x (${exp}) for x=${n.x} y=${n.y}`,
+        `${label}: slotIndex ${n.slotIndex} !== y*8+x (${exp}) for x=${n.x} y=${n.y}`,
       )
+      xyOk = false
+    }
+
+    let resolvedAffix: string | null = null
+    if (n.affixPending === true) {
+      const idTrim = n.affixId?.trim() ?? ''
+      const gidRaw = n.affixGameDataId
+      const gidTrim = gidRaw != null && String(gidRaw).trim() !== '' ? String(gidRaw).trim() : ''
+      if (idTrim || gidTrim) {
+        errors.push(`${label}: affixPending 為 true 時不可同時填 affixId / affixGameDataId`)
+      } else if (xyOk) {
+        resolvedAffix = `__pending__:${n.panelId}:s${exp}`
+      }
+    } else {
+      resolvedAffix = resolveAffixIdForNode(n, affixRows, affixIdSet, label, errors)
+    }
+
+    if (!resolvedAffix) {
+      if (!n.affixPending) {
+        stats.missingAffixReferences += 1
+      }
+      continue
+    }
+
+    if (!xyOk) {
+      continue
+    }
+
+    const slotIndex = exp
+    const autoId = buildSuggestedNodeId(season, n.panelId, slotIndex)
+    const nodeId = n.nodeId?.trim() ? n.nodeId.trim() : autoId
+
+    aug.push({ raw: n, nodeId, affixId: resolvedAffix })
+  }
+
+  const nodeIds = new Set<string>()
+  for (const a of aug) {
+    if (nodeIds.has(a.nodeId)) {
+      errors.push(`duplicate nodeId: ${a.nodeId}`)
+    }
+    nodeIds.add(a.nodeId)
+  }
+
+  const slotOccupants = new Map<string, Map<string, string>>()
+
+  for (const a of aug) {
+    const n = a.raw
+    const { nodeId } = a
+
+    if (!panelIds.has(n.panelId)) {
+      errors.push(`node ${nodeId}: panelId not found: ${n.panelId}`)
     }
 
     if (!NODE_TYPES.has(n.nodeType)) {
       stats.unknownNodeTypeCount += 1
-      errors.push(`node ${n.nodeId}: invalid nodeType: ${n.nodeType}`)
+      errors.push(`node ${nodeId}: invalid nodeType: ${n.nodeType}`)
     }
 
     if (!Number.isInteger(n.maxRank) || n.maxRank < 1) {
       stats.invalidMaxRankCount += 1
-      errors.push(`node ${n.nodeId}: maxRank must be integer >= 1, got ${n.maxRank}`)
+      errors.push(`node ${nodeId}: maxRank must be integer >= 1, got ${n.maxRank}`)
     }
 
     const slotKey = `${n.x},${n.y}`
@@ -183,56 +286,58 @@ export function validateTalentPanelDataset(
     if (prev) {
       stats.duplicateCoordinateViolations += 1
       errors.push(
-        `node ${n.nodeId}: duplicate (x,y)=(${n.x},${n.y}) in panel ${n.panelId} (also ${prev})`,
+        `node ${nodeId}: duplicate (x,y)=(${n.x},${n.y}) in panel ${n.panelId} (also ${prev})`,
       )
     } else {
-      panelSlots.set(slotKey, n.nodeId)
+      panelSlots.set(slotKey, nodeId)
     }
     slotOccupants.set(n.panelId, panelSlots)
 
     for (const req of n.requiresNodeIds) {
-      if (req === n.nodeId) {
+      if (req === nodeId) {
         stats.selfReferenceViolations += 1
-        errors.push(`node ${n.nodeId}: requiresNodeIds self-reference`)
+        errors.push(`node ${nodeId}: requiresNodeIds self-reference`)
       }
     }
     for (const e of n.edgesTo) {
-      if (e === n.nodeId) {
+      if (e === nodeId) {
         stats.selfReferenceViolations += 1
-        errors.push(`node ${n.nodeId}: edgesTo self-reference`)
+        errors.push(`node ${nodeId}: edgesTo self-reference`)
       }
     }
   }
 
-  const nodeById = new Map(nodes.map((n) => [n.nodeId, n]))
+  const nodeById = new Map(aug.map((a) => [a.nodeId, a]))
 
-  for (const n of nodes) {
+  for (const a of aug) {
+    const n = a.raw
+    const { nodeId } = a
     if (!panelIds.has(n.panelId)) continue
 
     for (const req of n.requiresNodeIds) {
       if (!nodeIds.has(req)) {
-        errors.push(`node ${n.nodeId}: requiresNodeIds unknown nodeId: ${req}`)
+        errors.push(`node ${nodeId}: requiresNodeIds unknown nodeId: ${req}`)
         continue
       }
       const target = nodeById.get(req)!
-      if (target.panelId !== n.panelId) {
+      if (target.raw.panelId !== n.panelId) {
         stats.crossPanelReferenceViolations += 1
         errors.push(
-          `node ${n.nodeId}: requiresNodeIds cross-panel: ${req} belongs to panel ${target.panelId}`,
+          `node ${nodeId}: requiresNodeIds cross-panel: ${req} belongs to panel ${target.raw.panelId}`,
         )
       }
     }
 
     for (const e of n.edgesTo) {
       if (!nodeIds.has(e)) {
-        errors.push(`node ${n.nodeId}: edgesTo unknown nodeId: ${e}`)
+        errors.push(`node ${nodeId}: edgesTo unknown nodeId: ${e}`)
         continue
       }
       const target = nodeById.get(e)!
-      if (target.panelId !== n.panelId) {
+      if (target.raw.panelId !== n.panelId) {
         stats.crossPanelReferenceViolations += 1
         errors.push(
-          `node ${n.nodeId}: edgesTo cross-panel: ${e} belongs to panel ${target.panelId}`,
+          `node ${nodeId}: edgesTo cross-panel: ${e} belongs to panel ${target.raw.panelId}`,
         )
       }
     }

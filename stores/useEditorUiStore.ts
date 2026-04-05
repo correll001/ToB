@@ -1,12 +1,13 @@
 // stores/useEditorUiStore.ts
 import { create } from 'zustand'
-import type { EditorTab, TreeName } from '@/types/build'
+import type { EditorTab, TalentEditorBoardTab } from '@/types/build'
 
 type PickerType = 'skill' | 'support' | 'item' | 'pactspirit' | null
 
 type EditorUiStore = {
   activeTab: EditorTab
-  selectedTree: TreeName
+  /** 四塊天賦盤之一；`extraBoards` 同時涵蓋舊版 tree3 + tree4。 */
+  talentBoardTab: TalentEditorBoardTab
   selectedNodeId: string | null
 
   selectedSkillSlot: number | null
@@ -16,7 +17,7 @@ type EditorUiStore = {
   isShareDialogOpen: boolean
 
   setActiveTab: (tab: EditorTab) => void
-  setSelectedTree: (tree: TreeName) => void
+  setTalentBoardTab: (tab: TalentEditorBoardTab) => void
   setSelectedNodeId: (nodeId: string | null) => void
   setSelectedSkillSlot: (slot: number | null) => void
   setSelectedGearSlot: (slot: string | null) => void
@@ -30,9 +31,8 @@ type EditorUiStore = {
 
 export const useEditorUiStore = create<EditorUiStore>((set) => ({
   activeTab: 'heroTalent',
-  selectedTree: 'godTree',
+  talentBoardTab: 'godTree',
   selectedNodeId: null,
-
   selectedSkillSlot: null,
   selectedGearSlot: null,
 
@@ -40,7 +40,7 @@ export const useEditorUiStore = create<EditorUiStore>((set) => ({
   isShareDialogOpen: false,
 
   setActiveTab: (tab) => set({ activeTab: tab }),
-  setSelectedTree: (tree) => set({ selectedTree: tree }),
+  setTalentBoardTab: (tab) => set({ talentBoardTab: tab }),
   setSelectedNodeId: (nodeId) => set({ selectedNodeId: nodeId }),
   setSelectedSkillSlot: (slot) => set({ selectedSkillSlot: slot }),
   setSelectedGearSlot: (slot) => set({ selectedGearSlot: slot }),

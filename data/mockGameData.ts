@@ -117,18 +117,6 @@ export type MockTalentTree = {
 
 export const mockTalentTrees: MockTalentTree[] = [
   {
-    treeName: 'godTree',
-    label: 'God Tree',
-    nodes: [
-      { id: 'god_001', name: 'Projectile Force', description: '+Projectile themed node' },
-      { id: 'god_002', name: 'Swift Casting', description: '+Cast speed themed node' },
-      { id: 'god_003', name: 'Bomb Focus', description: '+Bomb damage themed node' },
-      { id: 'god_004', name: 'Critical Route', description: '+Critical themed node' },
-      { id: 'god_005', name: 'Survival Sense', description: '+Defense themed node' },
-      { id: 'god_006', name: 'Resource Flow', description: '+Energy themed node' },
-    ],
-  },
-  {
     treeName: 'classTree',
     label: 'Class Tree',
     nodes: [

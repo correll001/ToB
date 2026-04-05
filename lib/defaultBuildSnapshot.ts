@@ -1,6 +1,21 @@
 // lib/defaultBuildSnapshot.ts
 /** Single source for empty build shape (store default, legacy merge, tests). */
 import type { BuildSnapshot } from '@/types/build'
+import { NAMED_GRAND_TALENT_SLOT_COUNT } from '@/lib/talent/namedGrandTalentCatalog'
+
+const DEFAULT_TALENT_WALL_PANEL = 'god_God_of_Might'
+
+function defaultTalentWallBoards(): BuildSnapshot['talentWallBoards'] {
+  const pid = DEFAULT_TALENT_WALL_PANEL
+  const emptyGrand = (): (string | null)[] =>
+    Array.from({ length: NAMED_GRAND_TALENT_SLOT_COUNT }, () => null)
+  return [
+    { panelId: pid, ranks: {}, namedGrandAffixSlots: emptyGrand() },
+    { panelId: pid, ranks: {}, namedGrandAffixSlots: emptyGrand() },
+    { panelId: pid, ranks: {}, namedGrandAffixSlots: emptyGrand() },
+    { panelId: pid, ranks: {}, namedGrandAffixSlots: emptyGrand() },
+  ]
+}
 
 export function createEmptyBuildSnapshot(): BuildSnapshot {
   return {
@@ -26,6 +41,7 @@ export function createEmptyBuildSnapshot(): BuildSnapshot {
       tree4: [],
       divinity: [],
     },
+    talentWallBoards: defaultTalentWallBoards(),
     skills: [
       { slot: 1, skillId: null, supports: [], skillLevel: 20, enabled: true },
       { slot: 2, skillId: null, supports: [], skillLevel: 20, enabled: true },

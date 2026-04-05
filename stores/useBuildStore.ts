@@ -8,11 +8,17 @@ import type {
   MainSkillSlot,
   PassiveApplyMode,
   PassiveSkillSetup,
+  TalentWallSlotIndex,
   TreeName,
 } from '@/types/build'
 import { compactSupportLinkSlots, nextSupportLinkSlot, isMainSkillSlot } from '@/lib/build/supportLinks'
 import { createEmptyBuildSnapshot } from '@/lib/defaultBuildSnapshot'
 import { normalizeBuildSnapshot } from '@/lib/normalizeBuildSnapshot'
+import {
+  NAMED_GRAND_COLS,
+  NAMED_GRAND_TALENT_SLOT_COUNT,
+  normalizeNamedGrandAffixSlots,
+} from '@/lib/talent/namedGrandTalentCatalog'
 
 function throttle<TArgs extends unknown[]>(fn: (...args: TArgs) => void, waitMs: number) {
   let timeout: ReturnType<typeof setTimeout> | null = null
@@ -63,6 +69,23 @@ type BuildStore = {
 
   toggleTalentNode: (tree: TreeName, nodeId: string) => void
   clearTalentTree: (tree: TreeName) => void
+  /** 天賦牆格點：每次點擊 0 → 1 → … → maxRank → 0（四塊盤各一組 ranks） */
+  cycleTalentWallNodeRank: (slotIndex: TalentWallSlotIndex, nodeId: string, maxRank: number) => void
+  setTalentWallNodeRank: (slotIndex: TalentWallSlotIndex, nodeId: string, rank: number, maxRank: number) => void
+  /** 切換該盤所選 30 牆之一；變更時清空該盤階級。 */
+  setTalentWallPanel: (slotIndex: TalentWallSlotIndex, panelId: string) => void
+  /** 右側 5×2 具名頂級天賦槽（core_talent 詞綴 id 或 null；每排至多五選一）。 */
+  setNamedGrandAffixSlot: (
+    slotIndex: TalentWallSlotIndex,
+    pickIndex: number,
+    affixId: string | null,
+  ) => void
+  /** 一次寫入該階（列）：先清空該排五槽，再於指定欄寫入（或全清）。 */
+  setNamedGrandAffixRowPick: (
+    slotIndex: TalentWallSlotIndex,
+    rowIndex: number,
+    pick: { affixId: string; columnIndex: number } | null,
+  ) => void
 
   setInspectedMainSkill: (slot: MainSkillSlot | null) => void
   setSkill: (slot: number, skillId: string | null) => void
@@ -163,6 +186,11 @@ export const useBuildStore = create<BuildStore>()(
             tree4: [],
             divinity: [],
           }
+          state.snapshot.talentWallBoards = createEmptyBuildSnapshot().talentWallBoards.map((b) => ({
+            panelId: b.panelId,
+            ranks: {},
+            namedGrandAffixSlots: [...b.namedGrandAffixSlots],
+          }))
 
           state.snapshot.skills.forEach((skill) => {
             skill.skillId = null
@@ -205,6 +233,9 @@ export const useBuildStore = create<BuildStore>()(
 
       toggleTalentNode: (tree, nodeId) =>
         set((state) => {
+          if (tree === 'godTree') {
+            return
+          }
           const list = state.snapshot.talents[tree]
           const exists = list.includes(nodeId)
           state.snapshot.talents[tree] = exists
@@ -215,7 +246,94 @@ export const useBuildStore = create<BuildStore>()(
 
       clearTalentTree: (tree) =>
         set((state) => {
-          state.snapshot.talents[tree] = []
+          if (tree === 'godTree') {
+            const b = state.snapshot.talentWallBoards[0]
+            if (b) b.ranks = {}
+          } else {
+            state.snapshot.talents[tree] = []
+          }
+          bumpMeta(state)
+        }),
+
+      setTalentWallPanel: (slotIndex, panelId) =>
+        set((state) => {
+          const b = state.snapshot.talentWallBoards[slotIndex]
+          if (!b) return
+          if (b.panelId !== panelId) {
+            b.panelId = panelId
+            b.ranks = {}
+            b.namedGrandAffixSlots = normalizeNamedGrandAffixSlots(null)
+          }
+          bumpMeta(state)
+        }),
+
+      setNamedGrandAffixSlot: (slotIndex, pickIndex, affixId) =>
+        set((state) => {
+          const b = state.snapshot.talentWallBoards[slotIndex]
+          if (!b) return
+          const i = Math.floor(pickIndex)
+          if (i < 0 || i >= NAMED_GRAND_TALENT_SLOT_COUNT) return
+          const next: (string | null)[] = [...normalizeNamedGrandAffixSlots(b.namedGrandAffixSlots)]
+          while (next.length < NAMED_GRAND_TALENT_SLOT_COUNT) next.push(null)
+          const trimmed = affixId && affixId.trim() !== '' ? affixId.trim() : null
+          const row = Math.floor(i / NAMED_GRAND_COLS)
+          if (trimmed) {
+            for (let c = 0; c < NAMED_GRAND_COLS; c++) {
+              const j = row * NAMED_GRAND_COLS + c
+              if (j !== i) next[j] = null
+            }
+          }
+          next[i] = trimmed
+          b.namedGrandAffixSlots = next.slice(0, NAMED_GRAND_TALENT_SLOT_COUNT) as (string | null)[]
+          bumpMeta(state)
+        }),
+
+      setNamedGrandAffixRowPick: (slotIndex, rowIndex, pick) =>
+        set((state) => {
+          const b = state.snapshot.talentWallBoards[slotIndex]
+          if (!b) return
+          const row = Math.floor(rowIndex)
+          if (row < 0 || row > 1) return
+          const next: (string | null)[] = [...normalizeNamedGrandAffixSlots(b.namedGrandAffixSlots)]
+          while (next.length < NAMED_GRAND_TALENT_SLOT_COUNT) next.push(null)
+          const base = row * NAMED_GRAND_COLS
+          for (let c = 0; c < NAMED_GRAND_COLS; c++) next[base + c] = null
+          if (pick && pick.affixId.trim() !== '') {
+            const col = Math.floor(pick.columnIndex)
+            if (col >= 0 && col < NAMED_GRAND_COLS) {
+              next[base + col] = pick.affixId.trim()
+            }
+          }
+          b.namedGrandAffixSlots = next.slice(0, NAMED_GRAND_TALENT_SLOT_COUNT) as (string | null)[]
+          bumpMeta(state)
+        }),
+
+      cycleTalentWallNodeRank: (slotIndex, nodeId, maxRank) =>
+        set((state) => {
+          const b = state.snapshot.talentWallBoards[slotIndex]
+          if (!b) return
+          const cap = Math.max(1, Math.min(99, Math.floor(maxRank)))
+          const cur = b.ranks[nodeId] ?? 0
+          const next = cur >= cap ? 0 : cur + 1
+          if (next <= 0) {
+            delete b.ranks[nodeId]
+          } else {
+            b.ranks[nodeId] = next
+          }
+          bumpMeta(state)
+        }),
+
+      setTalentWallNodeRank: (slotIndex, nodeId, rank, maxRank) =>
+        set((state) => {
+          const b = state.snapshot.talentWallBoards[slotIndex]
+          if (!b) return
+          const cap = Math.max(1, Math.min(99, Math.floor(maxRank)))
+          const r = Math.min(cap, Math.max(0, Math.floor(rank)))
+          if (r <= 0) {
+            delete b.ranks[nodeId]
+          } else {
+            b.ranks[nodeId] = r
+          }
           bumpMeta(state)
         }),
 
@@ -488,7 +606,7 @@ export const useBuildStore = create<BuildStore>()(
     })),
     {
       name: 'tli-build-editor',
-      version: 5,
+      version: 6,
       migrate: (persistedState, oldVersion) => {
         try {
           const p = persistedState as { snapshot?: unknown; inspectedMainSlot?: number } | null

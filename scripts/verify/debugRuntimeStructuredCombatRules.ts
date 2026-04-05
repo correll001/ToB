@@ -53,7 +53,7 @@ function main() {
   log('')
   log('| getter | 有資料 | `status` |')
   log('| --- | --- | --- |')
-  const rows: Array<{ name: string; block: { status?: string } | undefined }> = [
+  const rows = [
     ['getDamageFormsRules', getDamageFormsRules()],
     ['getDamageTypesRules', getDamageTypesRules()],
     ['getDamageConversionRules', getDamageConversionRules()],
@@ -62,7 +62,10 @@ function main() {
     ['getDamageFormulaRules', getDamageFormulaRules()],
     ['getCritRules', getCritRules()],
     ['getDoubleDamageRules', getDoubleDamageRules()],
-  ].map(([name, block]) => ({ name: name as string, block }))
+  ].map(([name, block]) => ({
+    name: name as string,
+    block: block as { status?: string } | undefined,
+  }))
   for (const r of rows) {
     log(`| \`${r.name}\` | ${r.block ? '是' : '否'} | ${r.block?.status ?? '—'} |`)
   }

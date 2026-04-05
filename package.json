@@ -17,6 +17,7 @@
     "etl:talent-affixes": "tsx scripts/etl/ingestTalentAffixLibrary.ts",
     "verify:talent-affixes": "tsx scripts/verify/verifyTalentAffixes.ts",
     "verify:talent-panels": "tsx scripts/verify/verifyTalentPanels.ts",
+    "ingest:tli-ss11-god-panels": "tsx scripts/ingest/convertTliSs11GodPanels.ts",
     "report:combat-rules-norm-eff": "tsx scripts/verify/reportCombatRulesNormEffDiff.ts",
     "debug:runtime-structured-combat-rules": "tsx scripts/verify/debugRuntimeStructuredCombatRules.ts",
     "etl:diff-season": "tsx scripts/etl/diffSeasonData.ts",
@@ -60,10 +61,11 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.13",
     "@tailwindcss/postcss": "^4.2.2",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.5.0",
     "@types/react": "19.2.14",
+    "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.27",
     "cheerio": "^1.2.0",
     "tailwindcss": "^4.2.2",

@@ -2,6 +2,21 @@
 
 export type TreeName = 'godTree' | 'classTree' | 'tree3' | 'tree4' | 'divinity'
 
+/** 天賦頁頂層四塊盤（人物可切換編輯的 4 個天賦版面）。 */
+export type TalentEditorBoardTab = 'godTree' | 'classTree' | 'extraBoards' | 'divinity'
+
+export type TalentWallSlotIndex = 0 | 1 | 2 | 3
+
+/** 單塊天賦盤：自 30 牆擇一，並記錄節點階級。 */
+export interface TalentWallBoardState {
+  panelId: string
+  ranks: Record<string, number>
+  /**
+   * 右側 5×2「具名頂級天賦」槽（`talent-affixes` 的 core_talent_node）；每排至多五選一；與牆面傳奇格座標無關。
+   */
+  namedGrandAffixSlots: (string | null)[]
+}
+
 export type MainSkillSlot = 1 | 2 | 3 | 4 | 5
 
 export type GearSlot =
@@ -108,6 +123,11 @@ export interface BuildSnapshot {
   }
   hero: HeroSelection
   talents: Record<TreeName, string[]>
+  /**
+   * 四塊天賦盤（與頁籤：神系／職業／第三四盤／神格 對應），每塊各選 30 牆之一並記錄 nodeId→階級。
+   * 舊版 `godTalentRanks` 於 normalize 時併入 [0]。
+   */
+  talentWallBoards: TalentWallBoardState[]
   skills: SkillSetup[]
   passives: PassiveSkillSetup[]
   gear: Record<GearSlot, GearSelection>

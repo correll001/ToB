@@ -13,6 +13,7 @@ import type {
 } from '@/types/build'
 import { compactSupportLinkSlots, isMainSkillSlot } from '@/lib/build/supportLinks'
 import { createEmptyBuildSnapshot } from '@/lib/defaultBuildSnapshot'
+import { normalizeNamedGrandAffixSlots } from '@/lib/talent/namedGrandTalentCatalog'
 
 const TREE_NAMES: TreeName[] = ['godTree', 'classTree', 'tree3', 'tree4', 'divinity']
 
@@ -139,6 +140,84 @@ function normalizeHero(raw: HeroSelection | undefined): HeroSelection {
   }
 }
 
+function normalizeGodTalentRanks(
+  raw: unknown,
+  talentsIn: Partial<Record<TreeName, unknown>>,
+): Record<string, number> {
+  const out: Record<string, number> = {}
+
+  if (raw && typeof raw === 'object') {
+    for (const [k, v] of Object.entries(raw as Record<string, unknown>)) {
+      if (typeof k !== 'string' || k.trim() === '') continue
+      if (typeof v !== 'number' || !Number.isFinite(v)) continue
+      const n = Math.floor(v)
+      if (n < 1) continue
+      out[k] = Math.min(99, n)
+    }
+  }
+
+  const godArr = talentsIn.godTree
+  if (Array.isArray(godArr)) {
+    for (const id of godArr) {
+      if (typeof id === 'string' && id.trim() !== '' && out[id] == null) {
+        out[id] = 1
+      }
+    }
+  }
+
+  return out
+}
+
+function normalizeTalentWallBoards(
+  raw: unknown,
+  legacyGodRanks: unknown,
+  talentsIn: Partial<Record<TreeName, unknown>>,
+): BuildSnapshot['talentWallBoards'] {
+  const DEFAULT_PANEL = 'god_God_of_Might'
+  const emptyBoard = (pid: string): BuildSnapshot['talentWallBoards'][number] => ({
+    panelId: pid,
+    ranks: {},
+    namedGrandAffixSlots: normalizeNamedGrandAffixSlots(null),
+  })
+  const boards: BuildSnapshot['talentWallBoards'] = [
+    emptyBoard(DEFAULT_PANEL),
+    emptyBoard(DEFAULT_PANEL),
+    emptyBoard(DEFAULT_PANEL),
+    emptyBoard(DEFAULT_PANEL),
+  ]
+
+  if (Array.isArray(raw)) {
+    for (let i = 0; i < 4 && i < raw.length; i++) {
+      const row = raw[i]
+      if (!row || typeof row !== 'object') continue
+      const o = row as Record<string, unknown>
+      const pid =
+        typeof o.panelId === 'string' && o.panelId.trim() !== '' ? o.panelId.trim() : DEFAULT_PANEL
+      const ranks: Record<string, number> = {}
+      if (o.ranks && typeof o.ranks === 'object') {
+        for (const [k, v] of Object.entries(o.ranks as Record<string, unknown>)) {
+          if (typeof k !== 'string' || k.trim() === '') continue
+          if (typeof v !== 'number' || !Number.isFinite(v)) continue
+          const n = Math.floor(v)
+          if (n >= 1) ranks[k] = Math.min(99, n)
+        }
+      }
+      const rawGrand = o.namedGrandAffixSlots
+      const grand = normalizeNamedGrandAffixSlots(rawGrand)
+      boards[i] = { panelId: pid, ranks, namedGrandAffixSlots: grand }
+    }
+  }
+
+  const legacy = normalizeGodTalentRanks(legacyGodRanks, talentsIn)
+  for (const [k, v] of Object.entries(legacy)) {
+    if (boards[0]!.ranks[k] == null) {
+      boards[0]!.ranks[k] = v
+    }
+  }
+
+  return boards
+}
+
 function normalizeDivinityBoard(raw: DivinityBoardState | undefined): DivinityBoardState {
   if (!raw) {
     return { notes: '', plan: '', selectedBoardIds: [] }
@@ -191,6 +270,14 @@ export function mergeSnapshotWithDefaults(raw: unknown): BuildSnapshot {
     const arr = talentsIn[key as TreeName]
     talents[key as TreeName] = Array.isArray(arr) ? arr.filter((x): x is string => typeof x === 'string') : b.talents[key as TreeName]
   }
+
+  const legacyGodRanks = (s as Partial<BuildSnapshot> & { godTalentRanks?: unknown }).godTalentRanks
+  const talentWallBoards = normalizeTalentWallBoards(
+    (s as Partial<BuildSnapshot>).talentWallBoards,
+    legacyGodRanks,
+    talentsIn,
+  )
+  talents.godTree = []
 
   const gear: BuildSnapshot['gear'] = { ...b.gear }
   if (s.gear && typeof s.gear === 'object') {
@@ -288,6 +375,7 @@ export function mergeSnapshotWithDefaults(raw: unknown): BuildSnapshot {
       specialtyId: (heroIn as { specialtyId?: string | null }).specialtyId ?? null,
     },
     talents,
+    talentWallBoards,
     skills,
     passives,
     gear,

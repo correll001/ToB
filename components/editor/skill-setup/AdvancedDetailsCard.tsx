@@ -49,8 +49,13 @@ function AdvancedFold({
   defaultOpen?: boolean
   children: React.ReactNode
 }) {
+  const [open, setOpen] = React.useState(defaultOpen)
   return (
-    <details className="rounded-lg border border-slate-800/65 bg-black/20" defaultOpen={defaultOpen}>
+    <details
+      className="rounded-lg border border-slate-800/65 bg-black/20"
+      open={open}
+      onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)}
+    >
       <summary className="cursor-pointer px-3 py-2 text-[10px] font-semibold text-slate-400">{title}</summary>
       <div className="border-t border-slate-800/60 px-3 pb-3 pt-2 text-[11px] text-slate-300">{children}</div>
     </details>

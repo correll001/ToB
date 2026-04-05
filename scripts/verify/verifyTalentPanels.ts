@@ -40,7 +40,7 @@ function main() {
   }
 
   const affixIdSet = new Set(affixData.affixes.map((a) => a.affixId))
-  const result = validateTalentPanelDataset(panels, nodes, affixIdSet)
+  const result = validateTalentPanelDataset(panels, nodes, affixIdSet, affixData.affixes)
 
   const { stats } = result
   console.log('[verifyTalentPanels] report')
@@ -53,7 +53,7 @@ function main() {
   }
   console.log(`  missing affix references: ${stats.missingAffixReferences}`)
   console.log(`  duplicate (x,y) violations: ${stats.duplicateCoordinateViolations}`)
-  console.log(`  invalid slotIndex (≠ y*3+x): ${stats.invalidSlotIndexCount}`)
+  console.log(`  invalid slotIndex (≠ y*8+x): ${stats.invalidSlotIndexCount}`)
   console.log(`  cross-panel requires/edges: ${stats.crossPanelReferenceViolations}`)
   console.log(`  self-reference violations: ${stats.selfReferenceViolations}`)
   console.log(`  invalid nodeType: ${stats.unknownNodeTypeCount}`)

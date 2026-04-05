@@ -4,8 +4,24 @@ import type { BuildSnapshot } from '@/types/build'
 /** Legacy / partial snapshots may omit nested objects; keep sidebar selectors crash-free. */
 export function selectAllocatedTalentCount(snapshot: BuildSnapshot) {
   const t = snapshot.talents
-  if (!t || typeof t !== 'object') return 0
-  return Object.values(t).reduce((sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0), 0)
+  let sum = 0
+  if (t && typeof t === 'object') {
+    for (const [name, arr] of Object.entries(t)) {
+      if (name === 'godTree') continue
+      if (Array.isArray(arr)) sum += arr.length
+    }
+  }
+  const boards = snapshot.talentWallBoards
+  if (Array.isArray(boards)) {
+    for (const b of boards) {
+      if (!b?.ranks || typeof b.ranks !== 'object') continue
+      for (const v of Object.values(b.ranks)) {
+        const n = Math.floor(Number(v))
+        if (Number.isFinite(n) && n > 0) sum += n
+      }
+    }
+  }
+  return sum
 }
 
 export function selectFilledSkillCount(snapshot: BuildSnapshot) {

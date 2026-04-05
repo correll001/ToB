@@ -1,89 +1,578 @@
 {
   "schemaVersion": 1,
   "season": "ss12",
-  "sourceNote": "Hand-maintained topology layer. Not scraped from TLIDB. Only six base god boards are listed here because they are unambiguously named in talent-affix Profession rows (deity href). Advanced profession boards (~25), New God as its own panel, and any other fixed boards are NOT included until manually confirmed — see docs/talent-panels/manual-input-rules.md.",
-  "panelCount": 6,
+  "sourceNote": "Generated panels list + TLI SS11 topology for all 30 talent-tree masters. Re-run: npx tsx scripts/ingest/convertTliSs11GodPanels.ts",
+  "panelCount": 30,
   "panels": [
     {
       "panelId": "god_God_of_Might",
       "displayName": "巨力之神",
       "season": "ss12",
-      "gridWidth": 3,
-      "gridHeight": 6,
+      "gridWidth": 8,
+      "gridHeight": 5,
       "sourceKind": "god_panel",
       "manualTopology": true,
       "canonicalOrder": 10,
       "isFixedTree": true,
-      "tags": ["deity:God_of_Might"],
+      "talentWallGroup": "base_god",
+      "tags": [
+        "deity:God_of_Might"
+      ],
       "notes": [
-        "Base god panel id mirrors Profession href basename from talent-affixes.",
-        "Node layout not filled in this card — add rows in talent-panel-nodes.json when ready."
+        "TLI SS11 stem: god_of_might → bundle key talent-tree/god_of_might/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
       ]
     },
     {
       "panelId": "god_Goddess_of_Hunting",
       "displayName": "狩獵之神",
       "season": "ss12",
-      "gridWidth": 3,
-      "gridHeight": 6,
+      "gridWidth": 8,
+      "gridHeight": 5,
       "sourceKind": "god_panel",
       "manualTopology": true,
       "canonicalOrder": 20,
       "isFixedTree": true,
-      "tags": ["deity:Goddess_of_Hunting"],
-      "notes": ["Nodes TBD — manual entry only."]
+      "talentWallGroup": "base_god",
+      "tags": [
+        "deity:Goddess_of_Hunting"
+      ],
+      "notes": [
+        "TLI SS11 stem: goddess_of_hunting → bundle key talent-tree/goddess_of_hunting/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
     },
     {
       "panelId": "god_Goddess_of_Knowledge",
       "displayName": "知識之神",
       "season": "ss12",
-      "gridWidth": 3,
-      "gridHeight": 6,
+      "gridWidth": 8,
+      "gridHeight": 5,
       "sourceKind": "god_panel",
       "manualTopology": true,
       "canonicalOrder": 30,
       "isFixedTree": true,
-      "tags": ["deity:Goddess_of_Knowledge"],
-      "notes": ["Nodes TBD — manual entry only."]
+      "talentWallGroup": "base_god",
+      "tags": [
+        "deity:Goddess_of_Knowledge"
+      ],
+      "notes": [
+        "TLI SS11 stem: goddess_of_knowledge → bundle key talent-tree/goddess_of_knowledge/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
     },
     {
       "panelId": "god_God_of_War",
       "displayName": "征戰之神",
       "season": "ss12",
-      "gridWidth": 3,
-      "gridHeight": 6,
+      "gridWidth": 8,
+      "gridHeight": 5,
       "sourceKind": "god_panel",
       "manualTopology": true,
       "canonicalOrder": 40,
       "isFixedTree": true,
-      "tags": ["deity:God_of_War"],
-      "notes": ["Nodes TBD — manual entry only."]
+      "talentWallGroup": "base_god",
+      "tags": [
+        "deity:God_of_War"
+      ],
+      "notes": [
+        "TLI SS11 stem: god_of_war → bundle key talent-tree/god_of_war/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
     },
     {
       "panelId": "god_Goddess_of_Deception",
       "displayName": "欺詐之神",
       "season": "ss12",
-      "gridWidth": 3,
-      "gridHeight": 6,
+      "gridWidth": 8,
+      "gridHeight": 5,
       "sourceKind": "god_panel",
       "manualTopology": true,
       "canonicalOrder": 50,
       "isFixedTree": true,
-      "tags": ["deity:Goddess_of_Deception"],
-      "notes": ["Nodes TBD — manual entry only."]
+      "talentWallGroup": "base_god",
+      "tags": [
+        "deity:Goddess_of_Deception"
+      ],
+      "notes": [
+        "TLI SS11 stem: goddess_of_deception → bundle key talent-tree/goddess_of_deception/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
     },
     {
       "panelId": "god_God_of_Machines",
       "displayName": "機械之神",
       "season": "ss12",
-      "gridWidth": 3,
-      "gridHeight": 6,
+      "gridWidth": 8,
+      "gridHeight": 5,
       "sourceKind": "god_panel",
       "manualTopology": true,
       "canonicalOrder": 60,
       "isFixedTree": true,
-      "tags": ["deity:God_of_Machines"],
-      "notes": ["Nodes TBD — manual entry only."]
+      "talentWallGroup": "base_god",
+      "tags": [
+        "deity:God_of_Machines"
+      ],
+      "notes": [
+        "TLI SS11 stem: god_of_machines → bundle key talent-tree/god_of_machines/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_The_Brave",
+      "displayName": "勇者",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 70,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:The_Brave"
+      ],
+      "notes": [
+        "TLI SS11 stem: the_brave → bundle key talent-tree/the_brave/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Onslaughter",
+      "displayName": "猛襲者",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 80,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Onslaughter"
+      ],
+      "notes": [
+        "TLI SS11 stem: onslaughter → bundle key talent-tree/onslaughter/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Warlord",
+      "displayName": "督軍",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 90,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Warlord"
+      ],
+      "notes": [
+        "TLI SS11 stem: warlord → bundle key talent-tree/warlord/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Warrior",
+      "displayName": "鬥士",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 100,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Warrior"
+      ],
+      "notes": [
+        "TLI SS11 stem: warrior → bundle key talent-tree/warrior/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Marksman",
+      "displayName": "神射手",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 110,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Marksman"
+      ],
+      "notes": [
+        "TLI SS11 stem: marksman → bundle key talent-tree/marksman/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Bladerunner",
+      "displayName": "刀鋒行者",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 120,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Bladerunner"
+      ],
+      "notes": [
+        "TLI SS11 stem: bladerunner → bundle key talent-tree/bladerunner/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Druid",
+      "displayName": "德魯伊",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 130,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Druid"
+      ],
+      "notes": [
+        "TLI SS11 stem: druid → bundle key talent-tree/druid/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Assassin",
+      "displayName": "刺客",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 140,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Assassin"
+      ],
+      "notes": [
+        "TLI SS11 stem: assassin → bundle key talent-tree/assassin/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Magister",
+      "displayName": "魔導師",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 150,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Magister"
+      ],
+      "notes": [
+        "TLI SS11 stem: magister → bundle key talent-tree/magister/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Arcanist",
+      "displayName": "秘術師",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 160,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Arcanist"
+      ],
+      "notes": [
+        "TLI SS11 stem: arcanist → bundle key talent-tree/arcanist/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Elementalist",
+      "displayName": "元素師",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 170,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Elementalist"
+      ],
+      "notes": [
+        "TLI SS11 stem: elementalist → bundle key talent-tree/elementalist/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Prophet",
+      "displayName": "先知",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 180,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Prophet"
+      ],
+      "notes": [
+        "TLI SS11 stem: prophet → bundle key talent-tree/prophet/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Shadowdancer",
+      "displayName": "影舞者",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 190,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Shadowdancer"
+      ],
+      "notes": [
+        "TLI SS11 stem: shadowdancer → bundle key talent-tree/shadowdancer/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Ronin",
+      "displayName": "神行武士",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 200,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Ronin"
+      ],
+      "notes": [
+        "TLI SS11 stem: ronin → bundle key talent-tree/ronin/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Ranger",
+      "displayName": "遊俠",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 210,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Ranger"
+      ],
+      "notes": [
+        "TLI SS11 stem: ranger → bundle key talent-tree/ranger/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Sentinel",
+      "displayName": "鐵衛",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 220,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Sentinel"
+      ],
+      "notes": [
+        "TLI SS11 stem: sentinel → bundle key talent-tree/sentinel/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Shadowmaster",
+      "displayName": "馭影者",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 230,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Shadowmaster"
+      ],
+      "notes": [
+        "TLI SS11 stem: shadowmaster → bundle key talent-tree/shadowmaster/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Psychic",
+      "displayName": "異能者",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 240,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Psychic"
+      ],
+      "notes": [
+        "TLI SS11 stem: psychic → bundle key talent-tree/psychic/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Warlock",
+      "displayName": "暗影術士",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 250,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Warlock"
+      ],
+      "notes": [
+        "TLI SS11 stem: warlock → bundle key talent-tree/warlock/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Lich",
+      "displayName": "巫妖",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 260,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Lich"
+      ],
+      "notes": [
+        "TLI SS11 stem: lich → bundle key talent-tree/lich/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Machinist",
+      "displayName": "機械師",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 270,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Machinist"
+      ],
+      "notes": [
+        "TLI SS11 stem: machinist → bundle key talent-tree/machinist/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Steel_Vanguard",
+      "displayName": "鋼鐵先鋒",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 280,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Steel_Vanguard"
+      ],
+      "notes": [
+        "TLI SS11 stem: steel_vanguard → bundle key talent-tree/steel_vanguard/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Alchemist",
+      "displayName": "煉金術士",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 290,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Alchemist"
+      ],
+      "notes": [
+        "TLI SS11 stem: alchemist → bundle key talent-tree/alchemist/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
+    },
+    {
+      "panelId": "god_Artisan",
+      "displayName": "巧匠",
+      "season": "ss12",
+      "gridWidth": 8,
+      "gridHeight": 5,
+      "sourceKind": "god_panel",
+      "manualTopology": true,
+      "canonicalOrder": 300,
+      "isFixedTree": true,
+      "talentWallGroup": "profession",
+      "tags": [
+        "deity:Artisan"
+      ],
+      "notes": [
+        "TLI SS11 stem: artisan → bundle key talent-tree/artisan/master.",
+        "節點來自公開 bundle；affixPending 待對應 talent-affixes。"
+      ]
     }
   ]
 }

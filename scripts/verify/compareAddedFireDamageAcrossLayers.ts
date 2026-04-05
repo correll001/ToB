@@ -26,9 +26,9 @@ function listOverrideJsonFilesContaining(needle: string): string[] {
   const root = join(process.cwd(), 'data', 'overrides')
   const hits: string[] = []
   const walk = (dir: string) => {
-    let entries: ReturnType<typeof readdirSync>
+    let entries: import('node:fs').Dirent[]
     try {
-      entries = readdirSync(dir, { withFileTypes: true })
+      entries = readdirSync(dir, { withFileTypes: true }) as import('node:fs').Dirent[]
     } catch {
       return
     }

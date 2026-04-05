@@ -7,9 +7,24 @@ import { useBuildStore } from '@/stores/useBuildStore'
 export default function BuildSummaryCard({ embedded = false }: { embedded?: boolean }) {
   const heroId = useBuildStore((s) => s.snapshot.hero.heroId)
   const traitId = useBuildStore((s) => s.snapshot.hero.traitId)
-  const talentsAllocated = useBuildStore(
-    (s) => Object.values(s.snapshot.talents).reduce((sum, arr) => sum + arr.length, 0)
-  )
+  const talentsAllocated = useBuildStore((s) => {
+    let sum = 0
+    for (const [name, arr] of Object.entries(s.snapshot.talents)) {
+      if (name === 'godTree') continue
+      if (Array.isArray(arr)) sum += arr.length
+    }
+    const boards = s.snapshot.talentWallBoards
+    if (Array.isArray(boards)) {
+      for (const b of boards) {
+        if (!b?.ranks || typeof b.ranks !== 'object') continue
+        for (const v of Object.values(b.ranks)) {
+          const n = Math.floor(Number(v))
+          if (Number.isFinite(n) && n > 0) sum += n
+        }
+      }
+    }
+    return sum
+  })
   const skillsEquipped = useBuildStore((s) => s.snapshot.skills.filter((sk) => !!sk.skillId).length)
   const gearEquipped = useBuildStore(
     (s) => Object.values(s.snapshot.gear).filter((g) => g.gearBaseId || g.legendaryItemId).length

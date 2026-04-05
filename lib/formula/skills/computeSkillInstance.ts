@@ -43,7 +43,7 @@ function deriveCalculationConfidence(
   if (role === "damaging") {
     if (!damagingEvidence) return "unsupported"
     if (parseStatus === "partial" || levelRowPartial || levelSource === "none") return "partial"
-    if (levelSource !== "none" && !levelRowHitScaling) return "partial"
+    if (!levelRowHitScaling) return "partial"
     if (engineWarnings.length > 0) return "partial"
     return "ready"
   }
