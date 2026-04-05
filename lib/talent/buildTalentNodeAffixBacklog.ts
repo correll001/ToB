@@ -187,7 +187,7 @@ function classifyBatch(args: {
         recommendedAction:
           'Add deterministic EXACT/PHRASE in talentEffectLineZh.ts only after TLIDB substring verification; re-run ingest.',
         whyThisBucket:
-          '譯文仍含「（原文：…）」尾綴或明顯未覆蓋片語，疑為可審計 bridge 缺口。',
+          '譯後仍含連續英文字母或舊版「原文」尾綴，疑為可審計 bridge 缺口。',
       }
     }
     return {

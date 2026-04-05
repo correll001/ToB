@@ -811,7 +811,26 @@ export default function BuildStatsPanel() {
             <Row k="LV" v={String(breakdown.level)} />
             <Row k="屬性 力/敏/智（合計）" v={`${breakdown.strTotal} / ${breakdown.dexTotal} / ${breakdown.intTotal}`} />
             <Row k="傷害（inc 前）" v={formatNum(breakdown.damageBeforePct, 1)} />
-            <Row k="傷害 %（加總）" v={`${formatNum(breakdown.damagePctTotal, 1)}%`} />
+            <Row
+              k="泛用傷害 %（僅「傷害」標籤）"
+              v={`${formatNum(breakdown.damagePctGeneric, 1)}%`}
+            />
+            <Row k="法術傷害 %" v={`${formatNum(breakdown.spellDamagePct, 1)}%`} />
+            <Row k="攻擊傷害 %" v={`${formatNum(breakdown.attackDamagePct, 1)}%`} />
+            <Row k="近戰傷害 %" v={`${formatNum(breakdown.meleeDamagePct, 1)}%`} />
+            <Row k="投射物傷害 %" v={`${formatNum(breakdown.projectileDamagePct, 1)}%`} />
+            <Row k="元素傷害 %（火／冰／閃總稱桶）" v={`${formatNum(breakdown.elementalDamagePct, 1)}%`} />
+            <Row
+              k="物／腐／元／持續（加總，含元素總稱）"
+              v={`${formatNum(breakdown.damagePctTypedPhysicalElemental, 1)}%`}
+            />
+            <Row k="召喚物相關（加總）" v={`${formatNum(breakdown.damagePctMinion, 1)}%`} />
+            <Row k="引導技能傷害 %（聚合）" v={`${formatNum(breakdown.channeledDamagePct, 1)}%`} />
+            <Row
+              k="引導傷害已併入有效遞增"
+              v={breakdown.channeledDamageIncludedInEffective ? '是' : '否'}
+            />
+            <Row k="有效遞增 %（本技能路徑）" v={`${formatNum(breakdown.damagePctTotal, 1)}%`} />
             <Row k="More 乘數" v={formatNum(breakdown.moreDamageMult, 3)} />
             <Row k="攻速基礎 / 加成% / 最終" v={`${formatNum(breakdown.baseAttackSpeed, 2)} / ${formatNum(breakdown.attackSpeedPctTotal, 1)}% / ${formatNum(breakdown.attackSpeedFinal, 2)}`} />
             <Row k="derive 規則來源" v={breakdown.derivedRulesPrimarySource} />

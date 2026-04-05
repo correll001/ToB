@@ -1,5 +1,6 @@
 import type { StatBlock } from '@/types/combat'
 import type { TalentAffixModifierStub } from '@/types/talentAffix'
+import { percentIncreasedDamageFromLabelZh } from '@/lib/talent/mapIncreasedDamageLabelToStatBlock'
 
 /**
  * 將 talent-affixes 的保守 modifiers 映射到引擎 StatBlock（同種類會由 aggregateStatBlocks 加總）。
@@ -12,8 +13,9 @@ export function statBlocksFromAffixModifiers(modifiers: TalentAffixModifierStub[
     const label = m.labelZh
 
     if (m.kind === 'percent_increased') {
-      if (/攻擊傷害|法術傷害|物理傷害|腐蝕傷害|召喚物傷害|傷害/.test(label)) {
-        out.push({ damagePct: v })
+      const dmg = percentIncreasedDamageFromLabelZh(label, v)
+      if (dmg) {
+        out.push(dmg)
         continue
       }
       if (/攻擊速度|施法速度|攻擊與施法|召喚物攻擊與施法/.test(label)) {
@@ -36,6 +38,26 @@ export function statBlocksFromAffixModifiers(modifiers: TalentAffixModifierStub[
         out.push({ mpPct: v })
         continue
       }
+      if (/冰冷抗性/.test(label)) {
+        out.push({ coldResistancePct: v })
+        continue
+      }
+      if (/火焰抗性/.test(label)) {
+        out.push({ fireResistancePct: v })
+        continue
+      }
+      if (/閃電抗性/.test(label)) {
+        out.push({ lightningResistancePct: v })
+        continue
+      }
+      if (/腐蝕抗性/.test(label)) {
+        out.push({ erosionResistancePct: v })
+        continue
+      }
+      if (/元素抗性/.test(label) && !/穿透/.test(label)) {
+        out.push({ elementalResistancePct: v })
+        continue
+      }
       continue
     }
 
@@ -50,6 +72,10 @@ export function statBlocksFromAffixModifiers(modifiers: TalentAffixModifierStub[
       }
       if (/智慧|智力/.test(label)) {
         out.push({ intelligence: v })
+        continue
+      }
+      if (/攻擊技能消耗|技能消耗/.test(label)) {
+        out.push({ skillCostFlat: v })
         continue
       }
     }

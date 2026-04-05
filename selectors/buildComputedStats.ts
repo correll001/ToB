@@ -107,6 +107,13 @@ function worstCalculationConfidence(a: CalculationConfidence, b: CalculationConf
   return rank[a] <= rank[b] ? a : b
 }
 
+function skillInstanceIsChanneled(inst: SkillInstance): boolean {
+  if (inst.canonicalTags.includes('Channeled')) return true
+  if (inst.computedTags.includes('Channeled')) return true
+  const raw = inst.activeDefinition.tags ?? []
+  return raw.some((t) => t === 'Channeled')
+}
+
 /**
  * Level-row spell/base anchor is merged into hit base in derive; strip the same amount from skill `baseDamageFlat`
  * so `skill.addedBaseDamage` from the row is not double-counted (supports / passives still add flat).
@@ -517,6 +524,7 @@ export function selectInspectedSkillDamageView(snapshot: BuildSnapshot): Inspect
   const { combat, breakdown } = computeDerivedCombat(level, agg, textChars, {
     skillHitBaseFromLevel: hitBase.value,
     skillHitBaseFromMinMaxAverage: hitBase.fromMinMaxAverage,
+    skillIsChanneled: skillInstanceIsChanneled(inst),
   })
 
   let derivedLayerConf: DerivedCombatLayerConfidence = breakdown.derivedCombatConfidence
@@ -607,6 +615,7 @@ export function tryComputeInspectedScopedDamagingCombat(
   const { combat, breakdown } = computeDerivedCombat(level, agg, textChars, {
     skillHitBaseFromLevel: hitBase.value,
     skillHitBaseFromMinMaxAverage: hitBase.fromMinMaxAverage,
+    skillIsChanneled: skillInstanceIsChanneled(inst),
   })
 
   let derivedLayerConf: DerivedCombatLayerConfidence = breakdown.derivedCombatConfidence

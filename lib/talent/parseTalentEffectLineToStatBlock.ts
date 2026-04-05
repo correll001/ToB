@@ -17,7 +17,7 @@ export function parseTalentEffectLineToStatBlock(line: string): StatBlock | null
     if (!Number.isFinite(n)) return null
     const rest = m[2]!.toLowerCase()
     if (
-      /attack damage|damage|spell damage|physical damage|erosion damage|minion damage|base damage|sentry damage/.test(
+      /attack damage|damage|spell damage|physical damage|erosion damage|elemental damage|minion damage|base damage|sentry damage/.test(
         rest,
       )
     ) {
@@ -37,10 +37,59 @@ export function parseTalentEffectLineToStatBlock(line: string): StatBlock | null
     return null
   }
 
-  m = s.match(/^\+(\d+(?:\.\d+)?)% damage$/i)
-  if (m) return { damagePct: Number(m[1]) }
+  m = s.match(
+    /^\+(\d+(?:\.\d+)?)% Minion (Fire|Lightning|Cold|Erosion|Physical) Damage$/i,
+  )
+  if (m) {
+    const n = Number(m[1])
+    const t = m[2]!.toLowerCase()
+    if (t === 'fire') return { minionFireDamagePct: n }
+    if (t === 'lightning') return { minionLightningDamagePct: n }
+    if (t === 'cold') return { minionColdDamagePct: n }
+    if (t === 'erosion') return { minionErosionDamagePct: n }
+    if (t === 'physical') return { minionPhysicalDamagePct: n }
+    return null
+  }
 
-  m = s.match(/^\+(\d+(?:\.\d+)?)% (Attack Damage|Spell Damage|Physical Damage|Erosion Damage|Minion Damage)/i)
+  m = s.match(/^\+(\d+(?:\.\d+)?)% (Minion|Sentry) Damage$/i)
+  if (m) return { minionDamagePct: Number(m[1]) }
+
+  m = s.match(/^\+(\d+(?:\.\d+)?)% Spell Damage$/i)
+  if (m) return { spellDamagePct: Number(m[1]) }
+
+  m = s.match(/^\+(\d+(?:\.\d+)?)% Attack Damage$/i)
+  if (m) return { attackDamagePct: Number(m[1]) }
+
+  m = s.match(/^\+(\d+(?:\.\d+)?)% Melee Damage$/i)
+  if (m) return { meleeDamagePct: Number(m[1]) }
+
+  m = s.match(/^\+(\d+(?:\.\d+)?)% Projectile Damage$/i)
+  if (m) return { projectileDamagePct: Number(m[1]) }
+
+  m = s.match(/^\+(\d+(?:\.\d+)?)% Damage Over Time$/i)
+  if (m) return { dotDamagePct: Number(m[1]) }
+
+  m = s.match(/^\+(\d+(?:\.\d+)?)% Elemental Damage$/i)
+  if (m) return { elementalDamagePct: Number(m[1]) }
+
+  m = s.match(
+    /^\+(\d+(?:\.\d+)?)% (Physical|Erosion|Lightning|Fire|Cold) Damage$/i,
+  )
+  if (m) {
+    const n = Number(m[1])
+    const t = m[2]!.toLowerCase()
+    if (t === 'physical') return { physicalDamagePct: n }
+    if (t === 'erosion') return { erosionDamagePct: n }
+    if (t === 'lightning') return { lightningDamagePct: n }
+    if (t === 'fire') return { fireDamagePct: n }
+    if (t === 'cold') return { coldDamagePct: n }
+    return null
+  }
+
+  m = s.match(/^\+(\d+(?:\.\d+)?)% damage\s+for\s+Channeled\s+Skills$/i)
+  if (m) return { channeledDamagePct: Number(m[1]) }
+
+  m = s.match(/^\+(\d+(?:\.\d+)?)% damage$/i)
   if (m) return { damagePct: Number(m[1]) }
 
   m = s.match(/^\+(\d+(?:\.\d+)?)% (Attack Speed|Cast Speed|Attack and Cast Speed)/i)
@@ -71,6 +120,28 @@ export function parseTalentEffectLineToStatBlock(line: string): StatBlock | null
 
   m = s.match(/^\+(\d+) Intelligence$/i)
   if (m) return { intelligence: Number(m[1]) }
+
+  m = s.match(/^\+(\d+(?:\.\d+)?)% Elemental Resistance$/i)
+  if (m) return { elementalResistancePct: Number(m[1]) }
+
+  m = s.match(
+    /^\+(\d+(?:\.\d+)?)% (Cold|Fire|Lightning|Erosion) Resistance$/i,
+  )
+  if (m) {
+    const n = Number(m[1])
+    const t = m[2]!.toLowerCase()
+    if (t === 'cold') return { coldResistancePct: n }
+    if (t === 'fire') return { fireResistancePct: n }
+    if (t === 'lightning') return { lightningResistancePct: n }
+    if (t === 'erosion') return { erosionResistancePct: n }
+    return null
+  }
+
+  m = s.match(/^-(\d+) Attack Skill Cost$/i)
+  if (m) return { skillCostFlat: -Number(m[1]) }
+
+  m = s.match(/^-(\d+) Skill Cost$/i)
+  if (m) return { skillCostFlat: -Number(m[1]) }
 
   return null
 }

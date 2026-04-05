@@ -11425,10 +11425,13 @@
       "notes": [
         "tli:ss11:node_352_464:14829bdb-314a-48fd-ae4f-314c0979491f"
       ],
+      "effectLines": [
+        "Damage Penetrates 1.5% Elemental Resistance"
+      ],
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "missing_effect_lines_anchor"
+      "unresolvedReason": "no_affix_text_match"
     },
     {
       "panelId": "god_Elementalist",
@@ -11444,10 +11447,14 @@
       "notes": [
         "tli:ss11:node_480_464:a89c638f-23b9-4582-a2ad-de9be21726b4"
       ],
+      "displayLabel": "Upon inflicting damage, p…",
+      "effectLines": [
+        "Upon inflicting damage, penetrates 3% of Elemental Resistance for each type of Elemental Ailment the enemy has"
+      ],
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",
       "mappingConfidence": null,
-      "unresolvedReason": "missing_effect_lines_anchor"
+      "unresolvedReason": "no_affix_text_match"
     },
     {
       "panelId": "god_Elementalist",
@@ -11913,7 +11920,9 @@
       ],
       "displayLabel": "+18% Cold Resistance",
       "effectLines": [
-        "+18% Cold Resistance"
+        "+18% Cold Resistance",
+        "Minions are immune to Cold Damage",
+        "Minions are immune to Freeze and Frozen"
       ],
       "mappingStatus": "unresolved",
       "mappingProvenance": "mapTalentNodesToAffixes:v1",

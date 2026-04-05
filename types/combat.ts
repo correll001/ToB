@@ -18,7 +18,30 @@ export type StatBlock = {
   attackSpeedPct?: number
 
   baseDamageFlat?: number
+  /**
+   * Generic increased damage：label 僅為泛用「傷害」（無攻擊／法術／元素等前綴），攻擊與法術皆可套用。
+   */
   damagePct?: number
+  spellDamagePct?: number
+  attackDamagePct?: number
+  meleeDamagePct?: number
+  projectileDamagePct?: number
+  physicalDamagePct?: number
+  erosionDamagePct?: number
+  fireDamagePct?: number
+  lightningDamagePct?: number
+  coldDamagePct?: number
+  /** 元素傷害遞增 %（火／冰／閃電總稱；與單一元素桶分開加總）。 */
+  elementalDamagePct?: number
+  dotDamagePct?: number
+  minionDamagePct?: number
+  minionFireDamagePct?: number
+  minionLightningDamagePct?: number
+  minionColdDamagePct?: number
+  minionErosionDamagePct?: number
+  minionPhysicalDamagePct?: number
+  /** 僅對「引導／Channeled」類技能生效的遞增 %；不併入泛用 damagePct。 */
+  channeledDamagePct?: number
   /**
    * Attack skills: % of character weapon hit used as base (from `skill.weaponDamagePct`, summed).
    * Applied in `computeDerivedCombat` only when `skillHitBaseFromLevel` is unset — explicit, not folded into `damagePct`.
@@ -30,6 +53,15 @@ export type StatBlock = {
   critChancePct?: number
   /** Bonus to crit effect (increased damage on crit), additive %; pairs with crit formula in engine. */
   critDamagePct?: number
+
+  /** 各屬性抗性（遞增 %）；與 *DamagePct（傷害遞增）分開。 */
+  coldResistancePct?: number
+  fireResistancePct?: number
+  lightningResistancePct?: number
+  erosionResistancePct?: number
+  elementalResistancePct?: number
+  /** 技能消耗固定值變化（負數＝減少）。 */
+  skillCostFlat?: number
 }
 
 /** One row collected from snapshot + lookup. */
@@ -64,10 +96,34 @@ export type AggregatedBuckets = {
   attackSpeedPct: number
   baseDamageFlat: number
   damagePct: number
+  spellDamagePct: number
+  attackDamagePct: number
+  meleeDamagePct: number
+  projectileDamagePct: number
+  physicalDamagePct: number
+  erosionDamagePct: number
+  fireDamagePct: number
+  lightningDamagePct: number
+  coldDamagePct: number
+  elementalDamagePct: number
+  dotDamagePct: number
+  minionDamagePct: number
+  minionFireDamagePct: number
+  minionLightningDamagePct: number
+  minionColdDamagePct: number
+  minionErosionDamagePct: number
+  minionPhysicalDamagePct: number
+  channeledDamagePct: number
   weaponDamageEffectivenessPct: number
   moreDamageMult: number
   critChancePct: number
   critDamagePct: number
+  coldResistancePct: number
+  fireResistancePct: number
+  lightningResistancePct: number
+  erosionResistancePct: number
+  elementalResistancePct: number
+  skillCostFlat: number
 }
 
 /** Final numbers shown on the left combat readout. */
@@ -146,6 +202,20 @@ export type CombatBreakdown = {
   mpPctTotal: number
   mpFromDivinityText: number
   damageBeforePct: number
+  /** 純「% 傷害」桶（攻擊與法術）。 */
+  damagePctGeneric: number
+  spellDamagePct: number
+  attackDamagePct: number
+  meleeDamagePct: number
+  projectileDamagePct: number
+  damagePctTypedPhysicalElemental: number
+  /** 僅元素總稱桶（不含物／腐／持續／單一元素細項）。 */
+  elementalDamagePct: number
+  damagePctMinion: number
+  /** 聚合中的引導技能專屬遞增 %（是否併入有效值見 channeledDamageIncludedInEffective）。 */
+  channeledDamagePct: number
+  channeledDamageIncludedInEffective: boolean
+  /** 本技能路徑合併後的遞增 %（見 increasedDamageFromBuckets）。 */
   damagePctTotal: number
   moreDamageMult: number
   damageAfterMore: number

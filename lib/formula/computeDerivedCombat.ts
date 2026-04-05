@@ -18,6 +18,11 @@ import { computeCritAndDoubleDamageForForm } from '@/lib/formula/rules/critAndDo
 import { incomingConversionEligibility, outgoingConversionEligibility } from '@/lib/formula/rules/damageTypeConversion'
 import { effectiveArmorMitigationPercentForDamageCalc } from '@/lib/formula/rules/armorReductionPenetration'
 import { effectiveResistancePercentForDamageCalc } from '@/lib/formula/rules/resistancePenetration'
+import {
+  effectiveIncreasedDamagePctForHit,
+  sumMinionDamageIncreasedPct,
+  sumTypedDamageIncreasedPct,
+} from '@/lib/formula/increasedDamageFromBuckets'
 
 function clamp(n: number, lo: number, hi: number) {
   return Math.min(hi, Math.max(lo, n))
@@ -35,6 +40,11 @@ export type ComputeDerivedCombatOptions = {
   damageForm?: DamageForm
   /** When set, double-damage EV applied (hit-only per rules). Otherwise traced, mult stays 1. */
   doubleDamageChancePct?: number | null
+  /**
+   * 為真時才把聚合中的 `channeledDamagePct` 併入有效遞增（檢視引導主技能時由呼叫端帶入）。
+   * 全建構／無技能語境時應省略或 false。
+   */
+  skillIsChanneled?: boolean
 }
 
 export type DerivedCombatResult = {
@@ -180,7 +190,11 @@ export function computeDerivedCombat(
   }
 
   const damageBeforePct = weaponPortion + agg.baseDamageFlat
-  const damagePctTotal = agg.damagePct
+  const damagePctGeneric = agg.damagePct
+  const damagePctTypedPhysicalElemental = sumTypedDamageIncreasedPct(agg)
+  const damagePctMinion = sumMinionDamageIncreasedPct(agg)
+  const skillIsChanneled = opts?.skillIsChanneled === true
+  const damagePctTotal = effectiveIncreasedDamagePctForHit(agg, hasSpellHitAnchor, skillIsChanneled)
   const afterInc = damageBeforePct * (1 + damagePctTotal / 100)
   const moreDamageMult = agg.moreDamageMult
   const damageAfterMore = afterInc * moreDamageMult
@@ -249,6 +263,16 @@ export function computeDerivedCombat(
     mpPctTotal,
     mpFromDivinityText,
     damageBeforePct,
+    damagePctGeneric,
+    spellDamagePct: agg.spellDamagePct,
+    attackDamagePct: agg.attackDamagePct,
+    meleeDamagePct: agg.meleeDamagePct,
+    projectileDamagePct: agg.projectileDamagePct,
+    damagePctTypedPhysicalElemental,
+    elementalDamagePct: agg.elementalDamagePct,
+    damagePctMinion,
+    channeledDamagePct: agg.channeledDamagePct,
+    channeledDamageIncludedInEffective: skillIsChanneled,
     damagePctTotal,
     moreDamageMult,
     damageAfterMore,
