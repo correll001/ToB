@@ -8,7 +8,7 @@
 
 | 現況 | 證據 |
 |------|------|
-| 875 nodes 已寫入 `mappingStatus`；**246** `resolved`，**629** `unresolved`（重跑後快照） | `data/normalized/ss12/talent-node-affix-map-report.json` |
+| 875 nodes 已寫入 `mappingStatus`；自動層 + **人工裁決**後 resolved 數見最新 `talent-node-affix-map-report.json`（含 `resolvedByManualAdjudication`） | 同左 + `data/manual/ss12/talent-node-affix-adjudications.json` |
 | 主因 `no_affix_text_match`（**515**） | 英文 `effectLines` → 中文譯句與 TLIDB 繁中正文無法逐行包含關係，或譯表缺行 |
 | 次因 `multiple_candidates_same_text_modifiers_tie`（**56**） | 多筆 affix 共享可通過子字串測試的模板化描述 |
 | `missing_effect_lines_anchor`（**58**） | 節點無 `effectLines`（無法做確定性文字錨點） |
@@ -16,7 +16,7 @@
 
 **優先級**
 
-- **必做**：擴充可驗證的 `EXACT_LINE_ZH` / `PHRASE`（`lib/talent/talentEffectLineZh.ts`），並重跑 apply；對 `multiple_candidates_*` 建立**人工或外部 id 對照表**（非模糊匹配）。
+- **必做**：擴充可驗證的 `EXACT_LINE_ZH` / `PHRASE`（`lib/talent/talentEffectLineZh.ts`），並重跑 apply；對 `multiple_candidates_*` 使用 **`talent-node-affix-adjudications.json` 人工裁決**或外部 id 表（非模糊匹配）。未決清單：`npm run review:talent-node-affix-unresolved`。
 - **次要**：在 `notes` 或獨立 manifest 中保留 TLI `tlidbId` 與未來官方 id 的對照欄位（**不**刪現有追溯字串）。
 - **可延後**：跨 season SS11→SS12 全文自動對齊（僅在官方對照表齊備後）。
 

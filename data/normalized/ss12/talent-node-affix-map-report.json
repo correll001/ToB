@@ -1,23 +1,31 @@
 {
-  "provenance": "mapTalentNodesToAffixes:v1",
+  "provenance": "applyTalentNodeAffixMapping:v2",
+  "autoLayerProvenance": "mapTalentNodesToAffixes:v1",
   "totalNodes": 875,
-  "resolved": 246,
-  "unresolved": 629,
+  "resolved": 249,
+  "unresolved": 626,
+  "unresolvedAfterAuto": 629,
+  "resolvedByManualAdjudication": 3,
   "byConfidence": {
     "normalized_text_talent_tree": 244,
+    "manual_adjudicated": 3,
     "constrained_fallback_unique": 2
   },
   "unresolvedReasons": {
-    "no_affix_text_match": 515,
-    "multiple_candidates_same_text_modifiers_tie": 56,
-    "missing_effect_lines_anchor": 58
+    "no_affix_text_match": 514,
+    "missing_effect_lines_anchor": 58,
+    "multiple_candidates_same_text_modifiers_tie": 54
   },
-  "generatedAt": "2026-04-05T05:24:45.326Z",
+  "adjudicationFile": "C:\\dev\\tob\\data\\manual\\ss12\\talent-node-affix-adjudications.json",
+  "adjudicationParseErrors": [],
+  "adjudicationApplyErrors": [],
+  "generatedAt": "2026-04-05T05:54:43.453Z",
   "sampleUnresolved": [
     {
       "i": 7,
       "panelId": "god_God_of_Might",
       "slot": 12,
+      "nodeId": "talnode:ss12:god_God_of_Might:s12",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -26,6 +34,7 @@
       "i": 8,
       "panelId": "god_God_of_Might",
       "slot": 13,
+      "nodeId": "talnode:ss12:god_God_of_Might:s13",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -34,47 +43,16 @@
       "i": 13,
       "panelId": "god_God_of_Might",
       "slot": 20,
+      "nodeId": "talnode:ss12:god_God_of_Might:s20",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
-    },
-    {
-      "i": 14,
-      "panelId": "god_God_of_Might",
-      "slot": 21,
-      "mappingStatus": "unresolved",
-      "unresolvedReason": "no_affix_text_match",
-      "mappingConfidence": null
-    },
-    {
-      "i": 15,
-      "panelId": "god_God_of_Might",
-      "slot": 25,
-      "mappingStatus": "unresolved",
-      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
-      "mappingConfidence": null,
-      "debugCandidateAffixIds": [
-        "talaffix:ss12:talent_tree:10020400",
-        "talaffix:ss12:talent_tree:10050100",
-        "talaffix:ss12:talent_tree:10050500"
-      ]
-    },
-    {
-      "i": 16,
-      "panelId": "god_God_of_Might",
-      "slot": 26,
-      "mappingStatus": "unresolved",
-      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
-      "mappingConfidence": null,
-      "debugCandidateAffixIds": [
-        "talaffix:ss12:talent_tree:10030400",
-        "talaffix:ss12:talent_tree:10060100"
-      ]
     },
     {
       "i": 19,
       "panelId": "god_God_of_Might",
       "slot": 29,
+      "nodeId": "talnode:ss12:god_God_of_Might:s29",
       "mappingStatus": "unresolved",
       "unresolvedReason": "missing_effect_lines_anchor",
       "mappingConfidence": null
@@ -83,6 +61,7 @@
       "i": 20,
       "panelId": "god_God_of_Might",
       "slot": 30,
+      "nodeId": "talnode:ss12:god_God_of_Might:s30",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -91,19 +70,16 @@
       "i": 23,
       "panelId": "god_God_of_Might",
       "slot": 36,
+      "nodeId": "talnode:ss12:god_God_of_Might:s36",
       "mappingStatus": "unresolved",
       "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
-      "mappingConfidence": null,
-      "debugCandidateAffixIds": [
-        "talaffix:ss12:talent_tree:10020400",
-        "talaffix:ss12:talent_tree:10050100",
-        "talaffix:ss12:talent_tree:10050500"
-      ]
+      "mappingConfidence": null
     },
     {
       "i": 24,
       "panelId": "god_God_of_Might",
       "slot": 37,
+      "nodeId": "talnode:ss12:god_God_of_Might:s37",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -112,6 +88,7 @@
       "i": 25,
       "panelId": "god_God_of_Might",
       "slot": 38,
+      "nodeId": "talnode:ss12:god_God_of_Might:s38",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -120,19 +97,16 @@
       "i": 26,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 4,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s4",
       "mappingStatus": "unresolved",
       "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
-      "mappingConfidence": null,
-      "debugCandidateAffixIds": [
-        "talaffix:ss12:talent_tree:20020200",
-        "talaffix:ss12:talent_tree:20050100",
-        "talaffix:ss12:talent_tree:20060400"
-      ]
+      "mappingConfidence": null
     },
     {
       "i": 28,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 6,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s6",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -141,6 +115,7 @@
       "i": 34,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 14,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s14",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -149,18 +124,16 @@
       "i": 35,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 16,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s16",
       "mappingStatus": "unresolved",
       "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
-      "mappingConfidence": null,
-      "debugCandidateAffixIds": [
-        "talaffix:ss12:talent_tree:20010300",
-        "talaffix:ss12:talent_tree:20050500"
-      ]
+      "mappingConfidence": null
     },
     {
       "i": 39,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 21,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s21",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -169,6 +142,7 @@
       "i": 40,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 22,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s22",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -177,6 +151,7 @@
       "i": 41,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 25,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s25",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -185,6 +160,7 @@
       "i": 42,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 26,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s26",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -193,6 +169,7 @@
       "i": 43,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 27,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s27",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -201,6 +178,7 @@
       "i": 44,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 28,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s28",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -209,6 +187,7 @@
       "i": 45,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 29,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s29",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -217,6 +196,7 @@
       "i": 46,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 30,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s30",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -225,18 +205,16 @@
       "i": 49,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 36,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s36",
       "mappingStatus": "unresolved",
       "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
-      "mappingConfidence": null,
-      "debugCandidateAffixIds": [
-        "talaffix:ss12:talent_tree:20010300",
-        "talaffix:ss12:talent_tree:20050500"
-      ]
+      "mappingConfidence": null
     },
     {
       "i": 50,
       "panelId": "god_Goddess_of_Hunting",
       "slot": 37,
+      "nodeId": "talnode:ss12:god_Goddess_of_Hunting:s37",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -245,6 +223,7 @@
       "i": 52,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 3,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s3",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -253,6 +232,7 @@
       "i": 57,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 11,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s11",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -261,6 +241,7 @@
       "i": 58,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 12,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s12",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -269,6 +250,7 @@
       "i": 63,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 18,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s18",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -277,6 +259,7 @@
       "i": 64,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 19,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s19",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -285,6 +268,7 @@
       "i": 65,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 20,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s20",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -293,6 +277,7 @@
       "i": 66,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 21,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s21",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -301,6 +286,7 @@
       "i": 69,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 27,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s27",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -309,6 +295,7 @@
       "i": 70,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 28,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s28",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -317,6 +304,7 @@
       "i": 71,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 29,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s29",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -325,6 +313,7 @@
       "i": 72,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 30,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s30",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -333,6 +322,7 @@
       "i": 75,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 37,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s37",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null
@@ -341,6 +331,7 @@
       "i": 76,
       "panelId": "god_Goddess_of_Knowledge",
       "slot": 38,
+      "nodeId": "talnode:ss12:god_Goddess_of_Knowledge:s38",
       "mappingStatus": "unresolved",
       "unresolvedReason": "missing_effect_lines_anchor",
       "mappingConfidence": null
@@ -349,18 +340,43 @@
       "i": 79,
       "panelId": "god_God_of_War",
       "slot": 4,
+      "nodeId": "talnode:ss12:god_God_of_War:s4",
       "mappingStatus": "unresolved",
       "unresolvedReason": "multiple_candidates_same_text_modifiers_tie",
-      "mappingConfidence": null,
-      "debugCandidateAffixIds": [
-        "talaffix:ss12:talent_tree:40050100",
-        "talaffix:ss12:talent_tree:40060500"
-      ]
+      "mappingConfidence": null
     },
     {
       "i": 88,
       "panelId": "god_God_of_War",
       "slot": 18,
+      "nodeId": "talnode:ss12:god_God_of_War:s18",
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 89,
+      "panelId": "god_God_of_War",
+      "slot": 19,
+      "nodeId": "talnode:ss12:god_God_of_War:s19",
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 90,
+      "panelId": "god_God_of_War",
+      "slot": 20,
+      "nodeId": "talnode:ss12:god_God_of_War:s20",
+      "mappingStatus": "unresolved",
+      "unresolvedReason": "no_affix_text_match",
+      "mappingConfidence": null
+    },
+    {
+      "i": 91,
+      "panelId": "god_God_of_War",
+      "slot": 21,
+      "nodeId": "talnode:ss12:god_God_of_War:s21",
       "mappingStatus": "unresolved",
       "unresolvedReason": "no_affix_text_match",
       "mappingConfidence": null

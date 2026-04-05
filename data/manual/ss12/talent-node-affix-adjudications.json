@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "season": "ss12",
+  "sourceNote": "Manual adjudications for talent-panel nodes where auto mapTalentNodesToAffixes cannot safely pick. See docs/talent-panels/manual-adjudication-rules.md. Only reviewStatus=approved is applied by ingest.",
+  "adjudications": [
+    {
+      "adjudicationId": "adj:ss12:might:s21:tenacity_cap",
+      "season": "ss12",
+      "panelId": "god_God_of_Might",
+      "nodeId": "talnode:ss12:god_God_of_Might:s21",
+      "sourceAnchor": {
+        "panelId": "god_God_of_Might",
+        "slotIndex": 21,
+        "nodeType": "keystone",
+        "effectLines": ["+1 to Max Tenacity Blessing Stacks"],
+        "sourceNotes": ["tli:ss11:node_736_272:127c0f2a-a644-4585-8b91-75c4c909d699"]
+      },
+      "chosenAffixId": "talaffix:ss12:core_talent:10001300",
+      "reason": "manual_external_reference_match",
+      "evidence": [
+        "TLI effectLines English: '+1 to Max Tenacity Blessing Stacks' matches TLIDB core talent row gameDataId 10001300 (affixId talaffix:ss12:core_talent:10001300) which contains the Traditional Chinese phrase '+1 堅韌祝福層數上限' in rawText/descriptionLines.",
+        "Cross-tab: row is sourceKind core_talent_node / sourceTab core_talent; auto matcher did not resolve (no_affix_text_match) because English→zh bridge for this line is not in the deterministic translate table."
+      ],
+      "reviewStatus": "approved",
+      "reviewedBy": "repo-governance-sample",
+      "updatedAt": "2026-04-05T12:00:00.000Z",
+      "notes": ["Sample row for pipeline smoke; re-verify in-game if SS12 text drifts."]
+    },
+    {
+      "adjudicationId": "adj:ss12:might:s25:atk9_disambig",
+      "season": "ss12",
+      "panelId": "god_God_of_Might",
+      "nodeId": "talnode:ss12:god_God_of_Might:s25",
+      "sourceAnchor": {
+        "panelId": "god_God_of_Might",
+        "slotIndex": 25,
+        "nodeType": "small",
+        "effectLines": ["+9% Attack Damage"],
+        "sourceNotes": ["tli:ss11:node_224_368:19cf0f87-7bf3-40ac-b48c-f57cbcc83a08"]
+      },
+      "chosenAffixId": "talaffix:ss12:talent_tree:10020400",
+      "reason": "manual_disambiguation_same_text",
+      "evidence": [
+        "Auto mapping candidates included talaffix:ss12:talent_tree:10050100 whose descriptionLines include '+2% 移動速度'; node effectLines are only '+9% Attack Damage' with no movement-speed line, so 10050100 is inconsistent with the TLI node payload.",
+        "Between duplicate-text rows 10020400 and 10050500 (same +9% attack scrape), 10020400 is chosen as the lower TLIDB sourceOrderIndex (184 vs 198) until an official node↔gameDataId table exists."
+      ],
+      "reviewStatus": "approved",
+      "reviewedBy": "repo-governance-sample",
+      "updatedAt": "2026-04-05T12:00:00.000Z",
+      "notes": ["If official mapping table arrives, replace tie-break with external id."]
+    },
+    {
+      "adjudicationId": "adj:ss12:might:s26:atk18_disambig",
+      "season": "ss12",
+      "panelId": "god_God_of_Might",
+      "nodeId": "talnode:ss12:god_God_of_Might:s26",
+      "sourceAnchor": {
+        "panelId": "god_God_of_Might",
+        "slotIndex": 26,
+        "nodeType": "medium",
+        "effectLines": ["+18% Attack Damage"],
+        "sourceNotes": ["tli:ss11:node_352_368:996ae5c8-d558-4f14-a00b-5787e4ae109d"]
+      },
+      "chosenAffixId": "talaffix:ss12:talent_tree:10030400",
+      "reason": "manual_disambiguation_same_text",
+      "evidence": [
+        "Candidate talaffix:ss12:talent_tree:10060100 includes '+4% 移動速度' in rawText; node has only '+18% Attack Damage' in effectLines.",
+        "talaffix:ss12:talent_tree:10030400 modifiersText is pure +18% attack damage lines without the extra movement modifier block."
+      ],
+      "reviewStatus": "approved",
+      "reviewedBy": "repo-governance-sample",
+      "updatedAt": "2026-04-05T12:00:00.000Z",
+      "notes": []
+    },
+    {
+      "adjudicationId": "adj:ss12:might:s36:tentative_alt_row",
+      "season": "ss12",
+      "panelId": "god_God_of_Might",
+      "nodeId": "talnode:ss12:god_God_of_Might:s36",
+      "sourceAnchor": {
+        "panelId": "god_God_of_Might",
+        "slotIndex": 36,
+        "nodeType": "small",
+        "effectLines": ["+9% Attack Damage"],
+        "sourceNotes": ["tli:ss11:node_608_464:33502b7e-1f8f-4eac-a318-d2bcd3f63e0f"]
+      },
+      "chosenAffixId": "talaffix:ss12:talent_tree:10050500",
+      "reason": "manual_override_after_review",
+      "evidence": [
+        "Tentative alternative to 10020400 for the same +9% duplicate-text cluster; not applied until promoted to approved."
+      ],
+      "reviewStatus": "tentative",
+      "reviewedBy": "repo-governance-sample",
+      "updatedAt": "2026-04-05T12:00:00.000Z",
+      "notes": ["Leaves node on auto unresolved until review promotes or rejects."]
+    },
+    {
+      "adjudicationId": "adj:ss12:might:s37:rejected_bad_guess",
+      "season": "ss12",
+      "panelId": "god_God_of_Might",
+      "nodeId": "talnode:ss12:god_God_of_Might:s37",
+      "sourceAnchor": {
+        "panelId": "god_God_of_Might",
+        "slotIndex": 37,
+        "nodeType": "medium",
+        "effectLines": ["+10% Warcry Cooldown Recovery Speed"],
+        "sourceNotes": ["tli:ss11:node_736_464:808a3d12-3192-47d8-b61c-e42c16b38fb8"]
+      },
+      "chosenAffixId": "talaffix:ss12:talent_tree:10020400",
+      "reason": "manual_override_after_review",
+      "evidence": [
+        "Rejected example: arbitrary +9% attack affix does not match warcry cooldown English line; documents that rejected rows are not applied."
+      ],
+      "reviewStatus": "rejected",
+      "reviewedBy": "repo-governance-sample",
+      "updatedAt": "2026-04-05T12:00:00.000Z",
+      "notes": []
+    }
+  ]
+}

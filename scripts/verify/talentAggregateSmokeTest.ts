@@ -19,7 +19,9 @@ function main() {
   const affixById = new Map(affixFile.affixes.map((a) => [a.affixId, a]))
 
   const might = nodesFile.nodes.filter((n) => n.panelId === 'god_God_of_Might' && n.mappingStatus === 'resolved')
-  const picks = might.slice(0, 5)
+  const manual = might.find((n) => n.mappingConfidence === 'manual_adjudicated')
+  const autoPicks = might.filter((n) => n.mappingConfidence !== 'manual_adjudicated').slice(0, 4)
+  const picks = manual ? [...autoPicks, manual] : might.slice(0, 5)
   const ranksByNodeId: Record<string, number> = {}
   for (const n of picks) {
     const id = n.nodeId?.trim() || `talnode:${nodesFile.season}:${n.panelId}:s${n.slotIndex}`
@@ -35,11 +37,14 @@ function main() {
 
   const summary = {
     selectedCount: out.selectedNodes.length,
+    manualSelectedCount: out.selectedNodes.filter((s) => s.mappingResolutionSource === 'manual').length,
+    autoSelectedCount: out.selectedNodes.filter((s) => s.mappingResolutionSource === 'auto').length,
     resolvedAffixCount: out.resolvedAffixes.length,
     unresolvedCount: out.unresolvedNodes.length,
     bucketLineCount: out.totals.bucketLinesZh.length,
     rawUnbucketedCount: out.totals.rawUnbucketed.length,
     perPanelCount: out.perPanel.length,
+    perPanelSourceSample: out.perPanel[0]?.nodeIdsByMappingSource,
     sampleBuckets: out.totals.bucketLinesZh.slice(0, 8),
     sampleRaw: out.totals.rawUnbucketed.slice(0, 5),
   }
@@ -48,6 +53,11 @@ function main() {
 
   if (out.selectedNodes.length === 0 && picks.length > 0) {
     console.error('[talentAggregateSmokeTest] FAIL: expected some selected nodes')
+    process.exit(1)
+  }
+
+  if (manual && !out.selectedNodes.some((s) => s.mappingResolutionSource === 'manual')) {
+    console.error('[talentAggregateSmokeTest] FAIL: expected manual adjudicated node in aggregate')
     process.exit(1)
   }
 

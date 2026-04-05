@@ -5,9 +5,9 @@
     "節點座標與 requires / edges 來自 TLI Compendium SS11 `talent-tree/*/master` bundle。",
     "格線：x = position，y = tier，slotIndex = y*8+x（8×5）。",
     "各節點含 mappingStatus：resolved 時有 affixId；unresolved 時有 unresolvedReason（機讀原因碼）。",
-    "重跑對應：npx tsx scripts/ingest/applyTalentNodeAffixMapping.ts；報告：talent-node-affix-map-report.json。"
+    "重跑對應：npx tsx scripts/ingest/applyTalentNodeAffixMapping.ts（自動層 + data/manual/ss12/talent-node-affix-adjudications.json）。"
   ],
-  "sourceNote": "Node→affix mapping applied via scripts/ingest/applyTalentNodeAffixMapping.ts; see talent-node-affix-map-report.json.",
+  "sourceNote": "Node→affix: auto mapTalentNodesToAffixes:v1 then manual adjudications; see talent-node-affix-map-report.json.",
   "nodeCount": 875,
   "nodes": [
     {
@@ -382,10 +382,14 @@
       "effectLines": [
         "+1 to Max Tenacity Blessing Stacks"
       ],
-      "mappingStatus": "unresolved",
-      "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "no_affix_text_match"
+      "mappingStatus": "resolved",
+      "mappingProvenance": "applyTalentNodeAffixAdjudications:v1",
+      "mappingConfidence": "manual_adjudicated",
+      "unresolvedReason": null,
+      "mappingAdjudicationId": "adj:ss12:might:s21:tenacity_cap",
+      "affixId": "talaffix:ss12:core_talent:10001300",
+      "affixGameDataId": "10001300",
+      "affixSourceTab": "core_talent"
     },
     {
       "panelId": "god_God_of_Might",
@@ -404,10 +408,14 @@
       "effectLines": [
         "+9% Attack Damage"
       ],
-      "mappingStatus": "unresolved",
-      "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
+      "mappingStatus": "resolved",
+      "mappingProvenance": "applyTalentNodeAffixAdjudications:v1",
+      "mappingConfidence": "manual_adjudicated",
+      "unresolvedReason": null,
+      "mappingAdjudicationId": "adj:ss12:might:s25:atk9_disambig",
+      "affixId": "talaffix:ss12:talent_tree:10020400",
+      "affixGameDataId": "10020400",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_God_of_Might",
@@ -426,10 +434,14 @@
       "effectLines": [
         "+18% Attack Damage"
       ],
-      "mappingStatus": "unresolved",
-      "mappingProvenance": "mapTalentNodesToAffixes:v1",
-      "mappingConfidence": null,
-      "unresolvedReason": "multiple_candidates_same_text_modifiers_tie"
+      "mappingStatus": "resolved",
+      "mappingProvenance": "applyTalentNodeAffixAdjudications:v1",
+      "mappingConfidence": "manual_adjudicated",
+      "unresolvedReason": null,
+      "mappingAdjudicationId": "adj:ss12:might:s26:atk18_disambig",
+      "affixId": "talaffix:ss12:talent_tree:10030400",
+      "affixGameDataId": "10030400",
+      "affixSourceTab": "talent_tree"
     },
     {
       "panelId": "god_God_of_Might",

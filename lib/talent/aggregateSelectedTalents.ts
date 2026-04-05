@@ -37,7 +37,12 @@ export function aggregateSelectedTalents(input: TalentAggregateInput): TalentAgg
   const rawLines: TalentAggregateRawLine[] = []
   const perPanelMap = new Map<
     string,
-    { nodeIds: string[]; blocks: StatBlock[]; raw: TalentAggregateRawLine[] }
+    {
+      nodeIds: string[]
+      bySource: { auto: string[]; manual: string[]; unresolved: string[] }
+      blocks: StatBlock[]
+      raw: TalentAggregateRawLine[]
+    }
   >()
 
   for (const [nodeId, rawRank] of Object.entries(ranksByNodeId)) {
@@ -58,7 +63,12 @@ export function aggregateSelectedTalents(input: TalentAggregateInput): TalentAgg
 
     const panelId = n.panelId
     if (!perPanelMap.has(panelId)) {
-      perPanelMap.set(panelId, { nodeIds: [], blocks: [], raw: [] })
+      perPanelMap.set(panelId, {
+        nodeIds: [],
+        bySource: { auto: [], manual: [], unresolved: [] },
+        blocks: [],
+        raw: [],
+      })
     }
     const pBucket = perPanelMap.get(panelId)!
     pBucket.nodeIds.push(nodeId)
@@ -68,8 +78,10 @@ export function aggregateSelectedTalents(input: TalentAggregateInput): TalentAgg
         nodeId,
         panelId,
         reason: n.unresolvedReason ?? (n.affixPending ? 'legacy_affix_pending' : null),
+        mappingResolutionSource: 'unresolved',
         rawNode: n,
       })
+      pBucket.bySource.unresolved.push(nodeId)
       for (const line of n.effectLines ?? []) {
         const rl: TalentAggregateRawLine = {
           source: 'node_effect',
@@ -86,10 +98,12 @@ export function aggregateSelectedTalents(input: TalentAggregateInput): TalentAgg
 
     const aid = n.affixId?.trim()
     if (!aid || n.mappingStatus !== 'resolved') {
+      pBucket.bySource.unresolved.push(nodeId)
       unresolvedNodes.push({
         nodeId,
         panelId,
         reason: n.unresolvedReason ?? 'missing_affix_id',
+        mappingResolutionSource: 'unresolved',
         rawNode: n,
       })
       continue
@@ -97,10 +111,12 @@ export function aggregateSelectedTalents(input: TalentAggregateInput): TalentAgg
 
     const affix = affixById.get(aid)
     if (!affix) {
+      pBucket.bySource.unresolved.push(nodeId)
       unresolvedNodes.push({
         nodeId,
         panelId,
         reason: 'affix_not_in_dataset',
+        mappingResolutionSource: 'unresolved',
         rawNode: n,
       })
       continue
@@ -156,11 +172,17 @@ export function aggregateSelectedTalents(input: TalentAggregateInput): TalentAgg
       pBucket.blocks.push(scaled)
     }
 
+    const mappingResolutionSource =
+      n.mappingConfidence === 'manual_adjudicated' ? ('manual' as const) : ('auto' as const)
+    if (mappingResolutionSource === 'manual') pBucket.bySource.manual.push(nodeId)
+    else pBucket.bySource.auto.push(nodeId)
+
     selectedNodes.push({
       nodeId,
       panelId,
       slotIndex: n.slotIndex,
       rank,
+      mappingResolutionSource,
       rawNode: n,
       affix,
       modifierContributions,
@@ -170,11 +192,16 @@ export function aggregateSelectedTalents(input: TalentAggregateInput): TalentAgg
   const buckets = aggregateStatBlocks(allBlocks)
   const bucketLinesZh = aggregatedTalentWallBucketsToZh(buckets)
 
-  const perPanel = [...perPanelMap.entries()].map(([panelId, { nodeIds, blocks, raw }]) => {
+  const perPanel = [...perPanelMap.entries()].map(([panelId, { nodeIds, bySource, blocks, raw }]) => {
     const pb = aggregateStatBlocks(blocks)
     return {
       panelId,
       nodeIds: [...new Set(nodeIds)],
+      nodeIdsByMappingSource: {
+        auto: [...new Set(bySource.auto)],
+        manual: [...new Set(bySource.manual)],
+        unresolved: [...new Set(bySource.unresolved)],
+      },
       structuredBuckets: pb,
       bucketLinesZh: aggregatedTalentWallBucketsToZh(pb),
       rawUnbucketedLines: raw,

@@ -42,18 +42,30 @@
 - **不**自動合併 `talent_tree` 與 `core_talent` 的同 gameDataId 列；樹上優先，核心僅在樹上無命中時使用。
 - 若兩池各自多筆，維持 **unresolved**，不指定優先權。
 
+## 人工裁決層（unresolved / 多候選）
+
+- 資料：`data/manual/ss12/talent-node-affix-adjudications.json`（僅 `reviewStatus: approved` 會被套用）。
+- 規則說明：`docs/talent-panels/manual-adjudication-rules.md`。
+- 套用後：`mappingConfidence: manual_adjudicated`、`mappingAdjudicationId`、**不**覆蓋自動高信心 resolved。
+
 ## 重跑與產物
 
 ```bash
 npx tsx scripts/ingest/applyTalentNodeAffixMapping.ts
 ```
 
-- 更新：`data/normalized/ss12/talent-panel-nodes.json`
+- 更新：`data/normalized/ss12/talent-panel-nodes.json`（自動層 + 裁決層）
 - 報告：`data/normalized/ss12/talent-node-affix-map-report.json`
 
 ```bash
 npx tsx scripts/verify/verifyTalentNodeAffixMapping.ts
 ```
+
+```bash
+npx tsx scripts/verify/reviewTalentNodeAffixUnresolved.ts
+```
+
+- 產出：`data/normalized/ss12/talent-node-affix-unresolved-review.json`、`.md`
 
 ## Schema（`types/talentPanel.ts`）
 

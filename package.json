@@ -18,6 +18,7 @@
     "verify:talent-affixes": "tsx scripts/verify/verifyTalentAffixes.ts",
     "verify:talent-panels": "tsx scripts/verify/verifyTalentPanels.ts",
     "verify:talent-node-affix-mapping": "tsx scripts/verify/verifyTalentNodeAffixMapping.ts",
+    "review:talent-node-affix-unresolved": "tsx scripts/verify/reviewTalentNodeAffixUnresolved.ts",
     "ingest:talent-node-affix-map": "tsx scripts/ingest/applyTalentNodeAffixMapping.ts",
     "verify:talent-aggregate-smoke": "tsx scripts/verify/talentAggregateSmokeTest.ts",
     "ingest:tli-ss11-god-panels": "tsx scripts/ingest/convertTliSs11GodPanels.ts",

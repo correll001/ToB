@@ -227,6 +227,9 @@ export function validateTalentPanelDataset(
       }
       if (xyOk) resolvedAffix = `__unresolved__:${n.panelId}:s${exp}`
     } else if (n.mappingStatus === 'resolved') {
+      if (n.mappingConfidence === 'manual_adjudicated' && !n.mappingAdjudicationId?.trim()) {
+        errors.push(`${label}: manual_adjudicated 必須有 mappingAdjudicationId`)
+      }
       resolvedAffix = resolveAffixIdForNode(n, affixRows, affixIdSet, label, errors)
     } else if (n.affixPending === true) {
       const idTrim = n.affixId?.trim() ?? ''

@@ -48,6 +48,8 @@ export type TalentPanelNodeMappingConfidence =
   | 'normalized_text_talent_tree'
   | 'normalized_text_core_talent'
   | 'constrained_fallback_unique'
+  /** 來自 data/manual/.../talent-node-affix-adjudications.json，非自動 exact。 */
+  | 'manual_adjudicated'
 
 export type TalentPanelNode = {
   /**
@@ -79,6 +81,8 @@ export type TalentPanelNode = {
   unresolvedReason?: string | null
   /** 對應管線版本／腳本識別。 */
   mappingProvenance?: string
+  /** 人工裁決列 id（僅 mappingConfidence === manual_adjudicated 時必填）。 */
+  mappingAdjudicationId?: string
   x: number
   y: number
   slotIndex: number
